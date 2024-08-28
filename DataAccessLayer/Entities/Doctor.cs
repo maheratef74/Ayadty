@@ -4,7 +4,7 @@ public class Doctor
 {
     public int DoctorId { get; set; } // Primary Key
     public string Name { get; set; }
-    public string Specialization { get; set; }
+    public  Enums.Specialization  Specialization { get; set; }
     public string PhoneNumber { get; set; }
     public string? Email { get; set; }
     public int YearsOfExperience { get; set; }

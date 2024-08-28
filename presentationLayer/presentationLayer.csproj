@@ -12,7 +12,33 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.2.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0-preview.7.24405.3" />
+      <PackageReference Include="Microsoft.Extensions.Localization" Version="9.0.0-preview.7.24406.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Translate\en.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>en.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Translate\ar.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>ar.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Translate\en.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>en.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Translate\ar.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>ar.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

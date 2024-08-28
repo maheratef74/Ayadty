@@ -1,3 +1,7 @@
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
+
 namespace presentationLayer;
 
 public class Program
@@ -7,10 +11,21 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
-        builder.Services.AddControllersWithViews();
+        builder.Services.AddControllersWithViews()
+            .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+            .AddDataAnnotationsLocalization();
+        builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 
         var app = builder.Build();
-
+        
+        var supportedCultures = new[] { "en-US", "ar-SA" };
+        var localizationOptions = new RequestLocalizationOptions
+        {
+            DefaultRequestCulture = new RequestCulture("ar-SA"),
+            SupportedCultures = supportedCultures.Select(c => new CultureInfo(c)).ToList(),
+            SupportedUICultures = supportedCultures.Select(c => new CultureInfo(c)).ToList()
+        };
+        app.UseRequestLocalization(localizationOptions);
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
         {
@@ -28,9 +43,9 @@ public class Program
 
         app.MapControllerRoute(
             name: "default",
-            pattern: "{controller=Home}/{action=Index}/{id?}");
+            pattern: "{controller=auth}/{action=Register}/{id?}");
 
         app.Run();
-        //maher74
+        
     }
 }
