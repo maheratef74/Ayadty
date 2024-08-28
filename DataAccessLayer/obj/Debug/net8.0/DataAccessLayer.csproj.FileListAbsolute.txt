@@ -1,0 +1,16 @@
+E:\Ayadty\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.deps.json
+E:\Ayadty\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.dll
+E:\Ayadty\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.pdb
+E:\Ayadty\DataAccessLayer\bin\Debug\net8.0\BusinessLogicLayer.dll
+E:\Ayadty\DataAccessLayer\bin\Debug\net8.0\BusinessLogicLayer.pdb
+E:\Ayadty\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.csproj.AssemblyReference.cache
+E:\Ayadty\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+E:\Ayadty\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.AssemblyInfoInputs.cache
+E:\Ayadty\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.AssemblyInfo.cs
+E:\Ayadty\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.csproj.CoreCompileInputs.cache
+E:\Ayadty\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.sourcelink.json
+E:\Ayadty\DataAccessLayer\obj\Debug\net8.0\DataAcce.E67BD773.Up2Date
+E:\Ayadty\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.dll
+E:\Ayadty\DataAccessLayer\obj\Debug\net8.0\refint\DataAccessLayer.dll
+E:\Ayadty\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.pdb
+E:\Ayadty\DataAccessLayer\obj\Debug\net8.0\ref\DataAccessLayer.dll
