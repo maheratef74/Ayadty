@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "presentationLayer", "presentationLayer\presentationLayer.csproj", "{8EE99FDA-5CA9-4A3C-9608-8CBA45E180D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{B9E2536E-4A9D-4FF0-AA14-CD349C7178B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{2729119B-3FDC-45F6-A853-98DB61D1D27B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8EE99FDA-5CA9-4A3C-9608-8CBA45E180D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EE99FDA-5CA9-4A3C-9608-8CBA45E180D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EE99FDA-5CA9-4A3C-9608-8CBA45E180D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EE99FDA-5CA9-4A3C-9608-8CBA45E180D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9E2536E-4A9D-4FF0-AA14-CD349C7178B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9E2536E-4A9D-4FF0-AA14-CD349C7178B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9E2536E-4A9D-4FF0-AA14-CD349C7178B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9E2536E-4A9D-4FF0-AA14-CD349C7178B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2729119B-3FDC-45F6-A853-98DB61D1D27B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2729119B-3FDC-45F6-A853-98DB61D1D27B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2729119B-3FDC-45F6-A853-98DB61D1D27B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2729119B-3FDC-45F6-A853-98DB61D1D27B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
