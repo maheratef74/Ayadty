@@ -11,4 +11,4 @@ public class Clinic
     
     public Doctor Doctor { get; set; } // One-to-One relationship
     public List<MedicalRecord> MedicalRecords { get; set; } // One-to-Many
-}
+}// it will be one clinic but set it her to add update to days of work 

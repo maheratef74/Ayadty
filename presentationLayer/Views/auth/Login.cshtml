@@ -1,6 +1,62 @@
-﻿@{
-    ViewData["Title"] = "Privacy Policy";
-}
-<h1>@ViewData["Title"]</h1>
+﻿@model Ayadty.Models.LoginViewModel
 
-<p>Use this page to detail your site's privacy policy.</p>
+@{
+ViewData["Title"] = "Login";
+}
+
+<div class="container mt-5" dir="rtl"> <!-- Added dir="rtl" for right-to-left direction -->
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white text-center">
+                    <h2>عيادتي - تسجيل الدخول</h2>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="auth" asp-action="Login" method="post">
+                        <div class="mb-3">
+                            <label asp-for="PhoneNumber" class="form-label">رقم التيلفون</label>
+                            <input asp-for="PhoneNumber" class="form-control" placeholder="ادخل رقم التيلفون" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label">كلمه السر</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                <input asp-for="Password" class="form-control" type="password" id="passwordInput" placeholder="ادخل كلمه السر" />
+                                <span class="input-group-text">
+                                    <i class="bi bi-eye-fill" id="togglePassword" style="cursor: pointer;"></i>
+                                </span>
+                            </div>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">تسجيل</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript to toggle password visibility -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const togglePassword = document.querySelector('#togglePassword');
+        const passwordInput = document.querySelector('#passwordInput');
+
+        togglePassword.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.classList.toggle('bi-eye');
+            this.classList.toggle('bi-eye-fill');
+        });
+    });
+</script>
+
+@section Scripts {
+@* Include jQuery validation scripts *@
+<script src="~/lib/jquery/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

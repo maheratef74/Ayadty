@@ -1,11 +1,19 @@
-﻿@model Ayadty.Models.RegisterViewModel
+﻿
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@model Ayadty.Models.RegisterViewModel
+
+@{
+ ViewData["tital"] = "home";
+}
+
 
 <div class="container mt-5" dir="rtl">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card shadow-lg">
                 <div class="card-header bg-primary text-white text-center">
-                    <h2>عيادتي - انشاء حساب</h2>
+                    <h2></h2>
                 </div>
                 <div class="card-body">
                     <!-- Corrected to <form> -->
@@ -20,7 +28,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label asp-for="PhoneNumber" class="form-label">رقم الهاتف</label>
+                            <label asp-for="PhoneNumber" class="form-label"></label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="bi bi-telephone"></i></span>
                                 <input asp-for="PhoneNumber" class="form-control" placeholder="أدخل رقم الهاتف" />
@@ -36,31 +44,7 @@
                             </div>
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
-
-                        <div class="mb-3">
-                            <label asp-for="UserType" class="form-label">نوع المستخدم</label>
-                            <select asp-for="UserType" class="form-select" id="userTypeSelect">
-                                <option value="">اختر نوع المستخدم</option>
-                                <option value="Doctor">طبيب</option>
-                                <option value="Patient">مريض</option>
-                            </select>
-                            <span asp-validation-for="UserType" class="text-danger"></span>
-                        </div>
-
-                        <!-- Doctor-specific fields -->
-                        <div id="doctorFields" style="display: none;">
-                            <div class="mb-3">
-                                <label asp-for="Specialization" class="form-label">التخصص</label>
-                                <select asp-for="Specialization" class="form-select">
-                                    <option value="">اختر التخصص</option>
-                                    @foreach (var specialization in Enum.GetValues(typeof(Ayadty.Models.Enums.Specialization)))
-                                    {
-                                    <option value="@specialization">@specialization</option>
-                                    }
-                                </select>
-                                <span asp-validation-for="Specialization" class="text-danger"></span>
-                            </div>
-
+                        
                             <div class="mb-3">
                                 <label asp-for="YearsOfExperience" class="form-label">سنوات الخبرة</label>
                                 <input asp-for="YearsOfExperience" class="form-control" placeholder="أدخل سنوات الخبرة" />
@@ -75,7 +59,7 @@
                                 </div>
                                 <span asp-validation-for="Price" class="text-danger"></span>
                             </div>
-                        </div>
+                   
 
                         <!-- Patient-specific fields -->
                         <div id="patientFields" style="display: none;">
@@ -105,12 +89,11 @@
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary">تسجيل</button>
                         </div>
-                    </form>
+                </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 @section Scripts {
 <script>
@@ -129,3 +112,5 @@
     });
 </script>
 }
+
+</div>

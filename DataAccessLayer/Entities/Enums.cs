@@ -2,22 +2,6 @@ namespace Ayadty.Models;
 
 public class Enums
 {
-    public enum UserType
-    {
-        Doctor,
-        Patient
-    }
-    public enum Specialization
-    {
-        GeneralPractitioner,
-        Cardiologist,
-        Dermatologist,
-        Neurologist,
-        Pediatrician,
-        Orthopedic,
-        Gynecologist,
-        // Add more specializations as needed
-    }
     public enum AppointmentStatus
     {
         Scheduled,
@@ -33,5 +17,10 @@ public class Enums
         Thursday,
         Friday,
         Saturday
+    }
+    public enum  Gender
+    {
+        man,
+        female
     }
 }

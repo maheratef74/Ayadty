@@ -1,17 +1,44 @@
 using System.Diagnostics;
 using Ayadty.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using presentationLayer.Models;
-
 namespace presentationLayer.Controllers;
 
 public class authController : Controller
 {
     private readonly ILogger<authController> _logger;
-
-    public authController(ILogger<authController> logger)
+    private readonly IStringLocalizer<authController> _localizer;
+    public authController(ILogger<authController> logger, IStringLocalizer<authController> localizer)
     {
         _logger = logger;
+        _localizer = localizer;
+    }
+    [HttpGet]
+    public IActionResult Login()
+    {
+        return View();
+    }
+    [HttpPost]
+    public IActionResult Login(LoginViewModel model)
+    {
+      
+            // Add your authentication logic here.
+            // Example: Check user credentials and sign in.
+            bool isAuthenticated = /* Your authentication logic */ false;
+
+            if (isAuthenticated)
+            {
+                // Redirect to the desired page after successful login.
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+            }
+            
+        // If we got this far, something failed; redisplay the form.
+        return View(model);
     }
     [HttpGet]
     public IActionResult Register()
@@ -21,49 +48,26 @@ public class authController : Controller
      [HttpPost]
     public IActionResult Register(RegisterViewModel model)
     {
-            if (model.UserType == Enums.UserType.Doctor)
-            {
-                // Map RegisterViewModel to Doctor entity
-                var doctor = new Doctor
-                {
-                    Name = model.Name,
-                    PhoneNumber = model.PhoneNumber,
-                    Email = model.Email,
-                 //   Specialization = model.Specialization,
-                    YearsOfExperience = model.YearsOfExperience ?? 0,
-                    Price = model.Price,
-                        
-                };
-
-                // Save doctor to database
-                // Your code to save the doctor entity
-            }
-            else if (model.UserType == Enums.UserType.Patient)
-            {
-                // Map RegisterViewModel to Patient entity
                 var patient = new Patient
                 {
                     Name = model.Name,
                     PhoneNumber = model.PhoneNumber,
                     Email = model.Email,
                     DateOfBirth = model.DateOfBirth,
-                    Gender = model.Gender,
+                   // Gender = model.Gender,
                     Address = model.Address
                 };
 
                 // Save patient to database
-                // Your code to save the patient entity
-            }
+                //  code to save the patient entity
+           
 
             // Redirect or return a success message
             return RedirectToAction("", "");
 
     }
 
-    public IActionResult Login()
-    {
-        return View();
-    }
+  
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

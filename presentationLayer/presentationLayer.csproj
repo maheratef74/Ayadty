@@ -18,26 +18,46 @@
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Update="Translate\en.resx">
+      <EmbeddedResource Update="Translate\SharedResources.ar.resx">
         <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>en.Designer.cs</LastGenOutput>
+        <LastGenOutput>SharedResources.ar.Designer.cs</LastGenOutput>
+        <DependentUpon>SharedResources.cs</DependentUpon>
       </EmbeddedResource>
-      <EmbeddedResource Update="Translate\ar.resx">
+      <EmbeddedResource Update="Translate\SharedResources.en.resx">
         <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>ar.Designer.cs</LastGenOutput>
+        <LastGenOutput>SharedResources.en.Designer.cs</LastGenOutput>
+        <DependentUpon>SharedResources.cs</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\auth\Register.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Register.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\auth\Register.ar.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Register.ar.Designer.cs</LastGenOutput>
       </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="Translate\en.Designer.cs">
+      <Compile Update="Translate\SharedResources.ar.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
-        <DependentUpon>en.resx</DependentUpon>
+        <DependentUpon>SharedResources.ar.resx</DependentUpon>
       </Compile>
-      <Compile Update="Translate\ar.Designer.cs">
+      <Compile Update="Translate\SharedResources.en.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
-        <DependentUpon>ar.resx</DependentUpon>
+        <DependentUpon>SharedResources.en.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Views\auth\Register.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Register.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Views\auth\Register.ar.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Register.ar.resx</DependentUpon>
       </Compile>
     </ItemGroup>
 
