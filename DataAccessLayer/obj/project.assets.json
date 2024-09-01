@@ -7946,24 +7946,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Obama\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\LAPTOP\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Ayadty\\DataAccessLayer\\DataAccessLayer.csproj",
+      "projectUniqueName": "D:\\Ayadty\\DataAccessLayer\\DataAccessLayer.csproj",
       "projectName": "DataAccessLayer",
-      "projectPath": "E:\\Ayadty\\DataAccessLayer\\DataAccessLayer.csproj",
-      "packagesPath": "C:\\Users\\Obama\\.nuget\\packages\\",
-      "outputPath": "E:\\Ayadty\\DataAccessLayer\\obj\\",
+      "projectPath": "D:\\Ayadty\\DataAccessLayer\\DataAccessLayer.csproj",
+      "packagesPath": "C:\\Users\\LAPTOP\\.nuget\\packages\\",
+      "outputPath": "D:\\Ayadty\\DataAccessLayer\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Obama\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\LAPTOP\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7977,8 +7972,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "E:\\Ayadty\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
-              "projectPath": "E:\\Ayadty\\BusinessLogicLayer\\BusinessLogicLayer.csproj"
+            "D:\\Ayadty\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
+              "projectPath": "D:\\Ayadty\\BusinessLogicLayer\\BusinessLogicLayer.csproj"
             }
           }
         }
@@ -8022,7 +8017,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
