@@ -1,14 +1,18 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Ayadty.Models;
 
 public class Patient
 {
-    public int PatientId { get; set; } // Primary Key
+    [Key]
+    public int PatientId { get; set; }  // Primary Key
     public string Name { get; set; }
     
     public string Password { get; set; }
-    public DateTime? DateOfBirth { get; set; }
+    public DateTime DateOfBirth { get; set; }
     public Enums.Gender Gender { get; set; }
-    public string PhoneNumber { get; set; }
+    public string PhoneNumber { get; set; } // >>> it will be the real pk
     public string? Email { get; set; }
     public string Address { get; set; }
     

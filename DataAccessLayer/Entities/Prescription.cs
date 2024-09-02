@@ -1,13 +1,26 @@
-namespace Ayadty.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-public class Prescription
+namespace Ayadty.Models
 {
-    public int PrescriptionId { get; set; } // Primary Key
-    
-    public int? MedicalRecordId { get; set; } // Foreign Key, nullable if not all prescriptions are linked
-    public MedicalRecord MedicalRecord { get; set; } // Navigation property
-    
-    public DateTime Date { get; set; }
-    public List<Treatment> Treatments { get; set; } = new List<Treatment>();
-    public string? Notes { get; set; }
+    public class Prescription
+    {
+        [Key]
+        public int PrescriptionId { get; set; } // Primary Key
+
+        [ForeignKey("Patient")]
+        public int PatientId { get; set; } // Foreign Key
+        public Patient Patient { get; set; } // Navigation property
+
+        [ForeignKey("MedicalRecord")]
+        public int MedicalRecordId { get; set; } // Foreign Key
+        public MedicalRecord MedicalRecord { get; set; } // Navigation property
+
+        public DateTime Date { get; set; }
+
+        public List<Treatment> Treatments { get; set; } = new List<Treatment>();
+        
+        [MaxLength(450)]
+        public string? Notes { get; set; }
+    }
 }

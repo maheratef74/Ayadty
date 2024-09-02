@@ -1,7 +1,9 @@
 using System.Globalization;
 using System.Resources;
+using Ayadty.Data;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using presentationLayer.Middlewares;
 
@@ -14,6 +16,17 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+        #region DataBase Config
+        
+        var connectionString = builder.Configuration.GetConnectionString("Ayadty");
+        builder.Services.AddDbContext<AppDbContext>(options =>
+        {
+            options
+                .UseSqlServer(connectionString)
+                .LogTo(Console.WriteLine, LogLevel.Information);
+        });
+        #endregion
+        
         // Add services to the container.
         
         #region localization
