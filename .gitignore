@@ -1,1 +1,42 @@
-/.vs
+# Ignore build results and user-generated files
+bin/
+obj/
+[Ll]og/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+bld/
+
+# Rider specific files
+.idea/
+*.sln.iml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries/
+.idea/vcs.xml
+.idea/compiler.xml
+.idea/uiDesigner.xml
+
+# Visual Studio specific files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider and Visual Studio Code settings
+.idea/
+.vscode/
+
+# NPM packages
+node_modules/
+
+# LibMan generated files
+wwwroot/lib/
+
+# OS generated files
+[Tt]humbs.db
+[Dd]esktop.ini
+*.DS_Store
