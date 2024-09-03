@@ -217,14 +217,9 @@ namespace DataAccessLayer.Migrations
                         .HasMaxLength(450)
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("PatientId")
-                        .HasColumnType("int");
-
                     b.HasKey("PrescriptionId");
 
                     b.HasIndex("MedicalRecordId");
-
-                    b.HasIndex("PatientId");
 
                     b.ToTable("Prescriptions");
                 });
@@ -329,15 +324,7 @@ namespace DataAccessLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Ayadty.Models.Patient", "Patient")
-                        .WithMany()
-                        .HasForeignKey("PatientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("MedicalRecord");
-
-                    b.Navigation("Patient");
                 });
 
             modelBuilder.Entity("Ayadty.Models.Treatment", b =>

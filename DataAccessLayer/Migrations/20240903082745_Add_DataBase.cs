@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DataAccessLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class Adjust_Prescription_Constraints : Migration
+    public partial class Add_DataBase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -151,7 +151,6 @@ namespace DataAccessLayer.Migrations
                 {
                     PrescriptionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PatientId = table.Column<int>(type: "int", nullable: false),
                     MedicalRecordId = table.Column<int>(type: "int", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Notes = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true)
@@ -164,12 +163,6 @@ namespace DataAccessLayer.Migrations
                         column: x => x.MedicalRecordId,
                         principalTable: "MedicalRecords",
                         principalColumn: "MedicalRecordId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Prescriptions_Patients_PatientId",
-                        column: x => x.PatientId,
-                        principalTable: "Patients",
-                        principalColumn: "PatientId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -224,11 +217,6 @@ namespace DataAccessLayer.Migrations
                 column: "MedicalRecordId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Prescriptions_PatientId",
-                table: "Prescriptions",
-                column: "PatientId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Treatments_PrescriptionId",
                 table: "Treatments",
                 column: "PrescriptionId");
@@ -252,10 +240,6 @@ namespace DataAccessLayer.Migrations
             migrationBuilder.DropForeignKey(
                 name: "FK_MedicalRecords_Patients_PatientId",
                 table: "MedicalRecords");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Prescriptions_Patients_PatientId",
-                table: "Prescriptions");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Clinic_Doctor_DoctorId",

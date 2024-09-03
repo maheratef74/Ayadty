@@ -7,11 +7,7 @@ namespace Ayadty.Models
     {
         [Key]
         public int PrescriptionId { get; set; } // Primary Key
-
-        [ForeignKey("Patient")]
-        public int PatientId { get; set; } // Foreign Key
-        public Patient Patient { get; set; } // Navigation property
-
+        
         [ForeignKey("MedicalRecord")]
         public int MedicalRecordId { get; set; } // Foreign Key
         public MedicalRecord MedicalRecord { get; set; } // Navigation property
