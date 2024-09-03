@@ -1,42 +1,71 @@
-# Ignore build results and user-generated files
-bin/
-obj/
-[Ll]og/
-[Dd]ebug/
-[Rr]elease/
-x64/
-x86/
-[Aa][Rr][Mm]/
-bld/
+# Common Ignored Files and Directories for All Projects
 
-# Rider specific files
-.idea/
-*.sln.iml
-.idea/workspace.xml
-.idea/tasks.xml
-.idea/dictionaries/
-.idea/vcs.xml
-.idea/compiler.xml
-.idea/uiDesigner.xml
-
-# Visual Studio specific files
-.vs/
+# User-specific files for Visual Studio
+*.rsuser
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
 
-# Rider and Visual Studio Code settings
+# Rider-specific files
 .idea/
-.vscode/
+*.iml
+*.sln.iml
 
-# NPM packages
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio-specific directories
+.vs/
+Generated\ Files/
+
+# Test results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Others
+*.tmp
+*.temp
+*.log
+*.cache
+*.pdb
+*.ilk
+*.nupkg
+*.snupkg
+packages/
 node_modules/
 
-# LibMan generated files
-wwwroot/lib/
+# Ignore specific directories or files for each project, if needed
+# /Project1/bin/
+# /Project2/obj/
 
-# OS generated files
-[Tt]humbs.db
-[Dd]esktop.ini
-*.DS_Store
+# Optional: Ignore IDE-specific settings and files
+_ReSharper*/
+*.DotSettings.user
+
+# Rider-specific cache files
+.idea/
+*.idea/
+.idea_modules/
+
+# Ignore Rider-specific workspace and version control files
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries/
+.idea/vcs.xml
+
+# Rider bookmarks and similar files
+.idea/workspace.xml
+
+# Ignore all .dll files
+*.dll
+
+# Uncomment to ignore bower_components or other directories
+# bower_components/
