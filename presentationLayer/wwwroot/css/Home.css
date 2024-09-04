@@ -4185,6 +4185,23 @@ html[lang="en"] .top-link li,
 html[lang="ar"] .top-link li {
 	margin-left: 15px; /* Adjust this value as needed */
 }
+.custom-margin {
+	margin-bottom: 20px; /* Adjust spacing as needed */
+}
+.centered-content {
+	display: flex;
+	justify-content: center; /* Centers horizontally */
+	align-items: center; /* Centers vertically */
+	flex-direction: column; /* Aligns items in a column */
+}
+.single-footer {
+	display: flex;
+	justify-content: center; /* Centers horizontally */
+	align-items: center; /* Centers vertically */
+	flex-direction: column; /* Aligns items in a column */
+	text-align: center; /* Centers text */
+}
+
 /*=========================
 	End Footer CSS
 ===========================*/

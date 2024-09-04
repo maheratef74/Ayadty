@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\presentationLayer.bundle.scp.css"
     },
     {
+      "Id": "E:\\Ayadty\\presentationLayer\\wwwroot\\css\\Home.css",
+      "PackagePath": "staticwebassets\\css\\Home.css"
+    },
+    {
       "Id": "E:\\Ayadty\\presentationLayer\\wwwroot\\css\\animate.min.css",
       "PackagePath": "staticwebassets\\css\\animate.min.css"
     },
@@ -51,10 +55,6 @@
     {
       "Id": "E:\\Ayadty\\presentationLayer\\wwwroot\\css\\slicknav.min.css",
       "PackagePath": "staticwebassets\\css\\slicknav.min.css"
-    },
-    {
-      "Id": "E:\\Ayadty\\presentationLayer\\wwwroot\\css\\style.css",
-      "PackagePath": "staticwebassets\\css\\style.css"
     },
     {
       "Id": "E:\\Ayadty\\presentationLayer\\wwwroot\\fonts\\fontawesome-webfont.eot",

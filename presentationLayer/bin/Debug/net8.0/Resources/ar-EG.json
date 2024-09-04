@@ -1,26 +1,12 @@
 {
-  "welcome": "مرحبا بك",
-  "Login": "تسجيل دخول",
   "Home": "رئيسي",
   "Ayadty": "عياتي",
   "Doctor": "الطبيب",
-  "Get Pro": "احصل على النسخة الاحترافية",
-  "Pro Version Available on Themeforest": "النسخة الاحترافية متوفرة على ثيمفورست",
-  "Pro Version Features": "ميزات النسخة الاحترافية",
-  "2+ premade home pages": "صفحات رئيسية جاهزة 2+",
-  "20+ html pages": "صفحات HTML 20+",
-  "Color Plate With 12+ Colors": "لوحة ألوان بـ 12+ لون",
-  "Sticky Header / Sticky Filters": "رأس ثابت / فلاتر ثابتة",
-  "Working Contact Form With Google Map": "نموذج اتصال يعمل مع خريطة جوجل",
-  "Pro Version Demo": "عرض النسخة الاحترافية",
-  "Buy Pro Version": "شراء النسخة الاحترافية",
-  "About": "حول",
+  "About": "حول ",
 
-  "Contact": "اتصال",
-  "FAQ": "الأسئلة الشائعة",
-  "+880 1234 56789": "+880 1234 56789",
-  "support@yourmail.com": "support@yourmail.com",
-
+  "Contact": "  اتصال ",
+  "FAQ": "الأسئلة الشائعة ",
+  
   "Home Page 1": "الصفحة الرئيسية 1",
   "Services": "الخدمات",
   "Pages": "الصفحات",
@@ -37,11 +23,9 @@
   "Contact Now": "اتصل الآن",
   "Lorem Amet": "لوريم أميت",
   "Emergency Cases": "الحالات الطارئة",
-  "Lorem ipsum sit amet consectetur adipiscing elit. Vivamus et erat in lacus convallis sodales.": "لوريم إيبسوم سيت أميت كونسكتتور أديبيسيسينغ إليت. فيفاموس إت إيرات إن لاكوس كونفاليس سوداليس.",
-  "LEARN MORE": "اعرف المزيد",
-  "Fusce Porttitor": "فوسكي بورتتيتور",
-  "Doctors Timetable": "جدول أطباء",
-  "Opening Hours": "ساعات العمل",
+  "It is Timetable for Today Appointment": "هذا جدول الكشوفات لدي الدكتور اليوم",
+  "Doctor Timetable": "جدول الطبيب",
+  "Opening Hours": "ايام العمل",
   "Monday - Friday": "الاثنين - الجمعة",
   "8.00-20.00": "8.00-20.00",
   "Saturday": "السبت",
@@ -79,7 +63,7 @@
     "button_2": "اعرف المزيد"
   },
   "portfolio": {
-    "header": "نحن نحافظ على قواعد النظافة داخل مستشفانا",
+    "header": "نحن نحافظ على قواعد النظافة داخل عيادتنا",
     "paragraph": "لوريم إيبسوم دولور سيت أميت كونسيكتيتور أديبيسكينغ إليت بريزنت أليكت. بريتيومتس",
     "view_details": "عرض التفاصيل"
   },
@@ -149,7 +133,7 @@
     "Dr. Dery Alex": "الدكتور ديري أليكس",
     "Dr. Jovis Karon": "الدكتور جوفيس كارون",
     "Date": "التاريخ",
-    "Write Your Message Here.....": "اكتب رسالتك هنا.....",
+    "Write Your Message Here.....": "اكتب رسالتك هنا.....(اختياري)",
     "Book An Appointment": "احجز موعدًا",
     "( We will confirm by a Text Message )": "( سنؤكد عبر رسالة نصية )",
     "Sign up for newsletter": "اشترك في النشرة الإخبارية",
@@ -240,6 +224,6 @@
     "Blog_Date_3": "05 يناير، 2020",
     "Blog_Title_3": "نحن نقدم حلول تجارية عالية.",
     "Blog_Description_3": "لوريم إيبسوم دولور أ سيت أميتي، كونسيكتتور أديبيسينغ إليت، سيد دو إيوسمد تيمبور إنسيديدون سيد دو إنسيديدون سيد."
-  
+     
   
 }

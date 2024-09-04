@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xa9hXyS+WfrXI+xqha3zRbpdB+QYAP4prbPWLiyBN2s=",
+  "Hash": "5rf24ttuEIFC7f0VIf0Xl/uefS3KmQaVYCr1iU+tcJY=",
   "Source": "presentationLayer",
   "BasePath": "_content/presentationLayer",
   "Mode": "Default",
@@ -129,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\font-awesome.min.css"
+    },
+    {
+      "Identity": "E:\\Ayadty\\presentationLayer\\wwwroot\\css\\Home.css",
+      "SourceId": "presentationLayer",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Ayadty\\presentationLayer\\wwwroot\\",
+      "BasePath": "_content/presentationLayer",
+      "RelativePath": "css/Home.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Home.css"
     },
     {
       "Identity": "E:\\Ayadty\\presentationLayer\\wwwroot\\css\\icofont.css",
@@ -281,25 +300,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\slicknav.min.css"
-    },
-    {
-      "Identity": "E:\\Ayadty\\presentationLayer\\wwwroot\\css\\style.css",
-      "SourceId": "presentationLayer",
-      "SourceType": "Discovered",
-      "ContentRoot": "E:\\Ayadty\\presentationLayer\\wwwroot\\",
-      "BasePath": "_content/presentationLayer",
-      "RelativePath": "css/style.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\style.css"
     },
     {
       "Identity": "E:\\Ayadty\\presentationLayer\\wwwroot\\fonts\\fontawesome-webfont.eot",

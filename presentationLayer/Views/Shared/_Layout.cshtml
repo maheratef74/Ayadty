@@ -16,6 +16,21 @@
     <link rel="stylesheet" href="~/presentationLayer.styles.css" asp-append-version="true"/>
 </head>
 <body>
+<!-- Preloader -->
+<div class="preloader">
+    <div class="loader">
+        <div class="loader-outter"></div>
+        <div class="loader-inner"></div>
+
+        <div class="indicator">
+            <svg width="16px" height="12px">
+                <polyline id="back" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+                <polyline id="front" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+            </svg>
+        </div>
+    </div>
+</div>
+<!-- End Preloader -->
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container-fluid">
@@ -38,7 +53,7 @@
             </div>
         </div>
         <!-- set lang -->
-        <div class="p-4">
+        <div>
             <partial name="_SelectLanguagePartial"/>
         </div>
     </nav>

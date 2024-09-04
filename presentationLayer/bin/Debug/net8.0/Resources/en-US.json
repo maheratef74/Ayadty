@@ -1,26 +1,10 @@
 {
-  "welcome": "Welcom",
-  "Login": "login",
   "Home": "Home",
   "Ayadty": "Ayadty",
   "Doctor": "Doctor",
-  "Get Pro": "Get Pro",
-  "Pro Version Available on Themeforest": "Pro Version Available on Themeforest",
-  "Pro Version Features": "Pro Version Features",
-  "2+ premade home pages": "2+ premade home pages",
-  "20+ html pages": "20+ html pages",
-  "Color Plate With 12+ Colors": "Color Plate With 12+ Colors",
-  "Sticky Header / Sticky Filters": "Sticky Header / Sticky Filters",
-  "Working Contact Form With Google Map": "Working Contact Form With Google Map",
-  "Pro Version Demo": "Pro Version Demo",
-  "Buy Pro Version": "Buy Pro Version",
   "About": "About",
-
   "Contact": "Contact",
   "FAQ": "FAQ",
-  "+880 1234 56789": "+880 1234 56789",
-  "support@yourmail.com": "support@yourmail.com",
-
   "Home Page 1": "Home Page 1",
   "Services": "Services",
   "Pages": "Pages",
@@ -40,8 +24,8 @@
   "Lorem ipsum sit amet consectetur adipiscing elit. Vivamus et erat in lacus convallis sodales.": "Lorem ipsum sit amet consectetur adipiscing elit. Vivamus et erat in lacus convallis sodales.",
   "LEARN MORE": "LEARN MORE",
   "Fusce Porttitor": "Fusce Porttitor",
-  "Doctors Timetable": "Doctors Timetable",
-  "Opening Hours": "Opening Hours",
+  "Doctor Timetable": "Doctor Timetable",
+  "Opening Hours": "Opening Days",
   "Monday - Friday": "Monday - Friday",
   "8.00-20.00": "8.00-20.00",
   "Saturday": "Saturday",
@@ -230,7 +214,7 @@
     "Service_Item_3": "Nullam interdum enim",
     "Service_Item_4": "Donec ultricies metus",
     "Service_Item_5": "Pellentesque eget nibh",
-  "Book_Now": "Book Now",
+    "Book_Now": "Book Now",
   
     "Blog_Section_Title": "Keep up with Our Most Recent Medical News.",
     "Blog_Section_Description": "Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts",
@@ -247,7 +231,5 @@
 
   
 
-
   
-
 }
