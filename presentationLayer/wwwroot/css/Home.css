@@ -4175,7 +4175,16 @@ body{
 	background: transparent; /* Make it blend with your nav bar */
 	color: inherit; /* Inherit color to match nav item */
 }
+/* Apply this style when the language is Arabic */
+html[lang="ar"] .top-link li {
+	margin-right: 15px; /* Adjust this value as needed */
+}
 
+/* Ensure spacing is applied correctly in LTR languages */
+html[lang="en"] .top-link li,
+html[lang="ar"] .top-link li {
+	margin-left: 15px; /* Adjust this value as needed */
+}
 /*=========================
 	End Footer CSS
 ===========================*/
