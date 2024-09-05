@@ -48,15 +48,7 @@ public class authController : Controller
      [HttpPost]
     public IActionResult Register(RegisterViewModel model)
     {
-                var patient = new Patient
-                {
-                    Name = model.Name,
-                    PhoneNumber = model.PhoneNumber,
-                    Email = model.Email,
-                    DateOfBirth = model.DateOfBirth,
-                   // Gender = model.Gender,
-                    Address = model.Address
-                };
+                
 
                 // Save patient to database
                 //  code to save the patient entity
