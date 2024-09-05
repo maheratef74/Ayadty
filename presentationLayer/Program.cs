@@ -69,7 +69,7 @@ public class Program
         app.UseStaticFiles();
 
         app.UseRouting();
-
+        app.UseStaticFiles();
         #region localization
         var supportedCultures = new[] { "ar-EG", "en-US" };
         var localizationOptions = new RequestLocalizationOptions()

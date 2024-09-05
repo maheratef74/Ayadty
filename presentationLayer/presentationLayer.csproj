@@ -61,4 +61,8 @@
       </Compile>
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Pages\GetAppoinment\GetAppoinment.cshtml" />
+    </ItemGroup>
+
 </Project>
