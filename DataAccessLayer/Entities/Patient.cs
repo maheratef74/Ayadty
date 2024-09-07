@@ -14,8 +14,9 @@ public class Patient
     public Enums.Gender Gender { get; set; }
     public string PhoneNumber { get; set; } // >>> it will be the real pk
     public string? Email { get; set; }
+    public string? ProfilePhoto { get; set; } 
     public string Address { get; set; }
     
     public List<Appointment> Appointments { get; set; } // One-to-Many
-    public List<MedicalRecord> MedicalRecords { get; set; } // One-to-Many
+    public List<Prescription> Prescriptions { get; set; } // One-to-Many
 }

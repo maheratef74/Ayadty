@@ -6,6 +6,7 @@ public class WorkDay
 {
     [Key]
     public int Id { get; set; }
+    
     public DayOfWeek DayOfWeek { get; set; }
     
     public TimeSpan StartTime { get; set; }
