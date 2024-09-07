@@ -15,7 +15,7 @@ public class MedicalRecord
     public int? PrescriptionId { get; set; } // Foreign Key, nullable if not all records have prescriptions
     public Prescription Prescription { get; set; } // Navigation property
         
-    public string Diagnosis { get; set; }
+
         
     public DateTime Date { get; set; }
     public TimeSpan Time { get; set; }
