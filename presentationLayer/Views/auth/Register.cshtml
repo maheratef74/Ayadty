@@ -1,101 +1,122 @@
 ﻿@{
-  Layout = null; 
+  Layout = null;
 }
 <!DOCTYPE html>
-
-<html lang="en" dir="ltr">
+<html >
 <head>
-  <meta charset="UTF-8">
- 
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
-  <!-- Favicon -->
-  <link rel="icon" href="~/img/favicon.png">
-
-  <title> Registration </title>
-  <link rel="stylesheet" href="~/css/Register.css">
+    <meta charset="UTF-8">
+    <title> Registration </title>
+    <link rel="stylesheet" href="~/css/registration.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-  <div class="container">
-    <div class="title">Registration </div>
-    <div class="content">
-      <form action="#">
-        <div class="user-details">
-          <div class="input-box">
-            <span class="details">Full Name</span>
-            <input type="text" placeholder="Enter your name" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Address</span>
-            <input type="text" placeholder="Enter your address" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Email</span>
-            <input type="email" placeholder="Enter your email">
-          </div>
-          <div class="input-box">
-            <span class="details">Phone Number</span>
-            <input type="text" placeholder="Enter your number" required>
-          </div>
 
-          <div class="input-box" id="password-container">
-            <span class="details">Password</span>
-            <input type="password" placeholder="Enter your password" required>
-            <span class="toggle-password" onclick="togglePassword()">👁</span>
-          </div>
+    <div class="container">
+        <div class="title">Registration </div>
+        <div class="content">
+            <form action="#">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Full Name</span>
+                        <input type="text" placeholder="Enter your name" required>
+                    </div>
 
-          <div class="input-box">
-            <span class="details">Confirm Password</span>
-            <input type="password" placeholder="Confirm your password" required>
-            <!-- <span class="toggle-password" onclick=" togglePassword()">👁</span> -->
-          </div>
+                    <div class="input-box">
+                        <span class="details">Phone Number</span>
+                        <input type="text" placeholder="Enter your number" required>
+                    </div>
 
+                    <div class="input-box">
+                        <span class="details">Email</span>
+                        <input type="email" placeholder="Enter your email">
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Address</span>
+                        <input type="text" placeholder="Enter your address" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob" name="dob" class="form-control" required>
+                    </div>
+
+                    <div class="input-box" id="password">
+                        <span class="details">Password</span>
+                        <input type="password" placeholder="Enter your password" required id="passwordField">
+                        <span class="eye-icon" onclick="togglePasswordVisibility('passwordField', this)">👁</span>
+                    </div>
+
+                    <div class="input-box" id="confirmPassword">
+                        <span class="details">Confirm Password</span>
+                        <input type="password" placeholder="Confirm your password" required id="confirmPasswordField">
+                        <span class="eye-icon" onclick="togglePasswordVisibility('confirmPasswordField', this)">👁</span>
+                    </div>
+                </div>
+                <div id="passwordError" class="error"></div>
+
+                <div class="gender-details">
+                    <input type="radio" name="gender" id="dot-1">
+                    <input type="radio" name="gender" id="dot-2">
+                    <span class="gender-title">Gender</span>
+                    <div class="category">
+                        <label for="dot-1">
+                            <span class="dot one"></span>
+                            <span class="gender">Male</span>
+                        </label>
+                        <label for="dot-2">
+                            <span class="dot two"></span>
+                            <span class="gender">Female</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="button">
+                    <input id="registrationButton" type="submit" value="Register">
+                </div>
+
+                <div class="have_account">
+                    <label for="">
+                        <span>
+                            You have an account already <a class="a" href="signin.html">
+                                Log
+                                In
+                            </a>
+                        </span>
+                    </label>
+                </div>
+            </form>
         </div>
-        <div class="gender-details">
-          <input type="radio" name="gender" id="dot-1">
-          <input type="radio" name="gender" id="dot-2">
-          <input type="radio" name="gender" id="dot-3">
-          <span class="gender-title">Gender</span>
-          <div class="category">
-            <label for="dot-1">
-              <span class="dot one"></span>
-              <span class="gender">Male</span>
-            </label>
-            <label for="dot-2">
-              <span class="dot two"></span>
-              <span class="gender">Female</span>
-            </label>
-          </div>
-        </div>
-        <div class="button">
-          <input type="submit" value="Register">
-
-        </div>
-
-        <div class="have_account">
-          <label for=""><span> You have an account already <a class="a" href="signin.html">Log In</a>
-            </span></label>
-        </div>
-      </form>
     </div>
-  </div>
 
+    <script>
+        function togglePasswordVisibility(fieldId, icon) {
+            var input = document.getElementById(fieldId);
+            if (input.type === "password") {
+                input.type = "text";
+                icon.textContent = "👁‍🗨";
+            } else {
+                input.type = "password";
+                icon.textContent = "👁";
+            }
+        }
 
-  <script>
-    function togglePassword() {
-      const passwordInput = document.getElementById('password');
-      const toggleIcon = document.querySelector('.toggle-password');
+        document.getElementById("registrationButton").addEventListener("click", function (event) {
+            var password = document.getElementById("passwordField").value;
+            var confirmPassword = document.getElementById("confirmPasswordField").value;
+            var errorElement = document.getElementById("passwordError");
 
-      if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-        toggleIcon.textContent = '👁'; // رمز الإخفاء
-      } else {
-        passwordInput.type = 'password';
-        toggleIcon.textContent = '👁'; // رمز العين
-      }
-    }
-  </script>
+            if (password !== confirmPassword) {
+                event.preventDefault();
+
+                errorElement.textContent = "The two passwords do not match.";
+            } else {
+                errorElement.textContent = ""; // Clear error if passwords match
+            }
+        });
+    </script>
+
 </body>
 
 </html>
