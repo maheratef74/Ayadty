@@ -15,6 +15,8 @@ body {
     background-color: white;
 }
 
+
+
 .container {
     max-width: 700px;
     width: 100%;
@@ -52,6 +54,14 @@ body {
     margin: 20px 0 12px 0;
 }
 
+header {
+    position: absolute;
+    top: 8%;
+    right: 30%;
+    padding: 10px;
+}
+
+
 form .user-details .input-box {
     margin-bottom: 15px;
     width: calc(100% / 2 - 20px);
@@ -70,10 +80,24 @@ form .input-box span.details {
 
 .eye-icon {
     position: absolute;
-    top: 80%;
+    top: 63%;
     right: 1px;
     transform: translateY(-50%);
     cursor: pointer;
+}
+
+/* عندما يكون الاتجاه LTR (من اليسار لليمين) */
+[dir="ltr"] .eye-icon {
+    right:1px;
+    left:auto;
+    /*ظهر على اليمين */
+}
+
+/* عندما يكون الاتجاه RTL (من اليمين لليسار) */
+[dir="rtl"] .eye-icon {
+    left:1px;
+    right:auto;
+    /* العين تظهر على اليسار */
 }
 
 .user-details .input-box input {
