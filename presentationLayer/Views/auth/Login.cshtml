@@ -1,40 +1,76 @@
 ﻿@{
   Layout = null;
 }
+
+@inject IViewLocalizer localizer
+@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@{
+    var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
+}
+
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Http.Features;
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer localizer
+@inject IOptions<RequestLocalizationOptions> options
+
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = options.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.NativeName })
+        .ToList();
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+}
+
+
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+
+<html lang="ar" dir="@(isRTL ? "RTL" : "LTR")">
 
 <head>
     <meta charset="UTF-8">
-    <title>Log In</title>
+    <title>@localizer["Log In"]</title>
     <link rel="stylesheet" href="~/css/Login.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
 
 <body>
+
+    <header>
+        <form asp-controller="Localization" asp-action="SetLanguage" asp-route-returnUrl="@returnUrl" method="post">
+            <select name="culture" onchange="this.form.submit();" asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureItems">
+            </select>
+        </form>
+    </header>
+
     <div class="container">
-        <div class="title">Log In</div>
+        <div class="title">@localizer["Log In"]</div>
         <div class="content">
             <form action="#">
                 <div class="user-details">
                     <div class="input-box">
-                        <span class="details">Phone Number</span>
-                        <input type="text" placeholder="Enter your Phone Number" required>
+                        <span class="details">@localizer["Phone Number"]</span>
+                        <input type="text" placeholder="@localizer["Enter your Phone Number"]" required>
                     </div>
 
                     <div class="input-box">
-                        <span class="details">Password</span>
-                        <input type="password" id="password" placeholder="Enter your password" required>
+                        <span class="details">@localizer["Password"]</span>
+                        <input type="password" id="password" placeholder="@localizer["Enter your password"]" required>
                         <span class="eye-icon" onclick="togglePasswordVisibility()">👁</span>
                     </div>
 
                     <div class="button">
-                        <input type="submit" value="Log In">
+                        <input type="submit" value="@localizer["Log In"]">
                     </div>
                 </div>
                 <div class="creat_account">
-                    <span>If you don't have an account <a class="a" href="registration.html">Create account</a></span>
+                    <span>@localizer["If you don't have an account"] <a class="a" href="registration.html">@localizer["Create account"]</a></span>
                 </div>
             </form>
         </div>

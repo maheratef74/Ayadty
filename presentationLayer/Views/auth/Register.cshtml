@@ -1,56 +1,88 @@
 ﻿@{
   Layout = null;
 }
+@inject IViewLocalizer localizer
+@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@{
+    var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
+}
+
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Http.Features;
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer localizer
+@inject IOptions<RequestLocalizationOptions> options
+
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = options.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.NativeName })
+        .ToList();
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+}
+
+
+
 <!DOCTYPE html>
-<html >
+
+<html lang="ar" dir="@(isRTL ? "RTL" : "LTR")">
+
 <head>
     <meta charset="UTF-8">
-    <title> Registration </title>
+    <title> @localizer["Registration"] </title>
     <link rel="stylesheet" href="~/css/registration.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
+    <header >
+        <form asp-controller="Localization" asp-action="SetLanguage" asp-route-returnUrl="@returnUrl" method="post">
+            <select name="culture" onchange="this.form.submit();" asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureItems">
+            </select>
+        </form>
+        </header>
+    
 
     <div class="container">
-        <div class="title">Registration </div>
+        <div class="title">@localizer["Registration"] </div>
         <div class="content">
             <form action="#">
                 <div class="user-details">
                     <div class="input-box">
-                        <span class="details">Full Name</span>
-                        <input type="text" placeholder="Enter your name" required>
+                        <span class="details">@localizer["Full Name"]</span>
+                        <input type="text" placeholder="@localizer["Enter your name"]" required>
                     </div>
 
                     <div class="input-box">
-                        <span class="details">Phone Number</span>
-                        <input type="text" placeholder="Enter your number" required>
+                        <span class="details">@localizer["Phone Number"]</span>
+                        <input type="text" placeholder="@localizer["Enter your number"]" required>
+                    </div>
+
+
+                    <div class="input-box">
+                        <span class="details">@localizer["Address"]</span>
+                        <input type="text" placeholder="@localizer["Enter your address"]" required>
                     </div>
 
                     <div class="input-box">
-                        <span class="details">Email</span>
-                        <input type="email" placeholder="Enter your email">
-                    </div>
-
-                    <div class="input-box">
-                        <span class="details">Address</span>
-                        <input type="text" placeholder="Enter your address" required>
-                    </div>
-
-                    <div class="input-box">
-                        <label for="dob">Date of Birth</label>
+                        <label for="dob">@localizer["Date of Birth"]</label>
                         <input type="date" id="dob" name="dob" class="form-control" required>
                     </div>
 
                     <div class="input-box" id="password">
-                        <span class="details">Password</span>
-                        <input type="password" placeholder="Enter your password" required id="passwordField">
+                        <span class="details">@localizer["Password"]</span>
+                        <input type="password" placeholder="@localizer["Enter your password"]" required id="passwordField">
                         <span class="eye-icon" onclick="togglePasswordVisibility('passwordField', this)">👁</span>
                     </div>
 
                     <div class="input-box" id="confirmPassword">
-                        <span class="details">Confirm Password</span>
-                        <input type="password" placeholder="Confirm your password" required id="confirmPasswordField">
+                        <span class="details">@localizer["Confirm Password"]</span>
+                        <input type="password" placeholder="@localizer["Confirm your password"]" required id="confirmPasswordField">
                         <span class="eye-icon" onclick="togglePasswordVisibility('confirmPasswordField', this)">👁</span>
                     </div>
                 </div>
@@ -59,29 +91,28 @@
                 <div class="gender-details">
                     <input type="radio" name="gender" id="dot-1">
                     <input type="radio" name="gender" id="dot-2">
-                    <span class="gender-title">Gender</span>
+                    <span class="gender-title">@localizer["Gender"]</span>
                     <div class="category">
                         <label for="dot-1">
                             <span class="dot one"></span>
-                            <span class="gender">Male</span>
+                            <span class="gender">@localizer["Male"]</span>
                         </label>
                         <label for="dot-2">
                             <span class="dot two"></span>
-                            <span class="gender">Female</span>
+                            <span class="gender">@localizer["Female"]</span>
                         </label>
                     </div>
                 </div>
 
                 <div class="button">
-                    <input id="registrationButton" type="submit" value="Register">
+                    <input id="registrationButton" type="submit" value="@localizer["Register"]">
                 </div>
 
                 <div class="have_account">
                     <label for="">
                         <span>
-                            You have an account already <a class="a" href="signin.html">
-                                Log
-                                In
+                            @localizer["You have an account already"] <a class="a" href="signin.html">
+                                @localizer["Log In"]
                             </a>
                         </span>
                     </label>
@@ -110,7 +141,7 @@
             if (password !== confirmPassword) {
                 event.preventDefault();
 
-                errorElement.textContent = "The two passwords do not match.";
+                errorElement.textContent = " @localizer["The two passwords do not match."]";
             } else {
                 errorElement.textContent = ""; // Clear error if passwords match
             }
