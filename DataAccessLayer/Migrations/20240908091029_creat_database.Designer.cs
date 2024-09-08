@@ -11,15 +11,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240904181150_Add_coulm")]
-    partial class Add_coulm
+    [Migration("20240908091029_creat_database")]
+    partial class creat_database
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.0-preview.7.24405.3")
+                .HasAnnotation("ProductVersion", "8.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -34,6 +34,10 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Note")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Order")
                         .HasColumnType("int");
@@ -52,9 +56,6 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<TimeSpan>("Time")
-                        .HasColumnType("time");
-
                     b.HasKey("AppointmentId");
 
                     b.HasIndex("PatientId");
@@ -69,9 +70,6 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClinicId"));
-
-                    b.Property<int>("DoctorId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -88,9 +86,10 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ClinicId");
+                    b.Property<string>("ProfilePhoto")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("DoctorId");
+                    b.HasKey("ClinicId");
 
                     b.ToTable("Clinic");
                 });
@@ -105,6 +104,9 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsAvalibleToAppoinment")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -121,50 +123,15 @@ namespace DataAccessLayer.Migrations
                     b.Property<decimal?>("Price")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<string>("ProfilePhoto")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("YearsOfExperience")
                         .HasColumnType("int");
 
                     b.HasKey("DoctorId");
 
                     b.ToTable("Doctor");
-                });
-
-            modelBuilder.Entity("Ayadty.Models.MedicalRecord", b =>
-                {
-                    b.Property<int>("MedicalRecordId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MedicalRecordId"));
-
-                    b.Property<int?>("ClinicId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Diagnosis")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PatientId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("PrescriptionId")
-                        .HasColumnType("int");
-
-                    b.Property<TimeSpan>("Time")
-                        .HasColumnType("time");
-
-                    b.HasKey("MedicalRecordId");
-
-                    b.HasIndex("ClinicId");
-
-                    b.HasIndex("PatientId");
-
-                    b.HasIndex("PrescriptionId");
-
-                    b.ToTable("MedicalRecords");
                 });
 
             modelBuilder.Entity("Ayadty.Models.Patient", b =>
@@ -200,6 +167,9 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ProfilePhoto")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("PatientId");
 
                     b.ToTable("Patients");
@@ -213,19 +183,24 @@ namespace DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PrescriptionId"));
 
+                    b.Property<int?>("ClinicId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("MedicalRecordId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Notes")
                         .HasMaxLength(450)
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("PatientId")
+                        .HasColumnType("int");
+
                     b.HasKey("PrescriptionId");
 
-                    b.HasIndex("MedicalRecordId");
+                    b.HasIndex("ClinicId");
+
+                    b.HasIndex("PatientId");
 
                     b.ToTable("Prescriptions");
                 });
@@ -238,7 +213,15 @@ namespace DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TreatmentId"));
 
+                    b.Property<string>("Details")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Note")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -290,47 +273,19 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Patient");
                 });
 
-            modelBuilder.Entity("Ayadty.Models.Clinic", b =>
-                {
-                    b.HasOne("Ayadty.Models.Doctor", "Doctor")
-                        .WithMany()
-                        .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Doctor");
-                });
-
-            modelBuilder.Entity("Ayadty.Models.MedicalRecord", b =>
+            modelBuilder.Entity("Ayadty.Models.Prescription", b =>
                 {
                     b.HasOne("Ayadty.Models.Clinic", null)
-                        .WithMany("MedicalRecords")
+                        .WithMany("Prescriptions")
                         .HasForeignKey("ClinicId");
 
                     b.HasOne("Ayadty.Models.Patient", "Patient")
-                        .WithMany("MedicalRecords")
+                        .WithMany("Prescriptions")
                         .HasForeignKey("PatientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Ayadty.Models.Prescription", "Prescription")
-                        .WithMany()
-                        .HasForeignKey("PrescriptionId");
-
                     b.Navigation("Patient");
-
-                    b.Navigation("Prescription");
-                });
-
-            modelBuilder.Entity("Ayadty.Models.Prescription", b =>
-                {
-                    b.HasOne("Ayadty.Models.MedicalRecord", "MedicalRecord")
-                        .WithMany()
-                        .HasForeignKey("MedicalRecordId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("MedicalRecord");
                 });
 
             modelBuilder.Entity("Ayadty.Models.Treatment", b =>
@@ -353,14 +308,14 @@ namespace DataAccessLayer.Migrations
                 {
                     b.Navigation("DaysOfWork");
 
-                    b.Navigation("MedicalRecords");
+                    b.Navigation("Prescriptions");
                 });
 
             modelBuilder.Entity("Ayadty.Models.Patient", b =>
                 {
                     b.Navigation("Appointments");
 
-                    b.Navigation("MedicalRecords");
+                    b.Navigation("Prescriptions");
                 });
 
             modelBuilder.Entity("Ayadty.Models.Prescription", b =>

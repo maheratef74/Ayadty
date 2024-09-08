@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Resources;
 using Ayadty.Data;
+using DataAccessLayer.Entities;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,13 @@ public class Program
                 .UseSqlServer(connectionString)
                 .LogTo(Console.WriteLine, LogLevel.Information);
         });
+        #endregion
+
+        #region Register service in container
+
+        builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+        
+
         #endregion
         
         // Add services to the container.

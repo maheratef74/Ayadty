@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Ayadty.Models;
+namespace DataAccessLayer.Entities;
 
 public class Clinic
 {

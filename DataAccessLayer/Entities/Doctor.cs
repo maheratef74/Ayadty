@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Ayadty.Models;
+namespace DataAccessLayer.Entities;
 
 public class Doctor
 {

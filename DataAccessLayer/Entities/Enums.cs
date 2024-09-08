@@ -1,7 +1,13 @@
-namespace Ayadty.Models;
+namespace DataAccessLayer.Entities;
 
 public class Enums
 {
+    public enum PatientProgress
+    {
+        InHome,
+        InMyWayToClinic,
+        InClinic
+    }
     public enum AppointmentStatus
     {
         Scheduled,

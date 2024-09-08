@@ -5,7 +5,7 @@ namespace presentationLayer.Middlewares;
 
 public class RequestCultureMiddleware
 {
-   /* private readonly RequestDelegate _next;
+    private readonly RequestDelegate _next;
 
     public RequestCultureMiddleware(RequestDelegate next)
     {
@@ -16,8 +16,9 @@ public class RequestCultureMiddleware
     {
         // to set first Lang that apear for user as browser lang
         var currentLang = context.Request.Cookies[CookieRequestCultureProvider.DefaultCookieName];
-        var browserLang = context.Request.Headers["Accept-Language"].ToString()[..2];
-       
+        var browserLang = context.Request.Headers["Accept-Language"].ToString()[..2]; // .. to take
+                                                                                          // first two char
+                                                                                          
         if (string.IsNullOrEmpty(currentLang))
         {
             var culture = "ar-EG";
@@ -32,5 +33,5 @@ public class RequestCultureMiddleware
             CultureInfo.CurrentUICulture = new CultureInfo(culture);
         }
         await _next(context);
-    }*/
+    }
 }

@@ -2,9 +2,9 @@
 
 namespace presentationLayer.Controllers
 {
-    public class pres : Controller
+    public class PrescriptionController : Controller
     {
-        public IActionResult Pres()
+        public IActionResult Creat()
         {
             return View();
         }

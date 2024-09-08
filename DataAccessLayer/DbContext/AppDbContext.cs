@@ -1,4 +1,4 @@
-using Ayadty.Models;
+using DataAccessLayer.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
@@ -7,7 +7,12 @@ public class AppDbContext : DbContext
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
     }
-
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Doctor>()
+            .Property(d => d.Price)
+            .HasPrecision(18, 2);
+    }
     // DbSets
     public DbSet<Appointment> Appointments { get; set; }
     public DbSet<Clinic> Clinic { get; set; }
@@ -16,17 +21,5 @@ public class AppDbContext : DbContext
     public DbSet<Prescription> Prescriptions { get; set; }
     public DbSet<WorkDay> WorkDays { get; set; }
     public DbSet<Treatment> Treatments { get; set; }
-    
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        // Configure the relationship between Prescription and Patient
-        modelBuilder.Entity<Prescription>()
-            .HasOne(p => p.Patient)
-            .WithMany(p => p.Prescriptions)
-            .HasForeignKey(p => p.PatientId)
-            .OnDelete(DeleteBehavior.Cascade);
-        
-        base.OnModelCreating(modelBuilder);
-    }
 }
 
