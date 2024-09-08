@@ -5,40 +5,53 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="UTF-8">
-  <title> log in </title>
-  <link rel="stylesheet" href="~/css/Login.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Log In</title>
+    <link rel="stylesheet" href="~/css/Login.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 
 <body>
-<div class="container">
-  <div class="title">Log In</div>
-  <div class="content">
-    <form action="#">
-      <div class="user-details">
-        <div class="input-box">
-          <span class="details">Phone Number</span>
-          <input type="text" placeholder="Enter your Phone Number" required>
-        </div>
+    <div class="container">
+        <div class="title">Log In</div>
+        <div class="content">
+            <form action="#">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Phone Number</span>
+                        <input type="text" placeholder="Enter your Phone Number" required>
+                    </div>
 
-        <div class="input-box">
-          <span class="details">password</span>
-          <input type="password" placeholder="Enter your password" requireds>
-        </div>
-        
-        <div class="button">
-          <input type="submit" value="log In">
-        </div>
-        <div class="creat_account">
-          <span>If you don't have account <a class="a" href="registration.html">creat account</a> </span>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
+                    <div class="input-box">
+                        <span class="details">Password</span>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                        <span class="eye-icon" onclick="togglePasswordVisibility()">👁</span>
+                    </div>
 
-
+                    <div class="button">
+                        <input type="submit" value="Log In">
+                    </div>
+                </div>
+                <div class="creat_account">
+                    <span>If you don't have an account <a class="a" href="registration.html">Create account</a></span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+    function togglePasswordVisibility() {
+      var input = document.getElementById('password');
+      var icon = document.querySelector('.eye-icon');
+      if (input.type === "password") {
+        input.type = "text";
+        icon.textContent = "👁‍🗨";
+      } else {
+        input.type = "password";
+        icon.textContent = "👁";
+      }
+    }
+    </script>
 </body>
 
 </html>
