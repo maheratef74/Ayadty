@@ -1,0 +1,96 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 800px;
+    text-align: center;
+}
+
+header {
+    position: absolute;
+    top: 25%;
+    right: 35%;
+    padding: 10px;
+}
+
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+    .header-row div {
+        width: 30%;
+        text-align: center;
+    }
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+    .form-row select,
+    .form-row input {
+        margin-right: 10px;
+        width: 30%;
+    }
+
+    .form-row button {
+        margin-left: 10px;
+    }
+
+button {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.delete-button {
+    background-color: red;
+    color: white;
+}
+
+#addMore,
+#save,
+#edit {
+    background-color: #258cfb;
+    color: white;
+}
+
+#buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.title {
+    display: inline-block;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+    .title hr {
+        border: none;
+        border-top: 3px solid #258cfb;
+        width: 200px;
+        /* Adjust width as needed */
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -1px;
+        /* Adjust position as needed */
+    }
