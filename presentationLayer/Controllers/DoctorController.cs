@@ -9,8 +9,6 @@ namespace presentationLayer.Controllers
             return View();
         }
         public IActionResult Update()
-        {
-            return View();
-        }
+
     }
 }
