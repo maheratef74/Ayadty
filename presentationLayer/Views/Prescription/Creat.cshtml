@@ -6,101 +6,85 @@
 @{
     Layout = null;
 }
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/prescription.css" />
+    <link rel="stylesheet" href="/css/prescription.css" />
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
-    <div class="container mt-5">
-        <!-- الشعار -->
-        <div class="logo">
-            ATADTY
-        </div>
+    <div class="container mt-5 prescription-page">
 
-        <!-- بيانات الطبيب -->
-        <div class="row mb-4">
-            <div class="col-md-12">
-                <h3>Doctor Information</h3>
-                <hr />
-                <div class="info-row">
-                    <div class="form-group">
-                        <label><strong>Doctor Name:</strong></label>
-                        <p>Dr. Hamed Amr</p>
-                    </div>
-                    <div class="form-group">
-                        <label><strong>Specialization:</strong></label>
-                        <p>Cardiologist</p>
-                    </div>
-                    <div class="form-group">
-                        <label><strong>Contact Number:</strong></label>
-                        <p>+201022381205</p>
-                    </div>
-                </div>
+        <!-- Doctor's Information -->
+        <div class="row doctor-info">
+            <div class="col-md-2 text-center align-self-center">
+                <h2>AYADTY</h2>
+            </div>
+            <div class="col-md-8 text-center">
+                <h4>Dr. Hamed Amr </h4>
+                <p>Eye Surgeon</p>
+                <p>Al-Azhar University</p>
             </div>
         </div>
 
-        <!-- بيانات المريض -->
-        <div class="row mb-4">
-            <div class="col-md-12">
-                <h3>Patient Information</h3>
-                <hr />
-                <div class="info-row">
-                    <div class="form-group">
-                        <label>Patient Name:</label>
-                        <input type="text" class="form-control" id="patientName" placeholder="Enter patient name" />
-                    </div>
-                    <div class="form-group">
-                        <label>Age:</label>
-                        <input type="number" class="form-control" id="patientAge" placeholder="Enter patient age" />
-                    </div>
-                    <div class="form-group">
-                        <label>Mobile Number:</label>
-                        <input type="text" class="form-control" id="patientMobile" placeholder="Enter patient mobile number" />
-                    </div>
-                    <div class="form-group">
-                        <label>Date:</label>
-                        <input type="date" class="form-control" id="prescriptionDate" />
-                    </div>
-                    <div class="form-group">
-                        <label>Time:</label>
-                        <input type="time" class="form-control" id="prescriptionTime" />
-                    </div>
-                </div>
+        <br />
+
+        <!-- Patient Information -->
+        <div class="row patient-info">
+            <div class="col-md-4">
+                <label>Patient Name:</label>
+                <input type="text" class="form-control" id="patientName" placeholder="Enter patient's name" />
+            </div>
+            <div class="col-md-2">
+                <label>Age:</label>
+                <input type="number" class="form-control" id="patientAge" placeholder="Age" />
+            </div>
+          
+            <div class="col-md-3">
+                <label>Date:</label>
+                <input type="datetime-local" class="form-control" id="prescriptionDate" />
             </div>
         </div>
 
-        <!-- الروشتة -->
+        <!-- Prescription Section -->
         <div class="row mb-4">
             <div class="col-md-12">
-                <h3>Prescription</h3>
+                <h3 class="section-title" style="background-color: #007bff ; color:white; font-size:larger">Prescription</h3>
                 <hr />
                 <div id="prescriptionFields">
-                    <div class="prescription-row" id="prescriptionRow1">
+                    <div class="prescription-row d-flex" id="prescriptionRow1">
                         <div class="form-group">
                             <label>Medicine Name:</label>
                             <input type="text" class="form-control" id="medicineName1" placeholder="Enter medicine name" />
                         </div>
-                        <div class="form-group">
-                            <label>Dosage:</label>
-                            <input type="text" class="form-control" id="dosage1" placeholder="Enter dosage" />
+                        <div class="form-group mx-3">
+                            <label>Dosage Frequency:</label>
+                            <input type="text" class="form-control" id="dosage1" placeholder="Enter dosage frequency" />
                         </div>
                         <div class="form-group">
                             <label>Notes:</label>
                             <input type="text" class="form-control" id="notes1" placeholder="Enter any notes" />
                         </div>
-                        <button type="button" class="btn btn-danger removePrescriptionBtn" data-id="1">Remove</button>
+                        <button type="button" class="btn btn-danger removePrescriptionBtn mx-3" data-id="1">Remove</button>
                     </div>
                 </div>
                 <button type="button" class="btn btn-secondary" id="addPrescriptionBtn">+ Add More</button>
             </div>
         </div>
 
-        <!-- الأزرار -->
+        <!-- General Notes Section -->
+        <div class="row notes-box">
+            <div class="col-md-12">
+                <h5 class="section-title" style="background-color: #007bff ; color:white; font-size:larger">General Notes</h5>
+                <textarea class="form-control" id="generalNotes" placeholder="Write general notes here..."></textarea>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
         <div class="row">
             <div class="col-md-12 text-center">
                 <button type="button" class="btn btn-primary">Save</button>
@@ -108,33 +92,49 @@
                 <button type="button" class="btn btn-success" onclick="window.print()">Print</button>
             </div>
         </div>
+
+        <hr />
+
+        <!-- Footer Section -->
+        <div class="row doctor-footer mt-5">
+            <div class="col-md-4 text-center">
+                <p>Address: Clinics</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <p>Clinic Hours: Saturday, Monday</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <p>For Appointments: 01022381205</p>
+            </div>
+        </div>
+
     </div>
 
     <script>
         var prescriptionCount = 1;
 
-        // إضافة المزيد من حقول الروشتة
+        // Add more prescription fields
         $("#addPrescriptionBtn").click(function () {
             prescriptionCount++;
-            var newField = `<div class="prescription-row" id="prescriptionRow${prescriptionCount}">
-                                <div class="form-group">
-                                    <label>Medicine Name:</label>
-                                    <input type="text" class="form-control" id="medicineName${prescriptionCount}" placeholder="Enter medicine name" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Dosage:</label>
-                                    <input type="text" class="form-control" id="dosage${prescriptionCount}" placeholder="Enter dosage" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Notes:</label>
-                                    <input type="text" class="form-control" id="notes${prescriptionCount}" placeholder="Enter any notes" />
-                                </div>
-                                <button type="button" class="btn btn-danger removePrescriptionBtn" data-id="${prescriptionCount}">Remove</button>
-                            </div>`;
+            var newField = `<div class="prescription-row d-flex" id="prescriptionRow${prescriptionCount}">
+                                                <div class="form-group">
+                                                    <label>Medicine Name:</label>
+                                                    <input type="text" class="form-control" id="medicineName${prescriptionCount}" placeholder="Enter medicine name" />
+                                                </div>
+                                                <div class="form-group mx-3">
+                                                    <label>Dosage Frequency:</label>
+                                                    <input type="text" class="form-control" id="dosage${prescriptionCount}" placeholder="Enter dosage frequency" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Notes:</label>
+                                                    <input type="text" class="form-control" id="notes${prescriptionCount}" placeholder="Enter any notes" />
+                                                </div>
+                                                <button type="button" class="btn btn-danger removePrescriptionBtn mx-3" data-id="${prescriptionCount}">Remove</button>
+                                            </div>`;
             $("#prescriptionFields").append(newField);
         });
 
-        // حذف حقل الروشتة
+        // Remove a prescription field
         $(document).on("click", ".removePrescriptionBtn", function () {
             var id = $(this).data("id");
             $("#prescriptionRow" + id).remove();
@@ -178,7 +178,5 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="./js/bootstrap.min.js"></script>
-    <!-- Main JS -->
-    <script src="./js/main.js"></script>
 </body>
 </html>
