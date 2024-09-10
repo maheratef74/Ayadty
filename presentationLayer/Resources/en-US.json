@@ -505,8 +505,23 @@
   "Male/Female": "Male/Female",
   "Address": "Address",
   "Save": "Save",
-  "Changes": "Changes"
+  "Changes": "Changes",
 
-
+  "ORDER": "ORDER",
+  "DATE": "DATE",
+  "TIME": "TIME",
+  "STATUS": "STATUS",
+  "1": "1",
+  "2013/08/12": "2013/08/12",
+  "12:18:09": "12:18:09",
+  "pending": "pending",
+  "2": "2",
+  "2013/08/12": "2013/08/12",
+  "11:48:05": "11:48:05",
+  "Active": "Active",
+  "3": "2",
+  "2013/08/12": "2013/08/12",
+  "10:18:09": "10:18:09",
+  "inactive": "inactive"
 
 }

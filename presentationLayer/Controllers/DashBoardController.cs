@@ -8,4 +8,9 @@ public class DashBoardController:Controller
     {
         return View();
     }
+    [HttpGet]
+    public IActionResult DailyAppointment()
+    {
+        return View();
+    }
 }

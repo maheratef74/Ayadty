@@ -1,0 +1,68 @@
+
+@inject IViewLocalizer localizer
+@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.Localization
+
+<!DOCTYPE html>
+
+<head>
+   
+    <title>Daily Appointement</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/DailyAppointment.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+</head>
+
+<Body>
+<hr>
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-box no-header clearfix">
+                <div class="main-box-body clearfix">
+                    <div class="table-responsive">
+                        <table class="table user-list">
+                            <thead>
+                            <tr>
+                                <td class ="spacer"></td>
+                                <th><span>@localizer["ID"]</span></th>
+                                <td class ="spacer"></td>
+                                <th><span>@localizer["Time"]</span></th>
+                                <td class="spacer"></td>
+                                <th class="text-center"><span>@localizer["Status"]</span></th>
+                                <td class="spacer"></td>
+                                <th>&nbsp;</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            
+                            <tr>
+                                 <td class="spacer"></td>
+                                <td>@localizer["3"]</td>
+                                <td class="spacer"></td>
+                                <td>10:18</td>
+                                <td class="spacer"></td>
+                                <td class="text-center">
+                                    <span class="label label-danger">@localizer["inactive"]</span>
+                                </td>
+                                <td class="spacer"></td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- For Lyout -->
+<!-- jquery Min JS -->
+<script src="~/js/jquery.min.js"></script>
+
+<!-- Main JS -->
+<script src="~/js/main.js"></script>
+<!-- For Lyout -->
+</Body>
+

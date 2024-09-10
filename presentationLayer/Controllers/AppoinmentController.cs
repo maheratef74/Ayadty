@@ -9,4 +9,9 @@ public class AppoinmentController : Controller
     {
         return View();
     }
+    [HttpGet]
+    public IActionResult DailyAppointment()
+    {
+        return View();
+    }
 }
