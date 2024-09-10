@@ -1,46 +1,19 @@
-﻿@{
-    Layout = null;
-}
-
+﻿
 @inject IViewLocalizer localizer
 @using System.Globalization
 @using Microsoft.AspNetCore.Mvc.Localization
 
-@{
-    var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
-}
-
-@using Microsoft.AspNetCore.Builder
-@using Microsoft.AspNetCore.Localization
-@using Microsoft.AspNetCore.Http.Features;
-@using Microsoft.AspNetCore.Mvc.Localization
-@using Microsoft.Extensions.Options
-
-
-@inject IOptions<RequestLocalizationOptions> options
-
-@{
-    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
-    var cultureItems = options.Value.SupportedUICultures
-        .Select(c => new SelectListItem { Value = c.Name, Text = c.NativeName })
-        .ToList();
-    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
-}
 
 <!DOCTYPE html>
 
-<html lang="ar" dir="@(isRTL ? "RTL" : "LTR")">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@localizer["Working Days"]</title>
-    <link rel="stylesheet" href="~/css/working days.css">
+    <link rel="stylesheet" href="~/css/working_days.css">
 </head>
 
 <body>
 
-    <div class="container">
+    <div class="container2">
         <div class="title">
             <h1>@localizer["Working Days"]</h1>
             <hr>
@@ -64,7 +37,7 @@
         </div>
     </div>
 
-    <script>
+<script>
         let editMode = false;
 
         document.getElementById('addMore').addEventListener('click', function () {
@@ -125,6 +98,10 @@
             addRow();
         };
     </script>
+    <!-- jquery Min JS -->
+    <script src="~/js/jquery.min.js"></script>
+
+    <!-- Main JS -->
+    <script src="~/js/main.js"></script>
 </body>
 
-</html>
