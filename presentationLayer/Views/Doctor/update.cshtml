@@ -1,10 +1,21 @@
 ﻿@{
     Layout = null;
 }
+@{
+    var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
+}
+
+
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+@inject IViewLocalizer localizer
+@using System.Globalization
+
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="@(isRTL ? "RTL" : "LTR")">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -85,11 +96,11 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="@localizer["Admin"]" class="rounded-circle p-1 bg-primary" width="110">
                                 <div class="mt-3">
-                                    <h4>John Doe</h4>
-                                    <p class="text-secondary mb-1">Full Stack Developer</p>
-                                    <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                                    <h4>@localizer["John"] @localizer["Doe"]</h4>
+                                    <p class="text-secondary mb-1">@localizer["Full"] @localizer["Stack"] @localizer["Developer"]</p>
+                                    <p class="text-muted font-size-sm">@localizer["Bay"] @localizer["Area"], @localizer["San"] @localizer["Francisco"], @localizer["CA"]</p>
 
                                     <a href="#" class="table-link text-info">
                                         <span class="fa-stack">
@@ -106,8 +117,8 @@
                             <ul class="list-group list-group-flush">
 
                                 <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook me-2 icon-inline text-primary"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>Facebook</h6>
-                                    <span class="text-secondary">bootdey</span>
+                                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook me-2 icon-inline text-primary"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>@localizer["Facebook"]</h6>
+                                    <span class="text-secondary">@localizer["bootdey"]</span>
                                 </li>
                             </ul>
                         </div>
@@ -118,15 +129,15 @@
                         <div class="card-body">
                             <div class="row mb-3">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Full Name</h6>
+                                    <h6 class="mb-0">@localizer["Full"] @localizer["Name"]</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" value="John Doe">
+                                    <input type="text" class="form-control" value="@localizer["John"] @localizer["Doe"]">
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Mobile</h6>
+                                    <h6 class="mb-0">@localizer["Mobile"]</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     <input type="text" class="form-control" value="(320) 380-4539">
@@ -134,7 +145,7 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Email</h6>
+                                    <h6 class="mb-0">@localizer["Email"]</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     <input type="text" class="form-control" value="john@example.com">
@@ -142,27 +153,25 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Experence</h6>
+                                    <h6 class="mb-0">@localizer["Experience"]</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" value="5 Y">
+                                    <input type="text" class="form-control" value="5 @localizer["Y"]">
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Price</h6>
+                                    <h6 class="mb-0">@localizer["Price"]</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" value="100 per hour">
+                                    <input type="text" class="form-control" value="100 @localizer["per"] @localizer["hour"]">
                                 </div>
                             </div>
-
-
 
                             <div class="row">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-9 text-secondary">
-                                    <button class="btn btn-primary">Save Changes</button>
+                                    <button class="btn btn-primary">@localizer["Save"] @localizer["Changes"]</button>
                                 </div>
                             </div>
                         </div>
@@ -174,14 +183,7 @@
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-   
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
-
-
-
-
 
     <!--/ End Footer Area -->
     <!-- jquery Min JS -->
@@ -222,7 +224,5 @@
     <script src="~/js/waypoints.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="~/js/bootstrap.min.js"></script>
-
-
 </body>
 </html>

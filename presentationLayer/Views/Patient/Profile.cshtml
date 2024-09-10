@@ -1,8 +1,21 @@
 ﻿@{
     Layout = null;
 }
+@{
+    var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
+}
+
+
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+@inject IViewLocalizer localizer
+@using System.Globalization
+
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="@(isRTL ? "RTL" : "LTR")">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -82,9 +95,9 @@
             <!-- Breadcrumb -->
             <nav aria-label="breadcrumb" class="main-breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                    <li class="breadcrumb-item"><a href="index.html">@localizer["Home"]</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">@localizer["User"]</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">@localizer["User Profile"]</li>
                 </ol>
             </nav>
             <!-- /Breadcrumb -->
@@ -94,22 +107,20 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="@localizer["Admin"]" class="rounded-circle" width="150">
                                 <div class="mt-3">
-                                    <h4>John Doe</h4>
-                                    <p class="text-secondary mb-1">Full Stack Developer</p>
-                                    <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-
+                                    <h4>@localizer["John Doe"]</h4>
+                                    <p class="text-secondary mb-1">@localizer["Full Stack Developer"]</p>
+                                    <p class="text-muted font-size-sm">@localizer["Bay Area, San Francisco, CA"]</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card mt-3">
                         <ul class="list-group list-group-flush">
-
                             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook mr-2 icon-inline text-primary"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>Facebook</h6>
-                                <span class="text-secondary">bootdey</span>
+                                <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook mr-2 icon-inline text-primary"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>@localizer["Facebook"]</h6>
+                                <span class="text-secondary">@localizer["bootdey"]</span>
                             </li>
                         </ul>
                     </div>
@@ -119,93 +130,69 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Full Name</h6>
+                                    <h6 class="mb-0">@localizer["Full Name"]</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    Kenneth Valdez
-                                </div>
-                            </div>
-                            <hr>
-
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">Mobile</h6>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    (320) 380-4539
+                                    @localizer["Kenneth Valdez"]
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Email</h6>
+                                    <h6 class="mb-0">@localizer["Mobile"]</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    fip@jukmuh.al
+                                    @localizer["(320) 380-4539"]
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Date of birth</h6>
+                                    <h6 class="mb-0">@localizer["Email"]</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    1-1-2000
-
+                                    @localizer["fip@jukmuh.al"]
                                 </div>
-
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Gender</h6>
+                                    <h6 class="mb-0">@localizer["Date of birth"]</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    Male
-
+                                    @localizer["1-1-2000"]
                                 </div>
-
                             </div>
-
-
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Address</h6>
+                                    <h6 class="mb-0">@localizer["Gender"]</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    Bay Area, San Francisco, CA
+                                    @localizer["Male"]
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">@localizer["Address"]</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @localizer["Bay Area, San Francisco, CA"]
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <a class="btn btn-info " target="__blank" href="P_Edit.html">Edit</a>
+                                    <a class="btn btn-info" target="__blank" href="P_Edit.html">@localizer["Edit"]</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
-
-
-
             </div>
         </div>
-
     </div>
-    </div>
-
-
-
-
-
-
-
-
-
 
     <hr>
     <div class="container bootstrap snippets bootdey">
@@ -217,14 +204,12 @@
                             <table class="table user-list">
                                 <thead>
                                     <tr>
-                                        <th><span>ID</span></th>
-                                        <th><span>User</span></th>
-                                        <th><span>Date</span></th>
-                                        <th><span>Time</span></th>
-                                        <th class="text-center"><span>Status</span></th>
-                                        <th><span>Phone Number</span></th>
-
-
+                                        <th><span>@localizer["ID"]</span></th>
+                                        <th><span>@localizer["User"]</span></th>
+                                        <th><span>@localizer["Date"]</span></th>
+                                        <th><span>@localizer["Time"]</span></th>
+                                        <th class="text-center"><span>@localizer["Status"]</span></th>
+                                        <th><span>@localizer["Phone Number"]</span></th>
                                         <th>&nbsp;</th>
                                     </tr>
                                 </thead>
@@ -233,19 +218,17 @@
                                         <td>1</td>
                                         <td>
                                             <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
-                                            <a href="#" class="user-link">Full name 1</a>
-
+                                            <a href="#" class="user-link">@localizer["Full name 1"]</a>
                                         </td>
-                                        <td>2013/08/12</td>
-                                        <td>12:18:09</td>
+                                        <td>@localizer["2013/08/12"]</td>
+                                        <td>@localizer["12:18:09"]</td>
                                         <td class="text-center">
-                                            <span class="label label-default">pending</span>
+                                            <span class="label label-default">@localizer["pending"]</span>
                                         </td>
                                         <td>
-                                            <a href="#">+201021587031</a>
+                                            <a href="#">@localizer["+201021587031"]</a>
                                         </td>
                                         <td style="width: 20%;">
-
                                             <a href="#" class="table-link danger">
                                                 <span class="fa-stack">
                                                     <i class="fa fa-square fa-stack-2x"></i>
@@ -258,21 +241,17 @@
                                         <td>2</td>
                                         <td>
                                             <img src="https://bootdey.com/img/Content/user_3.jpg" alt="">
-                                            <a href="#" class="user-link">Full name 2</a>
-
+                                            <a href="#" class="user-link">@localizer["Full name 2"]</a>
                                         </td>
-                                        <td>2013/08/12</td>
-                                        <td>11:48:05</td>
+                                        <td>@localizer["2013/08/12"]</td>
+                                        <td>@localizer["11:48:05"]</td>
                                         <td class="text-center">
-                                            <span class="label label-success">Active</span>
+                                            <span class="label label-success">@localizer["Active"]</span>
                                         </td>
                                         <td>
-                                            <a href="#">+201123463412</a>
-
-                                            </a>
+                                            <a href="#">@localizer["+201123463412"]</a>
                                         </td>
                                         <td style="width: 20%;">
-
                                             <a href="#" class="table-link danger">
                                                 <span class="fa-stack">
                                                     <i class="fa fa-square fa-stack-2x"></i>
@@ -285,18 +264,17 @@
                                         <td>3</td>
                                         <td>
                                             <img src="https://bootdey.com/img/Content/user_2.jpg" alt="">
-                                            <a href="#" class="user-link">Full name 3</a>
-
+                                            <a href="#" class="user-link">@localizer["Full name 3"]</a>
                                         </td>
-                                        <td>2013/08/12</td>
-                                        <td>10:18:09</td>
+                                        <td>@localizer["2013/08/12"]</td>
+                                        <td>@localizer["10:18:09"]</td>
                                         <td class="text-center">
-                                            <span class="label label-danger">inactive</span>
+                                            <span class="label label-danger">@localizer["inactive"]</span>
                                         </td>
                                         <td>
-                                            <a href="#">+201235801357</a>
+                                            <a href="#">@localizer["+201235801357"]</a>
+                                        </td>
                                         <td style="width: 20%;">
-
                                             <a href="#" class="table-link danger">
                                                 <span class="fa-stack">
                                                     <i class="fa fa-square fa-stack-2x"></i>
@@ -313,10 +291,6 @@
             </div>
         </div>
     </div>
-
-
-
-
 
     <!--/ End Footer Area -->
     <!-- jquery Min JS -->
