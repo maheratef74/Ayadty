@@ -13,4 +13,13 @@ public class DashBoardController:Controller
     {
         return View();
     }
+    public IActionResult AddPatient()
+    {
+        return View();
+    }
+    public IActionResult EditAppointment()
+    {
+        return View();
+    }
+
 }

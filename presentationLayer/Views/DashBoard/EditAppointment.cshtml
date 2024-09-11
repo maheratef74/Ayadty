@@ -1,0 +1,120 @@
+
+@{
+    Layout = "_AdminLayout";
+}
+
+
+@inject IViewLocalizer localizer
+@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.Localization
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@localizer["Edit Patient"]</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./css/Edit.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="main-body">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="https://bootdey.com/img/Content/user_1.jpg" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+                            <div class="mt-3">
+                                <h4>@localizer["John Doe"]</h4>
+                                <p class="text-secondary mb-1">@localizer["+201021587031"]</p>
+                                <p class="text-muted font-size-sm">@localizer["Cairo-Egypt"]</p>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">@localizer["Order"]</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" value="1">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">@localizer["Status"]</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <select name="Status" id="ChoiceStatus" class="form-control">
+                                    <option value="">@localizer["Choose Status"]</option>
+                                    <option value="Active">@localizer["Active"]</option>
+                                    <option value="Pending">@localizer["Pending"]</option>
+                                    <option value="Inactive">@localizer["Inactive"]</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">@localizer["Full Name"]</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" value="John Doe">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">@localizer["Mobile"]</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" value="(320) 380-4539">
+                            </div>
+                        </div>
+
+
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">@localizer["Address"]</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" value="Cairo-Egypt">
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-9 text-secondary">
+                                <button class="btn btn-primary">@localizer["Save Changes"]</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+<!-- For Lyout -->
+<!-- jquery Min JS -->
+<script src="~/js/jquery.min.js"></script>
+
+<!-- Main JS -->
+<script src="~/js/main.js"></script>
+<!-- For Lyout -->
+</body>
+
+
+

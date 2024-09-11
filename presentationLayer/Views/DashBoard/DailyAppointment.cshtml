@@ -1,16 +1,11 @@
 @{
-Layout = null;
+    Layout = "_AdminLayout";
 }
 
 @inject IViewLocalizer localizer
 @using System.Globalization
 @using Microsoft.AspNetCore.Mvc.Localization
 
-@{
-var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
-}
-<!doctype html>
-<html class="no-js" lang="ar" dir="@(isRTL ? " RTL" : "LTR" )">
 
 <!DOCTYPE html>
 <html lang="en">

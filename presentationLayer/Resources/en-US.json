@@ -269,15 +269,7 @@
 
 
 
-
-
-
-
-
-
-  "Home": "Home",
-  "User": "User",
-  "User": "User",
+  
   "Profile": "Profile",
   "John": "John",
   "Doe": "Doe",
@@ -291,7 +283,6 @@
   "CA": "CA",
   "Facebook": "Facebook",
   "bootdey": "bootdey",
-  "Full": "Full",
   "Name": "Name",
   "Kenneth": "Kenneth",
   "Valdez": "Valdez",
@@ -306,33 +297,30 @@
   "100": "100",
   "per": "per",
   "hour": "hour",
-  "Edit": "Edit",
   "ID": "ID",
-  "User": "User",
+
   "Date": "Date",
   "Time": "Time",
   "Status": "Status",
   "Phone": "Phone",
   "Number": "Number",
   "1": "1",
-  "Full": "Full",
+
   "name": "name",
-  "1": "1",
+
   "2013/08/12": "2013/08/12",
   "12:18:09": "12:18:09",
   "pending": "pending",
   "+201021587031": "+201021587031",
-  "Full": "Full",
-  "name": "name",
+
   "2": "2",
-  "2013/08/12": "2013/08/12",
+
   "11:48:05": "11:48:05",
   "Active": "Active",
   "+201123463412": "+201123463412",
-  "Full": "Full",
-  "name": "name",
+ 
   "3": "3",
-  "2013/08/12": "2013/08/12",
+
   "10:18:09": "10:18:09",
   "inactive": "inactive",
   "+201235801357": "+201235801357",
@@ -342,77 +330,32 @@
   "Inactive": "Inactive",
   "Pending": "Pending",
 
-
-
-
-
-
-
+  
 
   "Admin": "Admin",
-  "John": "John",
-  "Doe": "Doe",
-  "Full": "Full",
-  "Stack": "Stack",
-  "Developer": "Developer",
-  "Bay": "Bay",
-  "Area": "Area",
-  "San": "San",
-  "Francisco": "Francisco",
-  "CA": "CA",
-  "Facebook": "Facebook",
-  "bootdey": "bootdey",
-  "Full": "Full",
-  "Name": "Name",
-  "Mobile": "Mobile",
-  "Email": "Email",
+  
   "Experence": "Experence",
   "Y": "Y",
-  "Price": "Price",
-  "per": "per",
-  "hour": "hour",
-  "Save": "Save",
+
   "Changes": "Changes",
 
 
-
-
-
-
-
-
-
-
-
-
-
-  "Home": "Home",
-  "User": "User",
-  "User Profile": "User Profile",
+  
   "Full Stack Developer": "Full Stack Developer",
   "Bay Area, San Francisco, CA": "Bay Area, San Francisco, CA",
-  "Full Name": "Full Name",
+
   "Kenneth Valdez": "Kenneth Valdez",
-  "Mobile": "Mobile",
+
   "(320) 380-4539": "(320) 380-4539",
-  "Email": "Email",
-  "fip@jukmuh.al": "fip@jukmuh.al",
+ 
   "Days of work": "Days of work",
   "sunday -monday": "sunday -monday",
   "Location": "Location",
   "cairo -egypt": "cairo -egypt",
-  "Doctor": "Doctor",
+ 
   "ahmed": "ahmed",
-  "Edit": "Edit",
-  "ID": "ID",
-  "User": "User",
-  "Date": "Date",
-  "Time": "Time",
-  "Status": "Status",
-  "Phone Number": "Phone Number",
-  "pending": "pending",
-  "Active": "Active",
-  "inactive": "inactive",
+
+  
   "Full name 1": "Full name 1",
   "Full name 2": "Full name 2",
   "Full name 3": "Full name 3",
@@ -420,108 +363,50 @@
 
 
 
-  "Admin": "Admin",
+
   "John Doe": "John Doe",
-  "Full Stack Developer": "Full Stack Developer",
-  "Bay Area, San Francisco, CA": "Bay Area, San Francisco, CA",
-  "Facebook": "Facebook",
-  "bootdey": "bootdey",
-  "Full Name": "Full Name",
-  "Mobile": "Mobile",
-  "Email": "Email",
-  "Days of work": "Days of work",
+  
   "loction": "loction",
   "Cairo-Egypt": "Cairo-Egypt",
-  "Doctor": "Doctor",
-  "ahmed": "ahmed",
+ 
   "Save Changes": "Save Changes",
-
-
-  "Home": "Home",
-  "User": "User",
-  "User Profile": "User Profile",
-  "John Doe": "John Doe",
-  "Full Stack Developer": "Full Stack Developer",
-  "Bay Area, San Francisco, CA": "Bay Area, San Francisco, CA",
-  "Facebook": "Facebook",
-  "bootdey": "bootdey",
-  "Full Name": "Full Name",
-  "Kenneth Valdez": "Kenneth Valdez",
-  "Mobile": "Mobile",
-  "(320) 380-4539": "(320) 380-4539",
-  "Email": "Email",
-  "fip@jukmuh.al": "fip@jukmuh.al",
+  
   "Date of birth": "Date of birth",
   "1-1-2000": "1-1-2000",
-  "Gender": "Gender",
-  "Male": "Male",
-  "Address": "Address",
-  "Bay Area, San Francisco, CA": "Bay Area, San Francisco, CA",
-  "Edit": "Edit",
-  "ID": "ID",
-  "User": "User",
-  "Date": "Date",
-  "Time": "Time",
-  "Status": "Status",
-  "Phone Number": "Phone Number",
-  "Full name 1": "Full name 1",
-  "2013/08/12": "2013/08/12",
-  "12:18:09": "12:18:09",
-  "pending": "pending",
-  "+201021587031": "+201021587031",
-  "Full name 2": "Full name 2",
-  "2013/08/12": "2013/08/12",
-  "11:48:05": "11:48:05",
-  "Active": "Active",
-  "+201123463412": "+201123463412",
-  "Full name 3": "Full name 3",
-  "2013/08/12": "2013/08/12",
-  "10:18:09": "10:18:09",
-  "inactive": "inactive",
-  "+201235801357": "+201235801357",
 
 
-  "Admin": "Admin",
-  "John": "John",
-  "Doe": "Doe",
-  "Full": "Full",
-  "Stack": "Stack",
-  "Developer": "Developer",
-  "Bay": "Bay",
-  "Area": "Area",
-  "San": "San",
-  "Francisco": "Francisco",
-  "CA": "CA",
-  "Facebook": "Facebook",
-  "bootdey": "bootdey",
-  "Full": "Full",
-  "Name": "Name",
-  "Mobile": "Mobile",
-  "Email": "Email",
-  "Date": "Date",
+
+ 
   "of": "of",
   "birth": "birth",
-  "Gender": "Gender",
+
   "Male/Female": "Male/Female",
-  "Address": "Address",
-  "Save": "Save",
-  "Changes": "Changes",
+
 
   "ORDER": "ORDER",
   "DATE": "DATE",
   "TIME": "TIME",
   "STATUS": "STATUS",
-  "1": "1",
-  "2013/08/12": "2013/08/12",
-  "12:18:09": "12:18:09",
-  "pending": "pending",
-  "2": "2",
-  "2013/08/12": "2013/08/12",
-  "11:48:05": "11:48:05",
-  "Active": "Active",
-  "3": "2",
-  "2013/08/12": "2013/08/12",
-  "10:18:09": "10:18:09",
-  "inactive": "inactive"
+
+
+
+  "Add_Update_Delete ":"Add_Update_Delete",
+  
+  
+
+
+
+  "Add patient": "Add patient",
+  "Edit Patient": "Edit patient",
+  
+
+  "Delete Patient": "Delete patient",
+ 
+  "Order": "Order",
+ 
+  "Choose Status": "Choose Status",
+ 
+  "button": "Delete Patient"
+  
 
 }
