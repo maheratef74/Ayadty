@@ -1,13 +1,9 @@
 {
-  "Maher": "ماهر",
-  "Home": "رئيسي",
+  "Home": "الصفحه الرئيسه",
   "Ayadty": "عياتي",
-  "Doctor": "الطبيب",
   "About": "حول ",
-
   "Contact": "  اتصال ",
   "FAQ": "الأسئلة الشائعة ",
-
   "Home Page 1": "الصفحة الرئيسية 1",
   "Services": "الخدمات",
   "Pages": "الصفحات",
@@ -17,11 +13,9 @@
   "Contact Us": "اتصل بنا",
   "Book Appointment": "احجز موعد",
   "We Provide Medical Services That You Can Trust!": "نحن نقدم خدمات طبية يمكنك الوثوق بها!",
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nisl pellentesque, faucibus libero eu, gravida quam.": "لوريم إيبسوم دولور سيت أميت، كونسكتتور أديبيسيسينغ إليت. ماوريس سيد نيسل بيلينتسكي، فاوسيبيس ليبرو يو، جرافيدا كوام.",
   "Get Appointment": "احجز موعدًا",
   "Learn More": "اعرف المزيد",
   "About Us": "معلومات عنا",
-  "Contact Now": "اتصل الآن",
   "Lorem Amet": "لوريم أميت",
   "Emergency Cases": "الحالات الطارئة",
   "It is Timetable for Today Appointment": "هذا جدول الكشوفات لدي الدكتور اليوم",
@@ -235,7 +229,6 @@
   "Gender": "النوع",
   "Male": "ذكر",
   "Female": "أنثى",
-  "Register": "تسجيل",
   "You have an account already": "انت تملك حساب بالفعل",
   "The two passwords do not match.": "كلمة السر غير متطابقة",
   "Working Days": "أيام العمل",
@@ -571,7 +564,11 @@
   "By deleting this patient you can't undo this action.":"بحذف هذا المريض لا يمكنك التراجع عن هذا الاجراءز",
 
   "Cancel":"الغاء",
-  "Delete":"حذف"
+  "Delete":"حذف",
   
-
+  "DailyAppointment" : "جدول الطبيب",
+  "Clinic Profile": "صفحه العياده",
+  "Patient Profile" : "صفحتي الشخصيه",
+  "CreatAppointment" : "احجز موعد",
+  "We will be confirm by an Text Message" : "سوف نقوم بارسال رساله نصيه علي رقم الموبيل المسجل به لتاكيد حجزك"
 }

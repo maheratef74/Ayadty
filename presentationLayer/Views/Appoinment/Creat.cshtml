@@ -11,6 +11,17 @@
         <title>@localizer["Book Appointment"]</title>
         <link rel="stylesheet" href="~/css/Home.css">
         <link rel="stylesheet" href="~/css/responsive.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        
+        <script>
+            $(function() {
+                $("#datepicker").datepicker();
+            });
+        </script>
     </head>
 
 <body>
@@ -105,7 +116,7 @@
                                 <!-- <span>@localizer["Fusce Porttitor"]</span> -->
                                 <h4>@localizer["Doctor Timetable"]</h4>  <!-- it wiil Rdirect him to appointement of the day -->
                                 <p>@localizer["It is Timetable for Today Appointment"]</p>
-                                <a href="#">@localizer["LEARN MORE"]<i class="fa fa-long-arrow-right"></i></a>
+                                <a asp-controller="Appoinment" asp-action="DailyAppointment"> @localizer["LEARN MORE"]<i class="fa fa-long-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>

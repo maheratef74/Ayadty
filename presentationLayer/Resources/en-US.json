@@ -257,7 +257,6 @@
   "Edit": "Edit",
   "Monday": "Monday",
   "Select day": "Select day",
-  "Monday": "Monday",
   "Tuesday": "Tuesday",
   "Wednesday": "Wednesday",
   "Thursday": "Thursday",
@@ -282,7 +281,6 @@
   "Francisco": "Francisco",
   "CA": "CA",
   "Facebook": "Facebook",
-  "bootdey": "bootdey",
   "Name": "Name",
   "Kenneth": "Kenneth",
   "Valdez": "Valdez",
@@ -329,12 +327,8 @@
   "100 per hour": "100 per hour",
   "Inactive": "Inactive",
   "Pending": "Pending",
-
   
-
   "Admin": "Admin",
-  
-  "Experence": "Experence",
   "Y": "Y",
 
   "Changes": "Changes",
@@ -354,59 +348,37 @@
   "cairo -egypt": "cairo -egypt",
  
   "ahmed": "ahmed",
-
-  
   "Full name 1": "Full name 1",
   "Full name 2": "Full name 2",
   "Full name 3": "Full name 3",
-
-
-
-
-
   "John Doe": "John Doe",
-  
-  "loction": "loction",
   "Cairo-Egypt": "Cairo-Egypt",
  
   "Save Changes": "Save Changes",
   
   "Date of birth": "Date of birth",
   "1-1-2000": "1-1-2000",
-
-
-
- 
+  
   "of": "of",
   "birth": "birth",
-
   "Male/Female": "Male/Female",
-
 
   "ORDER": "ORDER",
   "DATE": "DATE",
   "TIME": "TIME",
   "STATUS": "STATUS",
-
-
-
+  
   "Add_Update_Delete ":"Add_Update_Delete",
   
-  
-
-
-
   "Add patient": "Add patient",
   "Edit Patient": "Edit patient",
-  
-
   "Delete Patient": "Delete patient",
- 
   "Order": "Order",
- 
   "Choose Status": "Choose Status",
- 
-  "button": "Delete Patient"
-  
-
+  "button": "Delete Patient",
+  "DailyAppointment" :  "Daily Appointment",
+  "Clinic Profile": "Clinic Profile",
+  "Patient Profile": "Patient Profile",
+  "CreatAppointment" :"Creat Appointment",
+  "We will be confirm by an Text Message": "We will be confirm by an Text Message"
 }

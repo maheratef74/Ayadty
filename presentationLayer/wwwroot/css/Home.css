@@ -48,6 +48,14 @@ Version:	1.1
 /*=============================
 	Global CSS 
 ===============================*/
+.header-inner {
+	display: block; /* Ensure it's displayed by default */
+}
+@media (max-width: 767px) {
+	.header-inner {
+		/* Mobile-specific styles */
+	}
+}
 body{
     font-family: 'Poppins', sans-serif;
 	font-weight: 400;

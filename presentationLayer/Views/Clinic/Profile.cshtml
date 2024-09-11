@@ -1,12 +1,14 @@
-﻿
-@{
-    Layout = "_AdminLayout";
+﻿@{
+    var useAlternateLayout = ViewData["UseAlternateLayout"] as bool? ?? false;
+    Layout = useAlternateLayout ? "_Layout" : "_AdminLayout";
 }
+
 @using Microsoft.AspNetCore.Builder
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.Extensions.Options
 @inject IViewLocalizer localizer
 @using System.Globalization
+@using Azure.Core
 
 
 
