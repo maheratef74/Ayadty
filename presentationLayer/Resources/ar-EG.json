@@ -247,6 +247,8 @@
   "saturday": "السبت",
   "Sunday": "الأحد",
   "Delete": "حذف",
+  "Register": "تسجيل",
+  "Enter your number": "ادخل رقم هاتفك",
 
 
 
@@ -487,20 +489,20 @@
   "Save": "حفظ",
   "Changes": "تغييرات",
 
-  "ORDER":"الطلب",
-  "DATE":"التاريخ",
-  "TIME":"الوقت",
-  "STATUS":"الحالة",
+  "ORDER": "الطلب",
+  "DATE": "التاريخ",
+  "TIME": "الوقت",
+  "STATUS": "الحالة",
 
 
-  "Add_Update_Delete ":"اضافة_تعديل_حذف",
+  "Add_Update_Delete ": "اضافة_تعديل_حذف",
   "ID": "الرقم التعريفي",
   "User": "مستخدم",
   "Date": "التاريخ",
   "Time": "الوقت",
   "Status": "الحالة",
   "Phone Number": "رقم الهاتف",
-  "1":"1",
+  "1": "1",
   "John Doe": "جون دو",
   "2013/08/12": "2013/08/12",
   "12:18:09": "12:18:09",
@@ -523,12 +525,12 @@
   "John Doe": "جون دو",
   "+201021587031": "+201021587031",
   "Cairo-Egypt": "القاهرة-مصر",
-  "Order":"الترتيب",
+  "Order": "الترتيب",
   "Status": "الحالة",
-  "Choose Status":"اختر الحالة",
-  "Full Name":"الاسم الكامل",
-  "Mobile":"الهاتف",
-  "Address":"العنوان",
+  "Choose Status": "اختر الحالة",
+  "Full Name": "الاسم الكامل",
+  "Mobile": "الهاتف",
+  "Address": "العنوان",
   "button": "اضف مريض",
 
   "Edit Patient": "تعديل مريض",
@@ -541,7 +543,7 @@
   "Full Name": "الاسم الكامل",
   "Mobile": "الهاتف",
   "Address": "العنوان",
-  "button": "حفظ التغييرات" ,
+  "button": "حفظ التغييرات",
 
 
   "Delete Patient": "حذف مريض",
@@ -559,16 +561,16 @@
 
 
   "Delete Patient": "حذف مريض",
-  "Are you sure you want to delete this patient?":" هل تريد بالتأكيد حفظ هذا المريض ؟",
-  "Warning":"تحذير",
-  "By deleting this patient you can't undo this action.":"بحذف هذا المريض لا يمكنك التراجع عن هذا الاجراءز",
+  "Are you sure you want to delete this patient?": " هل تريد بالتأكيد حفظ هذا المريض ؟",
+  "Warning": "تحذير",
+  "By deleting this patient you can't undo this action.": "بحذف هذا المريض لا يمكنك التراجع عن هذا الاجراءز",
 
-  "Cancel":"الغاء",
-  "Delete":"حذف",
-  
-  "DailyAppointment" : "جدول الطبيب",
+  "Cancel": "الغاء",
+  "Delete": "حذف",
+
+  "DailyAppointment": "جدول الطبيب",
   "Clinic Profile": "صفحه العياده",
-  "Patient Profile" : "صفحتي الشخصيه",
-  "CreatAppointment" : "احجز موعد",
-  "We will be confirm by an Text Message" : "سوف نقوم بارسال رساله نصيه علي رقم الموبيل المسجل به لتاكيد حجزك"
+  "Patient Profile": "صفحتي الشخصيه",
+  "CreatAppointment": "احجز موعد",
+  "We will be confirm by an Text Message": "سوف نقوم بارسال رساله نصيه علي رقم الموبيل المسجل به لتاكيد حجزك"
 }

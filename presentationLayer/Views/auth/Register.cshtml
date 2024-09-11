@@ -39,7 +39,7 @@
 </head>
 
 <body>
-    <header >
+    <header>
         <form asp-controller="Localization" asp-action="SetLanguage" asp-route-returnUrl="@returnUrl" method="post">
             <select name="culture" onchange="this.form.submit();" asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureItems">
             </select>
