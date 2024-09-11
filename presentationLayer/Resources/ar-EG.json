@@ -570,7 +570,25 @@
 
   "DailyAppointment": "جدول الطبيب",
   "Clinic Profile": "صفحه العياده",
+
   "Patient Profile": "صفحتي الشخصيه",
   "CreatAppointment": "احجز موعد",
-  "We will be confirm by an Text Message": "سوف نقوم بارسال رساله نصيه علي رقم الموبيل المسجل به لتاكيد حجزك"
+  "We will be confirm by an Text Message": "سوف نقوم بارسال رساله نصيه علي رقم الموبيل المسجل به لتاكيد حجزك",
+
+  "Patient Profile" : "صفحتي الشخصيه",
+  "CreatAppointment" : "احجز موعد",
+  "DashBoard": "لوحه التحكم",
+  "UserPages" : "صفحات المستخدم",
+  "Login Screens:" : "تسجيل الدخول",
+  "DoctorPages" : "صفحات الدكتور",
+  "Other Pages:" : "صفحات اخري",
+  "DashBoardScreens": "صفحات لوحه التحكم",
+  "Charts": "المخططات البيانيه",
+  "CreatPrescription": "كتابه روشته",
+  "Profile": "ملفي الشخصي",
+  "Logout": "تسجيل خروج",
+  "Edit_oppning_days": "تعديل ايام العمل",
+  "AddPatient" : "اضافه مريض",
+  "Home page" : "الصفحه الرئيسيه",
+  "Monthly Appointment" : "حجوزات الشهر"
 }

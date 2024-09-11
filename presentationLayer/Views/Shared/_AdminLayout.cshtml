@@ -7,8 +7,8 @@
 var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
 }
 <!DOCTYPE html>
-<html lang="ar" dir = "@(isRTL ? "RTL" : "LTR")" ><!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir = "@(isRTL ? "rtl" : "ltr")" >
+
 
 <head>
 
@@ -18,7 +18,7 @@ var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
     <meta name="description" content="">
     <meta name="author" content="">
      
-    <title>SB Admin 2 - Dashboard</title>
+    <title>@localizer["DashBoard"]</title>
 
     <!-- Custom fonts for this template-->
     <!-- Favicon -->
@@ -41,129 +41,105 @@ var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
  
 <body id="page-top">
 
-<!-- Preloader -->
-<div class="preloader">
-    <div class="loader">
-        <div class="loader-outter"></div>
-        <div class="loader-inner"></div>
 
-        <div class="indicator">
-            <svg width="16px" height="12px">
-                <polyline id="back" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
-                <polyline id="front" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
-            </svg>
-        </div>
-    </div>
-</div>
-<!-- End Preloader -->
 <!-- Page Wrapper -->
-<div id="wrapper">
+<div id="wrapper" >
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" >
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar"  >
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+            <div class="sidebar-brand-text mx-3">@localizer["DashBoard"]</div>
         </a>
 
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+        @*<li class="nav-item active">
+            <a class="nav-link" href="#">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
-
         <!-- Divider -->
         <hr class="sidebar-divider">
+        *@
+        
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            Interface
+            @localizer["UserPages"]
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-               aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-cog"></i>
-                <span>Components</span>
-            </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Custom Components:</h6>
-                    <a class="collapse-item" href="buttons.html">Buttons</a>
-                    <a class="collapse-item" href="cards.html">Cards</a>
-                </div>
-            </div>
-        </li>
-
-        <!-- Nav Item - Utilities Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-               aria-expanded="true" aria-controls="collapseUtilities">
-                <i class="fas fa-fw fa-wrench"></i>
-                <span>Utilities</span>
-            </a>
-            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                 data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Custom Utilities:</h6>
-                    <a class="collapse-item" href="utilities-color.html">Colors</a>
-                    <a class="collapse-item" href="utilities-border.html">Borders</a>
-                    <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                    <a class="collapse-item" href="utilities-other.html">Other</a>
-                </div>
-            </div>
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Addons
-        </div>
-
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
+        <li class="nav-item" lang="ar">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-folder"></i>
-                <span>Pages</span>
+                <span> @localizer["UserPages"]</span>
             </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar"  dir = "rtl" >
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Login Screens:</h6>
-                    <a class="collapse-item" href="login.html">Login</a>
-                    <a class="collapse-item" href="register.html">Register</a>
-                    <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                    <h6 class="collapse-header">@localizer["Login Screens:"]</h6>
+                    <a class="collapse-item" asp-controller="auth" asp-action="Login">@localizer["Log In"]</a>
+                    <a class="collapse-item" asp-controller="auth" asp-action="Register">@localizer["Registration"]</a>
                     <div class="collapse-divider"></div>
-                    <h6 class="collapse-header">Other Pages:</h6>
-                    <a class="collapse-item" href="404.html">404 Page</a>
-                    <a class="collapse-item" href="blank.html">Blank Page</a>
+                    <h6 class="collapse-header">@localizer["Other Pages:"]</h6>
+                    <a class="collapse-item" asp-controller="Home" asp-action="Home">@localizer["Home"]</a>
+                    <a class="collapse-item" asp-controller="Appoinment" asp-action="Creat">@localizer["Book An Appointment"]</a>
+                    <a class="collapse-item" asp-controller="Appoinment" asp-action="DailyAppointment">@localizer["DailyAppointment"]</a>
+                    <a class="collapse-item" asp-controller="Doctor" asp-action="AboutMe">@localizer["About"]</a>
+                </div>
+            </div>
+        </li>
+        
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            @localizer["DoctorPages"]
+        </div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item" >
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+               aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span> @localizer["DoctorPages"]</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">@localizer["DashBoardScreens:"]</h6>
+                    <a class="collapse-item" asp-controller="DashBoard" asp-action="DailyAppointment">@localizer["DailyAppointment"]</a>
+                    <a class="collapse-item" asp-controller="DashBoard" asp-action="Index">@localizer["Charts"]</a>
+                    <div class="collapse-divider"></div>
+                    <h6 class="collapse-header">@localizer["Other Pages:"]</h6>
+                    <a class="collapse-item" asp-controller="Prescription" asp-action="Creat">@localizer["CreatPrescription"]</a>
+                    <a class="collapse-item" asp-controller="auth" asp-action="Register">@localizer["AddPatient"]</a>
+                    <a class="collapse-item" asp-controller="Doctor" asp-action="Edit_oppning_days">@localizer["Edit_oppning_days"]</a>
+                    <a class="collapse-item" asp-controller="Doctor" asp-action="profile">@localizer["Home page"]</a>
                 </div>
             </div>
         </li>
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-            <a class="nav-link" href="charts.html">
+            <a class="nav-link" asp-controller="DashBoard" asp-action="Index">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>Charts</span></a>
+                <span>@localizer["Charts"]</span></a>
         </li>
-
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-            <a class="nav-link" href="tables.html">
+            <a class="nav-link" >
                 <i class="fas fa-fw fa-table"></i>
-                <span>Tables</span></a>
+                <span>@localizer["Charts"]</span></a>
         </li>
 
         <!-- Divider -->
@@ -173,14 +149,6 @@ var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
         <div class="text-center d-none d-md-inline">
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
-
-        <!-- Sidebar Message -->
-        <div class="sidebar-card d-none d-lg-flex">
-            <img class="sidebar-card-illustration mb-2" src="~/img/undraw_rocket.svg" alt="...">
-            <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-            <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-        </div>
-
     </ul>
     <!-- End of Sidebar -->
 
@@ -361,18 +329,18 @@ var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
 
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                        <a class="nav-link dropdown-toggle" asp-controller="Doctor" asp-action="profile" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                             <img class="img-profile rounded-circle"
-                                 src="~/img/undraw_profile.svg">
+                                 src="~/img/undraw_profile.jpg">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" asp-controller="Doctor" asp-action="profile">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Profile
+                                @localizer["Profile"]
                             </a>
                             <a class="dropdown-item" href="#">
                                 <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -383,9 +351,9 @@ var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
                                 Activity Log
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                            <a class="dropdown-item"  asp-controller="auth" asp-action="Login" data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Logout
+                               @localizer["Logout"] 
                             </a>
                         </div>
                     </li>
@@ -404,15 +372,6 @@ var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
      
             <!-- End of Main Content -->
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
 
         </div>
         <!-- End of Content Wrapper -->

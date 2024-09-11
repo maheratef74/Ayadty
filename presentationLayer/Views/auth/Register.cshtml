@@ -69,8 +69,8 @@
                     </div>
 
                     <div class="input-box">
-                        <label for="dob">@localizer["Date of Birth"]</label>
-                        <input type="date" id="dob" name="dob" class="form-control" required>
+                        <label for="datepicker">@localizer["Date of Birth"]</label>
+                        <input type="date" id="datepicker" name="dob" class="form-control" required>
                     </div>
 
                     <div class="input-box" id="password">
@@ -110,7 +110,7 @@
                 <div class="have_account">
                     <label for="">
                         <span>
-                            @localizer["You have an account already"] <a class="a" href="signin.html">
+                            @localizer["You have an account already"] <a class="a" asp-controller="auth" asp-action="Login">
                                 @localizer["Log In"]
                             </a>
                         </span>
