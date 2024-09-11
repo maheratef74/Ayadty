@@ -15,6 +15,7 @@
     color: #ffffff;
     padding: 20px;
     border-radius: 8px;
+    
     position: relative; /* تأكد من تثبيت العنصر في مكانه */
 }
 
@@ -27,6 +28,7 @@
         top: 55%; /* تم التعديل من 50% إلى 55% لتنزيل الكلمة للأسفل */
         transform: translateY(-50%);
         font-size: 1.5rem;
+
     }
 
 /* تنسيق معلومات المريض */
@@ -158,6 +160,8 @@ button {
         transform: translateY(-50%);
         font-size: 1.5rem;
     }
+
+
 }
 
 .doctor-info .col-md-2 {
@@ -206,15 +210,15 @@ button {
         flex-wrap: nowrap; /* منع التفاف العناصر */
     }
 
-        .prescription-row .form-group {
-            flex: 1;
-            margin-right: 10px;
-            min-width: 150px; /* ضبط الحد الأدنى للحجم */
-        }
+    .prescription-row .form-group {
+        flex: 1;
+        margin-right: 10px;
+        min-width: 150px; /* ضبط الحد الأدنى للحجم */
+    }
 
-            .prescription-row .form-group:last-child {
-                margin-right: 0;
-            }
+    .prescription-row .form-group:last-child {
+        margin-right: 0;
+    }
 }
 
 
