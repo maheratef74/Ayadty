@@ -2,6 +2,23 @@
     background: #f7f7ff;
     margin-top:20px;
 }
+.container {
+    margin-top: 20px;
+}
+
+form .gender-details {
+    position: static;
+    bottom: auto;
+}
+
+    form .gender-details .gender-title {
+        font-size: 20px;
+        font-weight: 500;
+    }
+.btn btn-info{
+    margin-top:10px;
+}
+
 .card {
     position: relative;
     display: flex;
