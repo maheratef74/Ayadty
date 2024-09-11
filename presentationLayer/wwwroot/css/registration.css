@@ -1,5 +1,4 @@
-﻿body 
-{
+﻿body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -13,14 +12,21 @@ body {
     align-items: center;
     padding: 10px;
     background-color: white;
+    position: relative;
+}
+
+header {
+    position: static;
+    right:45%;
+    top: 0%;
+    padding: 10px;
 }
 
 
-
 .container {
+    align-items:center;
     max-width: 700px;
     width: 100%;
-    
     background-color: #fff;
     padding: 25px 30px;
     border-radius: 5px;
@@ -53,12 +59,14 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 20px 0 12px 0;
+    overflow-y: auto;
+    max-height: 300px;
 }
 
 header {
     position: absolute;
     top: 0%;
-    right: 30%;
+    right: 10%;
     padding: 10px;
 }
 
@@ -89,21 +97,21 @@ form .input-box span.details {
 
 /* عندما يكون الاتجاه LTR (من اليسار لليمين) */
 [dir="ltr"] .eye-icon {
-    right:1px;
-    left:auto;
+    right: 1px;
+    left: auto;
     /*ظهر على اليمين */
 }
 
 /* عندما يكون الاتجاه RTL (من اليمين لليسار) */
 [dir="rtl"] .eye-icon {
-    left:1px;
-    right:auto;
+    left: 1px;
+    right: auto;
     /* العين تظهر على اليسار */
 }
 
 .user-details .input-box input {
     height: 45px;
-    width: 100%;
+    width: 85%;
     outline: none;
     font-size: 16px;
     border-radius: 5px;
@@ -118,10 +126,15 @@ form .input-box span.details {
         border-color: #258cfb;
     }
 
-form .gender-details .gender-title {
-    font-size: 20px;
-    font-weight: 500;
+form .gender-details {
+    position: static;
+    bottom: auto;
 }
+
+    form .gender-details .gender-title {
+        font-size: 20px;
+        font-weight: 500;
+    }
 
 form .category {
     display: flex;
