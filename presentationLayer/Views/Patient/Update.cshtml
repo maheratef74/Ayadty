@@ -21,29 +21,24 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="@localizer["Admin"]" class="rounded-circle p-1 bg-primary" width="110">
+                                <!-- Profile Image -->
+                                <img id="profilePhoto" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="@localizer["Admin"]" class="rounded-circle p-1 bg-primary" width="110">
+
                                 <div class="mt-3">
                                     <h4>@localizer["John Doe"]</h4>
                                     <p class="text-secondary mb-1">@localizer["Full Stack Developer"]</p>
                                     <p class="text-muted font-size-sm">@localizer["Bay Area, San Francisco, CA"]</p>
-                                    <a href="#" class="table-link text-info">
-                                        <span class="fa-stack">
-                                            <i class="fa fa-square fa-stack-2x"></i>
-                                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
+
+                                    <!-- Button to trigger file input -->
+                                    <button class="btn btn-info" onclick="document.getElementById('photoInput').click()">@localizer["Change Photo"]</button>
+
+                                    <!-- Hidden file input -->
+                                    <input type="file" id="photoInput" accept="image/*" style="display:none" onchange="previewPhoto(event)">
                                 </div>
                             </div>
-                            <hr class="my-4">
+                            
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                    <h6 class="mb-0">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook me-2 icon-inline text-primary">
-                                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                                        </svg>@localizer["Facebook"]
-                                    </h6>
-                                    <span class="text-secondary">@localizer["bootdey"]</span>
-                                </li>
+                               
                             </ul>
                         </div>
                     </div>
@@ -84,12 +79,24 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
+
+
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">@localizer["Gender"]</h6>
                                 </div>
+
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" value="@localizer["Male / Female"]">
-                                </div>
+                                        <label for="dot-1">
+                                            <input type="radio" name="gender" id="dot-1">
+                                            <span class="dot one"></span>
+                                            <span class="gender">Male</span>
+                                        </label>
+                                        <label for="dot-2">
+                                            <input type="radio" name="gender" id="dot-2">
+                                            <span class="dot two"></span>
+                                            <span class="gender">Female</span>
+                                        </label>
+                                    </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-sm-3">
@@ -99,6 +106,34 @@
                                     <input type="text" class="form-control" value="@localizer["Bay Area, San Francisco, CA"]">
                                 </div>
                             </div>
+
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">@localizer["Facebook"]</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" class="form-control" value="sdakfka@facebook.com">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">@localizer["old password"]</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" class="form-control" value="sdakfka@facebook.com">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">@localizer["new password"]</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" class="form-control" value="sdakfka@facebook.com">
+                                </div>
+                            </div>
+
                             <div class="row">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-9 text-secondary">
@@ -111,6 +146,23 @@
             </div>
         </div>
     </div>
+
+
+
+    <script>
+        function previewPhoto(event) {
+            const photo = document.getElementById('profilePhoto');
+            const file = event.target.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    photo.src = e.target.result;
+                }
+                reader.readAsDataURL(file); // Convert image file to base64 string
+            }
+        }
+    </script>
 
     <!-- For Lyout -->
     <!-- jquery Min JS -->

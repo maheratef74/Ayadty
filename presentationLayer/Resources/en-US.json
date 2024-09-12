@@ -268,7 +268,7 @@
 
 
 
-  
+
   "Profile": "Profile",
   "John": "John",
   "Doe": "Doe",
@@ -316,7 +316,7 @@
   "11:48:05": "11:48:05",
   "Active": "Active",
   "+201123463412": "+201123463412",
- 
+
   "3": "3",
 
   "10:18:09": "10:18:09",
@@ -327,38 +327,38 @@
   "100 per hour": "100 per hour",
   "Inactive": "Inactive",
   "Pending": "Pending",
-  
+
   "Admin": "Admin",
   "Y": "Y",
 
   "Changes": "Changes",
 
 
-  
+
   "Full Stack Developer": "Full Stack Developer",
   "Bay Area, San Francisco, CA": "Bay Area, San Francisco, CA",
 
   "Kenneth Valdez": "Kenneth Valdez",
 
   "(320) 380-4539": "(320) 380-4539",
- 
+
   "Days of work": "Days of work",
   "sunday -monday": "sunday -monday",
   "Location": "Location",
   "cairo -egypt": "cairo -egypt",
- 
+
   "ahmed": "ahmed",
   "Full name 1": "Full name 1",
   "Full name 2": "Full name 2",
   "Full name 3": "Full name 3",
   "John Doe": "John Doe",
   "Cairo-Egypt": "Cairo-Egypt",
- 
+
   "Save Changes": "Save Changes",
-  
+
   "Date of birth": "Date of birth",
   "1-1-2000": "1-1-2000",
-  
+
   "of": "of",
   "birth": "birth",
   "Male/Female": "Male/Female",
@@ -367,18 +367,35 @@
   "DATE": "DATE",
   "TIME": "TIME",
   "STATUS": "STATUS",
-  
-  "Add_Update_Delete ":"Add_Update_Delete",
-  
+
+  "Add_Update_Delete ": "Add_Update_Delete",
+
   "Add patient": "Add patient",
   "Edit Patient": "Edit patient",
   "Delete Patient": "Delete patient",
   "Order": "Order",
   "Choose Status": "Choose Status",
   "button": "Delete Patient",
-  "DailyAppointment" :  "Daily Appointment",
+  "DailyAppointment": "Daily Appointment",
   "Clinic Profile": "Clinic Profile",
   "Patient Profile": "Patient Profile",
+
+  "CreatAppointment": "Creat Appointment",
+  "We will be confirm by an Text Message": "We will be confirm by an Text Message",
+
+
+
+  "Change Photo": "Change Photo",
+  "new password": "new password",
+  "old password": "old password"
+
+
+
+
+
+
+
+
   "CreatAppointment" :"Creat Appointment",
   "We will be confirm by an Text Message": "We will be confirm by an Text Message",
   
@@ -395,4 +412,5 @@
   "Edit_oppning_days" : "Edit oppning days",
   "AddPatient":  "Add Patient",
   "Home page" :  "Home page"
+
 }
