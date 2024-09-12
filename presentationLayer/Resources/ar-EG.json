@@ -211,6 +211,9 @@
   "Blog_Date_3": "05 يناير، 2020",
   "Blog_Title_3": "نحن نقدم حلول تجارية عالية.",
   "Blog_Description_3": "لوريم إيبسوم دولور أ سيت أميتي، كونسيكتتور أديبيسينغ إليت، سيد دو إيوسمد تيمبور إنسيديدون سيد دو إنسيديدون سيد.",
+
+
+
   "Log In": "تسجيل الدخول",
   "Phone Number": "رقم الهاتف",
   "Enter your Phone Number": "ادخل رقم هاتفك",
@@ -231,6 +234,11 @@
   "Female": "أنثى",
   "You have an account already": "انت تملك حساب بالفعل",
   "The two passwords do not match.": "كلمة السر غير متطابقة",
+  "Select your gender": "حدد نوعك",
+
+
+
+
   "Working Days": "أيام العمل",
   "Day": "اليوم",
   "Start Time": "وقت البداية",
@@ -580,28 +588,28 @@
 
   "Change Photo": "تغير الصوره",
   "new password": "كلمه السر الجديده",
-  "old password": "كلمه السر القديمه"
+  "old password": "كلمه السر القديمه",
 
 
 
 
 
 
-  "Patient Profile" : "صفحتي الشخصيه",
-  "CreatAppointment" : "احجز موعد",
+  "Patient Profile": "صفحتي الشخصيه",
+  "CreatAppointment": "احجز موعد",
   "DashBoard": "لوحه التحكم",
-  "UserPages" : "صفحات المستخدم",
-  "Login Screens:" : "تسجيل الدخول",
-  "DoctorPages" : "صفحات الدكتور",
-  "Other Pages:" : "صفحات اخري",
+  "UserPages": "صفحات المستخدم",
+  "Login Screens:": "تسجيل الدخول",
+  "DoctorPages": "صفحات الدكتور",
+  "Other Pages:": "صفحات اخري",
   "DashBoardScreens": "صفحات لوحه التحكم",
   "Charts": "المخططات البيانيه",
   "CreatPrescription": "كتابه روشته",
   "Profile": "ملفي الشخصي",
   "Logout": "تسجيل خروج",
   "Edit_oppning_days": "تعديل ايام العمل",
-  "AddPatient" : "اضافه مريض",
-  "Home page" : "الصفحه الرئيسيه",
-  "Monthly Appointment" : "حجوزات الشهر"
+  "AddPatient": "اضافه مريض",
+  "Home page": "الصفحه الرئيسيه",
+  "Monthly Appointment": "حجوزات الشهر"
 
 }

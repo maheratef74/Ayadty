@@ -248,6 +248,9 @@
   "Register": "Register",
   "You have an account already": "You have an account already",
   "The two passwords do not match.": "The two passwords do not match.",
+
+
+
   "Working Days": "Working Days",
   "Day": "Day",
   "Start Time": "Start Time",
@@ -264,6 +267,9 @@
   "saturday": "saturday",
   "Sunday": "Sunday",
   "Delete": "Delete",
+  "Enter your number": "Enter your number",
+  "Select your gender": "Select your gender",
+
 
 
 
@@ -387,7 +393,7 @@
 
   "Change Photo": "Change Photo",
   "new password": "new password",
-  "old password": "old password"
+  "old password": "old password",
 
 
 
@@ -396,21 +402,21 @@
 
 
 
-  "CreatAppointment" :"Creat Appointment",
-  "We will be confirm by an Text Message": "We will be confirm by an Text Message",
-  
-  
+  "CreatAppointment": "Creat Appointment",
+  "We will be confirm by an Text Message" : "We will be confirm by an Text Message",
+
+
   "DashBoard": "Dash Board",
-  "UserPages" :  "User Pages",
+  "UserPages": "User Pages",
   "Login Screens:": "Login Screens:",
-  "DoctorPages" : "Doctor Pages",
+  "DoctorPages": "Doctor Pages",
   "Other Pages:": "Other Pages:",
   "DashBoardScreens": "Dash Board Screens",
-  "Charts":  "Charts",
-  "CreatPrescription" : "Creat Prescription",
+  "Charts": "Charts",
+  "CreatPrescription": "Creat Prescription",
   "Logout": "Logout",
-  "Edit_oppning_days" : "Edit oppning days",
-  "AddPatient":  "Add Patient",
-  "Home page" :  "Home page"
+  "Edit_oppning_days": "Edit oppning days",
+  "AddPatient": "Add Patient",
+  "Home page": "Home page"
 
 }
