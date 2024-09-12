@@ -39,7 +39,7 @@
         </div>
     </div>
 
-<script>
+    <script>
         let editMode = false;
 
         document.getElementById('addMore').addEventListener('click', function () {
@@ -58,20 +58,20 @@
             const row = document.createElement('div');
             row.classList.add('form-row');
             row.innerHTML = `
-                        <select ${editMode ? 'disabled' : ''}>
-                                            <option value="" ${!day ? 'selected' : ''}>@localizer["Select day"]</option>
-                                    <option value="Monday" ${day === 'Monday' ? 'selected' : ''}>@localizer["Monday"]</option>
-                                            <option value="Tuesday" ${day === 'Tuesday' ? 'selected' : ''}>@localizer["Tuesday"]</option>
-                                            <option value="Wednesday" ${day === 'Wednesday' ? 'selected' : ''}>@localizer["Wednesday"]</option>
-                                            <option value="Thursday" ${day === 'Thursday' ? 'selected' : ''}>@localizer["Thursday"]</option>
-                                            <option value="Friday" ${day === 'Friday' ? 'selected' : ''}>@localizer["Friday"]</option>
-                                    <option value="Saturday" ${day === 'Saturday' ? 'selected' : ''}>@localizer["saturday"]</option>
-                                            <option value="Sunday" ${day === 'Sunday' ? 'selected' : ''}>@localizer["Sunday"]</option>
-                        </select>
-                        <input type="time" placeholder="Enter start time" value="${startTime}" ${editMode ? 'disabled' : ''}>
-                        <input type="time" placeholder="Enter end time" value="${endTime}" ${editMode ? 'disabled' : ''}>
-                                        <button type="button" class="delete-button" onclick="deleteRow(this)">@localizer["Delete"]</button>
-                    `;
+                                <select ${editMode ? 'disabled' : ''}>
+                                                    <option value="" ${!day ? 'selected' : ''}>@localizer["Select day"]</option>
+                                            <option value="Monday" ${day === 'Monday' ? 'selected' : ''}>@localizer["Monday"]</option>
+                                                    <option value="Tuesday" ${day === 'Tuesday' ? 'selected' : ''}>@localizer["Tuesday"]</option>
+                                                    <option value="Wednesday" ${day === 'Wednesday' ? 'selected' : ''}>@localizer["Wednesday"]</option>
+                                                    <option value="Thursday" ${day === 'Thursday' ? 'selected' : ''}>@localizer["Thursday"]</option>
+                                                    <option value="Friday" ${day === 'Friday' ? 'selected' : ''}>@localizer["Friday"]</option>
+                                            <option value="Saturday" ${day === 'Saturday' ? 'selected' : ''}>@localizer["saturday"]</option>
+                                                    <option value="Sunday" ${day === 'Sunday' ? 'selected' : ''}>@localizer["Sunday"]</option>
+                                </select>
+                                <input type="time" placeholder="Enter start time" value="${startTime}" ${editMode ? 'disabled' : ''}>
+                                <input type="time" placeholder="Enter end time" value="${endTime}" ${editMode ? 'disabled' : ''}>
+                                                <button type="button" class="delete-button" onclick="deleteRow(this)">@localizer["Delete"]</button>
+                            `;
             document.getElementById('formContainer').appendChild(row);
         }
 
@@ -106,4 +106,3 @@
     <!-- Main JS -->
     <script src="~/js/main.js"></script>
 </body>
-
