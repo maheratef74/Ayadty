@@ -379,6 +379,7 @@
   "DailyAppointment": "Daily Appointment",
   "Clinic Profile": "Clinic Profile",
   "Patient Profile": "Patient Profile",
+
   "CreatAppointment": "Creat Appointment",
   "We will be confirm by an Text Message": "We will be confirm by an Text Message",
 
@@ -393,5 +394,23 @@
 
 
 
+
+
+  "CreatAppointment" :"Creat Appointment",
+  "We will be confirm by an Text Message": "We will be confirm by an Text Message",
+  
+  
+  "DashBoard": "Dash Board",
+  "UserPages" :  "User Pages",
+  "Login Screens:": "Login Screens:",
+  "DoctorPages" : "Doctor Pages",
+  "Other Pages:": "Other Pages:",
+  "DashBoardScreens": "Dash Board Screens",
+  "Charts":  "Charts",
+  "CreatPrescription" : "Creat Prescription",
+  "Logout": "Logout",
+  "Edit_oppning_days" : "Edit oppning days",
+  "AddPatient":  "Add Patient",
+  "Home page" :  "Home page"
 
 }

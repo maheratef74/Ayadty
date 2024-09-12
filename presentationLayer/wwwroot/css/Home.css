@@ -1,61 +1,8 @@
-/* =====================================
-Template Name: 	Mediplus.
-Author Name: Naimur Rahman
-Website: http://wpthemesgrid.com/
-Description: Mediplus - Doctor HTML Template.
-Version:	1.1
-========================================*/   
-/*======================================
-[ CSS Table of contents ]
-* Global CSS
-* Header CSS
-	+ Topbar
-	+ Logo
-	+ Widget
-	+ Main Menu
-	+ Search
-* Hero Slider CSS
-* Schedule CSS
-* Feautes CSS
-* Fun Facts CSS
-* Why Choose CSS
-* Call to Action CSS
-* Portfolio CSS
-	+ Portfolio Single CSS
-* Services CSS
-* Testimonials CSS
-* Departments CSS
-* Pricing Table CSS
-* Clients CSS
-* Team CSS
-	+ Single Team
-* Blog CSS
-	+ Latest Blog CSS
-	+ Blog Single CSS
-	+ Blog Sidebar CSS
-* Appointment CSS
-* Login CSS
-* Register CSS
-* Faq CSS
-* Contact Us CSS
-* Error 404 CSS
-* Mail Success CSS
-* Newsletter CSS
-* Doctor Calendar CSS
-* About Us CSS
-* Footer CSS
-========================================*/ 
+
 /*=============================
 	Global CSS 
 ===============================*/
-.header-inner {
-	display: block; /* Ensure it's displayed by default */
-}
-@media (max-width: 767px) {
-	.header-inner {
-		/* Mobile-specific styles */
-	}
-}
+
 body{
     font-family: 'Poppins', sans-serif;
 	font-weight: 400;
