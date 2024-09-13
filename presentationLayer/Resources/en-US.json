@@ -403,7 +403,7 @@
 
 
   "CreatAppointment": "Creat Appointment",
-  "We will be confirm by an Text Message" : "We will be confirm by an Text Message",
+  "We will be confirm by an Text Message": "We will be confirm by an Text Message",
 
 
   "DashBoard": "Dash Board",
@@ -417,6 +417,38 @@
   "Logout": "Logout",
   "Edit_oppning_days": "Edit oppning days",
   "AddPatient": "Add Patient",
-  "Home page": "Home page"
+  "Home page": "Home page",
 
+
+
+
+
+
+
+  "AYADTY": "AYADTY",
+  "Dr. Hamed Amr": "Dr. Hamed Amr",
+  "Eye Surgeon": "Eye Surgeon",
+  "Al-Azhar University": "Al-Azhar University",
+  "Patient Name:": "Patient Name:",
+  "Enter patient's name": "Enter patient's name",
+  "Age:": "Age:",
+  "Date:": "Date:",
+  "Prescription": "Prescription",
+  "Medicine Name:": "Medicine Name:",
+  "Enter medicine name": "Enter medicine name",
+  "Dosage Frequency:": "Dosage Frequency:",
+  "Enter dosage frequency": "Enter dosage frequency",
+  "Notes:": "Notes:",
+  "Enter any notes": "Enter any notes",
+  "General Notes": "General Notes",
+  "Write general notes here...": "Write general notes here...",
+  "Print": "Print",
+  "Address: Clinics": "Address: Clinics",
+  "Clinic Hours: Saturday, Monday": "Clinic Hours: Saturday, Monday",
+  "For Appointments: 01022381205": "For Appointments: 01022381205",
+  "Remove": "Remove",
+  "+ Add More": "+ Add More",
+  "Age": "Age",
+  "Phone:": " Phone:",
+  "Enter phone number": "Enter phone number"
 }
