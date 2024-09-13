@@ -8,7 +8,17 @@
     margin: auto;
     background-color: #ffffff;
 }
+.removePrescriptionBtn {
+    width: 90px; /* تغيير العرض */
+    height: 50px; /* تغيير الطول */
+    background-color: red; /* تغيير اللون إلى لون مختلف (Tomato) */
+    color: white; /* لون النص */
+    border-radius: 5px; /* جعل الزر مدورًا قليلاً */
+}
 
+    .removePrescriptionBtn:hover {
+        background-color: red; /* تغيير لون الزر عند التمرير */
+    }
 /* تنسيق بيانات الدكتور */
 .doctor-info {
     background-color: #007bff;
@@ -18,7 +28,6 @@
     position: relative; /* تأكد من تثبيت العنصر في مكانه */
 }
 
-    /* تنسيق خاص بكلمة AYADTY */
     .doctor-info h2 {
         margin: 0;
         padding: 0;
@@ -35,9 +44,11 @@
     font-weight: bold;
 }
 
+/* توحيد حجم textboxes */
 .form-control {
-    margin-bottom: 10px;
-    width: 100%;
+    width: 100%; /* اجعل كل textboxes يأخذ عرض كامل الحاوية */
+    box-sizing: border-box; /* تأكد من تضمين الحواف والحشو في العرض */
+    margin-bottom: 15px; /* إضافة مسافة أسفل textboxes للتباعد */
 }
 
 /* توحيد حجم الحقول بين المريض والعلاج */
@@ -51,36 +62,16 @@
     padding-right: 5px;
 }
 
-.patient-info .row,
-.prescription-row {
-    margin-bottom: 15px;
-}
-
-.prescription-row {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-bottom: 15px;
-}
-
-    .prescription-row .form-group {
-        flex: 1;
-        min-width: 200px;
-        margin-right: 10px;
-    }
-
-
-        .prescription-row .form-group:last-child {
-            margin-right: 0;
-        }
-
-/* تنسيق كلمة "Prescription" و "General Notes" */
-.section-title {
-    background-color: #007bff;
-    color: #ffffff;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 1.25rem;
+/* توحيد حجم textboxes */
+#patientName,
+#patientAge,
+#prescriptionDate,
+#medicineName1,
+#dosage1,
+#notes1,
+#generalNotes {
+    width: 100%; /* تأكد من أن جميع textboxes بنفس العرض */
+    box-sizing: border-box; /* تأكد من تضمين الحواف والحشو في العرض */
 }
 
 /* تنسيق الملاحظات العامة */
@@ -158,46 +149,6 @@ button {
         transform: translateY(-50%);
         font-size: 1.5rem;
     }
-}
-
-.doctor-info .col-md-2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%; /* تجعل المحتوى يأخذ الارتفاع الكامل */
-}
-
-@media print {
-    .doctor-info .col-md-2 {
-        display: flex;
-        align-items: center; /* محاذاة عمودية في منتصف العمود */
-        justify-content: center; /* محاذاة أفقية في منتصف العمود */
-        height: auto; /* للسماح للطباعة بتحديد الارتفاع التلقائي */
-        padding: 40px 0; /* إضافة بعض المسافة من الأعلى والأسفل */
-    }
-}
-
-@media print {
-    /* إخفاء الأزرار عند الطباعة */
-    button, .btn {
-        display: none !important;
-    }
-
-    /* الحفاظ على الأبعاد والتنسيقات دون تغيير */
-    body {
-        -webkit-print-color-adjust: exact; /* للحفاظ على الألوان */
-        print-color-adjust: exact; /* للحفاظ على الألوان */
-        margin: 0;
-    }
-
-    /* تثبيت كلمة AYADTY في الطباعة */
-    .doctor-info h2 {
-        position: absolute;
-        left: 0;
-        top: 55%; /* تم التعديل كذلك للطباعة */
-        transform: translateY(-50%);
-        font-size: 1.5rem;
-    }
 
     /* تنسيق بيانات الفاتورة عند الطباعة */
     .prescription-row {
@@ -215,19 +166,4 @@ button {
             .prescription-row .form-group:last-child {
                 margin-right: 0;
             }
-}
-
-
-
-/* توحيد حجم textboxes */
-.form-control {
-    width: 100%; /* اجعل كل textboxes يأخذ عرض كامل الحاوية */
-    box-sizing: border-box; /* تأكد من تضمين الحواف والحشو في العرض */
-    margin-bottom: 15px; /* إضافة مسافة أسفل textboxes للتباعد */
-}
-
-/* تنسيق specific textboxes */
-#patientName, #patientAge, #prescriptionDate, #medicineName1, #dosage1, #notes1, #generalNotes {
-    width: 100% !important; /* تأكد من أن جميع textboxes بنفس العرض */
-    box-sizing: border-box; /* تأكد من تضمين الحواف والحشو في العرض */
 }

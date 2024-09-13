@@ -22,12 +22,12 @@
         <!-- Doctor's Information -->
         <div class="row doctor-info">
             <div class="col-md-2 text-center align-self-center">
-                <h2>AYADTY</h2>
+                <h2>@localizer["AYADTY"]</h2>
             </div>
             <div class="col-md-8 text-center">
-                <h4>Dr. Hamed Amr </h4>
-                <p>Eye Surgeon</p>
-                <p>Al-Azhar University</p>
+                <h4>@localizer["Dr. Hamed Amr"]</h4>
+                <p>@localizer["Eye Surgeon"]</p>
+                <p>@localizer["Al-Azhar University"]</p>
             </div>
         </div>
 
@@ -36,58 +36,60 @@
         <!-- Patient Information -->
         <div class="row patient-info">
             <div class="col-md-4">
-                <label>Patient Name:</label>
-                <input type="text" class="form-control" id="patientName" placeholder="Enter patient's name" />
+                <label>@localizer["Patient Name:"]</label>
+                <input type="text" class="form-control" id="patientName" value="@localizer["Patient Name Here"]" readonly />
             </div>
             <div class="col-md-2">
-                <label>Age:</label>
-                <input type="number" class="form-control" id="patientAge" placeholder="Age" />
+                <label>@localizer["Age:"]</label>
+                <input type="number" class="form-control" id="patientAge" value="@localizer["Age Here"]" readonly />
             </div>
 
             <div class="col-md-3">
-                <label>Date:</label>
-                <input type="datetime-local" class="form-control" id="prescriptionDate" />
+                <label>@localizer["Phone:"]</label>
+                <input type="tel" class="form-control" id="patientPhone" value="@localizer["Phone Number Here"]" readonly />
+            </div>
+
+            <div class="col-md-3">
+                <label>@localizer["Date:"]</label>
+                <input type="datetime-local" class="form-control" id="prescriptionDate" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" readonly />
             </div>
         </div>
 
         <!-- Prescription Section -->
         <div class="row mb-4">
             <div class="col-md-12">
-                <h3 class="section-title" style="background-color: #007bff ; color:white; font-size:larger">Prescription</h3>
+                <h3 class="section-title" style="background-color: #007bff; color:white; font-size:larger">@localizer["Prescription"]</h3>
                 <hr />
                 <div id="prescriptionFields">
                     <div class="prescription-row d-flex" id="prescriptionRow1">
                         <div class="form-group">
-                            <label>Medicine Name:</label>
-                            <input type="text" class="form-control" id="medicineName1" placeholder="Enter medicine name" />
+                            <label>@localizer["Medicine Name:"]</label>
+                            <input type="text" class="form-control" id="medicineName1" value="@localizer["Medicine Name Here"]" readonly />
                         </div>
                         <div class="form-group mx-3">
-                            <label>Dosage Frequency:</label>
-                            <input type="text" class="form-control" id="dosage1" placeholder="Enter dosage frequency" />
+                            <label>@localizer["Dosage Frequency:"]</label>
+                            <input type="text" class="form-control" id="dosage1" value="@localizer["Dosage Frequency Here"]" readonly />
                         </div>
                         <div class="form-group">
-                            <label>Notes:</label>
-                            <input type="text" class="form-control" id="notes1" placeholder="Enter any notes" />
+                            <label>@localizer["Notes:"]</label>
+                            <input type="text" class="form-control" id="notes1" value="@localizer["Notes Here"]" readonly />
                         </div>
-                        
                     </div>
-              
+                </div>
+            </div>
         </div>
 
         <!-- General Notes Section -->
         <div class="row notes-box">
             <div class="col-md-12">
-                <h5 class="section-title" style="background-color: #007bff ; color:white; font-size:larger">General Notes</h5>
-                <textarea class="form-control" id="generalNotes" placeholder="Write general notes here..."></textarea>
+                <h5 class="section-title" style="background-color: #007bff; color:white; font-size:larger">@localizer["General Notes"]</h5>
+                <textarea class="form-control" id="generalNotes" readonly>@localizer["General Notes Here"]</textarea>
             </div>
         </div>
-
         <!-- Action Buttons -->
         <div class="row">
             <div class="col-md-12 text-center">
-                
-                
-                <button type="button" class="btn btn-success" onclick="window.print()">Print</button>
+                <button type="button" class="btn btn-success" onclick="window.print()">@localizer["Print"]</button>
             </div>
         </div>
 
@@ -96,22 +98,18 @@
         <!-- Footer Section -->
         <div class="row doctor-footer mt-5">
             <div class="col-md-4 text-center">
-                <p>Address: Clinics</p>
+                <p>@localizer["Address: Clinics"]</p>
             </div>
             <div class="col-md-4 text-center">
-                <p>Clinic Hours: Saturday, Monday</p>
+                <p>@localizer["Clinic Hours: Saturday, Monday"]</p>
             </div>
             <div class="col-md-4 text-center">
-                <p>For Appointments: 01022381205</p>
+                <p>@localizer["For Appointments: 01022381205"]</p>
             </div>
         </div>
 
     </div>
 
-    <script>
-        
-       
-    </script>
     <!-- jquery Min JS -->
     <script src="./js/jquery.min.js"></script>
     <!-- jquery Migrate JS -->
