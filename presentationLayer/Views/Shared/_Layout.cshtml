@@ -140,10 +140,10 @@ var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
                                         <a href="#">@localizer["Pages"] <i class="icofont-rounded-down"></i></a>
                                         <ul class="dropdown">
                                             <li><a asp-controller="Patient" asp-action="Profile">@localizer["Patient Profile"]</a></li>
-                                            <li><a asp-controller="Appoinment" asp-action="DailyAppointment">@localizer["DailyAppointment"]</a></li> 
+                                            <li><a asp-controller="Appointment" asp-action="DailyAppointment">@localizer["DailyAppointment"]</a></li> 
                                             <li><a asp-controller="auth" asp-action="Register">@localizer["Registration"]</a></li>
                                             <li><a asp-controller="auth" asp-action="Login">@localizer["Log In"]</a></li>
-                                            <li><a asp-controller="Appoinment" asp-action="Creat">@localizer["CreatAppointment"]</a></li> 
+                                            <li><a asp-controller="Appointment" asp-action="Creat">@localizer["CreatAppointment"]</a></li> 
                                             <li><a asp-controller="Clinic" asp-action="ContactUs">@localizer["Contact Now"]</a></li>
                                             <li><a href="@Url.Action("Profile", "Clinic", new { layout = "Layout" })">@localizer["Clinic Profile"]</a></li>
                                         </ul>
@@ -162,7 +162,7 @@ var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
                     </div>
                     <div class="col-lg-2 col-12">
                         <div class="get-quote">
-                            <a asp-controller="Appoinment" asp-action="Creat" class="btn">@localizer["Book Appointment"]</a> <!--take him to appointment page -->
+                            <a asp-controller="Appointment" asp-action="Creat" class="btn">@localizer["Book Appointment"]</a> <!--take him to appointment page -->
                         </div>
                     </div>
                 </div>

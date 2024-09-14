@@ -6,10 +6,7 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\BusinessLogicLayer\BusinessLogicLayer.csproj" />
-    </ItemGroup>
-
+  
     <ItemGroup>
       <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.2.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />

@@ -1,0 +1,115 @@
+@model presentationLayer.Models.Appointment.ViewModel.GetAppointmentDetailsVM
+@inject IViewLocalizer localizer
+@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.Localization
+@{
+    Layout = "_AdminLayout";
+}
+
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@localizer["Delete Patient"]</title>
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="~/css/ShowAppointment.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="main-body">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src= "@Model.appointment.profilePhoto" alt="Admin"
+                                 class="rounded-circle p-1 bg-primary" width="110">
+                            <div class="mt-3">
+                                <h4>@Model.appointment.PatientName</h4>
+                                <p class="text-secondary mb-1">@Model.appointment.PatientContact</p>
+                                <p class="text-muted font-size-sm">@Model.appointment.PatientAdress</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">@localizer["Order"]</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" value ="@Model.appointment.Order" disabled>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">@localizer["AppointmentStatus"]</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" value="@Model.appointment.Status" disabled>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">@localizer["PatientStatus"]</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" value="@Model.appointment.PatientProgress" disabled>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">@localizer["Mobile"]</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" value="@Model.appointment.PatientContact" disabled>
+                            </div>
+                        </div>
+
+
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">@localizer["Address"]</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" value="@Model.appointment.PatientAdress" disabled>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <a class="btn btn-primary" href="Edit appointment.html">@localizer["Edit Appointement"]</a>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <a class="btn btn-primary" href="creat.html">@localizer["Create Prescription"]</a>
+                            </div>
+
+
+                            <div class="col-sm-3">
+                                <a class="btn btn-primary" href="Confirm_delete.html">@localizer["Delete Appointement"]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+                            
+                                                                 

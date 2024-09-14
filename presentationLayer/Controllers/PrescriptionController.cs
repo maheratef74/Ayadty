@@ -8,5 +8,9 @@ namespace presentationLayer.Controllers
         {
             return View();
         }
+        public IActionResult Show()
+        {
+            return View();
+        }
     }
 }

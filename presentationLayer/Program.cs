@@ -1,7 +1,9 @@
 using System.Globalization;
 using System.Resources;
 using Ayadty.Data;
+using BusinessLogicLayer.Services.Appointment;
 using DataAccessLayer.Entities;
+using DataAccessLayer.Repositories.Generic;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
@@ -31,8 +33,9 @@ public class Program
         #region Register service in container
 
         builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
-        
-
+        builder.Services.AddScoped<IAppointmentService, AppointmentService>();
+       // builder.Services.AddScoped<IGenericRepository<T>, GenericRepository<T>>();
+       // builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         #endregion
         
         // Add services to the container.

@@ -2,7 +2,7 @@
 @inject IViewLocalizer localizer
 @using System.Globalization
 @using Microsoft.AspNetCore.Mvc.Localization
-
+@model presentationLayer.Models.Appointment.ActionRequest.CreatAppointmentAR
 
 <!DOCTYPE html>
 
@@ -39,26 +39,26 @@
         </div>
         <div class="row">
             <div class="col-lg-6 col-md-12 col-12">
-                <form class="form" asp-controller="Appoinment" asp-action="Creat">
+                <form  id="appointmentForm" class="form" asp-controller="Appointment" asp-action="Creat" method="post">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-12">
                             <div class="form-group">
-                                <input name="name" type="text" placeholder="@localizer["Name"]">
+                                <input asp-for="PatientName" type="text" placeholder="@localizer["Name"]">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-12">
                             <div class="form-group">
-                                <input name="Phone" type="text" placeholder="@localizer["Enter your Phone Number"]">
+                                <input asp-for="Phone" type="text" placeholder="@localizer["Enter your Phone Number"]">
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-12">
+                       @*<div class="col-lg-6 col-md-6 col-12">
                             <div class="form-group">
                                 <input type="text" placeholder="@localizer["Date"]" id="datepicker">
                             </div>
-                        </div>
+                        </div>*@
                         <div class="col-lg-12 col-md-12 col-12">
                             <div class="form-group">
-                                <textarea name="message" placeholder="@localizer["Write Your Message Here....."]" style="height: 100px;"></textarea>
+                                <textarea asp-for="Note" placeholder="@localizer["Write Your Message Here....."]" style="height: 100px;"></textarea>
                             </div>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                         <div class="col-lg-5 col-md-4 col-12">
                             <div class="form-group">
                                 <div class="button">
-                                    <button type="submit" class="btn">@localizer["Book An Appointment"]</button>
+                                    <button id="submitButton" type="submit" class="btn">@localizer["Book An Appointment"]</button>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +121,7 @@
                                 <!-- <span>@localizer["Fusce Porttitor"]</span> -->
                                 <h4>@localizer["Doctor Timetable"]</h4>  <!-- it wiil Rdirect him to appointement of the day -->
                                 <p>@localizer["It is Timetable for Today Appointment"]</p>
-                                <a asp-controller="Appoinment" asp-action="DailyAppointment"> @localizer["LEARN MORE"]<i class="fa fa-long-arrow-right"></i></a>
+                                <a asp-controller="Appointment" asp-action="DailyAppointment"> @localizer["LEARN MORE"]<i class="fa fa-long-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -148,6 +148,12 @@
         </div>
     </div>
 </section>
+<script>
+    document.getElementById('appointmentForm').addEventListener('submit', function() {
+        // Disable the submit button to prevent multiple submissions
+        document.getElementById('submitButton').disabled = true;
+    });
+</script>
 <!--/End Start Schedule Area -->
 
 <!-- For Lyout -->

@@ -64,4 +64,8 @@
       <_ContentIncludedByDefault Remove="Pages\GetAppoinment\GetAppoinment.cshtml" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Models\DashBoard\ActionRequest\" />
+    </ItemGroup>
+
 </Project>

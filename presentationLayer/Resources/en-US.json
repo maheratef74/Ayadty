@@ -379,7 +379,6 @@
   "Add patient": "Add patient",
   "Edit Patient": "Edit patient",
   "Delete Patient": "Delete patient",
-  "Order": "Order",
   "Choose Status": "Choose Status",
   "button": "Delete Patient",
   "DailyAppointment": "Daily Appointment",
@@ -394,8 +393,9 @@
   "Change Photo": "Change Photo",
   "new password": "new password",
   "old password": "old password",
-
-
+  
+  "User" : "User",
+  "Scheduled": "Scheduled",
 
 
 
@@ -450,5 +450,18 @@
   "+ Add More": "+ Add More",
   "Age": "Age",
   "Phone:": " Phone:",
-  "Enter phone number": "Enter phone number"
+  "Enter phone number": "Enter phone number",
+
+  "AppointmentStatus" :   "Appointment Status",
+  "PatientStatus": "Patient Status",
+
+  "Order":  "Order",
+  
+  "Scheduled" : "Scheduled",
+  "Canceled": "Canceled",
+  "Completed": "Completed",
+
+  "InHome": "In Home",
+  "InMyWayToClinic" : "In My Way To Clinic",
+  "InClinic": "In Clinic"
 }
