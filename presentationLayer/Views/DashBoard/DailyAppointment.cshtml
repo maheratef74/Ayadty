@@ -33,38 +33,34 @@
                         <table class="table user-list">
                             <thead>
                             <tr>
-                                <th><span>@localizer["Order"]</span></th>
-                                <th><span>@localizer["User"]</span></th>
-                                <th><span>@localizer["Date"]</span></th>
-                                <th><span>@localizer["Time"]</span></th>
+                                <th class = "text-center"><span>@localizer["Order"]</span></th>
+                                <th class = "text-center"><span>@localizer["User"]</span></th>
+                                <th class = "text-center"><span>@localizer["Date"]</span></th>
+                                <th class="text-center" ><span>@localizer["Time"]</span></th>
                                 <th class="text-center"><span>@localizer["AppointmentStatus"]</span></th>
                                 <th class="text-center"><span>@localizer["PatientStatus"]</span></th>
-                                <th><span>@localizer["Phone Number"]</span></th>
-                                <th>&nbsp;</th>
+                                <th class="text-center"><span>@localizer["Phone Number"]</span></th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach (var appointment in Model.appointments)
                             {
-                                <tr data-id="@appointment.AppointmentId" class="appointment-row">
-                                    <td>1</td>
-                                    <td>
-                                        <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
+                                <tr class="appointment-row" onclick="window.location.href='@Url.Action("Details", "Appointment", new { appointedId = appointment.AppointmentId })'">
+                                    <td class = "text-center"> @appointment.Order</td>
+                                    <td  class = "text-center" >
                                         <a class="user-link" target="__blank" asp-controller="Patient" asp-action="Profile">@appointment.PatientName</a>
-
                                     </td>
-                                    <td>@appointment.Date.ToString("yyyy-MM-dd")</td> 
-                                    <td>@appointment.Date.ToString("hh:mm tt")</td> <!-- Time in 12-hour format with AM/PM -->
+                                    <td class = "text-center">@appointment.Date.ToString("yyyy-MM-dd")</td>
+                                    <td class = "text-center">@appointment.Date.ToString("hh:mm tt")</td> <!-- Time in 12-hour format with AM/PM -->
                                     <td class="text-center">
                                         <span class="label label-default">@localizer[@appointment.Status.ToString()]</span>
                                     </td>
                                     <td class="text-center">
                                         <span class="label label-default">@localizer[@appointment.PatientProgress.ToString()]</span>
                                     </td>
-                                    <td>
+                                    <td class = "text-center">
                                         <a href="#">@appointment.PatientContact</a>
                                     </td>
-
                                 </tr>
                             }
                             </tbody>
@@ -75,17 +71,7 @@
         </div>
     </div>
 </div>
-<script>
-    var appointmentDetailsUrl = '@Url.Action("Show", "Appointment")';
-    document.querySelectorAll('.appointment-row').forEach(row => {
-        row.addEventListener('click', function() {
-            var appointmentId = this.getAttribute('data-id');
-            if (appointmentId) {
-                window.location.href = `${appointmentDetailsUrl}/${appointmentId}`;
-            }
-        });
-    });
-</script>
+
 </Body>
 
 </html>

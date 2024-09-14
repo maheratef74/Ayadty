@@ -1,6 +1,5 @@
 using BusinessLogicLayer.Services.Appointment;
 using Microsoft.AspNetCore.Mvc;
-using presentationLayer.Models.Appointment.ActionRequest;
 using presentationLayer.Models.Appointment.ViewModel;
 
 namespace presentationLayer.Controllers;
@@ -29,7 +28,8 @@ public class AppointmentController : Controller
         }
         return View(request);
     }
-    public async Task<IActionResult> Show(int appointedId)
+    [HttpGet]
+    public async Task<IActionResult> Details(int appointedId )
     {
         var appointment = await _appointmentService.GetAppointmentByID(appointedId);
         var appointmentVM = new GetAppointmentDetailsVM()

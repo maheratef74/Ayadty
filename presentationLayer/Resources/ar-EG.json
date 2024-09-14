@@ -479,5 +479,11 @@
   
   "InHome": "في المنزل",
   "InMyWayToClinic" : "في طريقي للعياده",
-  "InClinic": "في العياده"
+  "InClinic": "في العياده",
+  
+  "Edit Appointment" : "تعديل الحجز",
+  "Create Prescription" : "كتابه روشته",
+  "Delete Appointment": "حذف الحجز",
+  
+  "Adress" : "العنوان"
 }

@@ -4,7 +4,6 @@ public class AppointmentDetailsDto
 {
     public int AppointmentId { get; set; }
     public int PatientId{ get; set; }
-    
     public string? profilePhoto { get; set; }
     public string PatientContact { get; set; }
     public DateTime Date { get; set; }

@@ -28,7 +28,7 @@ public class AppointmentRepository:IAppointmentRepository
         var dayAppointments = await _appDbContext.Appointments
             .Include(a => a.Patient)
             .Where(a => a.Date.Date == date)
-            .OrderByDescending(a => a.Order)
+            .OrderBy(a => a.Order)
             .ToListAsync();
 
         return dayAppointments;
@@ -119,7 +119,7 @@ public class AppointmentRepository:IAppointmentRepository
             appointment.Status = Enums.AppointmentStatus.Canceled;
         }
     }
-    public async Task<Appointment> GetAppointmentByIdIncludingPatient(int id)
+    public async Task<Appointment?> GetAppointmentByIdIncludingPatient(int id)
     {
         var appointment = await _appDbContext.Appointments
             .Include(a => a.Patient)  // Eager load the Patient related to the Appointment

@@ -463,5 +463,10 @@
 
   "InHome": "In Home",
   "InMyWayToClinic" : "In My Way To Clinic",
-  "InClinic": "In Clinic"
+  "InClinic": "In Clinic",
+
+  "Edit Appointment" : "Edit Appointement",
+  "Create Prescription" : "Create Prescription",
+  "Delete Appointment" : "Delete Appointement",
+  "Adress":  "Adress"
 }
