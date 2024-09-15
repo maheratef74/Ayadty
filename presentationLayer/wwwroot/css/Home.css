@@ -4156,6 +4156,21 @@ html[lang="ar"] .top-link li {
 	flex-direction: column; /* Aligns items in a column */
 	text-align: center; /* Centers text */
 }
+.top-link {
+	display: flex;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.top-link li {
+	margin-right: 20px; /* Adjust spacing as needed */
+}
+
+
+
+	/* Add styles for mobile navigation menu if needed */
+}
 
 /*=========================
 	End Footer CSS

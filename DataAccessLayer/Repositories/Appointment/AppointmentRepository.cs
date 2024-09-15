@@ -53,16 +53,6 @@ public class AppointmentRepository:IAppointmentRepository
     
         return maxOrder ?? 0;
     }
-
-    public async Task<int> GetMaxOrder()
-    {
-        var today = DateTime.Today;
-        var maxOrder = _appDbContext.Appointments
-            .Where(Appointment => Appointment.Date == today)
-            .MaxAsync(Appointment => Appointment.Order);
-        
-        return await maxOrder;
-    }
     public async Task<bool> IsAvaliable(int doctorId)
     {
         var doctor = await _appDbContext.Doctor

@@ -13,5 +13,5 @@ public class AppointmentDetailsDto
     public Enums.AppointmentStatus Status { get; set; }
     public Services.Appointment.PatientProgress PatientProgress { get; set; }
     public int Order { get; set; } 
-    public string Note { get; set; }
+    public string? Note { get; set; }
 }

@@ -36,14 +36,14 @@ var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
 
     <!-- Custom styles for this template-->
     <link href="~/css/sb-admin-2.min.css" rel="stylesheet">
-
+    <link href="~/css/dashBoard.css" rel="stylesheet">
 </head>
  
 <body id="page-top">
 
 
 <!-- Page Wrapper -->
-<div id="wrapper" dir="auto" >
+<div id="wrapper" dir = "@(isRTL ? "rtl" : "ltr")" >
 
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar"  >
@@ -60,13 +60,13 @@ var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
         <hr class="sidebar-divider my-0">
         
         <!-- Heading -->
-        <div class="sidebar-heading">
+        <div class="sidebar-heading" id = "dis1">
             @localizer["UserPages"]
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item" lang="ar">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+            <a class="nav-link collapsed" id="dis" href="#" data-toggle="collapse" data-target="#collapsePages"
                aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-folder"></i>
                 <span> @localizer["UserPages"]</span>
@@ -90,13 +90,13 @@ var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
         <hr class="sidebar-divider">
 
         <!-- Heading -->
-        <div class="sidebar-heading">
+        <div class="sidebar-heading" id = "dis2">
             @localizer["DoctorPages"]
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item" >
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            <a class="nav-link collapsed" id = "dis3" href="#" data-toggle="collapse" data-target="#collapseTwo"
                aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-cog"></i>
                 <span> @localizer["DoctorPages"]</span>
@@ -118,7 +118,7 @@ var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-            <a class="nav-link" asp-controller="DashBoard" asp-action="Index">
+            <a class="nav-link" asp-controller="DashBoard" asp-action="Index" id = "dis4">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>@localizer["Charts"]</span></a>
         </li>
@@ -126,7 +126,7 @@ var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
         <hr class="sidebar-divider d-none d-md-block">
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-            <a class="nav-link" >
+            <a class="nav-link" id = "dis5">
                 <i class="fas fa-fw fa-table"></i>
                 <span>@localizer["Charts"]</span></a>
         </li>
@@ -413,6 +413,10 @@ var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
 <!-- Main JS -->
 <script src="~/js/main.js"></script>
 <!-- For Lyout -->
+
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     </body>
 
 </html>

@@ -10,6 +10,8 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+
 :root {
   --blue: #4e73df;
   --indigo: #6610f2;
@@ -10546,7 +10548,7 @@ a:focus {
     font-size: 0.85rem;
     display: inline;
   }
-  .sidebar .nav-item .nav-link[data-toggle="collapse"]::after {
+/*  .sidebar .nav-item .nav-link[data-toggle="collapse"]::after {
     width: 1rem;
     text-align: center;
     float: right;
@@ -10558,7 +10560,7 @@ a:focus {
   }
   .sidebar .nav-item .nav-link[data-toggle="collapse"].collapsed::after {
     content: '\f105';
-  }
+  }*/
   .sidebar .sidebar-brand .sidebar-brand-icon i {
     font-size: 2rem;
   }
@@ -11278,4 +11280,7 @@ footer.sticky-footer .copyright {
 
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
+}
+.sidebar .nav-item .nav-link[data-toggle=collapse].collapsed::after {
+  content: "" !important;
 }

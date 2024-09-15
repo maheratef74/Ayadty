@@ -1,0 +1,14 @@
+#dis::after , #dis3::after{
+    content: "" !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+#dis , #dis1 , #dis2 , #dis3 , #dis4 , #dis5{
+    text-align: inherit;
+}
+#wrapper[dir="rtl"]{
+    text-align: right;
+}
+#wrapper[dir="ltr"]{
+    text-align: left;
+}

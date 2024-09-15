@@ -468,5 +468,8 @@
   "Edit Appointment" : "Edit Appointement",
   "Create Prescription" : "Create Prescription",
   "Delete Appointment" : "Delete Appointement",
-  "Adress":  "Adress"
+  "Adress":  "Adress",
+
+  "man" : "man",
+  "female": "female"
 }

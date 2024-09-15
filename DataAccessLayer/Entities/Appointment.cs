@@ -13,8 +13,7 @@ public class Appointment
     public Enums.PatientProgress PatientProgress { get; set; }
     [ForeignKey("Patient")]
     public int PatientId { get; set; } // Foreign Key
-    public Patient Patient { get; set; } // Navigation property
-    
+    public Patient Patient { get; set; } // Navigation proper
     public int Order { get; set; } 
-    public string Note { get; set; }
+    public string? Note { get; set; }
 }

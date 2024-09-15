@@ -18,5 +18,5 @@ public interface IAppointmentRepository
     Task<bool> IsAvaliable(int doctorId);  // to show is he avalible for patient to make appointment 
     Task Cancel(int id);  // cancel will change stauts to canceled 
     Task SaveChanges();
-    Task<Appointment> GetAppointmentByIdIncludingPatient(int id);
+    Task<Appointment> GetAppointmentByIdIncludingPatient(int id); // egir loading 
 }

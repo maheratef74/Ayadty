@@ -6,6 +6,7 @@ using presentationLayer.Controllers;
 
 public class CreatAppointmentAR
 {
+    [Required(ErrorMessage = "Patient name is required")]
     public string PatientName { get; set; }
     public string Phone { get; set; }
     public string? Note { get; set; }
