@@ -23,11 +23,9 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="@localizer["Admin"]" class="rounded-circle" width="150">
+                            <img src="~/img/@Model.ProfilePhoto" alt="ProfilePhoto" class="rounded-circle" width="150">
                             <div class="mt-3">
                                 <h4>@Model.Name</h4>
-                                @*<p class="text-secondary mb-1">@localizer["Full Stack Developer"]</p>
-                                <p class="text-muted font-size-sm">@localizer["Bay Area, San Francisco, CA"]</p>*@
                             </div>
                         </div>
                     </div>
@@ -36,7 +34,7 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                             <h6 class="mb-0">
-                                <a href="https://www.facebook.com/profile.php?id=100009707350577" target="_blank" class="text-primary">
+                                <a href="@Model.FacbookProfile" target="_blank" class="text-primary">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook mr-2 icon-inline text-primary">
                                         <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                                     </svg>
@@ -92,10 +90,25 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
+                                <h6 class="mb-0">@localizer["age"]</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                @{
+                                    var today = DateTime.Today;
+                                    var age = today.Year - @Model.DateOfBirth.Year;
+
+                                    if (@Model.DateOfBirth.Date > today.AddYears(-age)) age--;
+                                }
+                                @age
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
                                 <h6 class="mb-0">@localizer["Gender"]</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                @localizer[@Model.Gender.ToString()];
+                                @localizer[@Model.Gender.ToString()]
                             </div>
                         </div>
                         <hr>
@@ -110,7 +123,7 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-12">
-                                <a class="btn btn-info" target="__blank" href="P_Edit.html">@localizer["Edit"]</a>
+                                <a class="btn btn-info" target="__blank" asp-controller="Patient" asp-action="Update">@localizer["Edit"]</a>
                             </div>
                         </div>
                     </div>

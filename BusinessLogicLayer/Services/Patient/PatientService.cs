@@ -14,7 +14,7 @@ public class PatientService : IPatientService
         _patientRepository = patientRepository;
     }
 
-    public async Task<PatientDetailsDto?> GetPatientById(int Id)
+    public async Task<PatientDetailsDto?> GetPatientById(int id)
     {
         var _patient = await _patientRepository.GetById(4);
         var PatientDto = new PatientDetailsDto()

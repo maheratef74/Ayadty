@@ -8,8 +8,8 @@ public class Treatment
     [Key]
     public int TreatmentId { get; set; }
     public string Name { get; set; }
-    public string Details { get; set; }
-    public string Note { get; set; }
+    public string? Dosage { get; set; }
+    public string? Note { get; set; }
     [ForeignKey("Prescription")]
     public int PrescriptionId { set; get; } // fk from prescription table 
 }

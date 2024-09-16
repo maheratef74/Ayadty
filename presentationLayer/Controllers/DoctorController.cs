@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLogicLayer.DTOs.Prescription;
+using Microsoft.AspNetCore.Mvc;
 
 namespace presentationLayer.Controllers
 {
@@ -10,12 +11,64 @@ namespace presentationLayer.Controllers
         {
             return View();
         }
-        
+        [HttpPost]
+        public IActionResult Edit_oppning_days(PrescriptionDetailsDto prescriptionDetailsDto)
+        {
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            return View();
+        }
         [HttpGet]
         public IActionResult profile()
         {
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             return View();
         }
+
         public IActionResult Update()
         {
             return View();

@@ -3,9 +3,12 @@ using System.Resources;
 using Ayadty.Data;
 using BusinessLogicLayer.Services.Appointment;
 using BusinessLogicLayer.Services.Patient;
+using BusinessLogicLayer.Services.Prescription;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories.Generic;
 using DataAccessLayer.Repositories.Patient;
+using DataAccessLayer.Repositories.Prescription;
+using DataAccessLayer.Repositories.Treatment;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
@@ -38,7 +41,9 @@ public class Program
         builder.Services.AddScoped<IAppointmentService, AppointmentService>();
         builder.Services.AddScoped<IPatientRepository, PatientRepository>();
         builder.Services.AddScoped<IPatientService, PatientService>();
-        
+        builder.Services.AddScoped<IPrescriptionRepository, PrescriptionRepository>();
+        builder.Services.AddScoped<IPrescriptionService, PrescriptionService>();
+        builder.Services.AddScoped<ITreatmentRepository, TreatmentRepository>();
        // builder.Services.AddScoped<IGenericRepository<T>, GenericRepository<T>>();
        // builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         #endregion

@@ -443,16 +443,16 @@
   "Dr. Hamed Amr": "د. حامد عمرو",
   "Eye Surgeon": "جراح عيون",
   "Al-Azhar University": "جامعة الأزهر",
-  "Patient Name:": ": اسم المريض",
+  "Patient Name:": "اسم المريض :",
   "Enter patient's name": "أدخل اسم المريض",
-  "Age:": ": العمر",
-  "Date:": ": التاريخ",
+  "Age:": "العمر :",
+  "Date:": "التاريخ :",
   "Prescription": "الوصفة الطبية",
-  "Medicine Name:": ": الدواء",
+  "Medicine Name:": "الدواء :",
   "Enter medicine name": "أدخل اسم الدواء",
-  "Dosage Frequency:": ": جرعة الدواء",
+  "Dosage Frequency:": "جرعة الدواء :",
   "Enter dosage frequency": "أدخل جرعة الدواء",
-  "Notes:": ": ملاحظات",
+  "Notes:": "ملاحظات :",
   "Enter any notes": "أدخل أي ملاحظات",
   "General Notes": "ملاحظات عامة",
   "Write general notes here...": "اكتب الملاحظات العامة هنا...",
@@ -461,9 +461,9 @@
   "Clinic Hours: Saturday, Monday": "أوقات العيادة: السبت، الاثنين",
   "For Appointments: 01022381205": "للحجز: 01022381205",
   "Remove": "حذف الدواء",
-  "+ Add More": "+ اضافة المزيد",
+  "+ Add More": "اضافة المزيد +",
   "Age": "ادخل العمر",
-  "Phone:": ": رقم الموبايل",
+  "Phone:": "رقم الموبايل :",
 
   "Enter phone number": "ادخل الرقم",
 
@@ -488,5 +488,6 @@
   "Adress" : "العنوان",
   
   "man" : "رجل",
-  "female": "سيده"
+  "female": "انثي",
+  "age" : "السن"
 }

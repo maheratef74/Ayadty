@@ -13,7 +13,5 @@ public class Clinic
     public string? Email { get; set; }
     public string? ProfilePhoto { get; set; } 
     public List<WorkDay> DaysOfWork { get; set; } 
-    
-    public List<Prescription> Prescriptions { get; set; } // One-to-Many
 }
 // it will be one clinic but set it her to add update to days of work 
