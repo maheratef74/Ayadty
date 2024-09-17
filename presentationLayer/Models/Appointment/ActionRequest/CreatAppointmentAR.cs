@@ -6,11 +6,11 @@ using presentationLayer.Controllers;
 
 public class CreatAppointmentAR
 {
-    [Required(ErrorMessage = "Patient name is required")]
+    [Required(ErrorMessage = "NameRequired")]
     public string PatientName { get; set; }
     public string Phone { get; set; }
     public string? Note { get; set; }
-
+   
     public CreatAppointmentDto ToDto()
     {
         return new CreatAppointmentDto

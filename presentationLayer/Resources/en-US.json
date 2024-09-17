@@ -472,5 +472,7 @@
 
   "man" : "man",
   "female": "female",
-  "age" : "Age"
+  "age" : "Age",
+
+  "NameRequired" : "Patient Name is Required"
 }
