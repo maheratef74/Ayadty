@@ -1,9 +1,13 @@
 using BusinessLogicLayer.DTOs.Appointment;
+using BusinessLogicLayer.DTOs.Patient;
+using BusinessLogicLayer.DTOs.Prescription;
 using BusinessLogicLayer.DTOs.Ptient;
+using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories.Patient;
 using Microsoft.VisualBasic;
 
 namespace BusinessLogicLayer.Services.Patient;
+
 
 public class PatientService : IPatientService
 {
@@ -31,4 +35,22 @@ public class PatientService : IPatientService
         };
         return PatientDto;
     }
+    public async Task AddPatient(AddPatientDto addPatientDto)
+    {
+        var Patient = new DataAccessLayer.Entities.Patient()
+        {
+            Name = addPatientDto.Name,
+            PhoneNumber = addPatientDto.PhoneNumber,
+            Address = addPatientDto.Address,
+            DateOfBirth = (DateTime)addPatientDto.DateOfBirth,
+            Password = addPatientDto.Password,
+            Gender = addPatientDto.Gender
+
+        };
+        await _patientRepository.Add(Patient);
+        await _patientRepository.SaveChanges();
+        
+    }
+
+    
 }

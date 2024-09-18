@@ -16,4 +16,13 @@ public class PatientRepository:IPatientRepository
 
         return patient;
     }
+    public async Task Add(Patient patient)
+    {
+        await _appDbContext.Patients.AddAsync(patient);
+    }
+    public async Task SaveChanges()
+    {
+        await _appDbContext.SaveChangesAsync();
+    }
+    
 }

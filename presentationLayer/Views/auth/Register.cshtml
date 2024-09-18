@@ -1,35 +1,37 @@
-﻿@{
+﻿@* @{
   Layout = null;
-}
+} *@
 @inject IViewLocalizer localizer
 @using System.Globalization
 @using Microsoft.AspNetCore.Mvc.Localization
+@using presentationLayer.Models.Patient
+@model presentationLayer.Models.Patient.ActionRequst.PatientAR
 
-@{
+
+@* @{
     var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
 }
-
+ *@
 @using Microsoft.AspNetCore.Builder
 @using Microsoft.AspNetCore.Localization
 @using Microsoft.AspNetCore.Http.Features;
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.Extensions.Options
+@using presentationLayer.Models.Patient.ActionRequst
 
 @inject IOptions<RequestLocalizationOptions> options
 
-@{
+@* @* {
     var requestCulture = Context.Features.Get<IRequestCultureFeature>();
-    var cultureItems = options.Value.SupportedUICultures
+    var cultureItems = options?.Value?.SupportedUICultures?
         .Select(c => new SelectListItem { Value = c.Name, Text = c.NativeName })
         .ToList();
-    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
-}
-
-
+        var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+} *@ 
 
 <!DOCTYPE html>
 
-<html lang="ar" dir="@(isRTL ? "RTL" : "LTR")">
+<html lang="ar">
 
 <head>
     <meta charset="UTF-8">
@@ -40,90 +42,90 @@
 
 <body>
     <header>
-        <form asp-controller="Localization" asp-action="SetLanguage" asp-route-returnUrl="@returnUrl" method="post">
+        @* <form asp-controller="Localization" asp-action="SetLanguage" asp-route-returnUrl="@returnUrl" method="post">
             <select name="culture" onchange="this.form.submit();" asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureItems">
             </select>
-        </form>
+        </form> *@
         </header>
     
+        <form asp-controller="auth" asp-action="Register" method="post">
+        <div class="container">
+            <div class="title">@localizer["Registration"] </div>
+            <div class="content">
+                <form action="#" class="form">
+                    <div class="user-details">
+                        <div class="input-box">
+                            <span class="details">@localizer["Full Name"]</span>
+                            <input  asp-for="@Model.Name" type="text" placeholder="@localizer["Enter your Name"] required
+>
 
-    <div class="container">
-        <div class="title">@localizer["Registration"] </div>
-        <div class="content">
-            <form action="#" class="form">
-                <div class="user-details">
+                        </div>
+
+                        <div class="input-box">
+                            <span class="details">@localizer["Phone Number"]</span>
+                            <input asp-for="@Model.PhoneNumber" type="text" placeholder="@Model.PhoneNumber" required>
+                        </div>
+
+
+                        <div class="input-box">
+                            <span class="details">@localizer["Address"]</span>
+                            <input asp-for="@Model.Address" type="text" placeholder="@Model.Address" required>
+                        </div>
 
 
 
 
+                        <div class="input-box">
+                            <label for="datepicker">@localizer["Date of Birth"]</label>
+                            <input asp-for="@Model.DateOfBirth" type="date" id="datepicker" name="dob" class="form-control" required>
+                        </div>
+
+                        <div class="input-box" id="password">
+                            <span class="details">@localizer["Password"]</span>
+                            <input asp-for ="@Model.Password" type="password" placeholder="@Model.Password" required id="passwordField">
+                            <span class="eye-icon" onclick="togglePasswordVisibility('passwordField', this)">👁</span>
+                        </div>
+
+                        <div class="input-box" id="confirmPassword">
+                            <span class="details">@localizer["Confirm Password"]</span>
+                            <input asp-for="@Model.ConfitmPassword" type="password" placeholder="@Model.Password" required id="confirmPasswordField">
+                            <span class="eye-icon" onclick="togglePasswordVisibility('confirmPasswordField', this)">👁</span>
+                        </div>
+                    </div>
                     <div class="input-box">
-                        <span class="details">@localizer["Full Name"]</span>
-                        <input type="text" placeholder="@localizer["Enter your name"]" required>
+                        <label for="gender" class="details">@localizer["Gender"]</label>
+                        <br>
+                        <select name="gender" id="gender">
+                            <option value="" disabled selected>@Model.Gender</option>
+                            <option value="male">@localizer["Male"]</option>
+                            <option value="female">@localizer["Female"]</option>
+                        </select>
                     </div>
 
-                    <div class="input-box">
-                        <span class="details">@localizer["Phone Number"]</span>
-                        <input type="text"  placeholder="@localizer["Enter your number"]" required>
+                    <div id="passwordError" class="error"></div>
+
+
+
+
+
+                    <div class="button">
+                        <input id="registrationButton" type="submit" value="@localizer["Register"]">
                     </div>
 
-
-                    <div class="input-box">
-                        <span class="details">@localizer["Address"]</span>
-                        <input type="text" placeholder="@localizer["Enter your address"]" required>
+                    <div class="have_account">
+                        <label for="">
+                            <span>
+                                @localizer["You have an account already"] <a class="a" asp-controller="auth" asp-action="Login">
+                                    @localizer["Log In"]
+                                </a>
+                            </span>
+                        </label>
                     </div>
-
-           
-
-
-                    <div class="input-box">
-                        <label for="datepicker">@localizer["Date of Birth"]</label>
-                        <input type="date" id="datepicker" name="dob" class="form-control" required>
-                    </div>
-
-                    <div class="input-box" id="password">
-                        <span class="details">@localizer["Password"]</span>
-                        <input type="password" placeholder="@localizer["Enter your password"]" required id="passwordField">
-                        <span class="eye-icon" onclick="togglePasswordVisibility('passwordField', this)">👁</span>
-                    </div>
-
-                    <div class="input-box" id="confirmPassword">
-                        <span class="details">@localizer["Confirm Password"]</span>
-                        <input type="password" placeholder="@localizer["Confirm your password"]" required id="confirmPasswordField">
-                        <span class="eye-icon" onclick="togglePasswordVisibility('confirmPasswordField', this)">👁</span>
-                    </div>
-                </div>
-                <div class="input-box">
-                    <label for="gender" class="details">@localizer["Gender"]</label>
-                    <br>
-                    <select name="gender" id="gender">
-                        <option value="" disabled selected>@localizer["Select your gender"]</option>
-                        <option value="male">@localizer["Male"]</option>
-                        <option value="female">@localizer["Female"]</option>
-                    </select>
-                </div>
-
-                <div id="passwordError" class="error"></div>
-
-
-
-                
-
-                <div class="button">
-                    <input id="registrationButton" type="submit" value="@localizer["Register"]">
-                </div>
-
-                <div class="have_account">
-                    <label for="">
-                        <span>
-                            @localizer["You have an account already"] <a class="a" asp-controller="auth" asp-action="Login">
-                                @localizer["Log In"]
-                            </a>
-                        </span>
-                    </label>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
+        </form>
+    
 
     <script>
         function togglePasswordVisibility(fieldId, icon) {
