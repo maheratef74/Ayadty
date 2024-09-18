@@ -40,25 +40,28 @@ public class Program
 
         builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
         builder.Services.AddScoped<IAppointmentService, AppointmentService>();
+        
         builder.Services.AddScoped<IPatientRepository, PatientRepository>();
         builder.Services.AddScoped<IPatientService, PatientService>();
+        
         builder.Services.AddScoped<IPrescriptionRepository, PrescriptionRepository>();
         builder.Services.AddScoped<IPrescriptionService, PrescriptionService>();
+        
         builder.Services.AddScoped<ITreatmentRepository, TreatmentRepository>();
        // builder.Services.AddScoped<IGenericRepository<T>, GenericRepository<T>>();
        // builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         #endregion
 
         #region Add Identity services
-        builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+        builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
               //  options.Password.RequireDigit = true;
-                options.Password.RequiredLength = 6;
+                  options.Password.RequiredLength = 6;
             //    options.Password.RequireNonAlphanumeric = false;
             //    options.Password.RequireUppercase = true;
             })
             .AddEntityFrameworkStores<AppDbContext>()  
-            .AddDefaultTokenProviders();  // Optional: Add token providers if you need them (e.g., for password resets)
+            .AddDefaultTokenProviders();  
         #endregion 
              
         

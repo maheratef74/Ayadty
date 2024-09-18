@@ -19,7 +19,7 @@ public class PatientService : IPatientService
         var _patient = await _patientRepository.GetById(4);
         var PatientDto = new PatientDetailsDto()
         {
-            PatientId = _patient.PatientId,
+            PatientId = _patient.Id,
             Name = _patient.Name,
             PhoneNumber = _patient.PhoneNumber,
             ProfilePhoto = _patient.ProfilePhoto,

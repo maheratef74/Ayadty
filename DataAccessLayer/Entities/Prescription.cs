@@ -8,8 +8,8 @@ namespace DataAccessLayer.Entities
         [Key]
         public int PrescriptionId { get; set; } // Primary Key
         
-        [ForeignKey("Patient")]
-        public int PatientId { get; set; }// Foreign Key
+        [ForeignKey("Users")]
+        public int UserId { get; set; }// Foreign Key
         public Patient Patient { get; set; }// Navigation property
         public string PatientName { get; set; } 
         public string patientAge { get; set; }

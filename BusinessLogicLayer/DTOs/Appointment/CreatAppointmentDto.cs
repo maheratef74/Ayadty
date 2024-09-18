@@ -30,7 +30,7 @@ public static class CreatAppointmentDtoExtensions
     {
         return new Appointment
         {
-            PatientId = 2,
+            UserId = 2,
             Date = dto.Date,
             PatientName = dto.PatientName,
             Status = dto.Status,
