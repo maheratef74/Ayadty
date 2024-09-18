@@ -12,12 +12,14 @@
     var cultureItems = options.Value.SupportedUICultures
         .Select(c => new SelectListItem { Value = c.Name, Text = c.NativeName })
         .ToList();
-    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+    
+    // Preserve both the path and the query string for returnUrl
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) 
+        ? "~/" 
+        : $"~{Context.Request.Path.Value}{Context.Request.QueryString}";
 }
 
-
-    <form asp-controller="Localization" asp-action="SetLanguage" asp-route-returnUrl="@returnUrl" method="post">
-        <select name="culture" onchange="this.form.submit();"  asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureItems">
-        </select>
-    </form>
-
+<form asp-controller="Localization" asp-action="SetLanguage" asp-route-returnUrl="@returnUrl" method="post">
+    <select name="culture" onchange="this.form.submit();" asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureItems">
+    </select>
+</form>

@@ -9,6 +9,7 @@ using DataAccessLayer.Repositories.Generic;
 using DataAccessLayer.Repositories.Patient;
 using DataAccessLayer.Repositories.Prescription;
 using DataAccessLayer.Repositories.Treatment;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
@@ -47,8 +48,19 @@ public class Program
        // builder.Services.AddScoped<IGenericRepository<T>, GenericRepository<T>>();
        // builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         #endregion
-        
-        // Add services to the container.
+
+        #region Add Identity services
+        builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+              //  options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 6;
+            //    options.Password.RequireNonAlphanumeric = false;
+            //    options.Password.RequireUppercase = true;
+            })
+            .AddEntityFrameworkStores<AppDbContext>()  
+            .AddDefaultTokenProviders();  // Optional: Add token providers if you need them (e.g., for password resets)
+        #endregion 
+             
         
         #region localization
 
@@ -100,6 +112,7 @@ public class Program
         app.UseRequestLocalization(localizationOptions);
         #endregion
         
+        app.UseAuthentication();  
         app.UseAuthorization();
      // app.useRequestCulture(); //  if you donnot need to start app with arabic
                                   // and need to start with browser lang of user
