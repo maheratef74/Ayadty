@@ -491,5 +491,14 @@
   "female": "انثي",
   "age" : "السن",
   
-  "NameRequired" : "اسم المريض مطلوب"
+  "NameRequired" : "اسم المريض مطلوب",
+
+  "PasswardRequired" : "يجب ان تكون كلمه السر مكونه من 6 احرف",
+  "GenderRequired" : "يجب تحديد النوع",
+  "DateOfBirthRequired" : "تحديد تاريخ الميلاد مطلوب",
+  "AddressRequired" : "العنوان مطلوب",
+  
+
+  "PhoneNumberInvalid" : "رقم الموبيل غير صحيح",
+  "Remember Me": "تذكرني" 
 }

@@ -14,14 +14,16 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using presentationLayer.Controllers;
 using presentationLayer.Middlewares;
+using presentationLayer.Validation;
 
 
 namespace presentationLayer;
 
 public class Program
 {
-    public static void Main(string[] args)
+    public static  async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
 
@@ -48,6 +50,10 @@ public class Program
         builder.Services.AddScoped<IPrescriptionService, PrescriptionService>();
         
         builder.Services.AddScoped<ITreatmentRepository, TreatmentRepository>();
+        
+        builder.Services.AddScoped<RoleSeeder>();
+        
+
        // builder.Services.AddScoped<IGenericRepository<T>, GenericRepository<T>>();
        // builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         #endregion
@@ -55,10 +61,12 @@ public class Program
         #region Add Identity services
         builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
-              //  options.Password.RequireDigit = true;
-                  options.Password.RequiredLength = 6;
-            //    options.Password.RequireNonAlphanumeric = false;
-            //    options.Password.RequireUppercase = true;
+                options.Password.RequireDigit = false;            // No digit required
+                options.Password.RequiredLength = 6;              // Minimum length of 6
+                options.Password.RequireNonAlphanumeric = false;  // No special character required
+                options.Password.RequireUppercase = false;        // No uppercase letter required
+                options.Password.RequireLowercase = false;        // No lowercase letter required
+                options.Password.RequiredUniqueChars = 1;
             })
             .AddEntityFrameworkStores<AppDbContext>()  
             .AddDefaultTokenProviders();  
@@ -93,6 +101,17 @@ public class Program
         #endregion
         
         var app = builder.Build();
+        
+        #region Role Seeding
+
+        // Resolve RoleSeeder from DI and seed roles
+        using (var scope = app.Services.CreateScope())
+        {
+            var roleSeeder = scope.ServiceProvider.GetRequiredService<RoleSeeder>();
+            await  SeedRoles(roleSeeder);
+        }
+
+        #endregion
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
         {
@@ -125,5 +144,9 @@ public class Program
 
         app.Run();
         
+    }
+    private static async Task SeedRoles(RoleSeeder roleSeeder)
+    {
+        await roleSeeder.SeedRolesAsync();
     }
 }

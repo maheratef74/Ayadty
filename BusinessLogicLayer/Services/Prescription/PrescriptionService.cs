@@ -18,7 +18,7 @@ public class PrescriptionService : IPrescriptionService
         var prescription = new DataAccessLayer.Entities.Prescription()
         {
             Date = prescriptionDetailsDto.Date,
-            PatientId = 2,
+            UserId = 2,
             Notes = prescriptionDetailsDto.Notes,
             patientAge =prescriptionDetailsDto.patientAge,
             PatientName = prescriptionDetailsDto.PatientName,

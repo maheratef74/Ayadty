@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240918131449_updateApplicationuser")]
+    partial class updateApplicationuser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,10 +44,6 @@ namespace DataAccessLayer.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -62,10 +61,6 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
@@ -80,6 +75,10 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
@@ -100,7 +99,11 @@ namespace DataAccessLayer.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users", null, t =>
+                        {
+                            t.Property("UserId")
+                                .HasColumnName("UserId1");
+                        });
 
                     b.HasDiscriminator<string>("UserType").HasValue("ApplicationUser");
 
@@ -418,6 +421,12 @@ namespace DataAccessLayer.Migrations
                     b.Property<int?>("YearsOfExperience")
                         .HasColumnType("int");
 
+                    b.ToTable("Users", t =>
+                        {
+                            t.Property("UserId")
+                                .HasColumnName("UserId1");
+                        });
+
                     b.HasDiscriminator().HasValue("Doctor");
                 });
 
@@ -437,6 +446,12 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<int>("Gender")
                         .HasColumnType("int");
+
+                    b.ToTable("Users", t =>
+                        {
+                            t.Property("UserId")
+                                .HasColumnName("UserId1");
+                        });
 
                     b.HasDiscriminator().HasValue("Patient");
                 });

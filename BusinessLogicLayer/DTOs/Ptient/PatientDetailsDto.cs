@@ -5,7 +5,7 @@ using DataAccessLayer.Entities;
 
 public class PatientDetailsDto
 {
-    public int PatientId { get; set; }  // Primary Key
+    public string PatientId { get; set; }  // Primary Key
     public string Name { get; set; }
     public DateTime DateOfBirth { get; set; }
     public Enums.Gender Gender { get; set; }

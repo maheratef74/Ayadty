@@ -5,7 +5,7 @@ namespace presentationLayer.Models.Patient.ViewModel;
 
 public partial class PatientVM
 {
-    public int PatientId { get; set; }  // Primary Key
+    public string PatientId { get; set; }  // Primary Key
     public string Name { get; set; }
     
     public DateTime DateOfBirth { get; set; }

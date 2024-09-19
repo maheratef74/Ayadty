@@ -26,7 +26,7 @@ public class Enums
     }
     public enum  Gender
     {
-        man,
+        man ,
         female
     }
 }

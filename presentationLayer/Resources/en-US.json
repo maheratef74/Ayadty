@@ -474,5 +474,13 @@
   "female": "female",
   "age" : "Age",
 
-  "NameRequired" : "Patient Name is Required"
+  "NameRequired" : "Patient Name is Required",
+  "PasswordRequired": "Password should be at least 6 charchter",
+
+  "GenderRequired" :  "GenderRequired",
+  "DateOfBirthRequired": "Date Of Birth Required",
+  "AddressRequired": "Address Required",
+
+  "PhoneNumberInvalid": "Phone Number Invalid",
+  "Remember Me":  "Remember Me"
 }

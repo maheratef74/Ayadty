@@ -2,5 +2,6 @@ namespace DataAccessLayer.Repositories.Patient;
 using DataAccessLayer.Entities;
 public interface IPatientRepository
 {
-    Task<ApplicationUser?> GetById(int patientId);
+    Task<Patient?> GetById(int patientId);
+    Task<Patient?> GetPatientByPhoneNUmber(string phoneNumber);
 }

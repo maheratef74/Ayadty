@@ -31,7 +31,11 @@ public class AppDbContext :  IdentityDbContext<ApplicationUser>
             .Property(d => d.Id)
             .HasColumnName("UserId");      
             
-        
+        modelBuilder.Entity<ApplicationUser>()
+            .HasDiscriminator<string>("UserType")
+            .HasValue<ApplicationUser>("ApplicationUser")
+            .HasValue<Patient>("Patient")
+            .HasValue<Doctor>("Doctor");
     }
     // DbSets
     public DbSet<Appointment> Appointments { get; set; }
