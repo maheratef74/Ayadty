@@ -475,12 +475,15 @@
   "age" : "Age",
 
   "NameRequired" : "Patient Name is Required",
-  "PasswordRequired": "Password should be at least 6 charchter",
-
-  "GenderRequired" :  "GenderRequired",
+  "Passwardatleast6digit": "Password should be at least 6 character",
+  
   "DateOfBirthRequired": "Date Of Birth Required",
   "AddressRequired": "Address Required",
-
+  "PhoneNumberRequired": "Phone Number Required",
+  "PasswordIsRequired": "Password is Required",
   "PhoneNumberInvalid": "Phone Number Invalid",
-  "Remember Me":  "Remember Me"
+  "Remember Me":  "Remember Me",
+  "Username or Password invalid": "Username or Password invalid",
+  "GenderRequired":  "Gender is Required",
+  "Use Another Phone Number": "Use Another Phone Number"
 }

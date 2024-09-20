@@ -1,10 +1,17 @@
 using System.ComponentModel.DataAnnotations;
 using BusinessLogicLayer.Services.Patient;
+using Microsoft.Extensions.Localization;
 
 namespace presentationLayer.Validation;
 
 public class UniquePhoneNumberAttribute : ValidationAttribute
 {
+    private readonly IStringLocalizer _localizer;
+
+    public UniquePhoneNumberAttribute(IStringLocalizer localizer)
+    {
+        _localizer = localizer;
+    }
     protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
     {
         var serviceProvider = validationContext.GetService<IServiceProvider>();
@@ -14,7 +21,7 @@ public class UniquePhoneNumberAttribute : ValidationAttribute
         
         if (patient is not null)
         {
-            return new ValidationResult( "Phone Number Invalid");
+            return new ValidationResult( _localizer["PhoneNumberInvalid"]);
         }
 
         return ValidationResult.Success;

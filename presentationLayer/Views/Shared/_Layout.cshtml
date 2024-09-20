@@ -4,7 +4,7 @@
 @inject IViewLocalizer localizer
 @using System.Globalization
 @{
-var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
+  var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
 }
 <!doctype html>
 <html class="no-js" lang="ar" dir = "@(isRTL ? "RTL" : "LTR")" >

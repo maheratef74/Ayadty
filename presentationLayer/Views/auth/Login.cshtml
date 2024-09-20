@@ -5,7 +5,8 @@
 @inject IViewLocalizer localizer
 @using System.Globalization
 @using Microsoft.AspNetCore.Mvc.Localization
-
+@using presentationLayer.Models.Auth.ActionRequest
+@model LoginAR
 @{
     var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
 }
@@ -19,52 +20,42 @@
 
 @inject IOptions<RequestLocalizationOptions> options
 
-@{
-    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
-    var cultureItems = options.Value.SupportedUICultures
-        .Select(c => new SelectListItem { Value = c.Name, Text = c.NativeName })
-        .ToList();
-    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
-}
-
-
 <!DOCTYPE html>
-
 <html lang="ar" dir="@(isRTL ? "RTL" : "LTR")">
-
 <head>
     <meta charset="UTF-8">
     <title>@localizer["Log In"]</title>
     <link rel="stylesheet" href="~/css/Login.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
-
 <body>
-
     <header>
-        <form asp-controller="Localization" asp-action="SetLanguage" asp-route-returnUrl="@returnUrl" method="post">
-            <select name="culture" onchange="this.form.submit();" asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureItems">
-            </select>
-        </form>
+        @Html.Partial("_SelectLanguagePartial")
+        @Html.Partial("_ValidationScriptsPartial")
     </header>
 
     <div class="container">
         <div class="title">@localizer["Log In"]</div>
         <div class="content">
-            <form action="#">
+            <form asp-controller="auth" asp-action="Login" method="post">
                 <div class="user-details">
                     <div class="input-box">
                         <span class="details">@localizer["Phone Number"]</span>
-                        <input type="text" placeholder="@localizer["Enter your Phone Number"]" required>
+                        <input asp-for="Phone" type="text" placeholder="@localizer["Enter your Phone Number"]" required>
+                        <span  asp-validation-for="Phone" class="text-danger"></span>
                     </div>
 
                     <div class="input-box">
                         <span class="details">@localizer["Password"]</span>
-                        <input type="password" id="password" placeholder="@localizer["Enter your password"]" required>
+                        <input asp-for="Password" type="password" id="password" placeholder="@localizer["Enter your password"]" required>
                         <span class="eye-icon" onclick="togglePasswordVisibility()">👁</span>
+                        <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
-
+                    <div >
+                        <input asp-for="RememberMe" type="checkbox" id="rememberMe">
+                        <label for="rememberMe">@localizer["Remember Me"]</label>
+                    </div>
                     <div class="button">
                         <input type="submit" value="@localizer["Log In"]">
                     </div>

@@ -79,6 +79,7 @@ public class Program
         builder.Services.AddDistributedMemoryCache();
         builder.Services.AddSingleton<IStringLocalizerFactory, JSonStringLocalizerFactory>();
         builder.Services.AddMvc()
+            .AddControllersAsServices()
             .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
             .AddDataAnnotationsLocalization(  options =>
                 {

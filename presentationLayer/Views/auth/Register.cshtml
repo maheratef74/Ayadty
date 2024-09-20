@@ -16,14 +16,6 @@
 
 @inject IOptions<RequestLocalizationOptions> options
 
-@{
-    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
-    var cultureItems = options.Value.SupportedUICultures
-        .Select(c => new SelectListItem { Value = c.Name, Text = c.NativeName })
-        .ToList();
-    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
-}
-
 <!DOCTYPE html>
 
 <html lang="ar" dir="@(isRTL ? "RTL" : "LTR")">
@@ -32,6 +24,7 @@
     <meta charset="UTF-8">
     <title> @localizer["Registration"] </title>
     <link rel="stylesheet" href="~/css/registration.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- jQuery and jQuery Validation scripts -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -41,12 +34,8 @@
 
 <body>
     <header>
-        <form asp-controller="Localization" asp-action="SetLanguage" asp-route-returnUrl="@returnUrl" method="post">
-            <select name="culture" onchange="this.form.submit();" asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureItems">
-            </select>
-        </form>
-        </header>
-    
+        @Html.Partial("_SelectLanguagePartial")
+    </header>
 
     <div class="container">
         <div class="title">@localizer["Registration"] </div>
@@ -73,13 +62,13 @@
                         <span asp-validation-for="Address" class="text-danger" style="margin-top: 5px; display: block;"></span>
                     </div>
 
-                    
+
                     <div class="input-box">
                         <label for="datepicker">@localizer["Date of Birth"]</label>
-                        <input asp-for="DateOfBirth" type="date" id="datepicker" name="dob" class="form-control" required>
+                        <input asp-for="DateOfBirth" type="date" id="datepicker" name="dob" class="form-control" onloadstart="2002-7-20">
                         <span asp-validation-for="DateOfBirth" class="text-danger" style="margin-top: 5px; display: block;"></span>
                     </div>
-
+                    
                     <div class="input-box" id="password">
                         <span class="details">@localizer["Password"]</span>
                         <input asp-for="Password"type="password" placeholder="@localizer["Enter your password"]" required id="passwordField"></input>
@@ -94,6 +83,7 @@
                         <span asp-validation-for="ConfirmPassword" class="text-danger" style="margin-top: 5px; display: block;"></span>
                     </div>
                 </div>
+
                 <div class="input-box">
                     <label for="gender" class="details">@localizer["Gender"]</label>
                     <br>
@@ -104,6 +94,7 @@
                     </select>
                     <span asp-validation-for="Gender" class="text-danger" style="margin-top: 5px; display: block;"></span>
                 </div>
+                
                 <div class="input-box">
                     <input asp-for="RememberMe" type="checkbox" id="rememberMe">
                     <label for="rememberMe">@localizer["Remember Me"]</label>
@@ -153,7 +144,5 @@
             }
         });
       </script>
-
 </body>
-
 </html>

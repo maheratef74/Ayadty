@@ -1,6 +1,7 @@
 using BusinessLogicLayer.DTOs.Ptient;
 using DataAccessLayer.Entities;
-
+using presentationLayer.Models.Auth.ActionRequest;
+using DataAccessLayer.Entities;
 namespace presentationLayer.Models.Patient.ViewModel;
 
 public partial class PatientVM
@@ -33,5 +34,19 @@ public static  class PatientVmExtensions
             Address = dto.Address,
             FacbookProfile = dto.FacbookProfile
         };
+    }
+    public static DataAccessLayer.Entities.Patient ToPatient(this RegisterAR newPatient)
+    {
+        var patient = new DataAccessLayer.Entities.Patient()
+        {
+            FullName = newPatient.Name,
+            Phone = newPatient.PhoneNumber,
+            Address = newPatient.Address,
+            Gender = newPatient.Gender,
+            //  PasswordHash = newPatient.Password,
+            DateOfBirth = newPatient.DateOfBirth,
+            UserName = Guid.NewGuid().ToString()  // because it take alotof time to handel it but it's not handel 
+        };
+        return patient;
     }
 }

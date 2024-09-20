@@ -1,5 +1,4 @@
 using DataAccessLayer.Entities;
-
 namespace BusinessLogicLayer.DTOs.Ptient;
 
 public static class PtientDTOExtensionMethold
@@ -16,7 +15,8 @@ public static class PtientDTOExtensionMethold
             Email = patient.Email,
             Address = patient.Address,
             DateOfBirth = patient.DateOfBirth,
-            FacbookProfile = patient.FacbookProfile
+            FacbookProfile = patient.FacbookProfile,
+            password = patient.PasswordHash
         };
         return patientDto;
     }
