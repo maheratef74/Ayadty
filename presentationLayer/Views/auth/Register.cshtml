@@ -65,7 +65,7 @@
 
                     <div class="input-box">
                         <label for="datepicker">@localizer["Date of Birth"]</label>
-                        <input asp-for="DateOfBirth" type="date" id="datepicker" name="dob" class="form-control" onloadstart="2002-7-20">
+                        <input asp-for="DateOfBirth" type="date" id="datepicker"  class="form-control" onloadstart="2002-7-20">
                         <span asp-validation-for="DateOfBirth" class="text-danger" style="margin-top: 5px; display: block;"></span>
                     </div>
                     
@@ -92,9 +92,8 @@
                         <option value="0">@localizer["Male"]</option>
                         <option value="1">@localizer["Female"]</option>
                     </select>
-                    <span asp-validation-for="Gender" class="text-danger" style="margin-top: 5px; display: block;"></span>
                 </div>
-                
+                <span asp-validation-for="Gender" class="text-danger" style="margin-top: 5px; display: block;"></span>
                 <div class="input-box">
                     <input asp-for="RememberMe" type="checkbox" id="rememberMe">
                     <label for="rememberMe">@localizer["Remember Me"]</label>
@@ -143,6 +142,14 @@
                 errorElement.textContent = ""; // Clear error if passwords match
             }
         });
-      </script>
+
+        const dateInput = document.getElementById('datepicker');
+        dateInput.addEventListener('focus', function() {
+            if (!this.value) {
+                this.value = '2002-07-20'; // Default value when field is focused
+            }
+        });
+
+</script>
 </body>
 </html>

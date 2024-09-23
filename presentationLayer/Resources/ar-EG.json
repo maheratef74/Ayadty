@@ -493,7 +493,7 @@
   
   "NameRequired" : "اسم المريض مطلوب",
 
-  "Passwardatleast6digit" : "يجب ان تكون كلمه السر مكونه من 6 احرف",
+  "PasswardAtLeast6Digit" : "يجب ان تكون كلمه السر مكونه من 6 احرف",
   "DateOfBirthRequired" : "تحديد تاريخ الميلاد مطلوب",
   "AddressRequired" : "العنوان مطلوب",
   
@@ -504,5 +504,6 @@
   "Username or Password invalid" : "رقم الموبيل او كلمه السر غير صحيح",
   
   "GenderRequired" : "تحديد النوع مطلوب",
-  "Use Another Phone Number" : "استخدم رقم موبيل اخر"
+  "Use Another Phone Number" : "استخدم رقم موبيل اخر",
+  "Patient Name" : "اسم المريض"
 }

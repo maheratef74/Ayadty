@@ -9,11 +9,11 @@ public class PatientRepository:IPatientRepository
     {
         _appDbContext = appDbContext;
     }
-    public async Task<Patient?> GetById(int patientId)
+    public async Task<Patient?> GetById(string patientId)
     {
         var patient = await _appDbContext.Users
             .OfType<Patient>()  
-            .FirstOrDefaultAsync(p => p.Id == patientId.ToString());
+            .FirstOrDefaultAsync(p => p.Id == patientId);
         
         return patient;
     }

@@ -1,7 +1,18 @@
 
 
 @{
-    Layout = "_Layout";
+if (User.IsInRole("Doctor") || User.IsInRole("Nurse"))
+{
+Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+else if (User.IsInRole("Patient"))
+{
+Layout = "~/Views/Shared/_Layout.cshtml";
+}
+else
+{
+Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
+}
 }
 <head >
 	<script async defer

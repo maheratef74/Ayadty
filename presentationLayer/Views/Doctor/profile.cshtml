@@ -1,36 +1,42 @@
-﻿
-
-@using Microsoft.AspNetCore.Builder
+﻿@using Microsoft.AspNetCore.Builder
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.Extensions.Options
 @inject IViewLocalizer localizer
 @using System.Globalization
+@using presentationLayer.Models.Doctor.ViewModel;
+@model DoctorVM
 
 
-
+@{
+if (User.IsInRole("Doctor") || User.IsInRole("Nurse"))
+{
+Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+else if (User.IsInRole("Patient"))
+{
+Layout = "~/Views/Shared/_Layout.cshtml";
+}
+else
+{
+Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
+}
+}
 <!DOCTYPE html>
-
 <head>
-    
     <title>Profile Page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/DoctorProfile.css">
-    
 </head>
-
 <body>
     <div class="container">
         <div class="main-body">
-
-        
             <!-- /Breadcrumb -->
-
             <div class="row gutters-sm">
                 <div class="col-md-4 mb-3">
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="@localizer["Admin"]" class="rounded-circle" width="150">
+                                <img src="~/img/@Model.ProfilePhoto" alt="@localizer["Admin"]" class="rounded-circle" width="150">
                                 <div class="mt-3">
                                     <h4>@localizer["John Doe"]</h4>
                                     <p class="text-secondary mb-1">@localizer["Full Stack Developer"]</p>
@@ -60,7 +66,7 @@
                                     <h6 class="mb-0">@localizer["Full Name"]</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    @localizer["Kenneth Valdez"]
+                                    @Model.Name
                                 </div>
                             </div>
                             <hr>
@@ -70,7 +76,7 @@
                                     <h6 class="mb-0">@localizer["Mobile"]</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    @localizer["(320) 380-4539"]
+                                    @Model.PhoneNumber
                                 </div>
                             </div>
                             <hr>
@@ -79,7 +85,7 @@
                                     <h6 class="mb-0">@localizer["Email"]</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    @localizer["fip@jukmuh.al"]
+                                    @Model.Email
                                 </div>
                             </div>
                             <hr>
@@ -88,7 +94,7 @@
                                     <h6 class="mb-0">@localizer["Experience"]</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    @localizer["5Y"]
+                                    @Model.YearsOfExperience
                                 </div>
                             </div>
                             <hr>
@@ -97,7 +103,7 @@
                                     <h6 class="mb-0">@localizer["Price"]</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    @localizer["100 per hour"]
+                                    @Model.Price
                                 </div>
                             </div>
 

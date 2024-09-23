@@ -47,21 +47,7 @@ public class AppointmentService : IAppointmentService
 
         foreach (var app in appointments)
         {
-            var appointmentDetails = new AppointmentDetailsDto
-            {
-                AppointmentId = app.AppointmentId,
-                profilePhoto = app.Patient.ProfilePhoto,
-                PatientContact = app.Patient.PhoneNumber,
-                PatientId = app.UserId,
-                Date = app.Date,
-                PatientName = app.PatientName, 
-                Status = app.Status,
-                PatientProgress = (PatientProgress)app.PatientProgress, 
-                Order = app.Order,
-                Note = app.Note
-            };
-
-            appointmentDetailsList.Add(appointmentDetails);
+            appointmentDetailsList.Add(app.ToAppointmetDto());
         }
         return appointmentDetailsList;
     }
@@ -70,20 +56,19 @@ public class AppointmentService : IAppointmentService
     {
         var appointment = await _appointmentsRepository.GetAppointmentByIdIncludingPatient(appointmentId);
         
-        var appointmentDetails = new AppointmentDetailsDto
+        return appointment.ToAppointmetDto();
+    }
+
+    public async Task<List<AppointmentDetailsDto>> GetAllAppointmentByPatientId(string PatientId)
+    {
+        var appointments = await _appointmentsRepository.GetAllByPatientId(PatientId);
+
+        var appointmentDetailsList = new List<AppointmentDetailsDto>();
+
+        foreach (var app in appointments)
         {
-            AppointmentId = appointment.AppointmentId,
-            profilePhoto = appointment.Patient.ProfilePhoto,
-            PatientContact = appointment.Patient.PhoneNumber,
-            PatientAdress = appointment.Patient.Address,
-            PatientId = appointment.UserId,
-            Date = appointment.Date,
-            PatientName = appointment.PatientName, 
-            Status = appointment.Status,
-            PatientProgress = (PatientProgress)appointment.PatientProgress, 
-            Order = appointment.Order,
-            Note = appointment.Note
-        };
-        return appointmentDetails;
+            appointmentDetailsList.Add(app.ToAppointmetDto());
+        }
+        return appointmentDetailsList;
     }
 }

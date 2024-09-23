@@ -33,10 +33,10 @@ public class AppointmentRepository:IAppointmentRepository
 
         return dayAppointments;
     }
-    public async Task<List<Appointment>> GetAllByPatientId(int patientId)
+    public async Task<List<Appointment>> GetAllByPatientId(string  patientId)
     {
         return await _appDbContext.Appointments 
-            .Where(a => a.UserId == patientId )
+            .Where(a => a.PatientId == patientId )
             .OrderByDescending(a => a.Date)
             .ToListAsync();
     }
@@ -53,13 +53,7 @@ public class AppointmentRepository:IAppointmentRepository
     
         return maxOrder ?? 0;
     }
-    /*public async Task<bool> IsAvaliable(int doctorId)
-    {
-        /*var doctor = await _appDbContext.Doctor
-            .FirstOrDefaultAsync(d => d.DoctorId == doctorId);
-        
-        return doctor != null && doctor.IsAvalibleToAppoinment;#1#
-    }*/
+ 
     public async Task<Appointment?> GetById(int id)
     {
         return await _appDbContext.Appointments

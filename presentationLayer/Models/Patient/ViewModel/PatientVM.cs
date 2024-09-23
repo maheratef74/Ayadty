@@ -4,7 +4,7 @@ using presentationLayer.Models.Auth.ActionRequest;
 using DataAccessLayer.Entities;
 namespace presentationLayer.Models.Patient.ViewModel;
 
-public partial class PatientVM
+public  class PatientVM
 {
     public string PatientId { get; set; }  // Primary Key
     public string Name { get; set; }
@@ -45,8 +45,11 @@ public static  class PatientVmExtensions
             Gender = newPatient.Gender,
             //  PasswordHash = newPatient.Password,
             DateOfBirth = newPatient.DateOfBirth,
-            UserName = Guid.NewGuid().ToString()  // because it take alotof time to handel it but it's not handel 
+            UserName = Guid.NewGuid().ToString() , // because it take alotof time to handel it but it's not handel 
+            ProfilePhoto = newPatient.Gender == 0 ? "~/img/man.jpg" : "~/img/Female.jpg"
         };
+        
         return patient;
     }
+  
 }

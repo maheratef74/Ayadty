@@ -17,7 +17,8 @@ public class CreatAppointmentDto
     public int AppointmentId { get; set; }
     public DateTime Date { get; set; }
     public string PatientName { get; set; }
-    public int PatientId{ get; set; }
+    public string PatientContact { get; set; }
+    public string PatientId{ get; set; }
     public Enums.AppointmentStatus Status { get; set; }
     public Services.Appointment.PatientProgress PatientProgress { get; set; }
     public int Order { get; set; } 
@@ -30,9 +31,10 @@ public static class CreatAppointmentDtoExtensions
     {
         return new Appointment
         {
-            UserId = 2,
+            PatientId = dto.PatientId,
             Date = dto.Date,
             PatientName = dto.PatientName,
+            PatientContact = dto.PatientContact,
             Status = dto.Status,
             PatientProgress = (Enums.PatientProgress)dto.PatientProgress,
             Order = dto.Order,

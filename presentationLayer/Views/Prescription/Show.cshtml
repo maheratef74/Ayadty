@@ -3,8 +3,20 @@
 @using Microsoft.Extensions.Options
 @inject IViewLocalizer localizer
 @using System.Globalization
+
 @{
-   Layout = "_AdminLayout";
+if (User.IsInRole("Doctor") || User.IsInRole("Nurse"))
+{
+Layout = "_AdminLayout.cshtml";
+}
+else if (User.IsInRole("Patient"))
+{
+Layout = "_Layout.cshtml";
+}
+else
+{
+Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
+}
 }
 
 <!DOCTYPE html>

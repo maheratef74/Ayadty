@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Diagnostics;
 using BusinessLogicLayer.Services.Patient;
 using DataAccessLayer.Entities;
+using DataAccessLayer.Repositories.ApplicationUser;
+using DataAccessLayer.Repositories.Doctor;
 using DataAccessLayer.Repositories.Patient;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -18,15 +20,16 @@ public class authController : Controller
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
     private readonly IPatientService _patientService;
-    private readonly IPatientRepository _patientRepository;
     private readonly IStringLocalizer<authController> _localizer;
-    public authController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IPatientService patientService, IPatientRepository patientRepository, IStringLocalizer<authController> localizer)
+    private readonly IApplicationUserRepository _applicationUserRepository;
+    public authController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IPatientService patientService, 
+       IStringLocalizer<authController> localizer , IApplicationUserRepository applicationUserRepository)
     {
         _userManager = userManager;
         _signInManager = signInManager;
         _patientService = patientService;
-        _patientRepository = patientRepository;
         _localizer = localizer;
+        _applicationUserRepository = applicationUserRepository;
     }
     [HttpGet]
     public async Task<IActionResult> Login()
@@ -38,7 +41,7 @@ public class authController : Controller
     {
         if (ModelState.IsValid)
         {
-            var user = await _patientRepository.GetPatientByPhoneNUmber(loginAr.Phone);
+            var user = await _applicationUserRepository.GetUserByPhoneNUmber(loginAr.Phone);
             if (user is not null)
             {
                 var isPasswordValid = await _userManager.CheckPasswordAsync(user, loginAr.Password);
@@ -47,7 +50,7 @@ public class authController : Controller
                 {
                     // Create a Cookie
                     await _signInManager.SignInAsync(user, loginAr.RememberMe);
-                    return RedirectToAction("Home", "Home");
+                    return RedirectToAction("Index", "Home");
                 }
             }
             ModelState.AddModelError("Password", _localizer["Username or Password invalid"]);
@@ -63,19 +66,17 @@ public class authController : Controller
     [HttpPost]
     public  async Task<IActionResult> Register(RegisterAR newPatient)
     {
-        if(!CheckPhone(newPatient.PhoneNumber)) 
-            ModelState.AddModelError("PhoneNumber" , _localizer["Use Another Phone Number" ]); 
-        
         if (ModelState.IsValid)
         {
+            var patientUser = newPatient.ToPatient();
             IdentityResult result = await _userManager
-                .CreateAsync(newPatient.ToPatient(), newPatient.Password);
+                .CreateAsync(patientUser, newPatient.Password);
             if (result.Succeeded) // User saved succesfully to database
             {
-                await _userManager.AddToRoleAsync(newPatient.ToPatient(), "Patient");
+                await _userManager.AddToRoleAsync(patientUser, "Patient");
                 // Create a Cookie
-                await _signInManager.SignInAsync(newPatient.ToPatient(), newPatient.RememberMe);
-                return RedirectToAction("Home", "Home");
+                await _signInManager.SignInAsync(patientUser , newPatient.RememberMe);
+                return RedirectToAction("Index", "Home");
             }
             else
             {

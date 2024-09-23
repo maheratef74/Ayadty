@@ -10,7 +10,6 @@ public class RoleSeeder
     {
         _roleManager = roleManager;
     }
-
     public async Task SeedRolesAsync()
     {
         string[] roleNames = { "Doctor", "Patient" , "Nurse" };
@@ -23,4 +22,5 @@ public class RoleSeeder
             }
         }
     }
+    
 }

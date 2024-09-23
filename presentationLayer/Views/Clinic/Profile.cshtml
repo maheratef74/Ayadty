@@ -1,6 +1,17 @@
-﻿@{
-    var useAlternateLayout = ViewData["UseAlternateLayout"] as bool? ?? false;
-    Layout = useAlternateLayout ? "_Layout" : "_AdminLayout";
+﻿
+@{
+    if (User.IsInRole("Doctor") || User.IsInRole("Nurse"))
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+    else if (User.IsInRole("Patient"))
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
+    }
 }
 
 @using Microsoft.AspNetCore.Builder

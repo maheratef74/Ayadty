@@ -8,14 +8,17 @@ public class CreatAppointmentAR
 {
     [Required(ErrorMessage = "NameRequired")]
     public string PatientName { get; set; }
-    public string Phone { get; set; }
+    public string PatieentId { get; set; }
+    public string PatientContact { get; set; }
     public string? Note { get; set; }
    
     public CreatAppointmentDto ToDto()
     {
         return new CreatAppointmentDto
         {
+            PatientId = PatieentId,
             PatientName = PatientName,
+            PatientContact = PatientContact,
             Note = Note 
         };
     }

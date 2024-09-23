@@ -13,7 +13,7 @@ public class PatientService : IPatientService
         _patientRepository = patientRepository;
     }
 
-    public async Task<PatientDetailsDto?> GetPatientById(int id)
+    public async Task<PatientDetailsDto?> GetPatientById(string id)
     {
         var patient = await _patientRepository.GetById(id);
         if (patient is null)  return null;

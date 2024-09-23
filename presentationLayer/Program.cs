@@ -2,9 +2,12 @@ using System.Globalization;
 using System.Resources;
 using Ayadty.Data;
 using BusinessLogicLayer.Services.Appointment;
+using BusinessLogicLayer.Services.Doctor;
 using BusinessLogicLayer.Services.Patient;
 using BusinessLogicLayer.Services.Prescription;
 using DataAccessLayer.Entities;
+using DataAccessLayer.Repositories.ApplicationUser;
+using DataAccessLayer.Repositories.Doctor;
 using DataAccessLayer.Repositories.Generic;
 using DataAccessLayer.Repositories.Patient;
 using DataAccessLayer.Repositories.Prescription;
@@ -39,7 +42,8 @@ public class Program
         #endregion
 
         #region Register service in container
-
+        builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+        
         builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
         builder.Services.AddScoped<IAppointmentService, AppointmentService>();
         
@@ -50,6 +54,11 @@ public class Program
         builder.Services.AddScoped<IPrescriptionService, PrescriptionService>();
         
         builder.Services.AddScoped<ITreatmentRepository, TreatmentRepository>();
+        
+        builder.Services.AddScoped<IDoctorRepository,DoctorRepository>();
+        builder.Services.AddScoped<IDoctorService, DoctorService>();
+
+        builder.Services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
         
         builder.Services.AddScoped<RoleSeeder>();
         
@@ -70,6 +79,12 @@ public class Program
             })
             .AddEntityFrameworkStores<AppDbContext>()  
             .AddDefaultTokenProviders();  
+        
+        builder.Services.ConfigureApplicationCookie(options =>
+        {
+            options.LoginPath = "/auth/Login"; // Redirect here if not authenticated
+            options.AccessDeniedPath = "/Home/Error404"; // Optional path for denied access
+        });
         #endregion 
              
         
@@ -109,7 +124,7 @@ public class Program
         using (var scope = app.Services.CreateScope())
         {
             var roleSeeder = scope.ServiceProvider.GetRequiredService<RoleSeeder>();
-            await  SeedRoles(roleSeeder);
+            await roleSeeder.SeedRolesAsync();
         }
 
         #endregion
@@ -141,13 +156,9 @@ public class Program
                                   // and need to start with browser lang of user
         app.MapControllerRoute(
             name: "default",
-            pattern: "{controller=Home}/{action=Home}/{id?}");
+            pattern: "{controller=auth}/{action=Login}/{id?}");
 
         app.Run();
         
-    }
-    private static async Task SeedRoles(RoleSeeder roleSeeder)
-    {
-        await roleSeeder.SeedRolesAsync();
     }
 }

@@ -1,6 +1,7 @@
 @{
-    Layout = "_AdminLayout";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
 @model presentationLayer.Models.DashBoard.ViewModel.GetAllAppointmentVM
 @inject IViewLocalizer localizer
 @using System.Globalization
@@ -31,34 +32,34 @@
                 <div class="main-box-body clearfix">
                     <div class="table-responsive">
                         <table class="table user-list">
-                            <thead>
+                            <thead class = "text-center">
                             <tr>
-                                <th class = "text-center"><span>@localizer["Order"]</span></th>
-                                <th class = "text-center"><span>@localizer["User"]</span></th>
-                                <th class = "text-center"><span>@localizer["Date"]</span></th>
-                                <th class="text-center" ><span>@localizer["Time"]</span></th>
-                                <th class="text-center"><span>@localizer["AppointmentStatus"]</span></th>
-                                <th class="text-center"><span>@localizer["PatientStatus"]</span></th>
-                                <th class="text-center"><span>@localizer["Phone Number"]</span></th>
+                                <th ><span>@localizer["Order"]</span></th>
+                                <th ><span>@localizer["User"]</span></th>
+                                <th ><span>@localizer["Date"]</span></th>
+                                <th  ><span>@localizer["Time"]</span></th>
+                                <th ><span>@localizer["AppointmentStatus"]</span></th>
+                                <th ><span>@localizer["PatientStatus"]</span></th>
+                                <th ><span>@localizer["Phone Number"]</span></th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody  class = "text-center">
                             @foreach (var appointment in Model.appointments)
                             {
                                 <tr class="appointment-row" onclick="window.location.href='@Url.Action("Details", "Appointment", new { appointedId = appointment.AppointmentId })'">
-                                    <td class = "text-center"> @appointment.Order</td>
-                                    <td  class = "text-center" >
+                                    <td> @appointment.Order</td>
+                                    <td   >
                                         <a class="user-link" target="__blank" asp-controller="Patient" asp-action="Profile">@appointment.PatientName</a>
                                     </td>
-                                    <td class = "text-center">@appointment.Date.ToString("yyyy-MM-dd")</td>
-                                    <td class = "text-center">@appointment.Date.ToString("hh:mm tt")</td> <!-- Time in 12-hour format with AM/PM -->
-                                    <td class="text-center">
+                                    <td >@appointment.Date.ToString("yyyy-MM-dd")</td>
+                                    <td >@appointment.Date.ToString("hh:mm tt")</td> <!-- Time in 12-hour format with AM/PM -->
+                                    <td >
                                         <span class="label label-default">@localizer[@appointment.Status.ToString()]</span>
                                     </td>
-                                    <td class="text-center">
+                                    <td >
                                         <span class="label label-default">@localizer[@appointment.PatientProgress.ToString()]</span>
                                     </td>
-                                    <td class = "text-center">
+                                    <td >
                                         <a href="#">@appointment.PatientContact</a>
                                     </td>
                                 </tr>

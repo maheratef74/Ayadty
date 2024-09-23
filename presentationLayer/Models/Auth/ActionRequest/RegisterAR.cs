@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using DataAccessLayer.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using presentationLayer.Validation;
 
 namespace presentationLayer.Models.Auth.ActionRequest;
@@ -12,7 +13,7 @@ public class RegisterAR
 
     [Required(ErrorMessage = "PasswordIsRequired")]
     [DataType(DataType.Password)]
-    [MinLength(6 , ErrorMessage = "PasswardRequired")]
+    [MinLength(6 , ErrorMessage = "PasswardAtLeast6Digit")]
     public string Password { get; set; }
     
     [DataType(DataType.Password)]
@@ -30,8 +31,8 @@ public class RegisterAR
     [Required(ErrorMessage = "AddressRequired")]
     public string  Address { get; set; }
 
-    [RegularExpression(@"^(010|011|012|015)\d{8}$", ErrorMessage = "PhoneNumberInvalid")]
-  //  [UniquePhoneNumber]
+    [RegularExpression(@"^(010|011|012|015)\d{8}$", ErrorMessage = "PhoneNumberInvalid")] 
+    [UniquePhoneNumber]
    // [Remote(action: "CheckPhone", controller: "auth", ErrorMessage = "PhoneNumberInvalid")]
     [Required(ErrorMessage = "PhoneNumberRequired")]
     public string PhoneNumber { get; set; }

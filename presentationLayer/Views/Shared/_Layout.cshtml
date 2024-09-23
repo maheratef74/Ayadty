@@ -3,8 +3,10 @@
 @using Microsoft.Extensions.Options
 @inject IViewLocalizer localizer
 @using System.Globalization
+@using System.Security.Claims
 @{
   var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
+  var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 }
 <!doctype html>
 <html class="no-js" lang="ar" dir = "@(isRTL ? "RTL" : "LTR")" >
@@ -116,12 +118,12 @@
                                 <li class="nav-item">
                                     <a asp-controller="Home" asp-action="Home">@localizer["Home"]</a>
                                 </li>
-                                <li class="nav-item"><a asp-controller="Patient" asp-action="Profile">@localizer["Patient Profile"]</a></li>
+                                <li class="nav-item"><a asp-controller="Patient" asp-action="Profile" asp-route-patientId="@userId">@localizer["Patient Profile"]</a></li>
                                 <li class="nav-item"><a asp-controller="Doctor" asp-action="AboutMe">@localizer["Doctor"]</a></li>
                                 <li class="nav-item">
                                     <a href="#">@localizer["Pages"] <i class="icofont-rounded-down"></i></a>
                                     <ul class="dropdown">
-                                        <li><a asp-controller="Patient" asp-action="Profile">@localizer["Patient Profile"]</a></li>
+                                        <li><a asp-controller="Patient" asp-action="Profile" asp-route-patientId="@userId" >@localizer["Patient Profile"]</a></li>
                                         <li><a asp-controller="Appointment" asp-action="DailyAppointment">@localizer["DailyAppointment"]</a></li>
                                         <li><a asp-controller="auth" asp-action="Register">@localizer["Registration"]</a></li>
                                         <li><a asp-controller="auth" asp-action="Login">@localizer["Log In"]</a></li>
