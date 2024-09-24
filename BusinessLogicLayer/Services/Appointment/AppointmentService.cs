@@ -2,18 +2,6 @@ using BusinessLogicLayer.DTOs.Appointment;
 using DataAccessLayer.Repositories;
 using DataAccessLayer.Entities;
 namespace BusinessLogicLayer.Services.Appointment;
-public enum AppointmentStatus
-{
-    Scheduled,
-    Canceled ,
-    Completed
-}
-public enum PatientProgress
-{
-    InHome,
-    InMyWayToClinic,
-    InClinic
-}
 
 public class AppointmentService : IAppointmentService
 {
@@ -26,13 +14,8 @@ public class AppointmentService : IAppointmentService
 
     public async Task CreatAppointment(CreatAppointmentDto creatAppointmentDto)
     {
-        // set defulte values
-        creatAppointmentDto.Order = await _appointmentsRepository.GetMaxOrderOfDay() + 1;
-        creatAppointmentDto.PatientProgress = PatientProgress.InHome;
-        creatAppointmentDto.Date = DateTime.Now;
-        creatAppointmentDto.Status = Enums.AppointmentStatus.Scheduled;
-
         var appointment = creatAppointmentDto.ToAppointment();
+        appointment.Order = await _appointmentsRepository.GetMaxOrderOfDay() + 1;
         await _appointmentsRepository.Add(appointment);
         await _appointmentsRepository.SaveChanges();
     }
@@ -52,11 +35,11 @@ public class AppointmentService : IAppointmentService
         return appointmentDetailsList;
     }
 
-    public async Task<AppointmentDetailsDto> GetAppointmentByID(int appointmentId)
+    public async Task<AppointmentDetailsDto?> GetAppointmentByID(string appointmentId)
     {
         var appointment = await _appointmentsRepository.GetAppointmentByIdIncludingPatient(appointmentId);
         
-        return appointment.ToAppointmetDto();
+        return appointment?.ToAppointmetDto();
     }
 
     public async Task<List<AppointmentDetailsDto>> GetAllAppointmentByPatientId(string PatientId)

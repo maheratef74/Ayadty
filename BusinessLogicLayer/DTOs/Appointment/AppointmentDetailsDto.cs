@@ -2,13 +2,12 @@ namespace BusinessLogicLayer.DTOs.Appointment;
 using DataAccessLayer.Entities;
 public class AppointmentDetailsDto
 {
-    public int AppointmentId { get; set; }
+    public string AppointmentId { get; set; }
     public string PatientId{ get; set; }
     public string? profilePhoto { get; set; }
     public string PatientContact { get; set; }
     public DateTime Date { get; set; }
     public string PatientName { get; set; }
-    
     public string PatientAdress { get; set; }
     public Enums.AppointmentStatus Status { get; set; }
     public PatientProgress PatientProgress { get; set; }
@@ -18,8 +17,12 @@ public class AppointmentDetailsDto
 
 public static class AppointmentDetailsExtensionMethold
 {
-    public static AppointmentDetailsDto ToAppointmetDto(this Appointment app)
+    public static AppointmentDetailsDto? ToAppointmetDto(this Appointment? app)
     {
+        if (app == null )
+        {
+            return null;
+        }
         var appointmentDetails = new AppointmentDetailsDto
         {
             AppointmentId = app.AppointmentId,

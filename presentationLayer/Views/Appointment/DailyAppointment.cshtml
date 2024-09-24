@@ -13,19 +13,35 @@
         Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
     }
 }
+@using presentationLayer.Models.Appointment.ViewModel
+@model PresentationLayer.Models.Appointment.ViewModel.SpecificDetailsAppointmentVM
 @inject IViewLocalizer localizer
 @using System.Globalization
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.Mvc.Localization
-
+@{
+var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+}
 <!DOCTYPE html>
 
 <head>
-   
-    <title>Daily Appointement</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Highlight style for current user's appointments */
+        .highlight {
+            font-weight: bold; /* Makes text bold */
+            background-color: #ADD8E6; /* Light blue background */
+            transition: background-color 0.3s ease; /* Smooth transition for background color */
+        }
+
+        /* Change background color on hover */
+        .highlight:hover {
+            background-color: #87CEEB; /* Sky blue on hover */
+        }
+
+    </style>
+    <title>@localizer["Daily Appointement"]</title>
     <link rel="stylesheet" href="~/css/DailyAppointment.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   
 </head>
 
 <Body>
@@ -38,31 +54,43 @@
                     <div class="table-responsive">
                         <table class="table user-list">
                             <thead>
-                            <tr>
-                                <td class ="spacer"></td>
-                                <th><span>@localizer["ID"]</span></th>
+                            <tr class="text-center">
+                                <th><span>@localizer["Order"]</span></th>
                                 <td class ="spacer"></td>
                                 <th><span>@localizer["Time"]</span></th>
                                 <td class="spacer"></td>
-                                <th class="text-center"><span>@localizer["Status"]</span></th>
-                                <td class="spacer"></td>
+                                <th ><span>@localizer["Status"]</span></th>
                                 <th>&nbsp;</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            
-                            <tr>
-                                 <td class="spacer"></td>
-                                <td>@localizer["3"]</td>
-                                <td class="spacer"></td>
-                                <td>10:18</td>
-                                <td class="spacer"></td>
-                                <td class="text-center">
-                                    <span class="label label-danger">@localizer["inactive"]</span>
-                                </td>
-                                <td class="spacer"></td>
-
-                            </tr>
+                            <tbody class="text-center">
+                            @foreach (var appointment in Model.Appointments)
+                            {
+                                if (appointment.PatientId == currentUserId)
+                                {
+                                    <tr class="appointment-row highlight" onclick="window.location.href='@Url.Action("Details", "Appointment", new { appointedId = appointment.AppointmentId })'">
+                                        <td>@appointment.Order</td>
+                                        <td class="spacer"></td>
+                                        <td>@appointment.Date.ToString("h:mm tt")</td>
+                                        <td class="spacer"></td>
+                                        <td>
+                                           @localizer[appointment.AppointmentStatus.ToString()]
+                                        </td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td>@appointment.Order</td>
+                                        <td class="spacer"></td>
+                                        <td>@appointment.Date.ToString("h:mm tt")</td>
+                                        <td class="spacer"></td>
+                                        <td>
+                                           @localizer[appointment.AppointmentStatus.ToString()]
+                                        </td>
+                                    </tr>
+                                }
+                            }
                             </tbody>
                         </table>
                     </div>

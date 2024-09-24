@@ -5,7 +5,7 @@ namespace DataAccessLayer.Entities;
 public class WorkDay
 {
     [Key]
-    public int Id { get; set; }
+    public string Id { get; set; }
     
     public DayOfWeek DayOfWeek { get; set; }
     

@@ -6,10 +6,10 @@ namespace DataAccessLayer.Entities
     public class Prescription
     {
         [Key]
-        public int PrescriptionId { get; set; } // Primary Key
+        public string PrescriptionId { get; set; } // Primary Key
         
         [ForeignKey("Users")]
-        public int UserId { get; set; }// Foreign Key
+        public string UserId { get; set; }// Foreign Key
         public Patient Patient { get; set; }// Navigation property
         public string PatientName { get; set; } 
         public string patientAge { get; set; }

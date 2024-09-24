@@ -6,7 +6,7 @@ namespace DataAccessLayer.Entities;
 public class Clinic
 {
     [Key]
-    public int ClinicId { get; set; } // Primary Key
+    public string ClinicId { get; set; } // Primary Key
     public string Name { get; set; }
     public string Location { get; set; }
     public string PhoneNumber { get; set; }

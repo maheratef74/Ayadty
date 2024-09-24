@@ -54,7 +54,7 @@ public class AppointmentRepository:IAppointmentRepository
         return maxOrder ?? 0;
     }
  
-    public async Task<Appointment?> GetById(int id)
+    public async Task<Appointment?> GetById(String id)
     {
         return await _appDbContext.Appointments
             .FirstOrDefaultAsync(a => a.AppointmentId == id);
@@ -85,7 +85,7 @@ public class AppointmentRepository:IAppointmentRepository
              */
         }
     }
-    public async Task Delete(int id)
+    public async Task Delete(String id)
     {
         var appointment = await _appDbContext.Appointments
             .FirstOrDefaultAsync(a => a.AppointmentId == id);
@@ -94,7 +94,7 @@ public class AppointmentRepository:IAppointmentRepository
             _appDbContext.Appointments.Remove(appointment);
         }
     }
-    public async Task Cancel(int id)  
+    public async Task Cancel(String id)  
     {
         var appointment = await _appDbContext.Appointments
             .FirstOrDefaultAsync(a => a.AppointmentId == id);
@@ -103,7 +103,7 @@ public class AppointmentRepository:IAppointmentRepository
             appointment.Status = Enums.AppointmentStatus.Canceled;
         }
     }
-    public async Task<Appointment?> GetAppointmentByIdIncludingPatient(int id)
+    public async Task<Appointment?> GetAppointmentByIdIncludingPatient(string id)
     {
         var appointment = await _appDbContext.Appointments
             .Include(a => a.Patient)  // Eager load the Patient related to the Appointment

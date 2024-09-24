@@ -107,25 +107,31 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
                                     <input type="text" class="form-control" value="@Model.appointment.Date.ToString("hh:mm tt")" disabled>
                                 </div>
                             </div>
+
+                            <div class="row align-items-center mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">@localizer["Notes:"]</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" class="form-control" value="@Model.appointment.Note" disabled>
+                                </div>
+                            </div>
                             <div class="row text-center" >
                                 <div class="col-sm-3 text-center">
                                     <a class="btn btn-primary" href="Edit appointment.html">@localizer["Edit Appointment"]</a>
                                 </div>
-
+                                @if (User.IsInRole("Doctor"))
+                                {
+                                    <div class="col-sm-3 text-center">
+                                        <a class="btn btn-success" href="create.html">@localizer["Create Prescription"]</a>
+                                    </div>
+                                }
                                 <div class="col-sm-3 text-center">
-                                    <a class="btn btn-success" href="create.html">@localizer["Create Prescription"]</a>
-                                </div>
-
-                                <div class="col-sm-3 text-center">
-                                    <a class="btn btn-danger" href="Confirm_delete.html">@localizer["Delete Appointment"]</a>
+                                    <a class="btn btn-danger" href="Confirm_delete.html">@localizer["Cancele Appointment"]</a>
                                 </div>
                             </div>
-                            
-                           
                         </div>
-
                     </div>
-                    
                 </div>
             </div>
         </div>

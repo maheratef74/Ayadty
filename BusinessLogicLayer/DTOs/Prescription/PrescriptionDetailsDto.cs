@@ -4,8 +4,8 @@ namespace BusinessLogicLayer.DTOs.Prescription;
 using DataAccessLayer.Entities;
 public class PrescriptionDetailsDto
 {
-    public int PrescriptionId { get; set; } 
-    public int PatientId { get; set; }
+    public string PrescriptionId { get; set; } 
+    public string PatientId { get; set; }
     
     public string PatientName { get; set; } 
     public string patientAge { get; set; }

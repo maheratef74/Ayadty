@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using presentationLayer.Models.Appointment.ViewModel;
+using PresentationLayer.Models.Appointment.ViewModel;
 using presentationLayer.Models.Patient.ViewModel;
 namespace presentationLayer.Controllers;
 using presentationLayer.Models.Appointment.CompositeViewModel;
@@ -51,14 +52,14 @@ public class AppointmentController : Controller
         return RedirectToAction("DailyAppointment");
     }
     [HttpGet]
-    public async Task<IActionResult> Details(int appointedId )
+    public async Task<IActionResult> Details(string appointedId )
     {
         var isDoctor = User.IsInRole(Roles.Doctor);
         var isNurse = User.IsInRole(Roles.Nurse);
         var appointment = await _appointmentService.GetAppointmentByID(appointedId);
         var currentUsserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         
-        if ((!isDoctor && !isNurse && currentUsserId != appointment.PatientId) || appointment is null)
+        if (appointment is null || (!isDoctor && !isNurse && currentUsserId != appointment.PatientId) )
         {
             return RedirectToAction("Error404", "Home");
         }
@@ -69,8 +70,14 @@ public class AppointmentController : Controller
         return View(appointmentVM);
     }
     [HttpGet]
-    public IActionResult DailyAppointment()
+    public async Task<IActionResult> DailyAppointment()
     {
-        return View();
+        var appointments = await _appointmentService.GetAllForDay(null);
+        
+        var getAllAppointmentVM = new SpecificDetailsAppointmentVM
+        {
+            Appointments = appointments.ToAppointmentspecificDetailsVms()
+        };
+        return View(getAllAppointmentVM);
     }
 }

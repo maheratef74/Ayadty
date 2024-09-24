@@ -505,5 +505,7 @@
   
   "GenderRequired" : "تحديد النوع مطلوب",
   "Use Another Phone Number" : "استخدم رقم موبيل اخر",
-  "Patient Name" : "اسم المريض"
+  "Patient Name" : "اسم المريض",
+  "Daily Appointement" : "جدول الطبيب",
+  "Cancele Appointment": "الغاء الحجز"
 }

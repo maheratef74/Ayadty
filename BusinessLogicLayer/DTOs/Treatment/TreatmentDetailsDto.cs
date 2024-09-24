@@ -2,11 +2,11 @@ namespace BusinessLogicLayer.DTOs.Treatment;
 using DataAccessLayer.Entities;
 public class TreatmentDetailsDto
 {
-    public int TreatmentId { get; set; }
+    public string TreatmentId { get; set; }
     public string Name { get; set; }
     public string? Dosage { get; set; }
     public string? Note { get; set; }
-    public int PrescriptionId { set; get; } 
+    public string PrescriptionId { set; get; } 
 }
 
 public static class TreatmentDetailsExtension

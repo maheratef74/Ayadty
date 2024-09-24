@@ -10,15 +10,15 @@
 @{
 if (User.IsInRole("Doctor") || User.IsInRole("Nurse"))
 {
-Layout = "~/Views/Shared/_AdminLayout.cshtml";
+  Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 else if (User.IsInRole("Patient"))
 {
-Layout = "~/Views/Shared/_Layout.cshtml";
+  Layout = "~/Views/Shared/_Layout.cshtml";
 }
 else
 {
-Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
+  Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
 }
 }
 <head>
@@ -43,18 +43,12 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
 	<link rel="stylesheet" href="~/css/animate.min.css">
 	<!-- Magnific Popup CSS -->
 	<link rel="stylesheet" href="~/css/magnific-popup.css">
-
+	<link rel="stylesheet" href="~/css/jquery-ui.css">
 	<!-- Medipro CSS -->
 	<link rel="stylesheet" href="~/css/normalize.css">
 	<link rel="stylesheet" href="~/css/Home.css">
 	<link rel="stylesheet" href="~/css/responsive.css">
-	<!-- jQuery -->
-	<script src="~/js/jquery-3.6.0.min.js"></script>
-	<script src="~/lib/jquery/dist/jquery.min.js"></script>
-	<script src="~/lib/jquery/dist/jquery.js"></script>
-	<!-- jQuery UI -->
-	<link rel="stylesheet" href="~/css/jquery-ui.css">
-	<script src="~/js/jquery-ui.min.js"></script>
+	
 </head>
 <body>
 
@@ -593,4 +587,10 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
 <script src="~/js/bootstrap.min.js"></script>
 <!-- Main JS -->
 <script src="~/js/main.js"></script>
+<!-- jQuery -->
+<script src="~/js/jquery-3.6.0.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<!-- jQuery UI -->
+<script src="~/js/jquery-ui.min.js"></script>
 </body>

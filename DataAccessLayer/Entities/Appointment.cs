@@ -6,7 +6,7 @@ namespace DataAccessLayer.Entities;
 public class Appointment
 {
     [Key]
-    public int AppointmentId { get; set; } // Primary Key
+    public string AppointmentId { get; set; } // Primary Key
     public DateTime Date { get; set; }
     public string PatientName { get; set; }
     public string PatientContact { get; set; }

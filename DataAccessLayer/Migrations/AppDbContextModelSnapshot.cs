@@ -85,11 +85,6 @@ namespace DataAccessLayer.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("UserType")
-                        .IsRequired()
-                        .HasMaxLength(21)
-                        .HasColumnType("nvarchar(21)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -102,18 +97,13 @@ namespace DataAccessLayer.Migrations
 
                     b.ToTable("Users", (string)null);
 
-                    b.HasDiscriminator<string>("UserType").HasValue("ApplicationUser");
-
-                    b.UseTphMappingStrategy();
+                    b.UseTptMappingStrategy();
                 });
 
             modelBuilder.Entity("DataAccessLayer.Entities.Appointment", b =>
                 {
-                    b.Property<int>("AppointmentId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AppointmentId"));
+                    b.Property<string>("AppointmentId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -151,11 +141,8 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("DataAccessLayer.Entities.Clinic", b =>
                 {
-                    b.Property<int>("ClinicId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClinicId"));
+                    b.Property<string>("ClinicId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -182,11 +169,8 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("DataAccessLayer.Entities.Prescription", b =>
                 {
-                    b.Property<int>("PrescriptionId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PrescriptionId"));
+                    b.Property<string>("PrescriptionId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -203,8 +187,9 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("patientAge")
                         .IsRequired()
@@ -219,11 +204,8 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("DataAccessLayer.Entities.Treatment", b =>
                 {
-                    b.Property<int>("TreatmentId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TreatmentId"));
+                    b.Property<string>("TreatmentId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Dosage")
                         .HasColumnType("nvarchar(max)");
@@ -235,8 +217,9 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("Note")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PrescriptionId")
-                        .HasColumnType("int");
+                    b.Property<string>("PrescriptionId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("TreatmentId");
 
@@ -247,14 +230,11 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("DataAccessLayer.Entities.WorkDay", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("ClinicId")
-                        .HasColumnType("int");
+                    b.Property<string>("ClinicId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("DayOfWeek")
                         .HasColumnType("int");
@@ -419,7 +399,7 @@ namespace DataAccessLayer.Migrations
                     b.Property<int?>("YearsOfExperience")
                         .HasColumnType("int");
 
-                    b.HasDiscriminator().HasValue("Doctor");
+                    b.ToTable("Doctors", (string)null);
                 });
 
             modelBuilder.Entity("DataAccessLayer.Entities.Patient", b =>
@@ -439,7 +419,7 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("Gender")
                         .HasColumnType("int");
 
-                    b.HasDiscriminator().HasValue("Patient");
+                    b.ToTable("Patients", (string)null);
                 });
 
             modelBuilder.Entity("DataAccessLayer.Entities.Appointment", b =>
@@ -527,6 +507,24 @@ namespace DataAccessLayer.Migrations
                     b.HasOne("DataAccessLayer.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.Doctor", b =>
+                {
+                    b.HasOne("DataAccessLayer.Entities.ApplicationUser", null)
+                        .WithOne()
+                        .HasForeignKey("DataAccessLayer.Entities.Doctor", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.Patient", b =>
+                {
+                    b.HasOne("DataAccessLayer.Entities.ApplicationUser", null)
+                        .WithOne()
+                        .HasForeignKey("DataAccessLayer.Entities.Patient", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

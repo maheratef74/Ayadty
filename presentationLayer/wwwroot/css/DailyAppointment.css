@@ -77,3 +77,14 @@ a {
 a:hover {
     text-decoration: none;
 }
+/* Highlight style for current user's appointments */
+.highlight {
+    font-weight: bold; /* Makes text bold */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Adds a shadow */
+    transition: box-shadow 0.3s ease; /* Smooth transition for shadow */
+}
+
+/* Optional: Change shadow on hover */
+.highlight:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+}

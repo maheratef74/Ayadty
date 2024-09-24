@@ -486,5 +486,7 @@
   "Username or Password invalid": "Username or Password invalid",
   "GenderRequired":  "Gender is Required",
   "Use Another Phone Number": "Use Another Phone Number",
-  "Patient Name": "Patient Name"
+  "Patient Name": "Patient Name",
+  "Daily Appointement": "Daily Appointement",
+  "Cancele Appointment": "Cancele Appointment"
 }

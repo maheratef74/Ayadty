@@ -31,11 +31,14 @@ public class AppDbContext :  IdentityDbContext<ApplicationUser>
             .Property(d => d.Id)
             .HasColumnName("UserId");      
             
-        modelBuilder.Entity<ApplicationUser>()
-            .HasDiscriminator<string>("UserType")
-            .HasValue<ApplicationUser>("ApplicationUser")
-            .HasValue<Patient>("Patient")
-            .HasValue<Doctor>("Doctor");
+        // TPT Configuration: Doctor and Patient will have their own tables
+        modelBuilder.Entity<Doctor>()
+            .ToTable("Doctors")  // Derived type has its own table
+            .Property(d => d.Price)
+            .HasPrecision(18, 2); 
+
+        modelBuilder.Entity<Patient>()
+            .ToTable("Patients");  // Derived type has its own table
     }
     // DbSets
     public DbSet<Appointment> Appointments { get; set; }
