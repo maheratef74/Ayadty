@@ -18,12 +18,15 @@ public class DashBoardController:Controller
         return View();
     }
     [HttpGet]
-    public async Task<IActionResult> DailyAppointment()
+    public async Task<IActionResult> DailyAppointment(DateTime date)
     {
-        var appointments =  await _appointmentService.GetAllForDay(null);
+        var selectedDate = date;
+
+        var appointments =  await _appointmentService.GetAllForDay(selectedDate);
         var getAllAppointmentVM = new GetAllAppointmentVM
         {
-            appointments = appointments 
+            appointments = appointments ,
+            SelectedDate = selectedDate 
         };
         return View(getAllAppointmentVM);
     }

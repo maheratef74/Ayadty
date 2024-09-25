@@ -73,7 +73,7 @@ public class authController : Controller
                 .CreateAsync(patientUser, newPatient.Password);
             if (result.Succeeded) // User saved succesfully to database
             {
-                await _userManager.AddToRoleAsync(patientUser, "Patient");
+                await _userManager.AddToRoleAsync(patientUser, Roles.Patient);
                 // Create a Cookie
                 await _signInManager.SignInAsync(patientUser , newPatient.RememberMe);
                 return RedirectToAction("Index", "Home");

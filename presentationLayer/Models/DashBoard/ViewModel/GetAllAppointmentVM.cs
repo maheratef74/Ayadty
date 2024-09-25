@@ -6,4 +6,5 @@ using DataAccessLayer.Entities;
 public class GetAllAppointmentVM
 {
    public List<AppointmentDetailsDto> appointments;
+   public DateTime SelectedDate { get; set; }
 }

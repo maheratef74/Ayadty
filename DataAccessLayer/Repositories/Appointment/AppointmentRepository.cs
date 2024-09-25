@@ -5,15 +5,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DataAccessLayer.Repositories.Generic;
+using DataAccessLayer.Repositories.Patient;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 public class AppointmentRepository:IAppointmentRepository
 {
     private readonly AppDbContext _appDbContext;
-    public AppointmentRepository(AppDbContext appDbContext)
+    private readonly IPatientRepository _patientRepository;
+    
+    public AppointmentRepository(AppDbContext appDbContext, IPatientRepository patientRepository)
     {
         _appDbContext = appDbContext;
+        _patientRepository = patientRepository;
     }
 
     public async Task<int> Count()
@@ -21,18 +25,20 @@ public class AppointmentRepository:IAppointmentRepository
         throw new NotImplementedException();
     }
 
-    public async Task<List<Appointment>> GetAllForDay(DateTime? dateTime = null)
+    public async Task<List<Appointment>> GetAllForDay(DateTime? dateTime)
     {
-        var date = dateTime?.Date ?? DateTime.Today;  // Use today if no date is provided
+        var date = dateTime?.Date ?? DateTime.Today; 
         
+        //  DbFunctions.TruncateTime to ignore the time part in the date comparison
         var dayAppointments = await _appDbContext.Appointments
             .Include(a => a.Patient)
-            .Where(a => a.Date.Date == date)
+            .Where(a => EF.Functions.DateDiffDay(a.Date, date) == 0) 
             .OrderBy(a => a.Order)
             .ToListAsync();
 
         return dayAppointments;
     }
+
     public async Task<List<Appointment>> GetAllByPatientId(string  patientId)
     {
         return await _appDbContext.Appointments 
@@ -65,25 +71,24 @@ public class AppointmentRepository:IAppointmentRepository
     }
     public async Task Update(Appointment updatedAppointment)
     {
-        var appointment = await _appDbContext.Appointments
+       /* var appointment = await _appDbContext.Appointments
             .FirstOrDefaultAsync(a => a.AppointmentId == updatedAppointment.AppointmentId);
-        
-        if (appointment != null)
+        var patient = await _patientRepository.GetById(updatedAppointment.PatientId);
+       /* if (appointment is not null)
         {
-            /* if (role == "doctor")   untile make auth
-             {
-                 appointment.Order = updatedAppointment.Order;
-                 appointment.PatientName = updatedAppointment.PatientName;
-                 appointment.Status = updatedAppointment.Status;
-                 appointment.PatientProgress = updatedAppointment.PatientProgress;
-             }
-             else if (role == "patient")
-             {
-                 appointment.Status = updatedAppointment.Status;  // from pending to cancel only
-                 appointment.PatientProgress = updatedAppointment.PatientProgress;
-             }
-             */
-        }
+            appointment.Status = updatedAppointment.Status;
+            appointment.PatientProgress = updatedAppointment.PatientProgress;
+            appointment.Order = updatedAppointment.Order;
+            appointment.Date = updatedAppointment.Date;
+            appointment.Note = updatedAppointment.Note;
+            appointment.PatientName = updatedAppointment.PatientName;
+            appointment.Patient = patient;
+        }*/
+
+     //  await _appDbContext.SaveChangesAsync();
+
+       _appDbContext.Appointments.Update(updatedAppointment);
+       await _appDbContext.SaveChangesAsync();
     }
     public async Task Delete(String id)
     {
@@ -113,7 +118,7 @@ public class AppointmentRepository:IAppointmentRepository
     }
     public async Task SaveChanges()
     {
-        await _appDbContext.SaveChangesAsync();
+       await _appDbContext.SaveChangesAsync();
     }
     
 }

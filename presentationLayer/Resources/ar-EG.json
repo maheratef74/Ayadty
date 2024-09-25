@@ -255,6 +255,14 @@
   "saturday": "السبت",
   "Sunday": "الأحد",
 
+  
+  
+  
+  
+  
+  
+  
+  
   "Register": "تسجيل",
   "Enter your number": "ادخل رقم هاتفك",
 
@@ -507,5 +515,7 @@
   "Use Another Phone Number" : "استخدم رقم موبيل اخر",
   "Patient Name" : "اسم المريض",
   "Daily Appointement" : "جدول الطبيب",
-  "Cancele Appointment": "الغاء الحجز"
+  "Cancele Appointment": "الغاء الحجز",
+  "Select Date" :"اختر يوم",
+  "Filter" : "تحديد"
 }

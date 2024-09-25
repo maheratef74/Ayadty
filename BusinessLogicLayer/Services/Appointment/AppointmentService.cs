@@ -54,4 +54,12 @@ public class AppointmentService : IAppointmentService
         }
         return appointmentDetailsList;
     }
+
+    public async Task UpdateAppointment(UpdateAppointmentDto UpdaedappointmentDetailsDto)
+    {
+        var appointment = UpdaedappointmentDetailsDto.ToUpdatedAppointment();
+        
+        await _appointmentsRepository.Update(appointment); 
+        await _appointmentsRepository.SaveChanges();
+    }
 }

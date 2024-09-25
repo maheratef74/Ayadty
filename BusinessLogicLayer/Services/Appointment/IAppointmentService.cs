@@ -8,4 +8,6 @@ public interface IAppointmentService
     Task<List<AppointmentDetailsDto>> GetAllForDay(DateTime? data);
     Task<AppointmentDetailsDto?> GetAppointmentByID(string appointmentId);
     Task<List<AppointmentDetailsDto>> GetAllAppointmentByPatientId(string PatientId);
+
+    Task UpdateAppointment(UpdateAppointmentDto UpdaedappointmentDetailsDto);
 }

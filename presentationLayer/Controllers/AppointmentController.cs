@@ -80,4 +80,20 @@ public class AppointmentController : Controller
         };
         return View(getAllAppointmentVM);
     }
+
+    [HttpGet]
+    public async Task<IActionResult> Update(string appointedId)
+    {
+        var appointment = await _appointmentService.GetAppointmentByID(appointedId);
+       
+        return View(appointment.ToAppointmentVm());
+    }
+    [HttpPost]
+    public async Task<IActionResult> Update(UpdateAppointmentVM updtedAppointed)
+    {
+        var appointmentDto = updtedAppointed.ToAppointmentDto();
+        _appointmentService.UpdateAppointment(appointmentDto);
+        return RedirectToAction("Details", "Appointment" , new{appointedId = updtedAppointed.AppointmentId});
+    }
+
 }

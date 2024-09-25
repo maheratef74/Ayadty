@@ -118,7 +118,7 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
                             </div>
                             <div class="row text-center" >
                                 <div class="col-sm-3 text-center">
-                                    <a class="btn btn-primary" href="Edit appointment.html">@localizer["Edit Appointment"]</a>
+                                    <a class="btn btn-primary" onclick="window.location.href='@Url.Action("Update", "Appointment", new { appointedId = @Model.appointment.AppointmentId })'">@localizer["Edit Appointment"]</a>
                                 </div>
                                 @if (User.IsInRole("Doctor"))
                                 {
