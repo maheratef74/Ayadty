@@ -495,6 +495,7 @@
   "DataIsRequried" : "Date and Time is required",
   "You Cann't update this appointment":  "You Cann't update this appointment",
   "OrderIsRequired":   "Order is required",
+  "This appointment is Completed So You cann't Cancele it":  "This appointment is Completed So You cann't Cancele it",
   "This appointment is already canceled.": "This appointment is already canceled.",
-  "This appointment is already canceled.": "This appointment is already canceled."
+  "Appointment canceled successfully.": "Appointment canceled successfully."
 }

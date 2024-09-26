@@ -522,5 +522,6 @@
   "You Cann't update this appointment" : "لا يمكن التعديل علي حجز تم الغاءة او تم الكشف",
   "OrderIsRequired" : "ترتيب الحجز مطلوب",
   "This appointment is Completed So You cann't Cancele it": "هذا الحجز تم الكشف عليه لذالك لا يمكن الغاءة",
-  "This appointment is already canceled." :"هذا الحجز تم الغاءة من قبل"
+  "This appointment is already canceled." :"هذا الحجز تم الغاءة من قبل",
+  "Appointment canceled successfully.": "تم الغاء الحجز بنجاح"
 }

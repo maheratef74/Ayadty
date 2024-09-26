@@ -90,7 +90,7 @@ public class AppointmentRepository:IAppointmentRepository
         var appointment = await _appDbContext.Appointments
             .FirstOrDefaultAsync(a => a.AppointmentId == id);
         if (appointment is not null)
-        { 
+        {
             _appDbContext.Appointments.Remove(appointment);
         }
     }

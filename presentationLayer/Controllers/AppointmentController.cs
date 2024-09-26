@@ -126,15 +126,31 @@ public class AppointmentController : Controller
             return RedirectToAction("Details" , "Appointment" ,
                 new{ appointedId = appointmentId});
         }
-        if (oldAppointment.Status == Enums.AppointmentStatus.Canceled)
+        if (oldAppointment.Status == Enums.AppointmentStatus.Completed)
         {
             TempData["ErrorMessage"] = _localizer["This appointment is Completed So You cann't Cancele it"];
             return RedirectToAction("Details" , "Appointment" ,
                 new{ appointedId = appointmentId});
         }
         await _appointmentService.CanceleAppointment(appointmentId);
+        TempData["SuccessMessage"] = "Appointment canceled successfully.";
         return RedirectToAction("Details", "Appointment", 
             new { appointedId = appointmentId });
+    }
+     public async Task<IActionResult> Delete(string appointmentId)
+    {
+        var oldAppointment = await _appointmentService
+            .GetAppointmentByID(appointmentId);
+        
+        if (oldAppointment.Status == Enums.AppointmentStatus.Completed)
+        {
+            TempData["ErrorMessage"] = _localizer["This appointment is Completed So You cann't Cancele it"];
+            return RedirectToAction("Details" , "Appointment" ,
+                new{ appointedId = appointmentId});
+        }
+        await _appointmentService.DeleteAppointment(appointmentId);
+        return RedirectToAction("Profile", "Patient", 
+            new { patientId = oldAppointment.PatientId });
     }
 
 }

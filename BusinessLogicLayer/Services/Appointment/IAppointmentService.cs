@@ -12,5 +12,5 @@ public interface IAppointmentService
     Task UpdateAppointment(UpdateAppointmentDto UpdaedappointmentDetailsDto);
 
     Task CanceleAppointment(string appointmentId);
-
+    Task DeleteAppointment(string appointmentId);
 }
