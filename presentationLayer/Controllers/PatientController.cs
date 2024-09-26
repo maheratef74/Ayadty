@@ -52,12 +52,7 @@ namespace presentationLayer.Controllers
             };
             return View(patientAndHisAppointments);
         }
-        //   [ValidateAntiForgeryToken]
-        public IActionResult Update()
-        {
-            return View();
-
-        }
+        
         [HttpGet]
         public async Task<IActionResult> Update(string patientId)
         {
@@ -66,7 +61,6 @@ namespace presentationLayer.Controllers
             {
                 return NotFound();
             }
-
             var updatePatientVM = patient.ToUpdatePatientVM();
             return View(updatePatientVM);
         }
@@ -75,39 +69,12 @@ namespace presentationLayer.Controllers
         {
 
             var patientDto = updatedPatient.ToUpdatePatientDto();
-
-
+            
             await _patientService.UpdatePatient(patientDto);
 
             return RedirectToAction("Profile", "Patient",
-                new
-                {
-
-                    patientId = updatedPatient.PatientId,
-                });
+                new {patientId = updatedPatient.PatientId });
 
         }
-        //[HttpPost]
-        //public async Task<IActionResult> Update(UpdatePatientVM updatedPatient)
-        //{
-        //    if (!ModelState.IsValid) // Check if the model state is valid
-        //    {
-        //       // // Return the view with the current data if not valid
-        //    }
-
-        //    // Map UpdatePatientVM to UpdatePatientDto
-        //    var patientDto = updatedPatient.ToUpdatePatientDto();
-
-        //    // Call the service to update patient data
-        //    await _patientService.UpdatePatient(patientDto); // Ensure this method is awaited
-
-        //    // Redirect to the patient's profile page after the update
-        //    return RedirectToAction("Profile", "Patient", new { patientId = updatedPatient.PatientId });
-
-
-        //}
-
-
-
     }
 }

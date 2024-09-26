@@ -6,12 +6,9 @@ namespace presentationLayer.Models.Patient.ViewModel;
 public class UpdatePatientVM
 {
     public string PatientId { get; set; }
-
     public DateTime DateOfBirth { get; set; }
     public Enums.Gender Gender { get; set; }
-
     public string? Email { get; set; }
-
     public string Address { get; set; }
     public string password { get; set; }
     public string? FacebookProfile { get; set; }
@@ -21,8 +18,6 @@ public class UpdatePatientVM
 }
 public static class UpdatePatientExtenionMethod
 {
-
-
     public static UpdatePatientDto ToUpdatePatientDto(this UpdatePatientVM vm)
     {
         return new UpdatePatientDto
