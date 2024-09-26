@@ -10,4 +10,7 @@ public interface IAppointmentService
     Task<List<AppointmentDetailsDto>> GetAllAppointmentByPatientId(string PatientId);
 
     Task UpdateAppointment(UpdateAppointmentDto UpdaedappointmentDetailsDto);
+
+    Task CanceleAppointment(string appointmentId);
+
 }

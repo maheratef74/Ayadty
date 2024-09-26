@@ -1,9 +1,11 @@
 using BusinessLogicLayer.Services.Appointment;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using presentationLayer.Models.DashBoard.ViewModel;
 
 namespace presentationLayer.Controllers;
 
+//[Authorize(Roles = "Doctor,Nurse")]
 public class DashBoardController:Controller
 {
     private readonly IAppointmentService _appointmentService;
@@ -18,16 +20,18 @@ public class DashBoardController:Controller
         return View();
     }
     [HttpGet]
-    public async Task<IActionResult> DailyAppointment(DateTime date)
+    public async Task<IActionResult> DailyAppointment(DateTime? date = null)
     {
-        var selectedDate = date;
+     
+        var selectedDate = date ?? DateTime.Today;
 
-        var appointments =  await _appointmentService.GetAllForDay(selectedDate);
+        var appointments = await _appointmentService.GetAllForDay(selectedDate);
         var getAllAppointmentVM = new GetAllAppointmentVM
         {
-            appointments = appointments ,
-            SelectedDate = selectedDate 
+            appointments = appointments,
+            SelectedDate = selectedDate
         };
+
         return View(getAllAppointmentVM);
     }
     public IActionResult AddPatient()

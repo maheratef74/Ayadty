@@ -25,6 +25,10 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@localizer["Edit Appointment"]</title>
     <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <!-- jQuery and jQuery Validation scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 </head>
 <body>
 <div class="container">
@@ -34,7 +38,7 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="@Model.profilePhoto" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+                            <img src="@Url.Content(@Model.profilePhoto)" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
                             <div class="mt-3">
                                 <h4>@Model.PatientName</h4>
                             </div>
@@ -59,6 +63,7 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     <input asp-for="PatientName" type="text" class="form-control" value="@Model.PatientName">
+                                    <span asp-validation-for="PatientName" class="text-danger"></span>
                                 </div>
                             </div>
 
@@ -68,7 +73,7 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
                                     <h6 class="mb-0">@localizer["Phone"]</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input asp-for="PatientContact" type="text" class="form-control" value="@Model.PatientContact" disabled>
+                                    <input asp-for="PatientContact" type="text" class="form-control" value="@Model.PatientContact" readonly>
                                 </div>
                             </div>
 
@@ -79,7 +84,15 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
                                     <h6 class="mb-0">@localizer["Order"]</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input asp-for="Order" type="number" class="form-control" value="@Model.Order" >
+                                    @if (User.IsInRole("Patient"))
+                                    {
+                                      <input asp-for="Order" type="number" class="form-control" value="@Model.Order" readonly>
+                                    }
+                                    else
+                                    {
+                                      <input asp-for="Order" type="number" class="form-control" value="@Model.Order">
+                                    }
+                                    <span asp-validation-for="Order" class="text-danger"></span>
                                 </div>
                             </div>
 
@@ -111,28 +124,46 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
                                          <option value="2">@localizer["Completed"]</option>
                                         }
                                     </select>
+                                    <span asp-validation-for="Status" class="text-danger"></span>
                                 </div>
                             </div>
 
-                            @*<!-- Date -->
+                            <!-- Date -->
                             <div class="row mb-3">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">@localizer["Date"]</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input asp-for="Date" type="date" class="form-control" value="@Model.Date.ToString("yyyy-MM-dd")"  @(User.IsInRole("Patient") ? new { @disabled = "disabled" } : null)>
+                                   @if (User.IsInRole("Patient"))
+                                   {
+                                       <input asp-for="Date" type="date" class="form-control" value="@Model.Date.ToString("yyyy-MM-dd")" readonly>
+                                   }
+                                   else
+                                   {
+                                       <input asp-for="Date" type="date" class="form-control" value="@Model.Date.ToString("yyyy-MM-dd")">
+                                   }
+                                    <span asp-validation-for="Date" class="text-danger"></span>
                                 </div>
-                            </div>*@
+                            </div>
 
-                            @*<!-- Time -->
+                            <!-- Time -->
                             <div class="row mb-3">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">@localizer["Time"]</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input asp-for="Date" type="time" class="form-control" value="@Model.Date.ToString("h:mm tt")"  @(User.IsInRole("Patient") ? new { @disabled = "disabled" } : null)>
+                                    <!-- Set the time part -->
+                                    @if (User.IsInRole("Patient"))
+                                    {
+                                        <input asp-for="Date" type="time" class="form-control" value="@Model.Date.ToString("HH:mm")" readonly/>
+                                    }
+                                    else
+                                    {
+                                        <input asp-for="Date" type="time" class="form-control" value="@Model.Date.ToString("HH:mm")" />
+                                    }
+                                    <span asp-validation-for="Date" class="text-danger"></span>
                                 </div>
-                            </div>*@
+                            </div>
 
                             <!-- Address -->
                             <div class="row mb-3">
@@ -141,6 +172,7 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     <input asp-for="PatientAdress" type="text" class="form-control" value="@Model.PatientAdress" >
+                                    <span asp-validation-for="PatientAdress" class="text-danger"></span>
                                 </div>
                             </div>
 

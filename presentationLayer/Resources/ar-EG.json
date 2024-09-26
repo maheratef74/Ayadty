@@ -517,5 +517,10 @@
   "Daily Appointement" : "جدول الطبيب",
   "Cancele Appointment": "الغاء الحجز",
   "Select Date" :"اختر يوم",
-  "Filter" : "تحديد"
+  "Filter" : "تحديد",
+  "DataIsRequried": "التاريخ و الوقت مطلوب",
+  "You Cann't update this appointment" : "لا يمكن التعديل علي حجز تم الغاءة او تم الكشف",
+  "OrderIsRequired" : "ترتيب الحجز مطلوب",
+  "This appointment is Completed So You cann't Cancele it": "هذا الحجز تم الكشف عليه لذالك لا يمكن الغاءة",
+  "This appointment is already canceled." :"هذا الحجز تم الغاءة من قبل"
 }

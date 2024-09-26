@@ -7,6 +7,8 @@
 @model presentationLayer.Models.DashBoard.ViewModel.GetAllAppointmentVM
 @inject IViewLocalizer localizer
 @using System.Globalization
+@using BusinessLogicLayer.DTOs.Appointment
+@using DataAccessLayer.Entities
 @using Microsoft.AspNetCore.Mvc.Localization
 
 <!DOCTYPE html>
@@ -23,7 +25,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/dashBoard.css">
-
+    <style>
+        .status-canceled {
+            color: red;
+        }
+        .status-completed {
+            color: green;
+        }
+        .status-default {
+            color: grey; 
+        }
+        .status-InMyWay {
+            color: #20247b;
+        }
+    </style>
 </head>
 
 <Body>
@@ -31,10 +46,10 @@
     <div class="row">
         <div class="col-lg-12">
             <!-- Input box to select a date -->
-            <form method="get" action="@Url.Action("DailyAppointment", "DashBoard" , new{})">
+            <form method="get" action="@Url.Action("DailyAppointment", "DashBoard")">
                 <div class="form-group">
                     <label for="appointmentDate">@localizer["Select Date"]</label>
-                    <input type="date" id="appointmentDate" name="selectedDate" class="form-control"
+                    <input type="date" id="appointmentDate" name="date" class="form-control"
                            value="@Model.SelectedDate.ToString("yyyy-MM-dd")" />
                     <button type="submit" class="btn btn-primary mt-2">@localizer["Filter"]</button>
                 </div>
@@ -64,11 +79,15 @@
                                     </td>
                                     <td >@appointment.Date.ToString("yyyy-MM-dd")</td>
                                     <td >@appointment.Date.ToString("hh:mm tt")</td> <!-- Time in 12-hour format with AM/PM -->
-                                    <td >
-                                        <span class="label label-default">@localizer[@appointment.Status.ToString()]</span>
+                                    <td class="@((appointment.Status == Enums.AppointmentStatus.Canceled) ? "status-canceled" :
+                                    (appointment.Status == Enums.AppointmentStatus.Completed) ? "status-completed" :
+                                    "status-default")">
+                                        @localizer[appointment.Status.ToString()]
                                     </td>
-                                    <td >
-                                        <span class="label label-default">@localizer[@appointment.PatientProgress.ToString()]</span>
+                                    <td class="@((appointment.PatientProgress == (PatientProgress)Enums.PatientProgress.InMyWayToClinic) ? "status-InMyWay" :
+                                    (appointment.PatientProgress == (PatientProgress)Enums.PatientProgress.InClinic) ? "status-completed" :
+                                    "status-default")">
+                                        @localizer[appointment.PatientProgress.ToString()]
                                     </td>
                                     <td >
                                         <a href="#">@appointment.PatientContact</a>

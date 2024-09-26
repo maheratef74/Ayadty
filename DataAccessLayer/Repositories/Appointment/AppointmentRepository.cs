@@ -71,10 +71,10 @@ public class AppointmentRepository:IAppointmentRepository
     }
     public async Task Update(Appointment updatedAppointment)
     {
-       /* var appointment = await _appDbContext.Appointments
+       var appointment = await _appDbContext.Appointments
             .FirstOrDefaultAsync(a => a.AppointmentId == updatedAppointment.AppointmentId);
-        var patient = await _patientRepository.GetById(updatedAppointment.PatientId);
-       /* if (appointment is not null)
+        var patient = await  _patientRepository.GetById(updatedAppointment.PatientId);
+       if (appointment is not null)
         {
             appointment.Status = updatedAppointment.Status;
             appointment.PatientProgress = updatedAppointment.PatientProgress;
@@ -83,12 +83,7 @@ public class AppointmentRepository:IAppointmentRepository
             appointment.Note = updatedAppointment.Note;
             appointment.PatientName = updatedAppointment.PatientName;
             appointment.Patient = patient;
-        }*/
-
-     //  await _appDbContext.SaveChangesAsync();
-
-       _appDbContext.Appointments.Update(updatedAppointment);
-       await _appDbContext.SaveChangesAsync();
+        }
     }
     public async Task Delete(String id)
     {

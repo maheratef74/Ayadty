@@ -31,6 +31,17 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
     <link rel="stylesheet" href="~/css/dashBoard.css">
     <!-- Slicknav -->
     <link rel="stylesheet" href="~/css/slicknav.min.css">
+    <style>
+        .status-canceled {
+            color: red;
+        }
+        .status-completed {
+            color: green;
+        }
+        .status-default {
+            color: grey; /* default color for other statuses */
+        }
+    </style>
 </head>
 <body>
 
@@ -113,11 +124,11 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 @{
-                                var today = DateTime.Today;
-                                var age = today.Year - Model.PatientVm.DateOfBirth.Year;
+                                    var today = DateTime.Today;
+                                    var age = today.Year - Model.PatientVm.DateOfBirth.Year;
 
-                                if (Model.PatientVm.DateOfBirth.Date > today.AddYears(-age))
-                                age--;
+                                    if (Model.PatientVm.DateOfBirth.Date > today.AddYears(-age))
+                                    age--;
                                 }
                                 @age
                             </div>
@@ -180,9 +191,11 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                                     <td > @id </td>
                                     <td >@appointment.Date.ToString("MM/dd/yyyy")</td>
                                     <td>@appointment.Date.ToString("hh:mm tt")</td>
-                                    <td>
-                                        <span class="label label-default">@localizer[@appointment.Status.ToString()]</span>
-                                    </td>
+                                        <td class="@((appointment.Status == Enums.AppointmentStatus.Canceled) ? "status-canceled" :
+                                        (appointment.Status == Enums.AppointmentStatus.Completed) ? "status-completed" :
+                                        "status-default")">
+                                            @localizer[appointment.Status.ToString()]
+                                        </td>
                                     </tr>
                                     
                                     id++;

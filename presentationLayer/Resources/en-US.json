@@ -490,5 +490,11 @@
   "Daily Appointement": "Daily Appointement",
   "Cancele Appointment": "Cancele Appointment",
   "Select Date" :"Select Date",
-  "Filter" : "Filter"
+  "Filter" : "Filter",
+
+  "DataIsRequried" : "Date and Time is required",
+  "You Cann't update this appointment":  "You Cann't update this appointment",
+  "OrderIsRequired":   "Order is required",
+  "This appointment is already canceled.": "This appointment is already canceled.",
+  "This appointment is already canceled.": "This appointment is already canceled."
 }

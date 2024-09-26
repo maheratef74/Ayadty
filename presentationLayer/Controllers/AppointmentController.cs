@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using BusinessLogicLayer.Services.Appointment;
 using BusinessLogicLayer.Services.Patient;
+using DataAccessLayer.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
@@ -15,10 +16,12 @@ public class AppointmentController : Controller
 {
     private readonly IAppointmentService _appointmentService;
     private readonly IPatientService _patientService;
-    public AppointmentController(IAppointmentService appointmentService, IPatientService patientService)
+    private readonly IStringLocalizer<authController> _localizer;
+    public AppointmentController(IAppointmentService appointmentService, IPatientService patientService, IStringLocalizer<authController> localizer)
     {
         _appointmentService = appointmentService;
         _patientService = patientService;
+        _localizer = localizer;
     }
     [HttpGet]
     public async Task<IActionResult> Create()
@@ -85,15 +88,53 @@ public class AppointmentController : Controller
     public async Task<IActionResult> Update(string appointedId)
     {
         var appointment = await _appointmentService.GetAppointmentByID(appointedId);
-       
-        return View(appointment.ToAppointmentVm());
+        var appointmentVM = appointment.ToAppointmentVm();
+        return View(appointmentVM);
     }
     [HttpPost]
     public async Task<IActionResult> Update(UpdateAppointmentVM updtedAppointed)
     {
+      var date = Request.Form["Date"]; 
+      var datePart = DateTime.Parse(date);
+      updtedAppointed.Date = datePart;
+      
+        var oldappointment = await _appointmentService
+            .GetAppointmentByID(updtedAppointed.AppointmentId);
+        if (User.IsInRole("Patient") && (oldappointment.Status == Enums.AppointmentStatus.Canceled || oldappointment.Status == Enums.AppointmentStatus.Completed))
+        {
+            ModelState.AddModelError("Status" , _localizer["You Cann't update this appointment"]);
+        }
+        if (!ModelState.IsValid)
+        {
+            return View(updtedAppointed);
+        }
         var appointmentDto = updtedAppointed.ToAppointmentDto();
-        _appointmentService.UpdateAppointment(appointmentDto);
-        return RedirectToAction("Details", "Appointment" , new{appointedId = updtedAppointed.AppointmentId});
+        await _appointmentService.UpdateAppointment(appointmentDto);
+        return RedirectToAction("Details", "Appointment" , 
+            new{appointedId = updtedAppointed.AppointmentId});
+    }
+
+   
+    public async Task<IActionResult> Cancele(string appointmentId)
+    {
+        var oldAppointment = await _appointmentService
+            .GetAppointmentByID(appointmentId);
+
+        if (oldAppointment.Status == Enums.AppointmentStatus.Canceled)
+        {
+            TempData["ErrorMessage"] = "This appointment is already canceled.";
+            return RedirectToAction("Details" , "Appointment" ,
+                new{ appointedId = appointmentId});
+        }
+        if (oldAppointment.Status == Enums.AppointmentStatus.Canceled)
+        {
+            TempData["ErrorMessage"] = _localizer["This appointment is Completed So You cann't Cancele it"];
+            return RedirectToAction("Details" , "Appointment" ,
+                new{ appointedId = appointmentId});
+        }
+        await _appointmentService.CanceleAppointment(appointmentId);
+        return RedirectToAction("Details", "Appointment", 
+            new { appointedId = appointmentId });
     }
 
 }
