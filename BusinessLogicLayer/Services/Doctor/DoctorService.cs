@@ -18,8 +18,6 @@ public class DoctorService : IDoctorService
 
         return _doctor.ToDoctorDto();
     }
-
-
     public async Task UpdateDoctor(UpdateDoctorDto updateDoctorDto)
     {
         var doctor = updateDoctorDto.ToUpdateDoctor();
@@ -27,8 +25,7 @@ public class DoctorService : IDoctorService
         if (doctor is not null)
         {
             await _doctorRepository.Update(doctor);
-            await _doctorRepository.SaveChanges();
+            await _doctorRepository.SaveChange();
         }
-
     }
 }

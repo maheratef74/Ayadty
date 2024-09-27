@@ -23,8 +23,8 @@ namespace presentationLayer.Models.Doctor.ViewModel
             return new UpdateDoctorDto
             {
                 DoctorId = vm.DoctorId,
-                Name = vm.Name,  // Ensure this property exists in UpdateDoctorDto
-                PhoneNumber = vm.PhoneNumber, // Ensure this property exists in UpdateDoctorDto
+                Name = vm.Name,  
+                PhoneNumber = vm.PhoneNumber, 
                 Email = vm.Email,
                 ProfilePhoto = vm.ProfilePhoto,
                 YearsOfExperience = vm.YearsOfExperience,
@@ -39,8 +39,8 @@ namespace presentationLayer.Models.Doctor.ViewModel
             return new UpdateDoctorVM
             {
                 DoctorId = dto.DoctorId,
-                Name = dto.FullName, // Ensure this matches the property names in your DTOs
-                PhoneNumber = dto.Phone, // Ensure this matches the property names in your DTOs
+                Name = dto.Name, 
+                PhoneNumber = dto.PhoneNumber, 
                 Email = dto.Email,
                 ProfilePhoto = dto.ProfilePhoto,
                 YearsOfExperience = dto.YearsOfExperience,

@@ -99,21 +99,15 @@ namespace presentationLayer.Controllers
             var doctorVM = Doctor.ToDoctorVM();*/
             return View();
         }
-
-        public IActionResult Update()
-          { 
+        [HttpGet]
+        public IActionResult Update(string doctorId)
+        { 
               return View();
-         }
-        
-
-            public IActionResult AboutMe()
-            {
-                return View();
-            }
-
-
-     
-
+        }
+        public IActionResult AboutMe()
+        { 
+            return View();
+        }
     }
 }
 

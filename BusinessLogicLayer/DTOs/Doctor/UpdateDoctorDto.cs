@@ -17,14 +17,14 @@ namespace BusinessLogicLayer.DTOs.Doctor
 
     public static class UpdateDoctorExtensionsDto
     {
-        public static UpdateDoctorDto? ToUpdateDoctor(this UpdateDoctorDto dto)
+        public static DataAccessLayer.Entities.Doctor? ToUpdateDoctor(this UpdateDoctorDto dto)
         {
             if (dto == null)
             {
                 return null;
             }
 
-            var doctor = new Doctor()
+            var doctor = new DataAccessLayer.Entities.Doctor()
             {
                 Id = dto.DoctorId,
                 FullName = dto.Name,
