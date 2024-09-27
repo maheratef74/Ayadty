@@ -62,4 +62,16 @@ public class AppointmentService : IAppointmentService
         await _appointmentsRepository.Update(appointment); 
         await _appointmentsRepository.SaveChanges();
     }
+
+    public async Task CanceleAppointment(string appointmentId)
+    {
+        await _appointmentsRepository.Cancel(appointmentId);
+        await _appointmentsRepository.SaveChanges();
+    }
+
+    public async Task DeleteAppointment(string appointmentId)
+    {
+        await _appointmentsRepository.Delete(appointmentId);
+        await _appointmentsRepository.SaveChanges();
+    }
 }

@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using BusinessLogicLayer.DTOs.Appointment;
 using DataAccessLayer.Entities;
 
@@ -9,12 +10,20 @@ public class UpdateAppointmentVM
     public string PatientId{ get; set; }
     public string? profilePhoto { get; set; }
     public string PatientContact { get; set; }
+    
+    [Required(ErrorMessage = "DataIsRequried")]
     public DateTime Date { get; set; }
+    
+    [Required(ErrorMessage = "NameRequired")]
     public string PatientName { get; set; }
+    
+    [Required(ErrorMessage = "AddressRequired")]
     public string PatientAdress { get; set; }
     public Enums.AppointmentStatus Status { get; set; }
     public Enums.PatientProgress PatientProgress { get; set; }
+    [Required(ErrorMessage = "OrderIsRequired")]
     public int Order { get; set; } 
+    
     public string? Note { get; set; }
 }
 

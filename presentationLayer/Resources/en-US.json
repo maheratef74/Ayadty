@@ -490,5 +490,21 @@
   "Daily Appointement": "Daily Appointement",
   "Cancele Appointment": "Cancele Appointment",
   "Select Date" :"Select Date",
-  "Filter" : "Filter"
+  "Filter" : "Filter",
+
+  "DataIsRequried" : "Date and Time is required",
+  "You Cann't update this appointment":  "You Cann't update this appointment",
+  "OrderIsRequired":   "Order is required",
+  "This appointment is Completed So You cann't Cancele it":  "This appointment is Completed So You cann't Cancele it",
+  "This appointment is already canceled.": "This appointment is already canceled.",
+  "Appointment canceled successfully.": "Appointment canceled successfully.",
+  "Appointment deleted  successfully.":  "Appointment deleted  successfully.",
+  "Appointment Created successfully": "Appointment Created successfully",
+  "Appointment Updated successfully": "Appointment Updated successfully",
+  "Acount Created successfully":  "Acount Created successfully",
+  "Do you really want to cancel the appointment?": "Do you really want to cancel the appointment?",
+  "Yes, cancel it!": "Yes, cancel it!",
+  "No, keep it" : "No, keep it",
+  "Do you really want to delete the appointment?":"Do you really want to delete the appointment?",
+  "Yes, delete it!": "Yes, delete it!"
 }

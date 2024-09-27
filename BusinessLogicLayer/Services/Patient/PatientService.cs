@@ -16,8 +16,8 @@ public class PatientService : IPatientService
     public async Task<PatientDetailsDto?> GetPatientById(string id)
     {
         var patient = await _patientRepository.GetById(id);
-        if (patient is null)  return null;
-        
+        if (patient is null) return null;
+
         return patient.ToPatientDetailsDto();
     }
 
@@ -27,5 +27,16 @@ public class PatientService : IPatientService
         if (patient is null) return null;
 
         return patient.ToPatientDetailsDto();
+    }
+    public async Task UpdatePatient(UpdatePatientDto updatePatientDto)
+    {
+        var patient = updatePatientDto.ToUpdatePatient();
+
+        if (patient is not null)
+        {
+            await _patientRepository.Update(patient);
+            await _patientRepository.SaveChanges();
+        }
+
     }
 }

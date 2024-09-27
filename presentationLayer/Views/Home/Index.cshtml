@@ -52,12 +52,11 @@ else
 </head>
 <body>
 
-<!-- End Header Area -->
 <!-- Slider Area -->
-<section class="slider"  dir = "LTR">
+<section class="slider">
 	<div class="hero-slider">
 		<!-- Start Single Slider -->
-		<div class="single-slider"  style="background-image:url('./img/slider3.jpg')">
+		<div class="single-slider" style="background-image:url('./img/doctor_in_clinic_ouo96d5s4ai2408cwrag_0.png')">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-7">
@@ -67,15 +66,15 @@ else
 							<div class="button">
 								<a href="#" class="btn">@localizer["Get Appointment"]</a>
 								<a href="#" class="btn primary">@localizer["Learn More"]</a>
-							</div>
+							</div>	
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
+		<!-- End Single Slider -->
 		<!-- Start Single Slider -->
-		<div class="single-slider"  dir="ltr" style="background-image:url('./img/doctor_in_clinic_g7mr0bsfv9c4dyclmksz_0.png');" >
+		<div class="single-slider" style="background-image:url('img/slider.jpg')">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-7">
@@ -91,19 +90,18 @@ else
 				</div>
 			</div>
 		</div>
-		<!-- End Single Slider -->
-
+		<!-- Start End Slider -->
 		<!-- Start Single Slider -->
-		<div class="single-slider" dir="ltr" style="background-image:url('./img/doctor_in_clinic_ouo96d5s4ai2408cwrag_0.png');">
-			<div class="container" dir="ltr">
-				<div class="row" dir="ltr">
-					<div class="col-lg-7" dir="ltr">
-						<div class="text" dir="ltr">
+		<div class="single-slider" style="background-image:url('img/slider3.jpg')">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-7">
+						<div class="text">
 							<h1>@localizer["We Provide Medical Services That You Can Trust!"]</h1>
-							<!--	<p>@localizer["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nisl pellentesque, faucibus libero eu, gravida quam."]</p> -->
-							<div class="button"dir="ltr">
-								<a asp-controller="Appointment" asp-action="Create" class="btn">@localizer["Get Appointment"]</a>
-								<a asp-controller="Clinic" asp-action="ContactUs" class="btn primary">@localizer["Contact Now"]</a>
+							<!-- <p>@localizer["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nisl pellentesque, faucibus libero eu, gravida quam."]</p> -->
+							<div class="button">
+								<a asp-controller="Appointment" asp-action="Create"class="btn">@localizer["Get Appointment"]</a>
+								<a asp-controller="Doctor" asp-action="AboutMe" class="btn primary">@localizer["About Us"]</a>
 							</div>
 						</div>
 					</div>

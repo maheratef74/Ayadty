@@ -54,8 +54,7 @@ public class authController : Controller
                 }
             }
             ModelState.AddModelError("Password", _localizer["Username or Password invalid"]);
-        }
-
+        } 
         return View(loginAr);
     }
     [HttpGet]
@@ -76,6 +75,7 @@ public class authController : Controller
                 await _userManager.AddToRoleAsync(patientUser, Roles.Patient);
                 // Create a Cookie
                 await _signInManager.SignInAsync(patientUser , newPatient.RememberMe);
+                TempData["successMessage"] = _localizer["Acount Created successfully"].Value;
                 return RedirectToAction("Index", "Home");
             }
             else

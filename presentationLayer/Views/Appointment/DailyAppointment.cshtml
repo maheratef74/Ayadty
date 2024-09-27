@@ -18,6 +18,7 @@
 @inject IViewLocalizer localizer
 @using System.Globalization
 @using System.Security.Claims
+@using DataAccessLayer.Entities
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.Mvc.Localization
 @{
@@ -37,6 +38,17 @@ var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         /* Change background color on hover */
         .highlight:hover {
             background-color: #87CEEB; /* Sky blue on hover */
+        }
+        .status-canceled {
+            color: red;
+        }
+
+        .status-completed {
+            color: green;
+        }
+
+        .status-default {
+            color: grey; /* default color for other statuses */
         }
 
     </style>
@@ -73,8 +85,10 @@ var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                                         <td class="spacer"></td>
                                         <td>@appointment.Date.ToString("h:mm tt")</td>
                                         <td class="spacer"></td>
-                                        <td>
-                                           @localizer[appointment.AppointmentStatus.ToString()]
+                                        <td class="@((appointment.AppointmentStatus == Enums.AppointmentStatus.Canceled) ? "status-canceled" :
+                                        (appointment.AppointmentStatus == Enums.AppointmentStatus.Completed) ? "status-completed" :
+                                        "status-default")">
+                                            @localizer[appointment.AppointmentStatus.ToString()]
                                         </td>
                                     </tr>
                                 }
@@ -85,8 +99,10 @@ var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                                         <td class="spacer"></td>
                                         <td>@appointment.Date.ToString("h:mm tt")</td>
                                         <td class="spacer"></td>
-                                        <td>
-                                           @localizer[appointment.AppointmentStatus.ToString()]
+                                        <td class="@((appointment.AppointmentStatus == Enums.AppointmentStatus.Canceled) ? "status-canceled" :
+                                        (appointment.AppointmentStatus == Enums.AppointmentStatus.Completed) ? "status-completed" :
+                                        "status-default")">
+                                            @localizer[appointment.AppointmentStatus.ToString()]
                                         </td>
                                     </tr>
                                 }
