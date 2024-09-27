@@ -6,6 +6,7 @@ using presentationLayer.Models.Doctor.ViewModel;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories.Doctor;
 using Microsoft.AspNetCore.Identity;
+using presentationLayer.Models.Appointment.ViewModel;
 
 namespace presentationLayer.Controllers
 {
@@ -111,7 +112,7 @@ namespace presentationLayer.Controllers
             }
 
 
-
+     
 
     }
 }
