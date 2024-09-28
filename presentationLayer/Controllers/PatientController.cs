@@ -15,15 +15,12 @@ namespace presentationLayer.Controllers
     {
         private readonly IPatientService _patientService;
         private readonly IAppointmentService _appointmentService;
-
         public PatientController(IPatientService patientService, IAppointmentService appointmentService)
         {
             _patientService = patientService;
             _appointmentService = appointmentService;
         }
-
         [HttpGet]
-        // [ValidateAntiForgeryToken]
         public async Task<IActionResult> Profile(string patientId)
         {
             // check if ID is not current user or not Nurse or doctor
@@ -39,6 +36,7 @@ namespace presentationLayer.Controllers
             var Patient = await _patientService.GetPatientById(patientId);
             var Appointments = await _appointmentService
                 .GetAllAppointmentByPatientId(patientId);
+            
             if (Patient is null)
             {
                 return View();
@@ -67,14 +65,16 @@ namespace presentationLayer.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(UpdatePatientVM updatedPatient)
         {
-
+            if (!ModelState.IsValid)
+            {
+                return View(updatedPatient);
+            }
             var patientDto = updatedPatient.ToUpdatePatientDto();
             
-            await _patientService.UpdatePatient(patientDto);
+             await _patientService.UpdatePatient(patientDto);
 
-            return RedirectToAction("Profile", "Patient",
+             return RedirectToAction("Profile", "Patient",
                 new {patientId = updatedPatient.PatientId });
-
         }
     }
 }

@@ -1,20 +1,40 @@
-﻿using BusinessLogicLayer.DTOs.Ptient;
+﻿using System.ComponentModel.DataAnnotations;
+using BusinessLogicLayer.DTOs.Ptient;
 using DataAccessLayer.Entities;
+using presentationLayer.Validation;
 
 namespace presentationLayer.Models.Patient.ViewModel;
 
 public class UpdatePatientVM
 {
     public string PatientId { get; set; }
+    
+    [Required(ErrorMessage = "DateOfBirthRequired")]
     public DateTime DateOfBirth { get; set; }
     public Enums.Gender Gender { get; set; }
+    [EmailAddress(ErrorMessage = "Invalid email address")]
     public string? Email { get; set; }
+    
+    [Required(ErrorMessage = "AddressRequired")]
     public string Address { get; set; }
-    public string password { get; set; }
+    
+    [DataType(DataType.Password)]
+    public string? Password { get; set; }
+    
+    [DataType(DataType.Password)]
+    [Compare("Password" , ErrorMessage = "The two passwords do not match.")]
+    public string? ConfirmPassword { get; set; }
     public string? FacebookProfile { get; set; }
+    
+    [Required(ErrorMessage = "NameRequired")]
     public string FullName { get; set; }
+    
+    [Required(ErrorMessage = "PhoneNumberRequired")]
+    [UniquePhoneNumber]
+    [RegularExpression(@"^(010|011|012|015)\d{8}$", ErrorMessage = "PhoneNumberInvalid")] 
     public string Phone { get; set; }
-    public string ProfilePhoto { get; set; }
+    
+    public string? ProfilePhoto { get; set; }
 }
 public static class UpdatePatientExtenionMethod
 {

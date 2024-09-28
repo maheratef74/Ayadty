@@ -506,5 +506,6 @@
   "Yes, cancel it!": "Yes, cancel it!",
   "No, keep it" : "No, keep it",
   "Do you really want to delete the appointment?":"Do you really want to delete the appointment?",
-  "Yes, delete it!": "Yes, delete it!"
+  "Yes, delete it!": "Yes, delete it!",
+  "Invalid email address": "Invalid email address"
 }

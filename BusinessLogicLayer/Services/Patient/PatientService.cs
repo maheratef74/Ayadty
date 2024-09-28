@@ -37,6 +37,5 @@ public class PatientService : IPatientService
             await _patientRepository.Update(patient);
             await _patientRepository.SaveChanges();
         }
-
     }
 }

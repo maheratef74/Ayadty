@@ -42,11 +42,8 @@ public class PatientRepository : IPatientRepository
             patient.DateOfBirth = updatedpatient.DateOfBirth;
             patient.Gender = updatedpatient.Gender;
             patient.FacbookProfile = updatedpatient.FacbookProfile;
-            patient.ProfilePhoto = updatedpatient.ProfilePhoto;
-            
-             _appDbContext.Entry(patient).State = EntityState.Modified;
+            patient.ProfilePhoto = updatedpatient.ProfilePhoto; 
         }
-
     }
     public async Task SaveChanges()
     {

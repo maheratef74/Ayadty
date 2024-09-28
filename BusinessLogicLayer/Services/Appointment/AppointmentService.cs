@@ -54,7 +54,6 @@ public class AppointmentService : IAppointmentService
         }
         return appointmentDetailsList;
     }
-
     public async Task UpdateAppointment(UpdateAppointmentDto UpdaedappointmentDetailsDto)
     {
         var appointment = UpdaedappointmentDetailsDto.ToUpdatedAppointment();
@@ -62,13 +61,11 @@ public class AppointmentService : IAppointmentService
         await _appointmentsRepository.Update(appointment); 
         await _appointmentsRepository.SaveChanges();
     }
-
     public async Task CanceleAppointment(string appointmentId)
     {
         await _appointmentsRepository.Cancel(appointmentId);
         await _appointmentsRepository.SaveChanges();
     }
-
     public async Task DeleteAppointment(string appointmentId)
     {
         await _appointmentsRepository.Delete(appointmentId);

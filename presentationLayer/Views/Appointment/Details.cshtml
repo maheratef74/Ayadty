@@ -148,20 +148,22 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
                                     </div>
                                 }
                                 <div class="col-sm-3 text-center">
-                                    <a class="btn btn-danger"
-                                       onclick="confirmCancel(@Model.appointment.AppointmentId)">
+                                    <button type="button" class="btn btn-danger"
+                                            onclick="confirmCancel(@Model.appointment.AppointmentId)">
                                         @localizer["Cancele Appointment"]
-                                    </a>
+                                    </button>
                                 </div>
                                 <div >
-                                    <a 
-                                       onclick="confirmDelete(@Model.appointment.AppointmentId)">
-                                        @localizer["Delete Appointment"]
-                                    </a>
+                                    <div class="col-sm-3 text-center">
+                                        <button type="button" class="btn btn-danger"
+                                                onclick="confirmDelete(@Model.appointment.AppointmentId)">
+                                            @localizer["Delete Appointment"]
+                                        </button>
+                                    </div>
                                 </div>
 
                             </div>
-                        </div>
+                        </div> 
                     </div>
                 </div>
             </div>

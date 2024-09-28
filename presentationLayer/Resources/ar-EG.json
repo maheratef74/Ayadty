@@ -412,18 +412,12 @@
   "CreatAppointment": "احجز موعد",
   "We will be confirm by an Text Message": "سوف نقوم بارسال رساله نصيه علي رقم الموبيل المسجل به لتاكيد حجزك",
 
-
-
-
+  
   "Change Photo": "تغير الصوره",
   "new password": "كلمه السر الجديده",
-  "old password": "كلمه السر القديمه",
+  "Confirm new password": " تاكيد كلمه السر الجديده",
 
-
-
-
-
- 
+  
   "Patient Profile": "صفحتي الشخصيه",
   "CreatAppointment": "احجز موعد",
   "DashBoard": "لوحه التحكم",
@@ -532,5 +526,6 @@
   "Yes, cancel it!": "نعم, اريد الالغاء",
   "No, keep it" : "لا, اتركها",
   "Do you really want to delete the appointment?": "هل بالفعل تريد حذف الحجز",
-  "Yes, delete it!": "نعم, اريد الحذف"
+  "Yes, delete it!": "نعم, اريد الحذف",
+  "Invalid email address" : "الاميل غير صحيح"
 }

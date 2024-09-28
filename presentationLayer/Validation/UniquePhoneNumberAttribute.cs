@@ -19,8 +19,8 @@ public class UniquePhoneNumberAttribute : ValidationAttribute
        var dbContext = (AppDbContext)validationContext.GetService(typeof(AppDbContext));
        var patient = dbContext.Users.Any(u => u.Phone == value.ToString());
       //  var patient = _PatientRepository?.GetPatientByPhoneNUmber(value.ToString());
-    //     Console.WriteLine("Phone number being validated: " + value);
-      //  Console.WriteLine("ID being validated: " + patient);
+     //  Console.WriteLine("Phone number being validated: " + value);
+     //   Console.WriteLine("ID being validated: " + patient);
         if (patient)
         {
             var errorMessage = localizer["Use Another Phone Number" ] ?? "Phone number is already in use.";

@@ -8,8 +8,6 @@
 @using presentationLayer.Models.Patient.ViewModel
 @model UpdatePatientVM 
 
-
-
 @{
 if (User.IsInRole("Doctor") || User.IsInRole("Nurse"))
 {
@@ -30,7 +28,10 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
     <title>@localizer["Update Patient"]</title>
     <link rel="stylesheet" href="~/css/PatientUpdate.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <!-- jQuery and jQuery Validation scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 </head>
 <body>
     
@@ -46,11 +47,8 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
                             <div class="card-body">
                                 <div class="d-flex flex-column align-items-center text-center">
                                     <!-- Profile Image -->
-                                  
                                     <img src="@Url.Content(Model.ProfilePhoto)" alt="ProfilePhoto" class="rounded-circle" width="150">
-
                                     
-
                                     <div class="mt-3">
                                         <h4>@Model.FullName</h4>
 
@@ -78,6 +76,7 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <input asp-for="FullName" type="text" class="form-control" value="@Model.FullName">
+                                        <span asp-validation-for="FullName" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -86,6 +85,7 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <input asp-for="Phone" type="text" class="form-control" value="@Model.Phone">
+                                        <span asp-validation-for="Phone" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -94,6 +94,7 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <input asp-for="Email" type="text" class="form-control" value="@Model.Email">
+                                        <span asp-validation-for="Email" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -101,7 +102,8 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
                                         <h6 class="mb-0">@localizer["Date of Birth"]</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input asp-for="DateOfBirth" type="date" class="form-control" value="@Model.DateOfBirth.ToString("dd/MM/yyyy")">
+                                        <input asp-for="DateOfBirth" type="date" class="form-control" value="@Model.DateOfBirth.ToString("yyyy-MM-dd")">
+                                        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
                                     </div>
                                 </div>
 
@@ -124,6 +126,7 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
                                         </div>
                                         <div class="col-sm-9 text-secondary">
                                             <input asp-for="Address" type="text" class="form-control" value="@Model.Address">
+                                            <span asp-validation-for="Address" class="text-danger"></span>
                                         </div>
                                     </div>
 
@@ -138,19 +141,21 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
 
                                     <div class="row mb-3">
                                         <div class="col-sm-3">
-                                            <h6 class="mb-0">@localizer["old password"]</h6>
+                                            <h6 class="mb-0">@localizer[ "new password"]</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
                                             <input type="text" class="form-control" value=" ">
+                                            <span asp-validation-for="Password" class="text-danger"></span>
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <div class="col-sm-3">
-                                            <h6 class="mb-0">@localizer["new password"]</h6>
+                                            <h6 class="mb-0">@localizer[ "Confirm new password"]</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
                                             <input type="text" class="form-control" value=" ">
+                                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                                         </div>
                                     </div>
 
@@ -172,7 +177,6 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
         function previewPhoto(event) {
             const photo = document.getElementById('profilePhoto');
             const file = event.target.files[0];
-
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function (e) {
@@ -182,7 +186,6 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
             }
         }
     </script>
-
     <!-- For Lyout -->
     <!-- jquery Min JS -->
     <script src="~/js/jquery.min.js"></script>
