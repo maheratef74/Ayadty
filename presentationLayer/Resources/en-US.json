@@ -507,5 +507,9 @@
   "No, keep it" : "No, keep it",
   "Do you really want to delete the appointment?":"Do you really want to delete the appointment?",
   "Yes, delete it!": "Yes, delete it!",
-  "Invalid email address": "Invalid email address"
+  "Invalid email address": "Invalid email address",
+  "Data Updated successfully":  "Data Updated successfully",
+
+  "Add Doctor": "Add Doctor",
+  "Doctor Added successfully": "Doctor Added successfully"
 }

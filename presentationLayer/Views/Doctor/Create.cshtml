@@ -1,5 +1,5 @@
 ﻿@{
-  Layout = null;
+  Layout = "_AdminLayout";
 }
 @inject IViewLocalizer localizer
 @using System.Globalization
@@ -8,7 +8,8 @@
 @using Microsoft.AspNetCore.Localization
 @using Microsoft.Extensions.Options
 @using presentationLayer.Models.Auth.ActionRequest
-@model RegisterAR
+@using presentationLayer.Models.Doctor.ActionRequest;
+@model AddDoctorAR
 @{
     var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
 }
@@ -22,7 +23,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title> @localizer["Registration"] </title>
+    <title> @localizer["Add Doctor"] </title>
     <link rel="stylesheet" href="~/css/registration.css">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,14 +34,11 @@
 </head>
 
 <body>
-    <header>
-        @Html.Partial("_SelectLanguagePartial")
-    </header>
 
     <div class="container">
-        <div class="title">@localizer["Registration"] </div>
+        <div class="title">@localizer["Add Doctor"] </div>
         <div class="content">
-            <form asp-controller="auth" asp-action="Register" method="post" class="form">
+            <form asp-controller="Doctor" asp-action="Create" method="post" class="form">
                 <div class="user-details">
                     
                     <div class="input-box">
@@ -53,12 +51,6 @@
                         <span class="details">@localizer["Phone Number"]</span>
                         <input data-val-remote-url="/auth/CheckPhone" asp-for="PhoneNumber" type="text"  placeholder="@localizer["Enter your number"]" required>
                         <span asp-validation-for="PhoneNumber" class="text-danger" style="margin-top: 5px; display: block;"></span>
-                    </div>
-                    
-                    <div class="input-box">
-                        <span class="details">@localizer["Address"]</span>
-                        <input asp-for="Address" type="text" placeholder="@localizer["Enter your address"]" required>
-                        <span asp-validation-for="Address" class="text-danger" style="margin-top: 5px; display: block;"></span>
                     </div>
                     
                     <div class="input-box">
@@ -99,17 +91,7 @@
                 <div id="passwordError" class="error"></div>
                
                 <div class="button">
-                    <input id="registrationButton" type="submit" value="@localizer["Registration"]">
-                </div>
-
-                <div class="have_account">
-                    <label for="">
-                        <span>
-                            @localizer["You have an account already"] <a class="a" asp-controller="auth" asp-action="Login">
-                                @localizer["Log In"]
-                            </a>
-                        </span>
-                    </label>
+                    <input id="registrationButton" type="submit" value="@localizer["Add Doctor"]">
                 </div>
             </form>
         </div>

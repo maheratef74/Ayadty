@@ -60,7 +60,7 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img  src="@Url.Content(Model.appointment.profilePhoto)"  alt=""
+                            <img  src="@Url.Content("~/img/"+Model.appointment.profilePhoto)"  alt=""
                                  class="rounded-circle p-1 bg-primary" width="110">
                             <div class="mt-3">
                                 <h4>@Model.appointment.PatientName</h4>
@@ -144,7 +144,9 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
                                 @if (User.IsInRole("Doctor"))
                                 {
                                     <div class="col-sm-3 text-center">
-                                        <a class="btn btn-success" href="create.html">@localizer["Create Prescription"]</a>
+                                        <a class="btn btn-success" 
+                                           onclick="window.location.href='@Url.Action("Create" ,"Prescription" 
+                                           , new{AppointmentId = Model.appointment.AppointmentId})'">@localizer["Create Prescription"]</a>
                                     </div>
                                 }
                                 <div class="col-sm-3 text-center">
@@ -153,15 +155,14 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
                                         @localizer["Cancele Appointment"]
                                     </button>
                                 </div>
-                                <div >
+                               
                                     <div class="col-sm-3 text-center">
                                         <button type="button" class="btn btn-danger"
                                                 onclick="confirmDelete(@Model.appointment.AppointmentId)">
                                             @localizer["Delete Appointment"]
                                         </button>
                                     </div>
-                                </div>
-
+                                
                             </div>
                         </div> 
                     </div>

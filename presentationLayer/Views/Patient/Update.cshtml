@@ -9,18 +9,18 @@
 @model UpdatePatientAR
 
 @{
-if (User.IsInRole("Doctor") || User.IsInRole("Nurse"))
-{
-Layout = "~/Views/Shared/_AdminLayout.cshtml";
-}
-else if (User.IsInRole("Patient"))
-{
-Layout = "~/Views/Shared/_Layout.cshtml";
-}
-else
-{
-Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
-}
+    if (User.IsInRole("Doctor") || User.IsInRole("Nurse"))
+    { 
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+    else if (User.IsInRole("Patient"))
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
+    }
 }
 <!DOCTYPE html>
 <head>
@@ -29,6 +29,7 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
     <link rel="stylesheet" href="~/css/PatientUpdate.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- jQuery and jQuery Validation scripts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
@@ -37,9 +38,11 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
 
 
 <form asp-controller="Patient" asp-action="Update" method="post" enctype="multipart/form-data">
+
     <!-- Hidden fields for PatientId and AppointmentId -->
     <input type="hidden" asp-for="PatientId" />
     <input type="hidden" asp-for="ProfilePhoto"/>
+    
     <div class="container">
         <div class="main-body">
             <div class="row">
@@ -85,8 +88,8 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
                                     <h6 class="mb-0">@localizer["Mobile"]</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input asp-for="Phone" type="text" class="form-control" value="@Model.Phone">
-                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                    <input asp-for="PhoneNumber" type="text" class="form-control" value="@Model.PhoneNumber">
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -142,24 +145,34 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
 
                             <div class="row mb-3">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">@localizer[ "new password"]</h6>
+                                    <h6 class="mb-0">@localizer["new password"]</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" value=" ">
+                                    <div class="input-group">
+                                        <input asp-for="Password" type="password" class="form-control" id="newPassword">
+                                        <button type="button" class="btn btn-outline-secondary" onclick="togglePassword('newPassword')">
+                                            <i class="fa fa-eye" id="toggleNewPasswordIcon"></i>
+                                        </button>
+                                    </div>
                                     <span asp-validation-for="Password" class="text-danger"></span>
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">@localizer[ "Confirm new password"]</h6>
+                                    <h6 class="mb-0">@localizer["Confirm new password"]</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" value=" ">
+                                    <div class="input-group">
+                                        <input asp-for="ConfirmPassword" type="password" class="form-control" id="confirmPassword">
+                                        <button type="button" class="btn btn-outline-secondary" onclick="togglePassword('confirmPassword')">
+                                            <i class="fa fa-eye" id="toggleConfirmPasswordIcon"></i>
+                                        </button>
+                                    </div>
                                     <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                                 </div>
                             </div>
-
+                            
                             <div class="row">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-9 text-secondary">
@@ -193,6 +206,20 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
             this.value = '2002-07-20'; // Default value when field is focused
         }
     });
+
+    function togglePassword(fieldId) {
+        var field = document.getElementById(fieldId);
+        var icon = document.getElementById(`toggle${fieldId.charAt(0).toUpperCase() + fieldId.slice(1)}Icon`);
+        if (field.type === "password") {
+            field.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+        } else {
+            field.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+        }
+    }
 </script>
 <!-- For Lyout -->
 <!-- jquery Min JS -->

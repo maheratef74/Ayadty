@@ -527,5 +527,9 @@
   "No, keep it" : "لا, اتركها",
   "Do you really want to delete the appointment?": "هل بالفعل تريد حذف الحجز",
   "Yes, delete it!": "نعم, اريد الحذف",
-  "Invalid email address" : "الاميل غير صحيح"
+  "Invalid email address" : "الاميل غير صحيح",
+
+  "Data Updated successfully": "تم تعديل البيانات بنجاح",
+  "Add Doctor": "اضافه دكتور",
+  "Doctor Added successfully": "تم اضافه الدكتور بنجاح"
 }

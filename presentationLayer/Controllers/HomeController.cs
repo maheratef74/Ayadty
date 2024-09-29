@@ -1,10 +1,11 @@
 using System.Security.Claims;
 using BusinessLogicLayer.Services.Patient;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using presentationLayer.Models.Appointment.CompositeViewModel;
 using presentationLayer.Models.Patient.ViewModel;
 namespace presentationLayer.Controllers;
-
+[Authorize]
 public class HomeController:Controller
 {
     private readonly IPatientService _patientService;

@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using BusinessLogicLayer.DTOs.Ptient;
 using DataAccessLayer.Entities;
+using Microsoft.AspNetCore.Mvc;
 
 namespace presentationLayer.Models.Patient.ViewModel;
 
@@ -18,6 +19,7 @@ public class UpdatePatientAR
     public string Address { get; set; }
     
     [DataType(DataType.Password)]
+    [MinLength(6 , ErrorMessage = "PasswardAtLeast6Digit")]
     public string? Password { get; set; }
     
     [DataType(DataType.Password)]
@@ -29,9 +31,9 @@ public class UpdatePatientAR
     public string FullName { get; set; }
     
     [Required(ErrorMessage = "PhoneNumberRequired")]
-    [RegularExpression(@"^(010|011|012|015)\d{8}$", ErrorMessage = "PhoneNumberInvalid")] 
-    [UniquePhoneNumber]
-    public string Phone { get; set; }
+    [RegularExpression(@"^(010|011|012|015)\d{8}$", ErrorMessage = "PhoneNumberInvalid")]
+  //  [Remote(action: "CheckPhoneForUpdate", controller: "auth", AdditionalFields = nameof(PatientId), ErrorMessage = "Use Another Phone Number")]
+    public string PhoneNumber { get; set; } 
     public string? ProfilePhoto { get; set; }
     public IFormFile? FormFilePhoto { get; set; }
 }
@@ -44,7 +46,7 @@ public static class UpdatePatientExtenionMethod
             PatientId = ar.PatientId,
             DateOfBirth = ar.DateOfBirth,
             FullName = ar.FullName,
-            Phone = ar.Phone,
+            Phone = ar.PhoneNumber,
             FacebookProfile = ar.FacebookProfile,
             Gender = ar.Gender,
             Email = ar.Email,
@@ -58,7 +60,7 @@ public static class UpdatePatientExtenionMethod
         {
             PatientId= dto.PatientId,
             FullName = dto.Name,
-            Phone = dto.PhoneNumber,
+            PhoneNumber = dto.PhoneNumber,
             FacebookProfile = dto.FacbookProfile,
             Gender = dto.Gender,
             Email = dto.Email,

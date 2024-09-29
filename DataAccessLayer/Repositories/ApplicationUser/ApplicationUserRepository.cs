@@ -18,4 +18,12 @@ public class ApplicationUserRepository : IApplicationUserRepository
 
         return user;
     }
+
+    public async Task<Entities.ApplicationUser?> GetUserByPhoneAndExcludeCurrentPatient(string phoneNumber, string patientId)
+    {
+        var user = await _appDbContext.Users
+            .FirstOrDefaultAsync(u => u.Phone == phoneNumber && u.Id != patientId);
+
+        return user;
+    }
 }

@@ -14,7 +14,7 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
     <!-- SweetAlert2 CSS (Notifaction) -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <<link rel="stylesheet" href="~/lib/sweetalert2/dist/sweetalert2.min.css">
-    <script src="~/lib/sweetalert2/dist/sweetalert2.all.min.js"></script>
+   
     <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -275,6 +275,8 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 <script src="~/js/main.js"></script>
 <!-- Jquery Nav JS -->
 <script src="~/js/jquery.nav.js"></script>
+
+<script src="~/lib/sweetalert2/dist/sweetalert2.all.min.js"></script>
 <script>
     $(document).ready(function () {
         var successMessage = '@Html.Raw(TempData["SuccessMessage"] ?? string.Empty)';
