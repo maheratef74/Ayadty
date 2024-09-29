@@ -22,8 +22,21 @@ namespace presentationLayer.Controllers
         {
             var appointment = await _appointmentService.GetAppointmentByID(AppointmentId);
             var patient = await _patientService.GetPatientById(appointment.PatientId);
+            CreatePrescrptionAR createPrescrptionAr = new CreatePrescrptionAR();
             
-            return View();
+            createPrescrptionAr.PatientName = appointment.PatientName;
+            createPrescrptionAr.AppointmentId = appointment.AppointmentId;
+            var dateOfBirth = patient.DateOfBirth;
+
+            var today = DateTime.Today;
+            int age = today.Year - dateOfBirth.Year;
+            if (dateOfBirth > today.AddYears(-age)) 
+            {
+                age--;
+            }
+            createPrescrptionAr.patientAge = age;
+            createPrescrptionAr.Date = DateTime.Now;
+            return View(createPrescrptionAr);
         }
          [HttpPost] 
          public async Task<IActionResult> Create(CreatePrescrptionAR request)

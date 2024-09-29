@@ -90,7 +90,14 @@ public class Program
         });
         #endregion 
              
-        
+        builder.Services.AddMvc(options =>
+        {
+            options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(
+                _ => "This field is required.");
+        }).AddViewOptions(options =>
+        {
+            options.HtmlHelperOptions.ClientValidationEnabled = true;
+        });
         #region localization
 
         builder.Services.AddLocalization();

@@ -4,5 +4,5 @@ namespace BusinessLogicLayer.Services.File;
 
 public interface IFileService
 {
-    string UploadFile(IFormFile file, string destinationFolder);
+    Task<string> UploadFile(IFormFile file, string destinationFolder);
 }

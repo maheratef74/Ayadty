@@ -83,7 +83,7 @@ namespace presentationLayer.Controllers
             string uniqueFileName;
             if (updatedPatient.FormFilePhoto != null && updatedPatient.FormFilePhoto.Length > 0)
             {
-                 uniqueFileName = _fileService.UploadFile(updatedPatient.FormFilePhoto, "img");
+                 uniqueFileName = await _fileService.UploadFile(updatedPatient.FormFilePhoto, "img");
             }
             else
             {

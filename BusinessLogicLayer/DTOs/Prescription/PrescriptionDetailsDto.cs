@@ -6,9 +6,9 @@ public class PrescriptionDetailsDto
 {
     public string PrescriptionId { get; set; } 
     public string PatientId { get; set; }
-    
+    public string AppointmentId { get; set; }
     public string PatientName { get; set; } 
-    public string patientAge { get; set; }
+    public int patientAge { get; set; }
     
     public DateTime Date { get; set; }
 

@@ -74,8 +74,10 @@
                             {
                                 <tr class="appointment-row" onclick="window.location.href='@Url.Action("Details", "Appointment", new { appointedId = appointment.AppointmentId })'">
                                     <td> @appointment.Order</td>
-                                    <td   >
-                                        <a  class="user-link text-center" target="__blank"  onclick="window.location.href='@Url.Action("Profile", "Patient", new { patientId = appointment.PatientId })">@appointment.PatientName</a>
+                                    <td>
+                                        <a class="user-link text-center" target="__blank" href="@Url.Action("Profile", "Patient", new { patientId = appointment.PatientId })" onclick="event.stopPropagation();">
+                                            @appointment.PatientName
+                                        </a>
                                     </td>
                                     <td >@appointment.Date.ToString("yyyy-MM-dd")</td>
                                     <td >@appointment.Date.ToString("hh:mm tt")</td> <!-- Time in 12-hour format with AM/PM -->

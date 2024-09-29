@@ -16,9 +16,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/prescription.css" />
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
-
- 
+    
 </head>
 <body>
     <div class="container mt-5 prescription-page">
@@ -48,13 +46,10 @@
                     <input asp-for="patientAge" type="number" class="form-control" id="patientAge" placeholder="@localizer["Age"]" />
                 </div>
                 <div class="col-md-3">
-                    <label>@localizer["Phone:"]</label>
-                    <input type="tel" class="form-control" id="patientPhone" placeholder="@localizer["Enter phone number"]" readonly="readonly" />
-                </div>
-                <div class="col-md-3">
                     <label>@localizer["Date:"]</label>
-                    <input asp-for="Date" type="datetime-local" class="form-control" id="prescriptionDate" />
+                    <input asp-for="Date" type="datetime-local" class="form-control" id="prescriptionDate" value="@Model.Date.ToString("yyyy-MM-ddTHH:mm")" />
                 </div>
+
             </div>
 
             <!-- Prescription Section -->
@@ -76,7 +71,7 @@
                                 <label>@localizer["Notes:"]</label>
                                 <input name="Treatments[0].Note" type="text" class="form-control" id="notes0" placeholder="@localizer["Enter any notes"]" />
                             </div>
-                            <button type="button" class="btn btn-danger removePrescriptionBtn mx-3" data-id="0">@localizer["Remove"]</button>
+                           <button type="button" class="btn btn-danger" data-id="0">@localizer["Remove"]</button>
                         </div>
                     </div>
                     <button type="button" class="btn btn-secondary" id="addPrescriptionBtn">@localizer["+ Add More"]</button>

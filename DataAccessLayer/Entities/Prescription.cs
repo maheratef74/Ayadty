@@ -11,8 +11,9 @@ namespace DataAccessLayer.Entities
         [ForeignKey("Users")]
         public string UserId { get; set; }// Foreign Key
         public Patient Patient { get; set; }// Navigation property
-        public string PatientName { get; set; } 
-        public string patientAge { get; set; }
+        public string PatientName { get; set; }
+        public string AppointmentId { get; set; }
+        public int patientAge { get; set; }
         public DateTime Date { get; set; }
 
         public List<Treatment> Treatments { get; set; } = new List<Treatment>();

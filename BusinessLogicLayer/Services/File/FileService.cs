@@ -4,7 +4,7 @@ namespace BusinessLogicLayer.Services.File;
 
 public class FileService : IFileService
 {
-    public string UploadFile(IFormFile file, string destinationFolder)
+    public async Task<string> UploadFile(IFormFile file, string destinationFolder)
     {
             string uniqueFileName = string.Empty;
 
@@ -14,9 +14,9 @@ public class FileService : IFileService
                 uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                using (var fileStream = new FileStream(filePath, FileMode.Create , FileAccess.Write, FileShare.None, 4096, useAsync: true))
                 {
-                    file.CopyTo(fileStream);
+                    await file.CopyToAsync(fileStream);
                 }
             }
 
