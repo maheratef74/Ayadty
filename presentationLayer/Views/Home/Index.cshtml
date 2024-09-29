@@ -3,26 +3,18 @@
 @using Microsoft.Extensions.Options
 @inject IViewLocalizer localizer
 @using System.Globalization
-@using presentationLayer.Models.Appointment
-@using  presentationLayer.Models.Appointment.CompositeViewModel
-@model AppointmentPageVM_AR
 
 @{
-if (User.IsInRole("Doctor") || User.IsInRole("Nurse"))
-{
-  Layout = "~/Views/Shared/_AdminLayout.cshtml";
-}
-else if (User.IsInRole("Patient"))
-{
-  Layout = "~/Views/Shared/_Layout.cshtml";
-}
-else
-{
-  Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
-}
+	Layout = "_Layout";
 }
 <head>
-	<!-- Google Fonts -->
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<!-- jQuery UI -->
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
 	<!-- Bootstrap CSS -->
@@ -43,552 +35,546 @@ else
 	<link rel="stylesheet" href="~/css/animate.min.css">
 	<!-- Magnific Popup CSS -->
 	<link rel="stylesheet" href="~/css/magnific-popup.css">
-	<link rel="stylesheet" href="~/css/jquery-ui.css">
+
 	<!-- Medipro CSS -->
 	<link rel="stylesheet" href="~/css/normalize.css">
 	<link rel="stylesheet" href="~/css/Home.css">
 	<link rel="stylesheet" href="~/css/responsive.css">
-	
 </head>
 <body>
 
-<!-- Slider Area -->
-<section class="slider">
-	<div class="hero-slider">
-		<!-- Start Single Slider -->
-		<div class="single-slider" style="background-image:url('./img/doctor_in_clinic_ouo96d5s4ai2408cwrag_0.png')">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-7">
-						<div class="text">
-							<h1>@localizer["We Provide Medical Services That You Can Trust!"]</h1>
-							<!-- <p>@localizer["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nisl pellentesque, faucibus libero eu, gravida quam."]</p>-->
-							<div class="button">
-								<a href="#" class="btn">@localizer["Get Appointment"]</a>
-								<a href="#" class="btn primary">@localizer["Learn More"]</a>
-							</div>	
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Single Slider -->
-		<!-- Start Single Slider -->
-		<div class="single-slider" style="background-image:url('img/slider.jpg')">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-7">
-						<div class="text">
-							<h1>@localizer["We Provide Medical Services That You Can Trust!"]</h1>
-							<!-- <p>@localizer["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nisl pellentesque, faucibus libero eu, gravida quam."]</p> -->
-							<div class="button">
-								<a asp-controller="Appointment" asp-action="Create"class="btn">@localizer["Get Appointment"]</a>
-								<a asp-controller="Doctor" asp-action="AboutMe" class="btn primary">@localizer["About Us"]</a>
+	<!-- End Header Area -->
+	<!-- Slider Area -->
+	<section class="slider"  dir = "LTR">
+		<div class="hero-slider">
+			<!-- Start Single Slider -->
+			<div class="single-slider" style="background-image: url('@Url.Content("~/img/doctor_in_clinic_g7mr0bsfv9c4dyclmksz_0.png")')">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-7">
+							<div class="text">
+								<h1>@localizer["We Provide Medical Services That You Can Trust!"]</h1>
+								<!-- <p>@localizer["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nisl pellentesque, faucibus libero eu, gravida quam."]</p>-->
+								<div class="button">
+									<a asp-controller="Appointment" asp-action="Create" class="btn">@localizer["Get Appointment"]</a>
+									<a href="#" class="btn primary">@localizer["Learn More"]</a>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<!-- Start End Slider -->
-		<!-- Start Single Slider -->
-		<div class="single-slider" style="background-image:url('img/slider3.jpg')">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-7">
-						<div class="text">
-							<h1>@localizer["We Provide Medical Services That You Can Trust!"]</h1>
-							<!-- <p>@localizer["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nisl pellentesque, faucibus libero eu, gravida quam."]</p> -->
-							<div class="button">
-								<a asp-controller="Appointment" asp-action="Create"class="btn">@localizer["Get Appointment"]</a>
-								<a asp-controller="Doctor" asp-action="AboutMe" class="btn primary">@localizer["About Us"]</a>
+			
+			<!-- Start Single Slider -->
+			<div class="single-slider"  dir="ltr" style="background-image: url('@Url.Content("~/img/doctor_in_clinic_g7mr0bsfv9c4dyclmksz_0.png")')">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-7">
+							<div class="text">
+								<h1>@localizer["We Provide Medical Services That You Can Trust!"]</h1>
+								<!-- <p>@localizer["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nisl pellentesque, faucibus libero eu, gravida quam."]</p> -->
+								<div class="button">
+									<a asp-controller="Appointment" asp-action="Create" class="btn">@localizer["Get Appointment"]</a>
+									<a href="#" class="btn primary">@localizer["About Us"]</a>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			<!-- End Single Slider -->
+			
+			<!-- Start Single Slider -->
+			<div class="single-slider" dir="ltr" style="background-image: url('@Url.Content("~/img/doctor_in_clinic_g7mr0bsfv9c4dyclmksz_0.png")')">
+				<div class="container"dir="ltr">
+					<div class="row"dir="ltr">
+						<div class="col-lg-7"dir="ltr">
+							<div class="text"dir="ltr">
+								<h1>@localizer["We Provide Medical Services That You Can Trust!"]</h1>
+							<!--	<p>@localizer["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nisl pellentesque, faucibus libero eu, gravida quam."]</p> -->
+								<div class="button"dir="ltr">
+									<a asp-controller="Appointment" asp-action="Create" class="btn">@localizer["Get Appointment"]</a>
+									<a href="#" class="btn primary">@localizer["Contact Now"]</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Single Slider -->
 		</div>
-		<!-- End Single Slider -->
-	</div>
-</section>
-<!--/ End Slider Area -->
+	</section>
+	<!--/ End Slider Area -->
 
-<!-- start Appointment -->
-<partial name="_AppointmentFormPartial" />
-<!-- End Appointment -->
-
-<!-- Start Feautes -->
-<section class="Feautes section" dir = "ltr">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="section-title">
-					<h2>@localizer["ReadyToHelp"]</h2>
-					<img src="~/img/section-img.png" alt="#">
-					@*
+	<!-- Start Appointment -->
+	<partial name="_AppointmentFormPartial" />
+	<!-- End Appointment -->
+	
+	<!-- Start Feautes -->
+	<section class="Feautes section" dir = "ltr">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section-title">
+						<h2>@localizer["ReadyToHelp"]</h2>
+						<img src="~/img/section-img.png" alt="#">
+						@*
 						<p>@localizer["SectionDescription"]</p>
 					*@
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-4 col-12">
-				<!-- Start Single features -->
-				<div class="single-features">
-					<div class="signle-icon">
-						<i class="icofont icofont-ambulance-cross"></i>
-					</div>
-					<h3>@localizer["EmergencyHelp"]</h3>
-					@*
+			<div class="row">
+				<div class="col-lg-4 col-12">
+					<!-- Start Single features -->
+					<div class="single-features">
+						<div class="signle-icon">
+							<i class="icofont icofont-ambulance-cross"></i>
+						</div>
+						<h3>@localizer["EmergencyHelp"]</h3>
+						@*
 						<p>@localizer["EmergencyHelpDescription"]</p>
 					*@
-				</div>
-				<!-- End Single features -->
-			</div>
-			<div class="col-lg-4 col-12">
-				<!-- Start Single features -->
-				<div class="single-features">
-					<div class="signle-icon">
-						<i class="icofont icofont-medical-sign-alt"></i>
 					</div>
-					<h3>@localizer["EnrichedPharmacy"]</h3>
-					@*
+					<!-- End Single features -->
+				</div>
+				<div class="col-lg-4 col-12">
+					<!-- Start Single features -->
+					<div class="single-features">
+						<div class="signle-icon">
+							<i class="icofont icofont-medical-sign-alt"></i>
+						</div>
+						<h3>@localizer["EnrichedPharmacy"]</h3>
+						@*
 						<p>@localizer["EnrichedPharmacyDescription"]</p>
 					*@
-				</div>
-				<!-- End Single features -->
-			</div>
-			<div class="col-lg-4 col-12">
-				<!-- Start Single features -->
-				<div class="single-features last">
-					<div class="signle-icon">
-						<i class="icofont icofont-stethoscope"></i>
 					</div>
-					<h3>@localizer["MedicalTreatment"]</h3>
-					@*
+					<!-- End Single features -->
+				</div>
+				<div class="col-lg-4 col-12">
+					<!-- Start Single features -->
+					<div class="single-features last">
+						<div class="signle-icon">
+							<i class="icofont icofont-stethoscope"></i>
+						</div>
+						<h3>@localizer["MedicalTreatment"]</h3>
+						@*
 						<p>@localizer["MedicalTreatmentDescription"]</p>
 					*@
+					</div>
+					<!-- End Single features -->
 				</div>
-				<!-- End Single features -->
+			</div>
+		</div>
+	</section>
+	<!--/ End Feautes -->
+	<!-- Start Fun-facts -->
+	<div id="fun-facts" class="fun-facts section overlay" >
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6 col-12">
+					<!-- Start Single Fun -->
+					<div class="single-fun">
+						<i class="icofont icofont-home"></i>
+						<div class="content">
+							<span class="counter">3468</span>
+							<p>@localizer["HospitalRooms"]</p>
+						</div>
+					</div>
+					<!-- End Single Fun -->
+				</div>
+				<div class="col-lg-3 col-md-6 col-12">
+					<!-- Start Single Fun -->
+					<div class="single-fun">
+						<i class="icofont icofont-user-alt-3"></i>
+						<div class="content">
+							<span class="counter">557</span>
+							<p>@localizer["SpecialistDoctors"]</p>
+						</div>
+					</div>
+					<!-- End Single Fun -->
+				</div>
+				<div class="col-lg-3 col-md-6 col-12">
+					<!-- Start Single Fun -->
+					<div class="single-fun">
+						<i class="icofont-simple-smile"></i>
+						<div class="content">
+							<span class="counter">4379</span>
+							<p>@localizer["HappyPatients"]</p>
+						</div>
+					</div>
+					<!-- End Single Fun -->
+				</div>
+				<div class="col-lg-3 col-md-6 col-12">
+					<!-- Start Single Fun -->
+					<div class="single-fun">
+						<i class="icofont icofont-table"></i>
+						<div class="content">
+							<span class="counter">32</span>
+							<p>@localizer["YearsExperience"]</p>
+						</div>
+					</div>
+					<!-- End Single Fun -->
+				</div>
 			</div>
 		</div>
 	</div>
-</section>
-<!--/ End Feautes -->
-<!-- Start Fun-facts -->
-<div id="fun-facts" class="fun-facts section overlay" >
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-3 col-md-6 col-12">
-				<!-- Start Single Fun -->
-				<div class="single-fun">
-					<i class="icofont icofont-home"></i>
+	<!--/ End Fun-facts -->
+	
+	<!-- Start Call to action -->
+	<section class="call-action overlay" data-stellar-background-ratio="0.5">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-12">
 					<div class="content">
-						<span class="counter">3468</span>
-						<p>@localizer["HospitalRooms"]</p>
+						<h2>@localizer["Need emergency medical care? Call 1234 56789"]</h2>
+						<p>@localizer["We Provide Medical Services That You Can Trust!"] </p>
+						<div class="button">
+							<a asp-controller="Clinic" asp-action="ContactUs" class="btn">@localizer["Contact Now"]</a>
+							<a href="#" class="btn second">@localizer["Learn_More"]<i class="fa fa-long-arrow-right"></i></a>
+						</div>
 					</div>
 				</div>
-				<!-- End Single Fun -->
-			</div>
-			<div class="col-lg-3 col-md-6 col-12">
-				<!-- Start Single Fun -->
-				<div class="single-fun">
-					<i class="icofont icofont-user-alt-3"></i>
-					<div class="content">
-						<span class="counter">557</span>
-						<p>@localizer["SpecialistDoctors"]</p>
-					</div>
-				</div>
-				<!-- End Single Fun -->
-			</div>
-			<div class="col-lg-3 col-md-6 col-12">
-				<!-- Start Single Fun -->
-				<div class="single-fun">
-					<i class="icofont-simple-smile"></i>
-					<div class="content">
-						<span class="counter">4379</span>
-						<p>@localizer["HappyPatients"]</p>
-					</div>
-				</div>
-				<!-- End Single Fun -->
-			</div>
-			<div class="col-lg-3 col-md-6 col-12">
-				<!-- Start Single Fun -->
-				<div class="single-fun">
-					<i class="icofont icofont-table"></i>
-					<div class="content">
-						<span class="counter">32</span>
-						<p>@localizer["YearsExperience"]</p>
-					</div>
-				</div>
-				<!-- End Single Fun -->
 			</div>
 		</div>
-	</div>
-</div>
-<!--/ End Fun-facts -->
+	</section>
 
-
-<!-- Start Call to action -->
-<section class="call-action overlay" data-stellar-background-ratio="0.5">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12 col-md-12 col-12">
-				<div class="content">
-					<h2>@localizer["Need emergency medical care? Call 1234 56789"]</h2>
-					<p>@localizer["We Provide Medical Services That You Can Trust!"] </p>
-					<div class="button">
-						<a asp-controller="Clinic" asp-action="ContactUs" class="btn">@localizer["Contact Now"]</a>
-						<a href="#" class="btn second">@localizer["Learn_More"]<i class="fa fa-long-arrow-right"></i></a>
+	<!--/ End Call to action -->
+	<!-- Start portfolio -->
+	<section class="portfolio section">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section-title">
+						<h2>@localizer["Hygiene_Rules_Title"]</h2>
+						<img src="~/img/section-img.png" alt="#">
+						<p>@localizer["We Provide Medical Services That You Can Trust!"]</p>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
-
-<!--/ End Call to action -->
-<!-- Start portfolio -->
-<section class="portfolio section">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="section-title">
-					<h2>@localizer["Hygiene_Rules_Title"]</h2>
-					<img src="~/img/section-img.png" alt="#">
-					<p>@localizer["We Provide Medical Services That You Can Trust!"]</p>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12 col-12">
+					<div class="owl-carousel portfolio-slider" dir = "ltr">
+						<div class="single-pf">
+							<img src="~/img/pf1.jpg" alt="#">
+							<a href="#" class="btn">@localizer["View_Details"]</a>
+						</div>
+						<div class="single-pf">
+							<img src="~/img/pf2.jpg" alt="#">
+							<a href="#" class="btn">@localizer["View_Details"]</a>
+						</div>
+						<div class="single-pf">
+							<img src="~/img/pf2.jpg" alt="#">
+							<a href="#" class="btn">@localizer["View_Details"]</a>
+						</div>
+						<div class="single-pf">
+							<img src="~/img/pf1.jpg" alt="#">
+							<a href="#" class="btn">@localizer["View_Details"]</a>
+						</div>
+						<!-- Repeat for other portfolio items -->
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-lg-12 col-12">
-				<div class="owl-carousel portfolio-slider" dir = "ltr">
-					<div class="single-pf">
-						<img src="~/img/pf1.jpg" alt="#">
-						<a href="#" class="btn">@localizer["View_Details"]</a>
+	</section>
+	<!--/ End portfolio -->
+	<!-- Start service -->
+	<section class="services section">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section-title">
+						<h2>@localizer["Services_Introduction_Title"]</h2>
+						<img src="~/img/section-img.png" alt="#">
+						<p>@localizer["We Provide Medical Services That You Can Trust!"]</p>
 					</div>
-					<div class="single-pf">
-						<img src="~/img/pf2.jpg" alt="#">
-						<a href="#" class="btn">@localizer["View_Details"]</a>
-					</div>
-					<div class="single-pf">
-						<img src="~/img/pf2.jpg" alt="#">
-						<a href="#" class="btn">@localizer["View_Details"]</a>
-					</div>
-					<div class="single-pf">
-						<img src="~/img/pf1.jpg" alt="#">
-						<a href="#" class="btn">@localizer["View_Details"]</a>
-					</div>
-					<!-- Repeat for other portfolio items -->
 				</div>
 			</div>
-		</div>
-	</div>
-</section>
-<!--/ End portfolio -->
-<!-- Start service -->
-<section class="services section">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="section-title">
-					<h2>@localizer["Services_Introduction_Title"]</h2>
-					<img src="~/img/section-img.png" alt="#">
-					<p>@localizer["We Provide Medical Services That You Can Trust!"]</p>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-4 col-md-6 col-12">
-				<!-- Start Single Service -->
-				<div class="single-service">
-					<i class="icofont icofont-prescription"></i>
-					<h4><a href="#">@localizer["General_Treatment"]</a></h4>
-					@*
+			<div class="row">
+				<div class="col-lg-4 col-md-6 col-12">
+					<!-- Start Single Service -->
+					<div class="single-service">
+						<i class="icofont icofont-prescription"></i>
+						<h4><a href="#">@localizer["General_Treatment"]</a></h4>
+						@*
 						<p>@localizer["General_Treatment_Description"]</p>
 					*@
-				</div>
-				<!-- End Single Service -->
-				<!-- Start Single Service -->
-				<div class="single-service">
-					<i class="icofont icofont-tooth"></i>
-					<h4><a href="#">@localizer["Teeth_Whitening"]</a></h4>
-					@*
+					</div>
+					<!-- End Single Service -->
+					<!-- Start Single Service -->
+					<div class="single-service">
+						<i class="icofont icofont-tooth"></i>
+						<h4><a href="#">@localizer["Teeth_Whitening"]</a></h4>
+						@*
 						<p>@localizer["Teeth_Whitening_Description"]</p>
 					*@
+					</div>
+					<!-- End Single Service -->
 				</div>
-				<!-- End Single Service -->
-			</div>
-			<div class="col-lg-4 col-md-6 col-12">
-				<!-- Start Single Service -->
-				<div class="single-service">
-					<i class="icofont icofont-heart-alt"></i>
-					<h4><a href="#">@localizer["Heart_Surgery"]</a></h4>
-					@*
+				<div class="col-lg-4 col-md-6 col-12">
+					<!-- Start Single Service -->
+					<div class="single-service">
+						<i class="icofont icofont-heart-alt"></i>
+						<h4><a href="#">@localizer["Heart_Surgery"]</a></h4>
+						@*
 						<p>@localizer["Heart_Surgery_Description"]</p>
 					*@
+					</div>
+					<!-- End Single Service -->
 				</div>
-				<!-- End Single Service -->
-			</div>
-			<div class="col-lg-4 col-md-6 col-12">
-				<!-- Start Single Service -->
-				<div class="single-service">
-					<i class="icofont icofont-listening"></i>
-					<h4><a href="#">@localizer["Ear_Treatment"]</a></h4>
-					@*
+				<div class="col-lg-4 col-md-6 col-12">
+					<!-- Start Single Service -->
+					<div class="single-service">
+						<i class="icofont icofont-listening"></i>
+						<h4><a href="#">@localizer["Ear_Treatment"]</a></h4>
+						@*
 						<p>@localizer["Ear_Treatment_Description"]</p>
 					*@
+					</div>
+					<!-- End Single Service -->
 				</div>
-				<!-- End Single Service -->
-			</div>
-			<div class="col-lg-4 col-md-6 col-12">
-				<!-- Start Single Service -->
-				<div class="single-service">
-					<i class="icofont icofont-eye-alt"></i>
-					<h4><a href="#">@localizer["Vision_Problems"]</a></h4>
-					@*
+				<div class="col-lg-4 col-md-6 col-12">
+					<!-- Start Single Service -->
+					<div class="single-service">
+						<i class="icofont icofont-eye-alt"></i>
+						<h4><a href="#">@localizer["Vision_Problems"]</a></h4>
+						@*
 						<p>@localizer["Vision_Problems_Description"]</p>
 					*@
+					</div>
+					<!-- End Single Service -->
 				</div>
-				<!-- End Single Service -->
-			</div>
-			<div class="col-lg-4 col-md-6 col-12">
-				<!-- Start Single Service -->
-				<div class="single-service">
-					<i class="icofont icofont-blood"></i>
-					<h4><a href="#">@localizer["Blood_Transfusion"]</a></h4>
-					@*
+				<div class="col-lg-4 col-md-6 col-12">
+					<!-- Start Single Service -->
+					<div class="single-service">
+						<i class="icofont icofont-blood"></i>
+						<h4><a href="#">@localizer["Blood_Transfusion"]</a></h4>
+						@*
 						<p>@localizer["Blood_Transfusion_Description"]</p>
 					*@
-				</div>
-				<!-- End Single Service -->
-			</div>
-		</div>
-	</div>
-</section>
-<!--/ End service -->
-<!-- Start Pricing Table -->
-<section class="pricing-table section">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="section-title">
-					<h2>@localizer["Pricing_Introduction_Title"]</h2>
-					<img src="~/img/section-img.png" alt="#">
-					<p>@localizer["We Provide Medical Services That You Can Trust!"]</p>
+					</div>
+					<!-- End Single Service -->
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<!-- Single Table -->
-			<div class="col-lg-4 col-md-12 col-12">
-				<div class="single-table">
-					<!-- Table Head -->
-					<div class="table-head">
-						<div class="icon">
-							<i class="icofont icofont-ui-cut"></i>
-						</div>
-						<h4 class="title">@localizer["Plastic_Surgery"]</h4>
-						<div class="price">
-							<p class="amount">@localizer["Plastic_Surgery_Price"]<span>/ @localizer["Per_Visit"]</span></p>
-						</div>
+	</section>
+	<!--/ End service -->
+	<!-- Start Pricing Table -->
+	<section class="pricing-table section">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section-title">
+						<h2>@localizer["Pricing_Introduction_Title"]</h2>
+						<img src="~/img/section-img.png" alt="#">
+						<p>@localizer["We Provide Medical Services That You Can Trust!"]</p>
 					</div>
-					<!-- Table List -->
-					<ul class="table-list">
-						<li><i class="icofont icofont-ui-check"></i>Service_Item_1</li>
-						<li><i class="icofont icofont-ui-check"></i>Service_Item_2</li>
-						<li class="cross"><i class="icofont icofont-ui-close"></i>Service_Item_3</li>
-						<li class="cross"><i class="icofont icofont-ui-close"></i>Service_Item_4</li>
-						<li class="cross"><i class="icofont icofont-ui-close"></i>Service_Item_5</li>
-					</ul>
-					<div class="table-bottom">
-						<a class="btn" href="#">@localizer["Book_Now"]</a>
-					</div>
-					<!-- Table Bottom -->
 				</div>
 			</div>
-			<!-- End Single Table-->
-			<!-- Single Table -->
-			<div class="col-lg-4 col-md-12 col-12">
-				<div class="single-table">
-					<!-- Table Head -->
-					<div class="table-head">
-						<div class="icon">
-							<i class="icofont icofont-tooth"></i>
+			<div class="row">
+				<!-- Single Table -->
+				<div class="col-lg-4 col-md-12 col-12">
+					<div class="single-table">
+						<!-- Table Head -->
+						<div class="table-head">
+							<div class="icon">
+								<i class="icofont icofont-ui-cut"></i>
+							</div>
+							<h4 class="title">@localizer["Plastic_Surgery"]</h4>
+							<div class="price">
+								<p class="amount">@localizer["Plastic_Surgery_Price"]<span>/ @localizer["Per_Visit"]</span></p>
+							</div>
 						</div>
-						<h4 class="title">@localizer["Teeth_Whitening"]</h4>
-						<div class="price">
-							<p class="amount">@localizer["Teeth_Whitening_Price"]<span>/ @localizer["Per_Visit"]</span></p>
+						<!-- Table List -->
+						<ul class="table-list">
+							<li><i class="icofont icofont-ui-check"></i>Service_Item_1</li>
+							<li><i class="icofont icofont-ui-check"></i>Service_Item_2</li>
+							<li class="cross"><i class="icofont icofont-ui-close"></i>Service_Item_3</li>
+							<li class="cross"><i class="icofont icofont-ui-close"></i>Service_Item_4</li>
+							<li class="cross"><i class="icofont icofont-ui-close"></i>Service_Item_5</li>
+						</ul>
+						<div class="table-bottom">
+							<a class="btn" href="#">@localizer["Book_Now"]</a>
 						</div>
+						<!-- Table Bottom -->
 					</div>
-					<!-- Table List -->
-					<ul class="table-list">
-						<li><i class="icofont icofont-ui-check"></i>Service_Item_1</li>
-						<li><i class="icofont icofont-ui-check"></i>Service_Item_2</li>
-						<li class="cross"><i class="icofont icofont-ui-close"></i>Service_Item_3</li>
-						<li class="cross"><i class="icofont icofont-ui-close"></i>Service_Item_4</li>
-						<li class="cross"><i class="icofont icofont-ui-close"></i>Service_Item_5</li>
-					</ul>
-					<div class="table-bottom">
-						<a class="btn" href="#">@localizer["Book_Now"]</a>
-					</div>
-					<!-- Table Bottom -->
 				</div>
-			</div>
-			<!-- End Single Table-->
-			<!-- Single Table -->
-			<div class="col-lg-4 col-md-12 col-12">
-				<div class="single-table">
-					<!-- Table Head -->
-					<div class="table-head">
-						<div class="icon">
-							<i class="icofont-heart-beat"></i>
+				<!-- End Single Table-->
+				<!-- Single Table -->
+				<div class="col-lg-4 col-md-12 col-12">
+					<div class="single-table">
+						<!-- Table Head -->
+						<div class="table-head">
+							<div class="icon">
+								<i class="icofont icofont-tooth"></i>
+							</div>
+							<h4 class="title">@localizer["Teeth_Whitening"]</h4>
+							<div class="price">
+								<p class="amount">@localizer["Teeth_Whitening_Price"]<span>/ @localizer["Per_Visit"]</span></p>
+							</div>
 						</div>
-						<h4 class="title">@localizer["Heart_Surgery"]</h4>
-						<div class="price">
-							<p class="amount">@localizer["Heart_Surgery_Price"]<span>/ @localizer["Per_Visit"]</span></p>
+						<!-- Table List -->
+						<ul class="table-list">
+							<li><i class="icofont icofont-ui-check"></i>Service_Item_1</li>
+							<li><i class="icofont icofont-ui-check"></i>Service_Item_2</li>
+							<li class="cross"><i class="icofont icofont-ui-close"></i>Service_Item_3</li>
+							<li class="cross"><i class="icofont icofont-ui-close"></i>Service_Item_4</li>
+							<li class="cross"><i class="icofont icofont-ui-close"></i>Service_Item_5</li>
+						</ul>
+						<div class="table-bottom">
+							<a class="btn" href="#">@localizer["Book_Now"]</a>
 						</div>
+						<!-- Table Bottom -->
 					</div>
-					<!-- Table List -->
-					<ul class="table-list">
-						<li><i class="icofont icofont-ui-check"></i>Service_Item_1</li>
-						<li><i class="icofont icofont-ui-check"></i>Service_Item_2</li>
-						<li class="cross"><i class="icofont icofont-ui-close"></i>Service_Item_3</li>
-						<li class="cross"><i class="icofont icofont-ui-close"></i>Service_Item_4</li>
-						<li class="cross"><i class="icofont icofont-ui-close"></i>Service_Item_5</li>
-					</ul>
-					<div class="table-bottom">
-						<a class="btn" href="#">@localizer["Book_Now"]</a>
-					</div>
-					<!-- Table Bottom -->
 				</div>
+				<!-- End Single Table-->
+				<!-- Single Table -->
+				<div class="col-lg-4 col-md-12 col-12">
+					<div class="single-table">
+						<!-- Table Head -->
+						<div class="table-head">
+							<div class="icon">
+								<i class="icofont-heart-beat"></i>
+							</div>
+							<h4 class="title">@localizer["Heart_Surgery"]</h4>
+							<div class="price">
+								<p class="amount">@localizer["Heart_Surgery_Price"]<span>/ @localizer["Per_Visit"]</span></p>
+							</div>
+						</div>
+						<!-- Table List -->
+						<ul class="table-list">
+							<li><i class="icofont icofont-ui-check"></i>Service_Item_1</li>
+							<li><i class="icofont icofont-ui-check"></i>Service_Item_2</li>
+							<li class="cross"><i class="icofont icofont-ui-close"></i>Service_Item_3</li>
+							<li class="cross"><i class="icofont icofont-ui-close"></i>Service_Item_4</li>
+							<li class="cross"><i class="icofont icofont-ui-close"></i>Service_Item_5</li>
+						</ul>
+						<div class="table-bottom">
+							<a class="btn" href="#">@localizer["Book_Now"]</a>
+						</div>
+						<!-- Table Bottom -->
+					</div>
+				</div>
+				<!-- End Single Table-->
 			</div>
-			<!-- End Single Table-->
 		</div>
-	</div>
-</section>
-<!--/ End Pricing Table -->
-<!-- Start Blog Area -->
-<section class="blog section" id="blog">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="section-title">
-					<h2>@localizer["Blog_Section_Title"]</h2>
-					<img src="~/img/section-img.png" alt="#">
-					<p>@localizer["We Provide Medical Services That You Can Trust!"]</p>
+	</section>
+	<!--/ End Pricing Table -->
+	<!-- Start Blog Area -->
+	<section class="blog section" id="blog">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section-title">
+						<h2>@localizer["Blog_Section_Title"]</h2>
+						<img src="~/img/section-img.png" alt="#">
+						<p>@localizer["We Provide Medical Services That You Can Trust!"]</p>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-4 col-md-6 col-12">
-				<!-- Single Blog -->
-				<div class="single-news">
-					<div class="news-head">
-						<img src="~/img/blog1.jpg" alt="#">
-					</div>
-					<div class="news-body">
-						<div class="news-content">
-							<div class="date">@localizer["Blog_Date_1"]</div>
-							<h2><a href="#">@localizer["Blog_Title_1"]</a></h2>
-							@*
+			<div class="row">
+				<div class="col-lg-4 col-md-6 col-12">
+					<!-- Single Blog -->
+					<div class="single-news">
+						<div class="news-head">
+							<img src="~/img/blog1.jpg" alt="#">
+						</div>
+						<div class="news-body">
+							<div class="news-content">
+								<div class="date">@localizer["Blog_Date_1"]</div>
+								<h2><a href="#">@localizer["Blog_Title_1"]</a></h2>
+								@*
 								<p class="text">@localizer["Blog_Description_1"]</p>
 							*@
+							</div>
 						</div>
 					</div>
+					<!-- End Single Blog -->
 				</div>
-				<!-- End Single Blog -->
-			</div>
-			<div class="col-lg-4 col-md-6 col-12">
-				<!-- Single Blog -->
-				<div class="single-news">
-					<div class="news-head">
-						<img src="~/img/blog2.jpg" alt="#">
-					</div>
-					<div class="news-body">
-						<div class="news-content">
-							<div class="date">@localizer["Blog_Date_2"]</div>
-							<h2><a href="#">@localizer["Blog_Title_2"]</a></h2>
-							@*
+				<div class="col-lg-4 col-md-6 col-12">
+					<!-- Single Blog -->
+					<div class="single-news">
+						<div class="news-head">
+							<img src="~/img/blog2.jpg" alt="#">
+						</div>
+						<div class="news-body">
+							<div class="news-content">
+								<div class="date">@localizer["Blog_Date_2"]</div>
+								<h2><a href="#">@localizer["Blog_Title_2"]</a></h2>
+								@*
 								<p class="text">@localizer["Blog_Description_2"]</p>
 							*@
+							</div>
 						</div>
 					</div>
+					<!-- End Single Blog -->
 				</div>
-				<!-- End Single Blog -->
-			</div>
-			<div class="col-lg-4 col-md-6 col-12">
-				<!-- Single Blog -->
-				<div class="single-news">
-					<div class="news-head">
-						<img src="~/img/blog3.jpg" alt="#">
-					</div>
-					<div class="news-body">
-						<div class="news-content">
-							<div class="date">@localizer["Blog_Date_3"]</div>
-							<h2><a href="#">@localizer["Blog_Title_3"]</a></h2>
-							@*
+				<div class="col-lg-4 col-md-6 col-12">
+					<!-- Single Blog -->
+					<div class="single-news">
+						<div class="news-head">
+							<img src="~/img/blog3.jpg" alt="#">
+						</div>
+						<div class="news-body">
+							<div class="news-content">
+								<div class="date">@localizer["Blog_Date_3"]</div>
+								<h2><a href="#">@localizer["Blog_Title_3"]</a></h2>
+								@*
 								<p class="text">@localizer["Blog_Description_3"]</p>
 							*@
+							</div>
 						</div>
 					</div>
+					<!-- End Single Blog -->
 				</div>
-				<!-- End Single Blog -->
 			</div>
 		</div>
-	</div>
-</section>
-<!-- End Blog Area -->
+	</section>
+	<!-- End Blog Area -->
+	
+	
+	
 
-
-
-
-<!-- jquery Min JS -->
-<script src="~/js/jquery.min.js"></script>
-<!-- jquery Migrate JS -->
-<script src="~/js/jquery-migrate-3.0.0.js"></script>
-<!-- jquery Ui JS -->
-<script src="~/js/jquery-ui.min.js"></script>
-<!-- Easing JS -->
-<script src="~/js/easing.js"></script>
-<!-- Color JS -->
-<script src="~/js/colors.js"></script>
-<!-- Popper JS -->
-<script src="~/js/popper.min.js"></script>
-<!-- Bootstrap Datepicker JS -->
-<script src="~/js/bootstrap-datepicker.js"></script>
-<!-- Jquery Nav JS -->
-<script src="~/js/jquery.nav.js"></script>
-<!-- Slicknav JS -->
-<script src="~/js/slicknav.min.js"></script>
-<!-- ScrollUp JS -->
-<script src="~/js/jquery.scrollUp.min.js"></script>
-<!-- Niceselect JS -->
-<script src="~/js/niceselect.js"></script>
-<!-- Tilt Jquery JS -->
-<script src="~/js/tilt.jquery.min.js"></script>
-<!-- Owl Carousel JS -->
-<script src="~/js/owl-carousel.js"></script>
-<!-- counterup JS -->
-<script src="~/js/jquery.counterup.min.js"></script>
-<!-- Steller JS -->
-<script src="~/js/steller.js"></script>
-<!-- Wow JS -->
-<script src="~/js/wow.min.js"></script>
-<!-- Magnific Popup JS -->
-<script src="~/js/jquery.magnific-popup.min.js"></script>
-<!-- Counter Up CDN JS -->
-<script src="~/js/waypoints.min.js"></script>
-<!-- Bootstrap JS -->
-<script src="~/js/bootstrap.min.js"></script>
-<!-- Main JS -->
-<script src="~/js/main.js"></script>
-<!-- jQuery -->
-<script src="~/js/jquery-3.6.0.min.js"></script>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/jquery/dist/jquery.js"></script>
-<!-- jQuery UI -->
-<script src="~/js/jquery-ui.min.js"></script>
+    <!-- jquery Min JS -->
+    <script src="~/js/jquery.min.js"></script>
+    <!-- jquery Migrate JS -->
+    <script src="~/js/jquery-migrate-3.0.0.js"></script>
+    <!-- jquery Ui JS -->
+    <script src="~/js/jquery-ui.min.js"></script>
+    <!-- Easing JS -->
+    <script src="~/js/easing.js"></script>
+    <!-- Color JS -->
+    <script src="~/js/colors.js"></script>
+    <!-- Popper JS -->
+    <script src="~/js/popper.min.js"></script>
+    <!-- Bootstrap Datepicker JS -->
+    <script src="~/js/bootstrap-datepicker.js"></script>
+    <!-- Jquery Nav JS -->
+    <script src="~/js/jquery.nav.js"></script>
+    <!-- Slicknav JS -->
+    <script src="~/js/slicknav.min.js"></script>
+    <!-- ScrollUp JS -->
+    <script src="~/js/jquery.scrollUp.min.js"></script>
+    <!-- Niceselect JS -->
+    <script src="~/js/niceselect.js"></script>
+    <!-- Tilt Jquery JS -->
+    <script src="~/js/tilt.jquery.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="~/js/owl-carousel.js"></script>
+    <!-- counterup JS -->
+    <script src="~/js/jquery.counterup.min.js"></script>
+    <!-- Steller JS -->
+    <script src="~/js/steller.js"></script>
+    <!-- Wow JS -->
+    <script src="~/js/wow.min.js"></script>
+    <!-- Magnific Popup JS -->
+    <script src="~/js/jquery.magnific-popup.min.js"></script>
+    <!-- Counter Up CDN JS -->
+	<script src="~/js/waypoints.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="~/js/bootstrap.min.js"></script>
+    <!-- Main JS -->
+    <script src="~/js/main.js"></script>
 </body>

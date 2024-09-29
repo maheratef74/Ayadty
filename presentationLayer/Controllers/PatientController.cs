@@ -1,5 +1,6 @@
 ﻿using System.Security.Claims;
 using BusinessLogicLayer.Services.Appointment;
+using BusinessLogicLayer.Services.File;
 using BusinessLogicLayer.Services.Patient;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -15,10 +16,13 @@ namespace presentationLayer.Controllers
     {
         private readonly IPatientService _patientService;
         private readonly IAppointmentService _appointmentService;
-        public PatientController(IPatientService patientService, IAppointmentService appointmentService)
+        private readonly IFileService _fileService;
+        
+        public PatientController(IPatientService patientService, IAppointmentService appointmentService, IFileService fileService)
         {
             _patientService = patientService;
             _appointmentService = appointmentService;
+            _fileService = fileService;
         }
         [HttpGet]
         public async Task<IActionResult> Profile(string patientId)
@@ -63,13 +67,24 @@ namespace presentationLayer.Controllers
             return View(updatePatientVM);
         }
         [HttpPost]
-        public async Task<IActionResult> Update(UpdatePatientVM updatedPatient)
+        public async Task<IActionResult> Update(UpdatePatientAR updatedPatient)
         {
             if (!ModelState.IsValid)
             {
                 return View(updatedPatient);
             }
+            string uniqueFileName;
+            if (updatedPatient.FormFilePhoto != null && updatedPatient.FormFilePhoto.Length > 0)
+            {
+                 uniqueFileName = _fileService.UploadFile(updatedPatient.FormFilePhoto, "img");
+            }
+            else
+            {
+                uniqueFileName = updatedPatient.ProfilePhoto;
+            }
+            
             var patientDto = updatedPatient.ToUpdatePatientDto();
+            patientDto.ProfilePhoto = uniqueFileName;
             
              await _patientService.UpdatePatient(patientDto);
 

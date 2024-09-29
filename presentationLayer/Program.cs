@@ -3,6 +3,7 @@ using System.Resources;
 using Ayadty.Data;
 using BusinessLogicLayer.Services.Appointment;
 using BusinessLogicLayer.Services.Doctor;
+using BusinessLogicLayer.Services.File;
 using BusinessLogicLayer.Services.Patient;
 using BusinessLogicLayer.Services.Prescription;
 using DataAccessLayer.Entities;
@@ -19,7 +20,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using presentationLayer.Controllers;
 using presentationLayer.Middlewares;
-using presentationLayer.Validation;
+
 
 
 namespace presentationLayer;
@@ -59,6 +60,8 @@ public class Program
         builder.Services.AddScoped<IDoctorService, DoctorService>();
 
         builder.Services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
+
+        builder.Services.AddScoped<IFileService, FileService>();
         
         builder.Services.AddScoped<RoleSeeder>();
         

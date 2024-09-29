@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using BusinessLogicLayer.DTOs.Ptient;
 using DataAccessLayer.Entities;
-using presentationLayer.Validation;
 
 namespace presentationLayer.Models.Patient.ViewModel;
 
-public class UpdatePatientVM
+public class UpdatePatientAR
 {
     public string PatientId { get; set; }
     
@@ -30,33 +29,32 @@ public class UpdatePatientVM
     public string FullName { get; set; }
     
     [Required(ErrorMessage = "PhoneNumberRequired")]
-    [UniquePhoneNumber]
     [RegularExpression(@"^(010|011|012|015)\d{8}$", ErrorMessage = "PhoneNumberInvalid")] 
+    [UniquePhoneNumber]
     public string Phone { get; set; }
-    
     public string? ProfilePhoto { get; set; }
+    public IFormFile? FormFilePhoto { get; set; }
 }
 public static class UpdatePatientExtenionMethod
 {
-    public static UpdatePatientDto ToUpdatePatientDto(this UpdatePatientVM vm)
+    public static UpdatePatientDto ToUpdatePatientDto(this UpdatePatientAR ar)
     {
         return new UpdatePatientDto
         {
-            PatientId = vm.PatientId,
-            DateOfBirth = vm.DateOfBirth,
-            FullName = vm.FullName,
-            Phone = vm.Phone,
-            FacebookProfile = vm.FacebookProfile,
-            Gender = vm.Gender,
-            Email = vm.Email,
-            Address = vm.Address,
-            ProfilePhoto = vm.ProfilePhoto,
+            PatientId = ar.PatientId,
+            DateOfBirth = ar.DateOfBirth,
+            FullName = ar.FullName,
+            Phone = ar.Phone,
+            FacebookProfile = ar.FacebookProfile,
+            Gender = ar.Gender,
+            Email = ar.Email,
+            Address = ar.Address,
         };
 
     }
-    public static UpdatePatientVM ToUpdatePatientVM(this PatientDetailsDto dto)
+    public static UpdatePatientAR ToUpdatePatientVM(this PatientDetailsDto dto)
     {
-        return new UpdatePatientVM
+        return new UpdatePatientAR
         {
             PatientId= dto.PatientId,
             FullName = dto.Name,
@@ -66,7 +64,7 @@ public static class UpdatePatientExtenionMethod
             Email = dto.Email,
             Address = dto.Address,
             DateOfBirth = dto.DateOfBirth,
-            ProfilePhoto = dto.ProfilePhoto,
+            ProfilePhoto = dto.ProfilePhoto
         };
     }
 }

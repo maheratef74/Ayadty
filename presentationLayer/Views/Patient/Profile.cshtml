@@ -53,10 +53,9 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="@Url.Content(Model.PatientVm.ProfilePhoto)" alt="ProfilePhoto" class="rounded-circle" width="150">
+                            <img src="@Url.Content("~/img/"+Model.PatientVm.ProfilePhoto)" alt="ProfilePhoto" class="rounded-circle" width="150">
                                 
-
-                                                                                                                                      <div class="mt-3">
+                            <div class="mt-3">
                                 <h4>@Model.PatientVm.Name</h4>
                             </div>
                         </div>
@@ -74,7 +73,7 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                                 </a>
                             </h6>
                             <span class="text-secondary">
-                                <a href="@Model.PatientVm.FacbookProfile" target="_blank">@Model.PatientVm.FacbookProfile</a>
+                                <a href="@Model.PatientVm.FacbookProfile" target="_blank"></a>
                             </span>
                         </li>
                     </ul>
