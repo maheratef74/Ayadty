@@ -92,16 +92,9 @@ public class authController : Controller
         }
         return View(newPatient);
     }
-    public async Task<IActionResult> CheckPhoneForRegister(string phoneNumber)
+    public async Task<IActionResult> CheckPhone(string PhoneNumber, string? PatientId = null)
     {
-        var user = await _applicationUserRepository.GetUserByPhoneNUmber(phoneNumber);
-        if (user is null)  return Json(true);
-        
-        return Json(false);
-    }
-    public async Task<IActionResult> CheckPhoneForUpdate(string phoneNumber, string PatientId)
-    {
-        var user = await _applicationUserRepository.GetUserByPhoneAndExcludeCurrentPatient(phoneNumber, PatientId);
+        var user = await _applicationUserRepository.GetUserByPhoneAndExcludeCurrentPatient(PhoneNumber, PatientId);
         if (user is null) return Json(true);
     
         return Json(false);

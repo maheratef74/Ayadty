@@ -19,11 +19,18 @@ public class ApplicationUserRepository : IApplicationUserRepository
         return user;
     }
 
-    public async Task<Entities.ApplicationUser?> GetUserByPhoneAndExcludeCurrentPatient(string phoneNumber, string patientId)
+    public async Task<Entities.ApplicationUser?> GetUserByPhoneAndExcludeCurrentPatient(string phoneNumber, string? patientId = null)
     {
-        var user = await _appDbContext.Users
-            .FirstOrDefaultAsync(u => u.Phone == phoneNumber && u.Id != patientId);
+        var query = _appDbContext.Users.AsQueryable();
+
+        if (!string.IsNullOrEmpty(patientId))
+        {
+            query = query.Where(u => u.Id != patientId);
+        }
+        
+        var user = await query.FirstOrDefaultAsync(u => u.Phone == phoneNumber);
 
         return user;
     }
+
 }

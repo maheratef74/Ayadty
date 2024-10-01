@@ -25,6 +25,8 @@ public class UpdatePatientAR
     [DataType(DataType.Password)]
     [Compare("Password" , ErrorMessage = "The two passwords do not match.")]
     public string? ConfirmPassword { get; set; }
+    
+    [Url(ErrorMessage = "Invalid URL format for Facebook profile.")]
     public string? FacebookProfile { get; set; }
     
     [Required(ErrorMessage = "NameRequired")]
@@ -32,7 +34,8 @@ public class UpdatePatientAR
     
     [Required(ErrorMessage = "PhoneNumberRequired")]
     [RegularExpression(@"^(010|011|012|015)\d{8}$", ErrorMessage = "PhoneNumberInvalid")]
- //   [Remote(action: "CheckPhoneForUpdate", controller: "auth", AdditionalFields = nameof(PatientId), ErrorMessage = "Use Another Phone Number")]
+    [Remote(action: "CheckPhone", controller: "auth", AdditionalFields = nameof(PatientId) ,
+        ErrorMessage = "Use Another Phone Number")]
     public string PhoneNumber { get; set; } 
     public string? ProfilePhoto { get; set; }
     public IFormFile? FormFilePhoto { get; set; }

@@ -24,20 +24,18 @@
 }
 <!DOCTYPE html>
 <head>
-
     <title>@localizer["Update Patient"]</title>
     <link rel="stylesheet" href="~/css/PatientUpdate.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   
+    <!-- Keep only the latest Font Awesome version -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-   
 </head>
+
 <body>
 
 
 <form asp-controller="Patient" asp-action="Update" method="post" enctype="multipart/form-data">
-
-    <!-- Hidden fields for PatientId and AppointmentId -->
+    
+    <!-- Hidden fields for PatientId  -->
     <input type="hidden" asp-for="PatientId" />
     <input type="hidden" asp-for="ProfilePhoto"/>
     
@@ -139,7 +137,7 @@
                                     <h6 class="mb-0">@localizer["Facebook"]</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input asp-for="FacebookProfile" type="text" class="form-control" value="@Model.FacebookProfile">
+                                    <input asp-for="FacebookProfile" type="url" class="form-control" value="@Model.FacebookProfile">
                                     <span asp-validation-for="FacebookProfile" class="text-danger"></span>
                                 </div>
                             </div>
@@ -223,20 +221,18 @@
             icon.classList.add("fa-eye");
         }
     }
-</script>
-<!-- For Lyout -->
-<!-- jquery Min JS -->
-<script src="~/js/jquery.min.js"></script>
-
-<!-- Main JS -->
-<script src="~/js/main.js"></script>
-<!-- For Lyout -->
-<!-- jQuery and jQuery Validation scripts -->
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
+    
+<!-- jQuery Validation and Unobtrusive Validation -->
 <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
-<!-- Bootstrap JS and dependencies -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<!-- Bootstrap JS -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Custom scripts (if any) -->
+<script src="~/js/main.js"></script>
+
+<!-- For Lyout -->
+<!-- jquery Min JS -->
+<script src="~/js/jquery.min.js"></script>
 </body>

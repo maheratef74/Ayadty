@@ -33,7 +33,7 @@ public class RegisterAR
 
     [Required(ErrorMessage = "PhoneNumberRequired")]
     [RegularExpression(@"^(010|011|012|015)\d{8}$", ErrorMessage = "PhoneNumberInvalid")]
-  //  [Remote(action: "CheckPhoneForRegister", controller: "auth", AdditionalFields = nameof(PhoneNumber), ErrorMessage = "Use Another Phone Number")]
+    [Remote(action: "CheckPhone", controller: "auth" , ErrorMessage = "Use Another Phone Number")]
     public  string PhoneNumber { get; set; }
     public bool RememberMe { get; set; }
 }

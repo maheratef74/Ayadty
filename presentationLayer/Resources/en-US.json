@@ -516,6 +516,7 @@
   "AgeRequired": "Age Required",
   
   "Diagnosis of the disease:": "Diagnosis of the disease:",
-  "Enter Diagnosis of the disease": "Enter Diagnosis of the disease"
-  
+  "Enter Diagnosis of the disease": "Enter Diagnosis of the disease",
+
+  "Invalid URL format for Facebook profile.": "Invalid URL format for Facebook profile."
 }

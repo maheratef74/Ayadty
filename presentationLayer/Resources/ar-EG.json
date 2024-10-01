@@ -537,5 +537,7 @@
   "AgeRequired": "عمر المريض مطلوب",
 
   "Diagnosis of the disease:": "التشخيص:",
-  "Enter Diagnosis of the disease": "ادخل تشخيص الحاله"
+  "Enter Diagnosis of the disease": "ادخل تشخيص الحاله",
+
+  "Invalid URL format for Facebook profile.": "ادخل رابط صحيح للفيس بوك"
 }
