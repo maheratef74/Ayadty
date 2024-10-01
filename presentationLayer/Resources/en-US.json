@@ -518,5 +518,8 @@
   "Diagnosis of the disease:": "Diagnosis of the disease:",
   "Enter Diagnosis of the disease": "Enter Diagnosis of the disease",
 
-  "Invalid URL format for Facebook profile.": "Invalid URL format for Facebook profile."
+  "Invalid URL format for Facebook profile.": "Invalid URL format for Facebook profile.",
+  "MedicineNameIsRequired": "Medicine Name is required",
+  "DateIsRequired": "DateIsRequired",
+  "Prescription Created successfully": "Prescription Created successfully"
 }

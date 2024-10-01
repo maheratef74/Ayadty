@@ -15,8 +15,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/prescription.css" />
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     
+    <!-- jQuery and jQuery Validation scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 </head>
 <body>
     <div class="container mt-5 prescription-page">
@@ -36,24 +39,27 @@
         <br />
         <form asp-controller="Prescription" asp-action="Create" method="post">
             <input type="hidden" asp-for="AppointmentId" />
-            
+            <input type="hidden" asp-for="PatientId" />
             <!-- Patient Information -->
             <div class="row patient-info">
                 <div class="col-md-4">
                     <label>@localizer["Patient Name:"]</label>
                     <input asp-for="PatientName" type="text" class="form-control" id="patientName" placeholder="@localizer["Enter patient's name"]"/>
+                    <span asp-validation-for="PatientName" class="text-danger"></span>
                 </div>
                 <div class="col-md-2">
                     <label>@localizer["Age:"]</label>
                     <input asp-for="patientAge" type="number" class="form-control" id="patientAge" placeholder="@localizer["Age"]"/>
-                </div>
-                <div class="col-md-3">
-                    <label>@localizer["Date:"]</label>
-                    <input asp-for="Date" type="datetime-local" class="form-control" id="prescriptionDate" value="@Model.Date.ToString("yyyy-MM-ddTHH:mm")"/>
+                    <span asp-validation-for="patientAge" class="text-danger"></span>
                 </div>
                 <div class="col-md-4">
                     <label>@localizer["Diagnosis of the disease:"]</label>
                     <input asp-for="Diagnosis" type="text" class="form-control"  placeholder="@localizer["Enter Diagnosis of the disease"]"/>
+                </div>
+                <div class="col-md-3">
+                    <label>@localizer["Date:"]</label>
+                    <input asp-for="Date" type="datetime-local" class="form-control" id="prescriptionDate" value="@Model.Date.ToString("yyyy-MM-ddTHH:mm")"/>
+                    <span asp-validation-for="Date" class="text-danger"></span>
                 </div>
             </div>
 
@@ -67,6 +73,7 @@
                             <div class="form-group">
                                 <label>@localizer["Medicine Name:"]</label>
                                 <input name="Treatments[0].MedicineName" type="text" class="form-control" id="medicineName0" placeholder="@localizer["Enter medicine name"]"/>
+                                <span asp-validation-for="Treatments[0].MedicineName" class="text-danger"></span>
                             </div>
                             <div class="form-group mx-3">
                                 <label>@localizer["Dosage Frequency:"]</label>
@@ -76,7 +83,7 @@
                                 <label>@localizer["Notes:"]</label>
                                 <input name="Treatments[0].Note" type="text" class="form-control" id="notes0" placeholder="@localizer["Enter any notes"]"/>
                             </div>
-                            <button type="button" class="btn btn-danger" data-id="0">@localizer["Remove"]</button>
+                            <button type="button" class="btn btn-danger removePrescriptionBtn mx-3" data-id="0">@localizer["Remove"]</button>
                         </div>
                     </div>
                     <button type="button" class="btn btn-secondary" id="addPrescriptionBtn">@localizer["+ Add More"]</button>
@@ -117,11 +124,31 @@
 
     </div>
 
-
-<script>
+    <script>
         var prescriptionCount = 0;
         var removeText = "@localizer["Remove"]";
 
+        // Form submission validation
+        $("form").on("submit", function (event) {
+            var isValid = true;
+
+            // Iterate over each input field for medicine names
+            $("input[name^='Treatments'][name$='MedicineName']").each(function () {
+                if ($(this).val().trim() === "") {
+                    isValid = false;
+                    $(this).addClass("is-invalid"); // Add a class for invalid input
+                    $(this).next("span").text("@localizer[ "MedicineNameIsRequired"]"); // Set the validation message
+                } else {
+                    $(this).removeClass("is-invalid"); // Remove invalid class if the field is filled
+                    $(this).next("span").text(""); // Clear the validation message
+                }
+            });
+
+            // If any field is invalid, prevent form submission
+            if (!isValid) {
+                event.preventDefault(); // Stop form submission
+            }
+        });
         // Add more prescription fields
         $("#addPrescriptionBtn").click(function () {
             prescriptionCount++;
@@ -129,6 +156,7 @@
                         <div class="form-group">
                             <label>@localizer["Medicine Name:"]</label>
                             <input name="Treatments[${prescriptionCount}].MedicineName" type="text" class="form-control" id="medicineName${prescriptionCount}" placeholder="@localizer["Enter medicine name"]" />
+                            <span asp-validation-for="Treatments[${prescriptionCount}].MedicineName" class="text-danger"></span>
                         </div>
                         <div class="form-group mx-3">
                             <label>@localizer["Dosage Frequency:"]</label>
@@ -150,6 +178,7 @@
         });
 
     </script>
+
 <!-- Bootstrap JS -->
     <script src="./js/bootstrap.min.js"></script>
 </body>

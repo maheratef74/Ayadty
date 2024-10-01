@@ -539,5 +539,10 @@
   "Diagnosis of the disease:": "التشخيص:",
   "Enter Diagnosis of the disease": "ادخل تشخيص الحاله",
 
-  "Invalid URL format for Facebook profile.": "ادخل رابط صحيح للفيس بوك"
+  "Invalid URL format for Facebook profile.": "ادخل رابط صحيح للفيس بوك",
+
+  "MedicineNameIsRequired": "اسم الدواء مطلوب",
+  "DateIsRequired" : "تاريخ الروشته مطلوب",
+  "Prescription Created successfully": "تم حفظ الروشته بنجاح"
+  
 }

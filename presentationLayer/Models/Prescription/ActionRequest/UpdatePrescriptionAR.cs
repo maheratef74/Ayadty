@@ -4,7 +4,7 @@ using presentationLayer.Models.Treament.ActionRequest;
 
 namespace presentationLayer.Models.Prescription.ActionRequest;
 
-public class CreatePrescrptionAR
+public class UpdatePrescriptionAR
 {
     public string AppointmentId { get; set; }
     [Required(ErrorMessage = "NameRequired")]
@@ -20,21 +20,22 @@ public class CreatePrescrptionAR
     public List<CreateTreatmentAR> Treatments { get; set; } = new List<CreateTreatmentAR>();
     
     public string? Notes { get; set; }
-}
 
-public static class CreatePrescrptionARExtention
+}
+public static class UpdatePrescrptionARExtention
 {
-    public static PrescriptionDetailsDto ToPrescriptionDetailsDto(this CreatePrescrptionAR createPrescrptionAr)
+    public static UpdatePrescriptionAR ToPrescriptionDetailsDto(this PrescriptionDetailsDto prescriptionDetailsDto)
     {
-        return new PrescriptionDetailsDto()
+        return new UpdatePrescriptionAR()
         {
-            PatientId = createPrescrptionAr.PatientId,
-            Date = createPrescrptionAr.Date,
-            AppointmentId = createPrescrptionAr.AppointmentId,
-            PatientName = createPrescrptionAr.PatientName,
-            Notes = createPrescrptionAr.Notes,
-            patientAge = createPrescrptionAr.patientAge,
-            Treatments = createPrescrptionAr.Treatments.Select(t => t.ToTreatmentDto()).ToList()
+            PatientId = prescriptionDetailsDto.PatientId,
+            Date = prescriptionDetailsDto.Date,
+            AppointmentId = prescriptionDetailsDto.AppointmentId,
+            PatientName = prescriptionDetailsDto.PatientName,
+            Notes = prescriptionDetailsDto.Notes,
+            patientAge = prescriptionDetailsDto.patientAge,
+            Treatments = prescriptionDetailsDto.Treatments
+                .Select(t => t.ToTreatmentAr()).ToList()
         };
     }
 }

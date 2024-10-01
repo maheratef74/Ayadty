@@ -5,6 +5,7 @@ using BusinessLogicLayer.Services.Doctor;
 using presentationLayer.Models.Doctor.ViewModel;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories.Doctor;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Localization;
 using presentationLayer.Models.Appointment.ViewModel;
@@ -13,6 +14,7 @@ using presentationLayer.Models.Doctor.ActionRequest;
 
 namespace presentationLayer.Controllers
 {
+    [Authorize(Roles.Doctor)]
     public class DoctorController : Controller
     {
         private readonly IDoctorService _doctorService;

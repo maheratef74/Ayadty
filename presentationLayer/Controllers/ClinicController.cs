@@ -6,8 +6,6 @@ namespace presentationLayer.Controllers
     {
         public IActionResult Profile(string layout)
         {
-            // Set the layout flag based on the query parameter
-            ViewData["UseAlternateLayout"] = layout == "Layout";
         
             return View();
         }

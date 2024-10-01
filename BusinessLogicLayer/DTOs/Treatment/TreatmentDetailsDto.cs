@@ -3,12 +3,11 @@ using DataAccessLayer.Entities;
 public class TreatmentDetailsDto
 {
     public string TreatmentId { get; set; }
+    public string PrescriptionId { set; get; } 
     public string Name { get; set; }
     public string? Dosage { get; set; }
     public string? Note { get; set; }
-    public string PrescriptionId { set; get; } 
 }
-
 public static class TreatmentDetailsExtension
 {
     public static Treatment ToTreatment(this TreatmentDetailsDto treatmentDetailsDto)
@@ -17,13 +16,20 @@ public static class TreatmentDetailsExtension
         {
             Name = treatmentDetailsDto.Name,
             PrescriptionId = treatmentDetailsDto.PrescriptionId,
-            TreatmentId = treatmentDetailsDto.TreatmentId,
+            TreatmentId = Guid.NewGuid().ToString(),
             Dosage = treatmentDetailsDto.Dosage,
             Note = treatmentDetailsDto.Note
         };
     }
-    public static List<Treatment> ToTreatment(this IEnumerable<TreatmentDetailsDto> treatmentDetailsDtos)
+    public static TreatmentDetailsDto ToTreatmentDto(this Treatment treatment)
     {
-        return treatmentDetailsDtos.Select(t => t.ToTreatment()).ToList();
+        return new TreatmentDetailsDto()
+        {
+            Name = treatment.Name,
+            PrescriptionId = treatment.PrescriptionId,
+            TreatmentId = treatment.TreatmentId,
+            Dosage = treatment.Dosage,
+            Note = treatment.Note
+        };
     }
 }

@@ -5,7 +5,7 @@ using presentationLayer.Models.DashBoard.ViewModel;
 
 namespace presentationLayer.Controllers;
 
-//[Authorize(Roles = "Doctor,Nurse")]
+[Authorize(Roles = "Doctor,Nurse")]
 public class DashBoardController:Controller
 {
     private readonly IAppointmentService _appointmentService;

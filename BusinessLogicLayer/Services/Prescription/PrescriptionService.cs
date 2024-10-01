@@ -13,19 +13,19 @@ public class PrescriptionService : IPrescriptionService
         _prescriptionRepository = prescriptionRepository;
     }
 
-    public async Task AddPrescription(PrescriptionDetailsDto prescriptionDetailsDto)
+    public async Task<DataAccessLayer.Entities.Prescription> AddPrescription(PrescriptionDetailsDto prescriptionDetailsDto)
     {
-        var prescription = new DataAccessLayer.Entities.Prescription()
-        {
-            Date = prescriptionDetailsDto.Date,
-            UserId = prescriptionDetailsDto.PatientId,
-            Notes = prescriptionDetailsDto.Notes,
-            patientAge =prescriptionDetailsDto.patientAge,
-            PatientName = prescriptionDetailsDto.PatientName,
-            
-            Treatments = prescriptionDetailsDto.Treatments.Select(t => t.ToTreatment()).ToList()
-        };
+        var prescription = prescriptionDetailsDto.ToPrescription();
         await _prescriptionRepository.Add(prescription);
         await _prescriptionRepository.SaveChanges();
+        return prescription;
+    }
+
+    public async Task<PrescriptionDetailsDto?> GetPrescriptionById(string PrescriptionId)
+    {
+        var prescription = await _prescriptionRepository.GetPrescriptionById(PrescriptionId);
+
+        var prescriptionDto = prescription.ToPrescriptionDto();
+        return prescriptionDto;
     }
 }
