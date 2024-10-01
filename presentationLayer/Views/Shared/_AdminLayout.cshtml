@@ -419,7 +419,6 @@
 <script src="~/lib/sweetalert2/dist/sweetalert2.all.min.js"></script>
 <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-
 <script>
     $(document).ready(function () {
         var successMessage = '@Html.Raw(TempData["SuccessMessage"] ?? string.Empty)';
@@ -450,7 +449,6 @@
             cancelButtonText: '@localizer["No, keep it"]'
         }).then((result) => {
             if (result.isConfirmed) {
-                // Redirect to the cancel action
                 window.location.href = '/Appointment/Cancele?appointmentId=' + appointmentId;
             }
         });
@@ -458,19 +456,20 @@
 
     function confirmDelete(appointmentId) {
         Swal.fire({
-            title: "Are you sure",  // Localized title
-            text: "Do you really want to delete the appointment?",  // Localized text
+            title: '@localizer["Are you sure?"]',
+            text: '@localizer["Do you really want to delete the appointment?"]',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: '@localizer["Yes, delete it!"]',
             cancelButtonText: '@localizer["No, keep it"]'
         }).then((result) => {
             if (result.isConfirmed) {
-                // Redirect to the delete action
                 window.location.href = '/Appointment/Delete?appointmentId=' + appointmentId;
             }
         });
     }
+
+
 </script>
 </body>
 

@@ -35,43 +35,48 @@
 
         <br />
         <form asp-controller="Prescription" asp-action="Create" method="post">
+            <input type="hidden" asp-for="AppointmentId" />
+            
             <!-- Patient Information -->
             <div class="row patient-info">
                 <div class="col-md-4">
                     <label>@localizer["Patient Name:"]</label>
-                    <input asp-for="PatientName" type="text" class="form-control" id="patientName" placeholder="@localizer["Enter patient's name"]" />
+                    <input asp-for="PatientName" type="text" class="form-control" id="patientName" placeholder="@localizer["Enter patient's name"]"/>
                 </div>
                 <div class="col-md-2">
                     <label>@localizer["Age:"]</label>
-                    <input asp-for="patientAge" type="number" class="form-control" id="patientAge" placeholder="@localizer["Age"]" />
+                    <input asp-for="patientAge" type="number" class="form-control" id="patientAge" placeholder="@localizer["Age"]"/>
                 </div>
                 <div class="col-md-3">
                     <label>@localizer["Date:"]</label>
-                    <input asp-for="Date" type="datetime-local" class="form-control" id="prescriptionDate" value="@Model.Date.ToString("yyyy-MM-ddTHH:mm")" />
+                    <input asp-for="Date" type="datetime-local" class="form-control" id="prescriptionDate" value="@Model.Date.ToString("yyyy-MM-ddTHH:mm")"/>
                 </div>
-
+                <div class="col-md-4">
+                    <label>@localizer["Diagnosis of the disease:"]</label>
+                    <input asp-for="Diagnosis" type="text" class="form-control"  placeholder="@localizer["Enter Diagnosis of the disease"]"/>
+                </div>
             </div>
 
             <!-- Prescription Section -->
             <div class="row mb-4">
                 <div class="col-md-12">
                     <h3 class="section-title" style="background-color: #007bff ; color:white; font-size:larger">@localizer["Prescription"]</h3>
-                    <hr />
+                    <hr/>
                     <div id="prescriptionFields">
-                        <div class="prescription-row d-flex" id="prescriptionRow0">
+                        <div class="prescription-row d-flex align-items-center" id="prescriptionRow0">
                             <div class="form-group">
                                 <label>@localizer["Medicine Name:"]</label>
-                                <input name="Treatments[0].MedicineName" type="text" class="form-control" id="medicineName0" placeholder="@localizer["Enter medicine name"]" />
+                                <input name="Treatments[0].MedicineName" type="text" class="form-control" id="medicineName0" placeholder="@localizer["Enter medicine name"]"/>
                             </div>
                             <div class="form-group mx-3">
                                 <label>@localizer["Dosage Frequency:"]</label>
-                                <input name="Treatments[0].Dosage" type="text" class="form-control" id="dosage0" placeholder="@localizer["Enter dosage frequency"]" />
+                                <input name="Treatments[0].Dosage" type="text" class="form-control" id="dosage0" placeholder="@localizer["Enter dosage frequency"]"/>
                             </div>
                             <div class="form-group">
                                 <label>@localizer["Notes:"]</label>
-                                <input name="Treatments[0].Note" type="text" class="form-control" id="notes0" placeholder="@localizer["Enter any notes"]" />
+                                <input name="Treatments[0].Note" type="text" class="form-control" id="notes0" placeholder="@localizer["Enter any notes"]"/>
                             </div>
-                           <button type="button" class="btn btn-danger" data-id="0">@localizer["Remove"]</button>
+                            <button type="button" class="btn btn-danger" data-id="0">@localizer["Remove"]</button>
                         </div>
                     </div>
                     <button type="button" class="btn btn-secondary" id="addPrescriptionBtn">@localizer["+ Add More"]</button>
@@ -90,7 +95,6 @@
             <div class="row">
                 <div class="col-md-12 text-center">
                     <button type="submit" class="btn btn-primary">@localizer["Save"]</button>
-                    <button type="button" class="btn btn-warning">@localizer["Edit"]</button>
                     <button type="button" class="btn btn-success" onclick="window.print()">@localizer["Print"]</button>
                 </div>
             </div>
@@ -114,15 +118,14 @@
     </div>
 
 
-    
 <script>
-    var prescriptionCount = 0;
-    var removeText = "@localizer["Remove"]";
+        var prescriptionCount = 0;
+        var removeText = "@localizer["Remove"]";
 
-    // Add more prescription fields
-    $("#addPrescriptionBtn").click(function () {
-        prescriptionCount++;
-        var newField = `<div class="prescription-row d-flex" id="prescriptionRow${prescriptionCount}">
+        // Add more prescription fields
+        $("#addPrescriptionBtn").click(function () {
+            prescriptionCount++;
+            var newField = `<div class="prescription-row d-flex align-items-center" id="prescriptionRow${prescriptionCount}">
                         <div class="form-group">
                             <label>@localizer["Medicine Name:"]</label>
                             <input name="Treatments[${prescriptionCount}].MedicineName" type="text" class="form-control" id="medicineName${prescriptionCount}" placeholder="@localizer["Enter medicine name"]" />
@@ -137,17 +140,17 @@
                         </div>
                         <button type="button" class="btn btn-danger removePrescriptionBtn mx-3" data-id="${prescriptionCount}">${removeText}</button>
                     </div>`;
-        $("#prescriptionFields").append(newField);
-    });
+            $("#prescriptionFields").append(newField);
+        });
 
-    // Remove a prescription field
-    $(document).on("click", ".removePrescriptionBtn", function () {
-        var id = $(this).data("id");
-        $("#prescriptionRow" + id).remove();
-    });
+        // Remove a prescription field
+        $(document).on("click", ".removePrescriptionBtn", function () {
+            var id = $(this).data("id");
+            $("#prescriptionRow" + id).remove();
+        });
 
-</script>
-    <!-- Bootstrap JS -->
+    </script>
+<!-- Bootstrap JS -->
     <script src="./js/bootstrap.min.js"></script>
 </body>
 </html>

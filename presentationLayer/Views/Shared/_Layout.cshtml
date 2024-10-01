@@ -11,8 +11,7 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 <!doctype html>
 <html class="no-js" lang="ar" dir = "@(isRTL ? "RTL" : "LTR")" >
 <head>
-    <!-- SweetAlert2 CSS (Notifaction) -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <<link rel="stylesheet" href="~/lib/sweetalert2/dist/sweetalert2.min.css">
    
     <!-- Meta Tags -->
@@ -307,7 +306,6 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             cancelButtonText: '@localizer["No, keep it"]'
         }).then((result) => {
             if (result.isConfirmed) {
-                // Redirect to the cancel action
                 window.location.href = '/Appointment/Cancele?appointmentId=' + appointmentId;
             }
         });
@@ -315,19 +313,22 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
     function confirmDelete(appointmentId) {
         Swal.fire({
-            title: "Are you sure",  // Localized title
-            text: "Do you really want to delete the appointment?",  // Localized text
+            title: '@localizer["Are you sure?"]',
+            text: '@localizer["Do you really want to delete the appointment?"]',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: '@localizer["Yes, delete it!"]',
             cancelButtonText: '@localizer["No, keep it"]'
         }).then((result) => {
             if (result.isConfirmed) {
-                // Redirect to the delete action
                 window.location.href = '/Appointment/Delete?appointmentId=' + appointmentId;
             }
         });
     }
+    
+
 </script>
+<!-- SweetAlert2 CSS (Notifaction) -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

@@ -522,6 +522,7 @@
   "Appointment Created successfully": "تم حجز الموعد بنجاح",
   "Appointment Updated successfully": "تم تعديل الحجز بنجاح",
   "Acount Created successfully": "تم انشاء حساب بنجاح",
+  "Are you sure?" : "هل انت متاكد ؟",
   "Do you really want to cancel the appointment?": "هل بالفعل تريد الغاء الحجز",
   "Yes, cancel it!": "نعم, اريد الالغاء",
   "No, keep it" : "لا, اتركها",
@@ -531,5 +532,10 @@
 
   "Data Updated successfully": "تم تعديل البيانات بنجاح",
   "Add Doctor": "اضافه دكتور",
-  "Doctor Added successfully": "تم اضافه الدكتور بنجاح"
+  "Doctor Added successfully": "تم اضافه الدكتور بنجاح",
+
+  "AgeRequired": "عمر المريض مطلوب",
+
+  "Diagnosis of the disease:": "التشخيص:",
+  "Enter Diagnosis of the disease": "ادخل تشخيص الحاله"
 }

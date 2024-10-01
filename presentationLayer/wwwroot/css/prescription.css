@@ -9,16 +9,20 @@
     background-color: #ffffff;
 }
 .removePrescriptionBtn {
-    width: 90px; /* تغيير العرض */
-    height: 50px; /* تغيير الطول */
-    background-color: red; /* تغيير اللون إلى لون مختلف (Tomato) */
-    color: white; /* لون النص */
-    border-radius: 5px; /* جعل الزر مدورًا قليلاً */
+    width: 90px; /* Custom width */
+    height: 50px; /* Custom height */
+    border: 2px solid red; /* Outline danger style */
+    background-color: transparent; /* Transparent background for outline button */
+    color: red; /* Text color for outline button */
+    border-radius: 5px; /* Slightly rounded corners */
+    font-size: 0.875rem; /* Small font size for btn-sm */
 }
 
-    .removePrescriptionBtn:hover {
-        background-color: red; /* تغيير لون الزر عند التمرير */
-    }
+.removePrescriptionBtn:hover {
+    background-color: red; /* Red background on hover */
+    color: white; /* White text on hover */
+}
+
 /* تنسيق بيانات الدكتور */
 .doctor-info {
     background-color: #007bff;

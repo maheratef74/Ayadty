@@ -502,6 +502,7 @@
   "Appointment Created successfully": "Appointment Created successfully",
   "Appointment Updated successfully": "Appointment Updated successfully",
   "Acount Created successfully":  "Acount Created successfully",
+  "Are you sure?" :  "Are you sure?",
   "Do you really want to cancel the appointment?": "Do you really want to cancel the appointment?",
   "Yes, cancel it!": "Yes, cancel it!",
   "No, keep it" : "No, keep it",
@@ -511,5 +512,10 @@
   "Data Updated successfully":  "Data Updated successfully",
 
   "Add Doctor": "Add Doctor",
-  "Doctor Added successfully": "Doctor Added successfully"
+  "Doctor Added successfully": "Doctor Added successfully",
+  "AgeRequired": "Age Required",
+  
+  "Diagnosis of the disease:": "Diagnosis of the disease:",
+  "Enter Diagnosis of the disease": "Enter Diagnosis of the disease"
+  
 }
