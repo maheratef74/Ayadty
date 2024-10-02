@@ -28,4 +28,24 @@ public class PrescriptionService : IPrescriptionService
         var prescriptionDto = prescription.ToPrescriptionDto();
         return prescriptionDto;
     }
+    public async Task UpdatePrescription(PrescriptionDetailsDto UpdatedprescriptionDetailsDto)
+    {
+        var updatedPrescription = UpdatedprescriptionDetailsDto.ToUpdatedPrescription();
+        await _prescriptionRepository.UpdatePrescription(updatedPrescription);
+        await _prescriptionRepository.SaveChanges();
+    }
+
+    public async Task<List<PrescriptionDetailsDto>> GetPrescriptionsByAppointmentId(string appointmentId)
+    {
+        var prescriptions = await _prescriptionRepository.GetPrescriptionsByAppointmentId(appointmentId);
+        var prescriptionsDto = new List<PrescriptionDetailsDto>();
+
+        foreach (var prescription in prescriptions)
+        {
+            var prescriptionDto = prescription.ToPrescriptionDto();
+            prescriptionsDto.Add(prescriptionDto);
+        }
+
+        return prescriptionsDto;
+    }
 }

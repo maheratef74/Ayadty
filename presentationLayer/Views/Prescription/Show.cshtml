@@ -27,6 +27,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/PatientPrescription.css" />
+    <link rel="stylesheet" href="~/css/prescription.css" />
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
@@ -66,19 +67,18 @@
         </div>
     </div>
 
-    <!-- Prescription Section -->
     <div class="row mb-4">
         <div class="col-md-12">
             <h3 class="section-title" style="background-color: #007bff; color:white; font-size:larger">@localizer["Prescription"]</h3>
             <hr />
-            <div class="row font-weight-bold mb-2">
+            <div class="row font-weight-bold mb-2 treatment-row">
                 <div class="col-md-4">@localizer["Medicine Name:"]</div>
                 <div class="col-md-4">@localizer["Dosage Frequency:"]</div>
                 <div class="col-md-4">@localizer["Notes:"]</div>
             </div>
             @foreach (var treatment in Model.Treatments)
             {
-                <div class="row border-bottom py-2">
+                <div class="row patient-info mb-3 treatment-row">
                     <div class="col-md-4">
                         <p class="form-control">@treatment.Name</p>
                     </div>
@@ -90,20 +90,24 @@
                     </div>
                 </div>
             }
+
         </div>
     </div>
+
 
     <!-- General Notes Section -->
     <div class="row notes-box">
         <div class="col-md-12">
             <h5 class="section-title" style="background-color: #007bff; color:white; font-size:larger">@localizer["General Notes"]</h5>
-            <p>@Model.Notes</p>
+            <p class="form-control">@Model.Notes</p>
         </div>
     </div>
     <!-- Action Buttons -->
     <div class="row">
         <div class="col-md-12 text-center">
-            <button @*onclick="@Url.Action("" , "Prescription" , )"*@ class="btn btn-primary">@localizer["Edit"]</button>
+            <a href="@Url.Action("Update", "Prescription", new { PrescriptionId = Model.PrescriptionId })" class="btn btn-primary">
+                @localizer["Edit"]
+            </a>
             <button type="button" class="btn btn-success" onclick="window.print()">@localizer["Print"]</button>
         </div>
     </div>

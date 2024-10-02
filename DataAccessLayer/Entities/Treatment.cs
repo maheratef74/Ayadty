@@ -6,7 +6,7 @@ namespace DataAccessLayer.Entities;
 public class Treatment
 {
     [Key]
-    public string TreatmentId { get; set; }
+    public int TreatmentId { get; set; }
     public string Name { get; set; }
     public string? Dosage { get; set; }
     public string? Note { get; set; }

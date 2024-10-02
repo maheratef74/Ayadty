@@ -521,5 +521,10 @@
   "Invalid URL format for Facebook profile.": "Invalid URL format for Facebook profile.",
   "MedicineNameIsRequired": "Medicine Name is required",
   "DateIsRequired": "DateIsRequired",
-  "Prescription Created successfully": "Prescription Created successfully"
+  "Prescription Created successfully": "Prescription Created successfully",
+  "Save Update":  "Save Update",
+  "DateRequired": "Date is required",
+  "Prescription Updated successfully":   "Prescription Updated successfully",
+  "Diagnosis":   "Diagnosis",
+  "Prescriptions":  "Prescriptions"
 }

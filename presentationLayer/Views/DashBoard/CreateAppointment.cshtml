@@ -1,0 +1,75 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer localizer
+
+<body>
+<section class="appointment">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>@localizer["Create Appointment for Patient"]</h2>
+                </div>
+            </div>
+        </div>
+        <form asp-controller="" asp-action="" method="post">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="form-group">
+                        <label>@localizer["Search Patient"]</label>
+                        <input type="text" id="patientSearch" class="form-control" placeholder="@localizer["Search by name..."]" />
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="form-group">
+                        <label>@localizer["Select Patient"]</label>
+                        <select asp-for="SelectedPatientId" class="form-control" id="patientDropdown">
+                            <option value="">@localizer["-- Select a Patient --"]</option>
+                            @foreach (var patient in Model.Patients)
+                            {
+                              <option value="@patient.Id">@patient.Name</option>
+                            }
+                        </select>
+                        <span asp-validation-for="SelectedPatientId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-12">
+                    <div class="form-group">
+                        <textarea asp-for="Note" placeholder="@localizer["Write Any Notes Here..."]" style="height: 100px;" class="form-control"></textarea>
+                        <span asp-validation-for="Note" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-5 col-md-4 col-12">
+                    <div class="button">
+                        <button type="submit" class="btn">@localizer["Book Appointment"]</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#patientSearch').on('input', function () {
+            var searchTerm = $(this).val();
+            $.ajax({
+                url: '@Url.Action("", "")', // Update with your action URL
+                type: 'GET',
+                data: { searchTerm: searchTerm },
+                success: function (data) {
+                    var $dropdown = $('#patientDropdown');
+                    $dropdown.empty(); // Clear existing options
+                    $dropdown.append('<option value="">@localizer["-- Select a Patient --"]</option>');
+                    $.each(data, function (index, patient) {
+                        $dropdown.append('<option value="' + patient.id + '">' + patient.name + '</option>');
+                    });
+                }
+            });
+        });
+    });
+</script>
+</body>

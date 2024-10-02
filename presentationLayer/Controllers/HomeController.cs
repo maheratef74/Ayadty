@@ -18,11 +18,12 @@ public class HomeController:Controller
     [HttpGet]
     public async Task<IActionResult> Index()
     {
-        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        if(User.IsInRole(Roles.Doctor) || User.IsInRole(Roles.Nurse))
+        if (User.IsInRole(Roles.Doctor) || User.IsInRole(Roles.Nurse))
         {
-            return RedirectToAction("DailyAppointment", "DashBoard");
+            return View();
         }
+        
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         var user = await _patientService.GetPatientById(userId);
         var userPatient = user.ToPatientVM();
         var model = new AppointmentPageVM_AR

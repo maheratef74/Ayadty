@@ -34,13 +34,16 @@ public class DashBoardController:Controller
 
         return View(getAllAppointmentVM);
     }
-    public IActionResult AddPatient()
+    [HttpGet]
+    public async Task<IActionResult> CreateAppointment()
     {
         return View();
     }
-    public IActionResult EditAppointment()
+    
+    //[HttpPost]
+    /*public async Task<IActionResult> CreateAppointment()
     {
         return View();
-    }
-
+    }*/
+   
 }

@@ -543,6 +543,10 @@
 
   "MedicineNameIsRequired": "اسم الدواء مطلوب",
   "DateIsRequired" : "تاريخ الروشته مطلوب",
-  "Prescription Created successfully": "تم حفظ الروشته بنجاح"
-  
+  "Prescription Created successfully": "تم حفظ الروشته بنجاح",
+  "Save Update" : "حفظ التعديلات",
+  "DateRequired": "التاريخ مطلوب",
+  "Prescription Updated successfully": "تم تعديل الروشته بنجاح",
+  "Diagnosis": "التشخيص",
+  "Prescriptions": "الروشتات"
 }

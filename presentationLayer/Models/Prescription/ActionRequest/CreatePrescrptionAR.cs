@@ -14,6 +14,7 @@ public class CreatePrescrptionAR
     [Required(ErrorMessage = "AgeRequired")]
     public int patientAge { get; set; } 
     
+    [Required(ErrorMessage = "DateRequired")]
     public DateTime Date { get; set; }
     public string? Diagnosis { get; set; }
 
@@ -34,6 +35,7 @@ public static class CreatePrescrptionARExtention
             PatientName = createPrescrptionAr.PatientName,
             Notes = createPrescrptionAr.Notes,
             patientAge = createPrescrptionAr.patientAge,
+            Diagnosis = createPrescrptionAr.Diagnosis,
             Treatments = createPrescrptionAr.Treatments.Select(t => t.ToTreatmentDto()).ToList()
         };
     }

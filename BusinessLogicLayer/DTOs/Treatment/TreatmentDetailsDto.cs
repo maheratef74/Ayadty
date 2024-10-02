@@ -2,7 +2,7 @@ namespace BusinessLogicLayer.DTOs.Treatment;
 using DataAccessLayer.Entities;
 public class TreatmentDetailsDto
 {
-    public string TreatmentId { get; set; }
+    public int TreatmentId { get; set; }
     public string PrescriptionId { set; get; } 
     public string Name { get; set; }
     public string? Dosage { get; set; }
@@ -16,7 +16,6 @@ public static class TreatmentDetailsExtension
         {
             Name = treatmentDetailsDto.Name,
             PrescriptionId = treatmentDetailsDto.PrescriptionId,
-            TreatmentId = Guid.NewGuid().ToString(),
             Dosage = treatmentDetailsDto.Dosage,
             Note = treatmentDetailsDto.Note
         };

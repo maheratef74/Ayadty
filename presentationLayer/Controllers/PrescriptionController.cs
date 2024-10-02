@@ -73,8 +73,17 @@ namespace presentationLayer.Controllers
         {
             var prescriptionDto = await _prescriptionService.GetPrescriptionById(PrescriptionId);
 
-            var prescriptionAR = prescriptionDto
-            return View(prescriptionDto);
+            var prescriptionAR = prescriptionDto.ToPrescriptionDetailsAR();
+            return View(prescriptionAR);
+        }
+        [HttpPost]
+        public async Task<IActionResult>  Update(UpdatePrescriptionAR updatedPrescriptionAr)
+        {
+            var prescriptionDto = updatedPrescriptionAr.ToPrescriptionDetailsDto();
+            await _prescriptionService.UpdatePrescription(prescriptionDto);
+            TempData["successMessage"] = _localizer["Prescription Updated successfully"].Value;
+            return RedirectToAction("Show" , "Prescription" , 
+                new {PrescriptionId = prescriptionDto.PrescriptionId});
         }
     }
 }

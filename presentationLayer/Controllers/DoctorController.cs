@@ -14,7 +14,8 @@ using presentationLayer.Models.Doctor.ActionRequest;
 
 namespace presentationLayer.Controllers
 {
-    [Authorize(Roles.Doctor)]
+    [Authorize(Roles = "Doctor")]
+
     public class DoctorController : Controller
     {
         private readonly IDoctorService _doctorService;
@@ -34,12 +35,14 @@ namespace presentationLayer.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Doctor, Nurse")]
         public IActionResult Edit_oppning_days()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "Doctor, Nurse")]
         public IActionResult Edit_oppning_days(PrescriptionDetailsDto prescriptionDetailsDto)
         {
             return View();
@@ -47,6 +50,7 @@ namespace presentationLayer.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "Doctor, Nurse , Patient" )]
         public async Task<IActionResult> Profile(string DoctorId)
         {
             // check if ID is not current user
@@ -70,7 +74,7 @@ namespace presentationLayer.Controllers
                 {
                     await _userManager.AddToRoleAsync(doctor, Roles.Doctor);
                     // Create a Cookie
-                    await _signInManager.SignInAsync(doctor , doctorAr.RememberMe);
+                    // //   await _signInManager.SignInAsync(doctor , doctorAr.RememberMe);
                     TempData["successMessage"] = _localizer["Doctor Added successfully"].Value;
                     return RedirectToAction("DailyAppointment", "DashBoard");
                 }
@@ -89,6 +93,8 @@ namespace presentationLayer.Controllers
         { 
               return View();
         }
+        
+        [Authorize(Roles = "Doctor, Nurse , Patient" )]
         public IActionResult AboutMe()
         { 
             return View();

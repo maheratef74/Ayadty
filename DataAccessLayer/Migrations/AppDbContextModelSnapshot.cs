@@ -215,8 +215,11 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("DataAccessLayer.Entities.Treatment", b =>
                 {
-                    b.Property<string>("TreatmentId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("TreatmentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TreatmentId"));
 
                     b.Property<string>("Dosage")
                         .HasColumnType("nvarchar(max)");

@@ -58,7 +58,8 @@
                 </div>
                 <div class="col-md-3">
                     <label>@localizer["Date:"]</label>
-                    <input asp-for="Date" type="datetime-local" class="form-control" id="prescriptionDate" value="@Model.Date.ToString("yyyy-MM-ddTHH:mm")"/>
+                    <input asp-for="Date" type="datetime-local" class="form-control" id="prescriptionDate"
+                           value="@Model.Date.ToString("yyyy-MM-ddTHH:mm")"/>
                     <span asp-validation-for="Date" class="text-danger"></span>
                 </div>
             </div>
@@ -102,7 +103,6 @@
             <div class="row">
                 <div class="col-md-12 text-center">
                     <button type="submit" class="btn btn-primary">@localizer["Save"]</button>
-                    <button type="button" class="btn btn-success" onclick="window.print()">@localizer["Print"]</button>
                 </div>
             </div>
         </form>
@@ -124,31 +124,41 @@
 
     </div>
 
-    <script>
+<script>
         var prescriptionCount = 0;
         var removeText = "@localizer["Remove"]";
+
+        // Function to add validation and real-time input handling for medicine names
+        function addValidationForPrescription(rowId) {
+            // Real-time validation to remove error message when data is entered
+            $("input[name='Treatments[" + rowId + "].MedicineName']").on("input", function () {
+                if ($(this).val().trim() !== "") {
+                    $(this).removeClass("is-invalid"); // Remove the invalid class when the field is filled
+                    $(this).next("span").text(""); // Clear the validation message
+                }
+            });
+        }
 
         // Form submission validation
         $("form").on("submit", function (event) {
             var isValid = true;
 
-            // Iterate over each input field for medicine names
             $("input[name^='Treatments'][name$='MedicineName']").each(function () {
                 if ($(this).val().trim() === "") {
                     isValid = false;
                     $(this).addClass("is-invalid"); // Add a class for invalid input
-                    $(this).next("span").text("@localizer[ "MedicineNameIsRequired"]"); // Set the validation message
+                    $(this).next("span").text("@localizer["MedicineNameIsRequired"]"); // Set the validation message
                 } else {
                     $(this).removeClass("is-invalid"); // Remove invalid class if the field is filled
                     $(this).next("span").text(""); // Clear the validation message
                 }
             });
 
-            // If any field is invalid, prevent form submission
             if (!isValid) {
                 event.preventDefault(); // Stop form submission
             }
         });
+
         // Add more prescription fields
         $("#addPrescriptionBtn").click(function () {
             prescriptionCount++;
@@ -169,14 +179,40 @@
                         <button type="button" class="btn btn-danger removePrescriptionBtn mx-3" data-id="${prescriptionCount}">${removeText}</button>
                     </div>`;
             $("#prescriptionFields").append(newField);
+            addValidationForPrescription(prescriptionCount);
         });
 
-        // Remove a prescription field
+        // Apply the validation logic to the first row initially
+        addValidationForPrescription(0);
+
+        // Remove a prescription field and re-index the remaining fields
         $(document).on("click", ".removePrescriptionBtn", function () {
             var id = $(this).data("id");
             $("#prescriptionRow" + id).remove();
+
+            // Re-index the remaining prescription rows
+            reindexPrescriptionFields();
         });
 
+        // Function to re-index prescription fields after removing a row
+        function reindexPrescriptionFields() {
+            $("#prescriptionFields .prescription-row").each(function (index) {
+                $(this).attr('id', 'prescriptionRow' + index);
+
+                // Update the names for each input field
+                $(this).find("input[name^='Treatments']").each(function () {
+                    var currentName = $(this).attr('name');
+                    var updatedName = currentName.replace(/\[\d+\]/, '[' + index + ']');
+                    $(this).attr('name', updatedName);
+                });
+
+                // Update the remove button data-id
+                $(this).find(".removePrescriptionBtn").data('id', index);
+            });
+
+            // Update the prescription count
+            prescriptionCount = $("#prescriptionFields .prescription-row").length - 1;
+        }
     </script>
 
 <!-- Bootstrap JS -->

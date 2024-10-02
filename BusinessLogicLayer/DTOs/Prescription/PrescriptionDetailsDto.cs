@@ -35,6 +35,22 @@ public static class prescriptionExtensionMethold
             Notes = prescriptionDetailsDto.Notes
         };
     }
+    public static Prescription ToUpdatedPrescription(this PrescriptionDetailsDto UpdatedprescriptionDetailsDto)
+    {
+        return new Prescription()
+        {
+            AppointmentId = UpdatedprescriptionDetailsDto.AppointmentId,
+            PrescriptionId = UpdatedprescriptionDetailsDto.PrescriptionId,
+            UserId = UpdatedprescriptionDetailsDto.PatientId,
+            PatientName = UpdatedprescriptionDetailsDto.PatientName,
+            patientAge = UpdatedprescriptionDetailsDto.patientAge,
+            Date = UpdatedprescriptionDetailsDto.Date,
+            Treatments = UpdatedprescriptionDetailsDto.Treatments
+                .Select(t => t.ToTreatment()).ToList(), // Convert each TreatmentDetailsDto to Treatment
+            Diagnosis = UpdatedprescriptionDetailsDto.Diagnosis,
+            Notes = UpdatedprescriptionDetailsDto.Notes
+        };
+    }
     public static PrescriptionDetailsDto ToPrescriptionDto(this Prescription prescription)
     {
         return new PrescriptionDetailsDto()
