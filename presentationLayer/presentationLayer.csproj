@@ -71,7 +71,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Models\DashBoard\ActionRequest\" />
       <Folder Include="Models\Prescription\ViewModel\" />
       <Folder Include="Models\Treament\ViewModel\" />
     </ItemGroup>

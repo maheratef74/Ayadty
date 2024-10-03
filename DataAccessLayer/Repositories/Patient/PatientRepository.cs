@@ -45,6 +45,22 @@ public class PatientRepository : IPatientRepository
             patient.ProfilePhoto = updatedpatient.ProfilePhoto; 
         }
     }
+
+    public async Task<List<Patient>> GetPatientsByName(string searchTerm)
+    {
+       var Patients =  await _appDbContext.Users.OfType<Patient>()
+            .Where(p => p.FullName.Contains(searchTerm))
+            .ToListAsync();
+
+       return Patients;
+    }
+
+    public async Task<List<Patient>> GetAllPatients()
+    {
+        var Patients = await _appDbContext.Users.OfType<Patient>().ToListAsync();
+        return Patients;
+    }
+
     public async Task SaveChanges()
     {
         await _appDbContext.SaveChangesAsync();

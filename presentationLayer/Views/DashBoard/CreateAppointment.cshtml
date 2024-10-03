@@ -1,75 +1,184 @@
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
 @using Microsoft.AspNetCore.Mvc.Localization
 
 @inject IViewLocalizer localizer
+@using presentationLayer.Models.Patient.ViewModel
+@model presentationLayer.Models.DashBoard.ViewModel.NurseAppointmentVM
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <title>Create Appointment</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jQuery and jQuery Validation scripts -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/CreateAppointmentDashBoard.css">
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body>
+@* Assuming you have Bootstrap CSS linked in your project *@
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+
+  
 
 <body>
-<section class="appointment">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title">
-                    <h2>@localizer["Create Appointment for Patient"]</h2>
-                </div>
-            </div>
-        </div>
-        <form asp-controller="" asp-action="" method="post">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-12">
-                    <div class="form-group">
-                        <label>@localizer["Search Patient"]</label>
-                        <input type="text" id="patientSearch" class="form-control" placeholder="@localizer["Search by name..."]" />
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-12">
-                    <div class="form-group">
-                        <label>@localizer["Select Patient"]</label>
-                        <select asp-for="SelectedPatientId" class="form-control" id="patientDropdown">
-                            <option value="">@localizer["-- Select a Patient --"]</option>
+<div class="container">
+    <div class="title">@localizer["Create Appointment for Patient"]</div>
+    <div class="form-container">
+        <form asp-controller="DashBoard" asp-action="CreateAppointment" method="post" class="form">
+            <input asp-for="SelectedPatientId" type="hidden" id="SelectedPatientId" />
+            <div class="form-row">
+                <!-- Select Patient Dropdown -->
+                <div class="form-group half-width">
+                    <label>@localizer["Select Patient"]</label>
+                    <div class="dropdown">
+                        <input  type="text" id="patientSearch" class="form-control" placeholder="@localizer["Search by name..."]" />
+                        <div id="patientDropdown" class="dropdown-menu" style="display: none;">
+                            <div class="dropdown-item" data-value="">@localizer["-- Select a Patient --"]</div>
                             @foreach (var patient in Model.Patients)
                             {
-                              <option value="@patient.Id">@patient.Name</option>
+                                <div class="dropdown-item" data-value="@patient.PatientId" data-phone="@patient.PhoneNumber">
+                                    @patient.Name
+                                </div>
                             }
-                        </select>
-                        <span asp-validation-for="SelectedPatientId" class="text-danger"></span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-12 col-md-12 col-12">
-                    <div class="form-group">
-                        <textarea asp-for="Note" placeholder="@localizer["Write Any Notes Here..."]" style="height: 100px;" class="form-control"></textarea>
-                        <span asp-validation-for="Note" class="text-danger"></span>
-                    </div>
+
+                <!-- Patient Phone -->
+                <div class="form-group half-width">
+                    <label>@localizer["Patient Phone"]</label>
+                    <input asp-for="patientPhone" type="text" id="patientPhone" class="form-control" placeholder="@localizer["Phone Number"]" readonly />
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-5 col-md-4 col-12">
-                    <div class="button">
-                        <button type="submit" class="btn">@localizer["Book Appointment"]</button>
-                    </div>
+
+                <!-- Appointment Date -->
+                <div class="form-group full-width">
+                    <label>@localizer["Appointment Date"]</label>
+                    <input asp-for="Date" type="datetime-local" class="form-control" />
+                </div>
+
+                <!-- Notes -->
+                <div class="form-group full-width">
+                    <label>@localizer["Notes"]</label>
+                    <textarea asp-for="Note" class="form-control" rows="4" placeholder="@localizer["Write Your Message Here....."]"></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group full-width">
+                    <button type="submit" class="btn-submit">@localizer["Book An Appointment"]</button>
                 </div>
             </div>
         </form>
+
     </div>
-</section>
+</div>
+</body>
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
         $('#patientSearch').on('input', function () {
-            var searchTerm = $(this).val();
-            $.ajax({
-                url: '@Url.Action("", "")', // Update with your action URL
-                type: 'GET',
-                data: { searchTerm: searchTerm },
-                success: function (data) {
-                    var $dropdown = $('#patientDropdown');
-                    $dropdown.empty(); // Clear existing options
-                    $dropdown.append('<option value="">@localizer["-- Select a Patient --"]</option>');
-                    $.each(data, function (index, patient) {
-                        $dropdown.append('<option value="' + patient.id + '">' + patient.name + '</option>');
-                    });
-                }
+            var searchTerm = $(this).val().toLowerCase();
+            var $dropdownMenu = $('#patientDropdown');
+            var $items = $dropdownMenu.find('.dropdown-item');
+
+            if (searchTerm) {
+                $dropdownMenu.show();
+            } else {
+                $dropdownMenu.hide();
+            }
+
+            $items.each(function () {
+                var itemText = $(this).text().toLowerCase();
+                $(this).toggle(itemText.includes(searchTerm));
             });
         });
+
+        $('#patientDropdown').on('click', '.dropdown-item', function () {
+            var selectedPatientId = $(this).data('value'); // Extract the ID
+            var selectedPatientName = $(this).text(); // Extract the patient's name
+
+            // Update the hidden field
+            $('#SelectedPatientId').val(selectedPatientId);
+
+            // Update the search input with the selected patient's name
+            $('#patientSearch').val(selectedPatientName);
+
+            // Hide the dropdown
+            $('#patientDropdown').hide();
+        });
+
+
+        $(document).click(function (event) {
+            if (!$(event.target).closest('.dropdown').length) {
+                $('#patientDropdown').hide();
+            }
+        });
     });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const patientSearch = document.getElementById('patientSearch');
+        const patientDropdown = document.getElementById('patientDropdown');
+        const patientPhoneInput = document.getElementById('patientPhone');
+        const selectedPatientIdInput = document.getElementById('SelectedPatientId');
+
+        // Simulate dropdown show/hide logic (this can be replaced with your logic)
+        patientSearch.addEventListener('focus', function () {
+            patientDropdown.style.display = 'block';
+        });
+
+        document.addEventListener('click', function (event) {
+            if (!patientDropdown.contains(event.target) && event.target !== patientSearch) {
+                patientDropdown.style.display = 'none';
+            }
+        });
+
+        // Listen to clicks on patient dropdown items
+        patientDropdown.addEventListener('click', function (event) {
+            const selectedItem = event.target;
+            if (selectedItem.classList.contains('dropdown-item')) {
+                const patientName = selectedItem.textContent;
+                const patientId = selectedItem.getAttribute('data-value');
+                const patientPhone = selectedItem.getAttribute('data-phone');
+
+                // Set the selected patient's name in the search input
+                patientSearch.value = patientName;
+
+                // Set the selected patient's phone number in the phone input
+                patientPhoneInput.value = patientPhone;
+
+                // Set the hidden input with the selected patient's ID
+                selectedPatientIdInput.value = patientId;
+
+                // Hide the dropdown
+                patientDropdown.style.display = 'none';
+            }
+        });
+    });
+
 </script>
+
+
+<!-- For Lyout -->
+<!-- jquery Min JS -->
+<script src="~/js/jquery.min.js"></script>
+
+<!-- Main JS -->
+<script src="~/js/main.js"></script>
+<!-- For Lyout -->
 </body>
+</html>

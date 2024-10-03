@@ -61,6 +61,7 @@ public class AppointmentController : Controller
         }
 
         var appointmentDto = request.CreatAppointmentAR.ToDto();
+        appointmentDto.Date = DateTime.Now;
         await _appointmentService.CreatAppointment(appointmentDto);
         TempData["successMessage"] = _localizer["Appointment Created successfully"].Value;
         return RedirectToAction("DailyAppointment");

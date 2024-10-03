@@ -38,4 +38,32 @@ public class PatientService : IPatientService
             await _patientRepository.SaveChanges();
         }
     }
+
+    public async Task<List<PatientDetailsDto>> GetPatientsByName(string searchTerm)
+    {
+        var patients = await _patientRepository.GetPatientsByName(searchTerm);
+        var patientsDto = new List<PatientDetailsDto>();
+
+        foreach (var patient in patients)
+        {
+            var patientDto = patient.ToPatientDetailsDto();
+            patientsDto.Add(patientDto);
+        }
+
+        return patientsDto;
+    }
+
+    public async Task<List<PatientDetailsDto>> GetAllPatients()
+    {
+        var patients = await _patientRepository.GetAllPatients();
+        var patientsDto = new List<PatientDetailsDto>();
+
+        foreach (var patient in patients)
+        {
+            var patientDto = patient.ToPatientDetailsDto();
+            patientsDto.Add(patientDto);
+        }
+
+        return patientsDto;
+    }
 }

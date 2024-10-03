@@ -1,0 +1,77 @@
+/* Form container */
+.form-container {
+    background-color: #ffffff;
+    border: 1px solid #007bff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    max-width: 600px;
+    width: 100%;
+}
+
+/*!* Form fields *!*/
+.form-control {
+    border-radius: 5px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #007bff;
+}
+
+/*  <!--* Grid container for form fields *!*/
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.form-group {
+    flex: 1; /*!* Let form elements fill available space *!*/
+}
+
+.form-group.half-width {
+    flex: 0 0 calc(50% - 15px);/* !* Half width with space between *!*/
+}
+
+.form-group.full-width {
+    flex: 0 0 100%; /*!* Full width for certain elements *!*/
+}
+
+/* Dropdown settings */
+.dropdown-menu {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #007bff;
+}
+
+.dropdown-item:hover {
+    background-color: #e7f1ff;
+}
+
+/* Submit button */
+.btn-submit {
+    background-color: #007bff;
+    color: white;
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+    cursor: pointer;
+}
+
+/* Title */
+.title {
+    text-align: center;
+    font-size: 24px;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+textarea.form-control {
+    resize: none;
+}

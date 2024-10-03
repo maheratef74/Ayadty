@@ -526,5 +526,14 @@
   "DateRequired": "Date is required",
   "Prescription Updated successfully":   "Prescription Updated successfully",
   "Diagnosis":   "Diagnosis",
-  "Prescriptions":  "Prescriptions"
+  "Prescriptions":  "Prescriptions",
+
+  "Create Appointment for Patient": "Create Appointment for Patient",
+  "Search Patient" :  "Search Patient",
+  "Search by name..." : "Search by name...",
+  "Select Patient":  "Select Patient",
+  "-- Select a Patient --" :"-- Select a Patient --",
+
+  "Patient Phone": "Patient Phone",
+  "Appointment Date": "Appointment Date"
 }
