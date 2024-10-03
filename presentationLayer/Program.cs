@@ -6,6 +6,7 @@ using BusinessLogicLayer.Services.Doctor;
 using BusinessLogicLayer.Services.File;
 using BusinessLogicLayer.Services.Patient;
 using BusinessLogicLayer.Services.Prescription;
+using BusinessLogicLayer.Services.WorkingDays;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories.ApplicationUser;
 using DataAccessLayer.Repositories.Doctor;
@@ -13,6 +14,7 @@ using DataAccessLayer.Repositories.Generic;
 using DataAccessLayer.Repositories.Patient;
 using DataAccessLayer.Repositories.Prescription;
 using DataAccessLayer.Repositories.Treatment;
+using DataAccessLayer.Repositories.WorkingDayes;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -62,7 +64,9 @@ public class Program
         builder.Services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
 
         builder.Services.AddScoped<IFileService, FileService>();
-        
+
+        builder.Services.AddScoped<IWorkingDaysService, WorkingDaysService>();
+        builder.Services.AddScoped<IWorkinDayesRepository, WorkingDayesRepository>();
         builder.Services.AddScoped<RoleSeeder>();
         
 

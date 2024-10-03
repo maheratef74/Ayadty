@@ -2,6 +2,7 @@ using BusinessLogicLayer.Services.Appointment;
 using BusinessLogicLayer.Services.Patient;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using presentationLayer.Models.DashBoard.ViewModel;
 using presentationLayer.Models.Patient.ViewModel;
 
@@ -12,10 +13,12 @@ public class DashBoardController:Controller
 {
     private readonly IAppointmentService _appointmentService;
     private readonly IPatientService _patientService;
-    public DashBoardController(IAppointmentService appointmentService, IPatientService patientService)
+    private readonly IStringLocalizer<authController> _localizer;
+    public DashBoardController(IAppointmentService appointmentService, IPatientService patientService, IStringLocalizer<authController> localizer)
     {
         _appointmentService = appointmentService;
         _patientService = patientService;
+        _localizer = localizer;
     }
 
     public IActionResult Index()
@@ -58,7 +61,10 @@ public class DashBoardController:Controller
     [HttpPost]
     public async Task<IActionResult> CreateAppointment(NurseAppointmentVM nurseAppointmentVm)
     {
-        return View();
+        var appointmentDto = nurseAppointmentVm.ToAppointmentDto();
+        await _appointmentService.CreatAppointment(appointmentDto);
+        TempData["successMessage"] = _localizer["Appointment Created successfully"].Value;
+        return RedirectToAction("DailyAppointment" , "DashBoard");
     }
    
     [HttpGet]

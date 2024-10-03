@@ -1,0 +1,168 @@
+﻿@{
+Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@using presentationLayer.Models.WorkingDays.ViewModel
+@model List<WorkingDaysVM>
+@inject IViewLocalizer localizer
+@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.Localization
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@localizer["Working Days"]</title>
+    <link rel="stylesheet" href="~/css/working_days.css">
+</head>
+
+<body>
+<div class="container2">
+    <div class="title">
+        <h1>@localizer["Working Days"]</h1>
+        <hr>
+    </div>
+
+    <!-- Header Row -->
+    <div class="header-row">
+        <div>@localizer["Day"]</div>
+        <div>@localizer["Start Time"]</div>
+        <div>@localizer["End Time"]</div>
+    </div>
+
+    <div id="formContainer">
+        <!-- Existing rows populated by the model will be added here -->
+        @foreach (var workingDay in Model)
+        {
+            <div class="form-row">
+                <select disabled>
+                    <option value="">@localizer["Select day"]</option>
+                    @foreach (var day in Enum.GetValues(typeof(DayOfWeek)))
+                    {
+                        @if (workingDay.DayOfWeek == (DayOfWeek)day)
+                        {
+                            <option value="@day" selected="">
+                                @localizer[day.ToString()]
+                            </option>
+                        }
+                        else
+                        {
+                            <option value="@day">
+                                @localizer[day.ToString()]
+                            </option>
+                        }
+                    }
+
+                </select>
+                <input type="time" value="@workingDay.StartTime.ToString(@"hh\:mm")" disabled />
+                <input type="time" value="@workingDay.EndTime.ToString(@"hh\:mm")" disabled />
+                <button type="button" class="delete-button" onclick="deleteRow(this)" style="display: none;">@localizer["Delete"]</button>
+            </div>
+        }
+    </div>
+
+    <div id="buttons">
+        <button id="addRow">@localizer["Add More"]</button>
+        <button id="save">@localizer["Save"]</button>
+        <button id="edit" style="display: none;">@localizer["Edit"]</button>
+    </div>
+</div>
+
+<div id="formContainer">
+    <!-- Existing rows populated by the model will be added here -->
+</div>
+@{
+// Create a string to hold the HTML options for the DayOfWeek enum
+var optionsHTML = "";
+
+foreach (var dayOption in Enum.GetValues(typeof(DayOfWeek)))
+{
+    optionsHTML += $"<option value=\"{dayOption}\" >@localizer[dayOption.ToString()]</option>";
+}
+}
+<script>
+    let editMode = false;
+
+    document.getElementById('addRow').addEventListener('click', function () {
+        alert('Add More button clicked');
+        addRow();
+    });
+
+    document.getElementById('save').addEventListener('click', function () {
+        saveForm();
+    });
+
+    document.getElementById('edit').addEventListener('click', function () {
+        enableEditing();
+    });
+
+
+    function addRow(day = '', startTime = '', endTime = '') {
+        const row = document.createElement('div');
+        row.classList.add('form-row');
+
+        row.innerHTML = `
+        <select ${editMode ? 'disabled' : ''}>
+            <option value="">@localizer["Select day"]</option>
+            ${optionsHTML} <!-- Ensure this variable matches what you defined -->
+        </select>
+        <input type="time" placeholder="Enter start time" value="${startTime}" ${editMode ? 'disabled' : ''}>
+        <input type="time" placeholder="Enter end time" value="${endTime}" ${editMode ? 'disabled' : ''}>
+        <button type="button" class="delete-button" onclick="deleteRow(this)" ${editMode ? 'style="display:none;"' : ''}>@localizer["Delete"]</button>
+        `;
+
+        alert('New row HTML:', row.innerHTML); // Debugging line
+        document.getElementById('formContainer').appendChild(row);
+    }
+    function deleteRow(button) {
+        button.parentElement.remove();
+    }
+
+    function saveForm() {
+        const inputs = document.querySelectorAll('#formContainer input, #formContainer select');
+        inputs.forEach(input => input.disabled = true);
+        document.getElementById('edit').style.display = 'block';
+        document.getElementById('save').style.display = 'none';
+        editMode = true;
+
+        // Prepare data to submit the form (day, startTime, endTime for each row)
+        let formData = [];
+        document.querySelectorAll('.form-row').forEach(row => {
+            const day = row.querySelector('select').value;
+            const startTime = row.querySelector('input[type="time"]').value;
+            const endTime = row.querySelectorAll('input[type="time"]')[1].value;
+            if (day && startTime && endTime) {
+                formData.push({ day, startTime, endTime });
+            }
+        });
+
+        // Submit form data (POST request)
+        $.ajax({
+            url: '/Controller/SaveWorkingDays', // Change URL accordingly
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(formData),
+            success: function(response) {
+                alert('Working days saved successfully!');
+                // You can redirect or refresh the page here
+            }
+        });
+    }
+
+    function enableEditing() {
+        const inputs = document.querySelectorAll('#formContainer input, #formContainer select');
+        inputs.forEach(input => input.disabled = false);
+        document.getElementById('edit').style.display = 'none';
+        document.getElementById('save').style.display = 'block';
+        editMode = false;
+    }
+
+    // Populate existing rows on page load
+    window.onload = function () {
+        // Rows are already rendered using Razor, so no need to add rows here.
+    };
+</script>
+
+<!-- jquery Min JS -->
+<script src="~/js/jquery.min.js"></script>
+
+</body>
+</html>

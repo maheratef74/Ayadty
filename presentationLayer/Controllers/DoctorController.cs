@@ -2,6 +2,7 @@
 using BusinessLogicLayer.DTOs.Prescription;
 using Microsoft.AspNetCore.Mvc;
 using BusinessLogicLayer.Services.Doctor;
+using BusinessLogicLayer.Services.WorkingDays;
 using presentationLayer.Models.Doctor.ViewModel;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories.Doctor;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.Localization;
 using presentationLayer.Models.Appointment.ViewModel;
 using presentationLayer.Models.Auth.ActionRequest;
 using presentationLayer.Models.Doctor.ActionRequest;
+using presentationLayer.Models.WorkingDays.ViewModel;
 
 namespace presentationLayer.Controllers
 {
@@ -23,22 +25,31 @@ namespace presentationLayer.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IStringLocalizer<authController> _localizer;
-
+        private readonly IWorkingDaysService _workingDaysService;
         public DoctorController(IDoctorService doctorService, IDoctorRepository doctorRepository,
-            UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IStringLocalizer<authController> localizer)
+            UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IStringLocalizer<authController> localizer, IWorkingDaysService workingDaysService)
         {
             _doctorService = doctorService;
             _doctorRepository = doctorRepository;
             _userManager = userManager;
             _signInManager = signInManager;
             _localizer = localizer;
+            _workingDaysService = workingDaysService;
         }
 
         [HttpGet]
         [Authorize(Roles = "Doctor, Nurse")]
-        public IActionResult Edit_oppning_days()
+        public async Task<IActionResult> UpdateWorkingDays()
         {
-            return View();
+            var WorkingDaysDtos = await _workingDaysService.GetAllWorkingDays();
+
+            var WorkingDaysVMS = new List<WorkingDaysVM>();
+            foreach (var dayDto in WorkingDaysDtos)
+            {
+                var dayVM = dayDto.ToWorkingDayVm();
+                WorkingDaysVMS.Add(dayVM);
+            }
+            return View(WorkingDaysVMS);
         }
 
         [HttpPost]
