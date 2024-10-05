@@ -1,3 +1,4 @@
+using BusinessLogicLayer.DTOs.HelperClass;
 using BusinessLogicLayer.Services.Appointment;
 using BusinessLogicLayer.Services.Patient;
 using DataAccessLayer.Repositories.Doctor;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using presentationLayer.Models.DashBoard.ViewModel;
+using presentationLayer.Models.Doctor.ViewModel;
 using presentationLayer.Models.Patient.ViewModel;
 
 namespace presentationLayer.Controllers;
@@ -96,6 +98,8 @@ public class DashBoardController:Controller
     public async Task<IActionResult> ShowAllStaf(int pageNumber = 1, int pageSize = 10)
     {
         var StafPaginatedList = await _doctorRepository.GetAllStaf(pageNumber, pageSize);
+  
+        
         return View(StafPaginatedList);
     }
 }

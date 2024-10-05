@@ -9,7 +9,6 @@ public static class ClinicDTOExtensionMethod
     {
         var clinicDto = new ClinicDetailsDto()
         {
-            
             Email=clinic.Email,
             PhoneNumber=clinic.PhoneNumber,
             Location=clinic.Location,

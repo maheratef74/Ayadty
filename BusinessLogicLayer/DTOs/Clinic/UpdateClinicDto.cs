@@ -5,7 +5,7 @@ namespace BusinessLogicLayer.DTOs.Clinic;
 using DataAccessLayer.Entities;
 public class UpdateClinicDto
 {
-    public int clinicId { get; set; } // Primary Key
+    public string clinicId { get; set; } // Primary Key
     public string Name { get; set; }
     public string Location { get; set; }
     public string PhoneNumber { get; set; }
@@ -26,15 +26,13 @@ public static class UpdateClinicExtensionMethold
        
         var Clinic = new CliniC()
         {
+            ClinicId = "1",
             Name=updateClinicDto.Name,
             Location=updateClinicDto.Location,
             PhoneNumber=updateClinicDto.PhoneNumber,
             Email=updateClinicDto.Email,
             DaysOfWork = updateClinicDto.DaysOfWork,
             ProfilePhoto=updateClinicDto.ProfilePhoto
-
-
-
         };
         return Clinic;
     }

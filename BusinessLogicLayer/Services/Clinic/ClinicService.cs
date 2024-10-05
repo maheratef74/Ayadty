@@ -10,15 +10,12 @@ namespace BusinessLogicLayer.Services.Clinic;
 public class ClinicService : IClinicService
 {
     private readonly IClinicRepository _clinicRepository;
-    private readonly AppDbContext _appDbContext;
-
+    private IClinicService _clinicServiceImplementation;
 
     public ClinicService(IClinicRepository clinicRepository)
     {
         _clinicRepository =  clinicRepository;
     }
-
-
     public async Task<ClinicDetailsDto?> GetClinicById(string id)
     {
         var clinic = await _clinicRepository.GetById(id);
@@ -27,25 +24,14 @@ public class ClinicService : IClinicService
 
         return clinicdto;
     }
-
-    public Task SaveChanges()
-    {
-        throw new NotImplementedException();
-    }
-
     public async Task UpdateClinic(UpdateClinicDto updateClinicDto)
     {
         var clinic = updateClinicDto.ToUpdatedClinic();
 
         if (clinic is not null)
         {
-            await _clinicRepository.SaveChanges();
             await _clinicRepository.Update(clinic);
+            await _clinicRepository.SaveChanges();
         }
-    }
-
-    public Task UpdateClinic(string clinicId)
-    {
-        throw new NotImplementedException();
     }
 }
