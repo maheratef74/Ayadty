@@ -14,6 +14,11 @@ public class WorkingDayesRepository : IWorkinDayesRepository
     
     public async Task UpdateWoringDays(List<WorkDay> days)
     {
+        // delete old days 
+        var oldDays = await _appDbContext.WorkDays.ToListAsync();
+       _appDbContext.WorkDays.RemoveRange(oldDays);
+       
+       // add newdays
         foreach (var day in days)
         {
             await _appDbContext.WorkDays.AddAsync(day);
@@ -23,6 +28,7 @@ public class WorkingDayesRepository : IWorkinDayesRepository
     public async Task<List<WorkDay>> GetAllWorkingDays()
     {
         var workingDays = await _appDbContext.WorkDays.ToListAsync();
+
         return workingDays;
     }
 

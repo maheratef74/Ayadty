@@ -1,3 +1,4 @@
+using BusinessLogicLayer.DTOs.HelperClass;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Repositories.Patient;
@@ -59,6 +60,19 @@ public class PatientRepository : IPatientRepository
     {
         var Patients = await _appDbContext.Users.OfType<Patient>().ToListAsync();
         return Patients;
+    }
+
+    public async Task<PaginatedList<Patient>> GetAllPatients(int pageNumber, int pageSize)
+    {
+        var totalRecords = await _appDbContext.Users.OfType<Patient>().CountAsync();
+
+        var patients = await _appDbContext.Users
+            .OfType<Patient>()
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+
+        return new PaginatedList<Patient>(patients, totalRecords, pageNumber, pageSize);
     }
 
     public async Task SaveChanges()

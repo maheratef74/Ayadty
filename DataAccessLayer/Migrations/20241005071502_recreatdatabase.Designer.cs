@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241002120728_ReCreateDataBase")]
-    partial class ReCreateDataBase
+    [Migration("20241005071502_recreatdatabase")]
+    partial class recreatdatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
