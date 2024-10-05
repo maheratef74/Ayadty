@@ -190,7 +190,7 @@
   "Plastic_Surgery_Price": "$199",
 
   "Teeth_Whitening_Price": "$299",
- 
+
   "Heart_Surgery_Price": "$399",
   "Per_Visit": "كل زيارة",
   "Service_Item_1": "لوريم إيبسوم دولور سيت أميت",
@@ -200,7 +200,7 @@
   "Service_Item_5": "بيلينتسكي إيغيت نيب",
   "Book_Now": "احجز الآن",
 
-  
+
 
 
   "Log In": "تسجيل الدخول",
@@ -244,19 +244,19 @@
   "saturday": "السبت",
   "Sunday": "الأحد",
 
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+
   "Register": "تسجيل",
   "Enter your number": "ادخل رقم هاتفك",
 
 
-  
+
   "User": "مستخدم",
 
   "John": "جون",
@@ -299,7 +299,7 @@
   "12:18:09": "12:18:09",
   "pending": "معلق",
   "+201021587031": "+201021587031",
- 
+
   "2": "2",
   "11:48:05": "11:48:05",
   "Active": "نشط",
@@ -321,10 +321,10 @@
   "Admin": "مشرف",
   "Experence": "تجربة",
   "Y": "س",
- 
+
   "Changes": "تغييرات",
 
-  
+
   "Full Stack Developer": "مطور متكامل",
   "Bay Area, San Francisco, CA": "منطقة الخليج، سان فرانسيسكو، كاليفورنيا",
 
@@ -343,25 +343,25 @@
   "Full name 1": "الاسم الكامل 1",
   "Full name 2": "الاسم الكامل 2",
   "Full name 3": "الاسم الكامل 3",
-  
+
   "John Doe": "جون دو",
- 
+
   "loction": "موقع",
   "Cairo-Egypt": "القاهرة-مصر",
- 
+
   "Save Changes": "حفظ التغييرات",
 
-  
+
   "Date of birth": "تاريخ الميلاد",
   "1-1-2000": "1-1-2000",
-  
 
-  
+
+
   "of": "من",
   "birth": "ميلاد",
 
   "Male/Female": "ذكر/أنثى",
-  
+
   "ORDER": "الطلب",
   "DATE": "التاريخ",
   "TIME": "الوقت",
@@ -374,11 +374,11 @@
 
 
   "Add patient": "اضف مريض",
- 
+
 
   "Edit Patient": "تعديل مريض",
-  
- 
+
+
   "Choose Status": "اختر الحالة",
   "button": "حفظ التغييرات",
 
@@ -401,12 +401,12 @@
   "CreatAppointment": "احجز موعد",
   "We will be confirm by an Text Message": "سوف نقوم بارسال رساله نصيه علي رقم الموبيل المسجل به لتاكيد حجزك",
 
-  
+
   "Change Photo": "تغير الصوره",
   "new password": "كلمه السر الجديده",
   "Confirm new password": " تاكيد كلمه السر الجديده",
 
-  
+
   "Patient Profile": "صفحتي الشخصيه",
   "CreatAppointment": "احجز موعد",
   "DashBoard": "لوحه التحكم",
@@ -461,63 +461,63 @@
 
 
 
-  "AppointmentStatus" : "حاله الحجز",
+  "AppointmentStatus": "حاله الحجز",
   "PatientStatus": "مكان المريض",
-  
-  "Scheduled" : "تم الحجز",
+
+  "Scheduled": "تم الحجز",
   "Canceled": "تم الالغاء",
   "Completed": "تم الكشف",
-  
-  "InHome": "في المنزل",
-  "InMyWayToClinic" : "في طريقي للعياده",
-  "InClinic": "في العياده",
-  
-  "Edit Appointment" : "تعديل الحجز",
-  "Create Prescription" : "كتابه روشته",
-  "Delete Appointment": "حذف الحجز",
-  
-  "Adress" : "العنوان",
-  
-  "man" : "رجل",
-  "female": "انثي",
-  "age" : "السن",
-  
-  "NameRequired" : "اسم المريض مطلوب",
 
-  "PasswardAtLeast6Digit" : "يجب ان تكون كلمه السر مكونه من 6 احرف",
-  "DateOfBirthRequired" : "تحديد تاريخ الميلاد مطلوب",
-  "AddressRequired" : "العنوان مطلوب",
-  
+  "InHome": "في المنزل",
+  "InMyWayToClinic": "في طريقي للعياده",
+  "InClinic": "في العياده",
+
+  "Edit Appointment": "تعديل الحجز",
+  "Create Prescription": "كتابه روشته",
+  "Delete Appointment": "حذف الحجز",
+
+  "Adress": "العنوان",
+
+  "man": "رجل",
+  "female": "انثي",
+  "age": "السن",
+
+  "NameRequired": "اسم المريض مطلوب",
+
+  "PasswardAtLeast6Digit": "يجب ان تكون كلمه السر مكونه من 6 احرف",
+  "DateOfBirthRequired": "تحديد تاريخ الميلاد مطلوب",
+  "AddressRequired": "العنوان مطلوب",
+
   "PhoneNumberRequired": "رقم الموبيل مطلوب",
   "PasswordIsRequired": "كلمه السر مطلوبه",
-  "PhoneNumberInvalid" : "رقم الموبيل غير صحيح",
+  "PhoneNumberInvalid": "رقم الموبيل غير صحيح",
   "Remember Me": "تذكرني",
-  "Username or Password invalid" : "رقم الموبيل او كلمه السر غير صحيح",
-  
-  "GenderRequired" : "تحديد النوع مطلوب",
-  "Use Another Phone Number" : "استخدم رقم موبيل اخر",
-  "Patient Name" : "اسم المريض",
-  "Daily Appointement" : "جدول الطبيب",
+  "Username or Password invalid": "رقم الموبيل او كلمه السر غير صحيح",
+
+  "GenderRequired": "تحديد النوع مطلوب",
+  "Use Another Phone Number": "استخدم رقم موبيل اخر",
+  "Patient Name": "اسم المريض",
+  "Daily Appointement": "جدول الطبيب",
   "Cancele Appointment": "الغاء الحجز",
-  "Select Date" :"اختر يوم",
-  "Filter" : "تحديد",
+  "Select Date": "اختر يوم",
+  "Filter": "تحديد",
   "DataIsRequried": "التاريخ و الوقت مطلوب",
-  "You Cann't update this appointment" : "لا يمكن التعديل علي حجز تم الغاءة او تم الكشف",
-  "OrderIsRequired" : "ترتيب الحجز مطلوب",
+  "You Cann't update this appointment": "لا يمكن التعديل علي حجز تم الغاءة او تم الكشف",
+  "OrderIsRequired": "ترتيب الحجز مطلوب",
   "This appointment is Completed So You cann't Cancele it": "هذا الحجز تم الكشف عليه لذالك لا يمكن الغاءة",
-  "This appointment is already canceled." :"هذا الحجز تم الغاءة من قبل",
+  "This appointment is already canceled.": "هذا الحجز تم الغاءة من قبل",
   "Appointment canceled successfully.": "تم الغاء الحجز بنجاح",
   "Appointment deleted  successfully.": "تم حذف الحجز بنجاح",
   "Appointment Created successfully": "تم حجز الموعد بنجاح",
   "Appointment Updated successfully": "تم تعديل الحجز بنجاح",
   "Acount Created successfully": "تم انشاء حساب بنجاح",
-  "Are you sure?" : "هل انت متاكد ؟",
+  "Are you sure?": "هل انت متاكد ؟",
   "Do you really want to cancel the appointment?": "هل بالفعل تريد الغاء الحجز",
   "Yes, cancel it!": "نعم, اريد الالغاء",
-  "No, keep it" : "لا, اتركها",
+  "No, keep it": "لا, اتركها",
   "Do you really want to delete the appointment?": "هل بالفعل تريد حذف الحجز",
   "Yes, delete it!": "نعم, اريد الحذف",
-  "Invalid email address" : "الاميل غير صحيح",
+  "Invalid email address": "الاميل غير صحيح",
 
   "Data Updated successfully": "تم تعديل البيانات بنجاح",
   "Add Doctor": "اضافه دكتور",
@@ -531,19 +531,46 @@
   "Invalid URL format for Facebook profile.": "ادخل رابط صحيح للفيس بوك",
 
   "MedicineNameIsRequired": "اسم الدواء مطلوب",
-  "DateIsRequired" : "تاريخ الروشته مطلوب",
+  "DateIsRequired": "تاريخ الروشته مطلوب",
   "Prescription Created successfully": "تم حفظ الروشته بنجاح",
-  "Save Update" : "حفظ التعديلات",
+  "Save Update": "حفظ التعديلات",
   "DateRequired": "التاريخ مطلوب",
   "Prescription Updated successfully": "تم تعديل الروشته بنجاح",
   "Diagnosis": "التشخيص",
   "Prescriptions": "الروشتات",
   "Create Appointment for Patient": "حجز كشف لمريض",
-  "Search Patient" : "ابحث عن مريض",
-  "Search by name..." : "ابحث عن طريق الاسم",
+  "Search Patient": "ابحث عن مريض",
+  "Search by name...": "ابحث عن طريق الاسم",
   "Select Patient": "اختر مريض",
-  "-- Select a Patient --" :"--اختر مريض--",
+  "-- Select a Patient --": "--اختر مريض--",
 
   "Patient Phone": "رقم المريض",
-  "Appointment Date": "تاريخ الحجز"
+  "Appointment Date": "تاريخ الحجز",
+  "About Us": "نبدة عنا",
+  "Why You Should Trust Us? Get Know About Us!": "لماذا يجب أن تثق بنا؟ تعرّف علينا!“",
+  "At our clinic, your health and well-being are our top priority. With a team of highly skilled, compassionate professionals, we offer personalized care tailored to meet each patient's unique needs. Our commitment to using the latest medical technologies ensures you receive the best, most effective treatments available.": "نضع صحتك ورفاهيتك على رأس أولوياتنا في عيادتنا. من خلال فريق من المتخصصين ذوي المهارات العالية والعاطفيين، نقدم رعاية شخصية مصممة خصيصاً لتلبية الاحتياجات الفريدة لكل مريض. يضمن التزامنا باستخدام أحدث التقنيات الطبية حصولك على أفضل العلاجات المتاحة وأكثرها فعالية.",
+  "Quality health care": "رعاية صحية عالية الجودة",
+  "Only Qualified Doctors": "الأطباء المؤهلين فقط",
+  "Medical Research Professionals": "أخصائيو الأبحاث الطبية",
+  "Features": "الميزات",
+  "Why Choose Us?": "لماذا تختارنا؟",
+  "Because we have many advantages that you won't find in our competitors.": ": لاننا نتمتع بالعديد من المميزات التي لن تجدها لدي منافسينا و هي  ",
+  "Experience": "الخبرة",
+  "Doctors": "الأطباء",
+  "Quality": "الجودة",
+  "Services": "الخدمات",
+  "Positive ": "إيجابية",
+  "Consultation": "استشارة ",
+  "24 Hours": "ساعة 24  ",
+  "Support": "دعم",
+  "Our Experience Doctors ": "أطبائنا ذوي الخبرة",
+  "Department:Internal": " قسم باطنة",
+  "Dr.Wafaa Ali": "د. وفاء علي",
+  "Dr.Maher Atef": "د.ماهر عاطف",
+  "Dr.Shahd Gamal": "د.شهد جمال",
+  "Dr.Ahmed Gafer": "د.أحمد غفر",
+  "Department :Nose and Ear": "قسم انف و اذن",
+  "Department :Teaching": "قسم تدريس ",
+  "Department :Bones": "قسم عظام"
+
 }

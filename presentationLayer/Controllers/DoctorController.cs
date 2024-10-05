@@ -14,7 +14,7 @@ using presentationLayer.Models.Doctor.ActionRequest;
 
 namespace presentationLayer.Controllers
 {
-    [Authorize(Roles = "Doctor")]
+    //[Authorize(Roles = "Doctor")]
 
     public class DoctorController : Controller
     {
