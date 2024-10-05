@@ -21,6 +21,7 @@ public static  class ClinicVmExtensions
     {
         return new ClinicVM
         {
+            
             Name = dto.Name,
             Location= dto.Location,
           
