@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -8,104 +7,102 @@
 @using Microsoft.Extensions.Options
 @inject IViewLocalizer localizer
 @using System.Globalization
+@using presentationLayer.Models.Clinic.ActionRequst
+@using presentationLayer.Models.Clinic.ViewModel
 
-
+@model UpdateClinicVM
 
 <!DOCTYPE html>
 <head>
-    
     <title>Profile Page</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/css/ClinicUpdate.css"/>
-    
+    <link rel="stylesheet" href="~/css/ClinicUpdate.css" />
 </head>
 <body>
-    <div class="container">
-        <div class="main-body">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex flex-column align-items-center text-center">
-                                <!-- Profile Image -->
-                                <img id="profilePhoto" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="@localizer["Admin"]" class="rounded-circle p-1 bg-primary" width="110">
-
-                                <div class="mt-3">
-                                    <h4>@localizer["John Doe"]</h4>
-                                    <p class="text-secondary mb-1">@localizer["Full Stack Developer"]</p>
-                                    <p class="text-muted font-size-sm">@localizer["Bay Area, San Francisco, CA"]</p>
-
-                                    <!-- Button to trigger file input -->
-                                    <button class="btn btn-info" onclick="document.getElementById('photoInput').click()">@localizer["Change Photo"]</button>
-
-                                    <!-- Hidden file input -->
-                                    <input type="file" id="photoInput" accept="image/*" style="display:none" onchange="previewPhoto(event)">
+    <form asp-controller="CliniC" asp-action="Update" method="post">
+        <div class="container">
+            <div class="main-body">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex flex-column align-items-center text-center">
+                                    <!-- Profile Image -->
+                                    <img id="profilePhoto" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="@localizer["Admin"]" class="rounded-circle p-1 bg-primary" width="110">
+                                    <div class="mt-3">
+                                        <h4>@localizer["John Doe"]</h4>
+                                        <p class="text-secondary mb-1">@localizer["Full Stack Developer"]</p>
+                                        <p class="text-muted font-size-sm">@localizer["Bay Area, San Francisco, CA"]</p>
+                                        <!-- Button to trigger file input -->
+                                        <button class="btn btn-info" onclick="document.getElementById('photoInput').click()">@localizer["Change Photo"]</button>
+                                        <!-- Hidden file input -->
+                                        <input type="file" id="photoInput" accept="image/*" style="display:none" onchange="previewPhoto(event)">
+                                    </div>
                                 </div>
                             </div>
-                            
-                            
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row mb-3">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">@localizer["Full Name"]</h6>
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">@localizer["Full Name"]</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <!-- Bind input to Name in the model -->
+                                        <input asp-for="Name" type="text" class="form-control" value="@Model.Name" />
+                                    </div>
                                 </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" value="@localizer["John Doe"]">
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">@localizer["Mobile"]</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <!-- Bind input to Phone in the model -->
+                                        <input asp-for="Phone" type="text" class="form-control" value="@Model.Phone" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">@localizer["Mobile"]</h6>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">@localizer["Email"]</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <!-- Bind input to Email in the model -->
+                                        <input asp-for="Email" type="text" class="form-control" value="@Model.Email"/>
+                                    </div>
                                 </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" value="@localizer["(320) 380-4539"]">
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">@localizer["Location"]</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <!-- Bind input to location in the model -->
+                                        <input asp-for="location" type="text" class="form-control" value="@Model.location" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">@localizer["Email"]</h6>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">@localizer["Doctor"]</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input  type="text" class="form-control" value="@localizer["ahmed"]" />
+                                    </div>
                                 </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" value="@localizer["john@example.com"]">
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">@localizer["Facebook"]</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="text" class="form-control" value="sdakfka@facebook.com" />
+                                    </div>
                                 </div>
-                            </div>
-                            
-                            <div class="row mb-3">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">@localizer["Location"]</h6>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" value="@localizer["Cairo-Egypt"]">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">@localizer["Doctor"]</h6>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" value="@localizer["ahmed"]">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">@localizer["Facebook"]</h6>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" value="sdakfka@facebook.com">
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-3"></div>
-                                <div class="col-sm-9 text-secondary">
-                                    <button class="btn btn-primary">@localizer["Save Changes"]</button>
+                                <div class="row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <button type="submit" class="btn btn-primary">@localizer["Save Changes"]</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -113,11 +110,7 @@
                 </div>
             </div>
         </div>
-    </div>
-
-
-
-
+    </form>
 
     <script>
         function previewPhoto(event) {
@@ -134,19 +127,11 @@
         }
     </script>
 
-
-
-
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <!-- For Lyout -->
-    <!-- jquery Min JS -->
+    <!-- For Layout -->
     <script src="~/js/jquery.min.js"></script>
-
-    <!-- Main JS -->
     <script src="~/js/main.js"></script>
-    <!-- For Lyout -->
 </body>
-
