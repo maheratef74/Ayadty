@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+
 using Microsoft.AspNetCore.Mvc;
 using BusinessLogicLayer.Services.WorkingDays;
 using presentationLayer.Models.WorkingDays.ViewModel;
@@ -7,6 +7,7 @@ namespace presentationLayer.Controllers
 {
     public class ClinicController : Controller
     {
+
         
         
         

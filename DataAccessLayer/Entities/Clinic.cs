@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataAccessLayer.Entities;
 
-public class Clinic
+public class CliniC
 {
     [Key]
     public string ClinicId { get; set; } // Primary Key
@@ -12,6 +12,8 @@ public class Clinic
     public string PhoneNumber { get; set; }
     public string? Email { get; set; }
     public string? ProfilePhoto { get; set; } 
-    public List<WorkDay> DaysOfWork { get; set; } 
+    public List<WorkDay> DaysOfWork { get; set; }
+
+    
 }
 // it will be one clinic but set it her to add update to days of work 
