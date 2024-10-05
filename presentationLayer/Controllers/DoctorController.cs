@@ -1,5 +1,6 @@
 ﻿using BusinessLogicLayer.DTOs.Doctor;
 using BusinessLogicLayer.DTOs.Prescription;
+using BusinessLogicLayer.DTOs.WorkingDayes;
 using Microsoft.AspNetCore.Mvc;
 using BusinessLogicLayer.Services.Doctor;
 using BusinessLogicLayer.Services.WorkingDays;
@@ -16,7 +17,7 @@ using presentationLayer.Models.WorkingDays.ViewModel;
 
 namespace presentationLayer.Controllers
 {
-    [Authorize(Roles = "Doctor")]
+   // [Authorize(Roles = "Doctor")]
 
     public class DoctorController : Controller
     {
@@ -54,9 +55,18 @@ namespace presentationLayer.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Doctor, Nurse")]
-        public IActionResult Edit_oppning_days(PrescriptionDetailsDto prescriptionDetailsDto)
+        public async Task<IActionResult> UpdateWorkingDays(List<WorkingDaysVM> workingDaysVms)
         {
-            return View();
+            var WorkingDaysDtos = new List<WorkingDayDto>();
+            foreach (var dayVM in workingDaysVms)
+            {
+                var dayDto = dayVM.ToWorkingDayDto();
+                WorkingDaysDtos.Add(dayDto);
+            }
+
+            await _workingDaysService.AddWorkingDays(WorkingDaysDtos);
+            TempData["successMessage"] = _localizer["Working Days updated successfully"].Value;
+            return RedirectToAction("UpdateWorkingDays", "Doctor");
         }
 
 
@@ -109,6 +119,39 @@ namespace presentationLayer.Controllers
         public IActionResult AboutMe()
         { 
             return View();
+        }
+        
+        [HttpGet]
+        [Authorize(Roles = Roles.Doctor )]
+        public async Task<IActionResult> AddNurse()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddNurse(AddDoctorAR NurseAR)
+        {
+            if (ModelState.IsValid)
+            {
+                var nurse = NurseAR.ToDoctor();
+                IdentityResult result = await _userManager
+                    .CreateAsync(nurse, NurseAR.Password);
+                if (result.Succeeded) 
+                {
+                    await _userManager.AddToRoleAsync(nurse, Roles.Nurse);
+                    // Create a Cookie
+                    // //   await _signInManager.SignInAsync(doctor , doctorAr.RememberMe);
+                    TempData["successMessage"] = _localizer["Nurse Added successfully"].Value;
+                    return RedirectToAction("DailyAppointment", "DashBoard");
+                }
+                else
+                {
+                    foreach (IdentityError error in result.Errors)
+                    {
+                        ModelState.AddModelError(error.Code, error.Description);
+                    }
+                }
+            }
+            return View(NurseAR);
         }
     }
 }

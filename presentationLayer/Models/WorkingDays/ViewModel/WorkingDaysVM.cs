@@ -22,4 +22,13 @@ public static class WorkingDayesExtensionmethold
             EndTime = workingDayDto.EndTime
         };
     }
+    public static WorkingDayDto ToWorkingDayDto(this WorkingDaysVM workingDaysVm)
+    {
+        return new WorkingDayDto()
+        {
+            DayOfWeek = workingDaysVm.DayOfWeek,
+            StartTime = workingDaysVm.StartTime,
+            EndTime = workingDaysVm.EndTime
+        };
+    }
 }

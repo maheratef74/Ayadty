@@ -1,9 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using BusinessLogicLayer.Services.WorkingDays;
+using presentationLayer.Models.WorkingDays.ViewModel;
 
 namespace presentationLayer.Controllers
 {
     public class ClinicController : Controller
     {
+        private readonly IWorkingDaysService _workingDaysService;
         public IActionResult Profile(string layout)
         {
         
@@ -17,5 +21,6 @@ namespace presentationLayer.Controllers
         {
             return View();
         }
+      
     }
 }

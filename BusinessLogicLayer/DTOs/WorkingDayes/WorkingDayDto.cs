@@ -16,7 +16,7 @@ public static class WoringDayedExtensionMethold
     {
         return new WorkDay()
         {
-            Id = workingDayDto.Id,
+            Id = Guid.NewGuid().ToString(),
             DayOfWeek = workingDayDto.DayOfWeek,
             StartTime = workingDayDto.StartTime,
             EndTime = workingDayDto.EndTime

@@ -535,5 +535,9 @@
   "-- Select a Patient --" :"-- Select a Patient --",
 
   "Patient Phone": "Patient Phone",
-  "Appointment Date": "Appointment Date"
+  "Appointment Date": "Appointment Date",
+  "Working Days updated successfully": "Working Days updated successfully",
+  "Number Of Completed Appointment":  "Number Of Completed Appointment",
+  "Add Nurse": "Add Nurse",
+  "Nurse Added successfully": "Nurse Added successfully"
 }

@@ -1,3 +1,4 @@
+using BusinessLogicLayer.DTOs.HelperClass;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Repositories.Doctor;
@@ -46,6 +47,20 @@ public class DoctorRepository : IDoctorRepository
                 doctor.YearsOfExperience = UpdatedDoctor.YearsOfExperience;
             }
     }
+
+    public async Task<PaginatedList<Doctor>> GetAllStaf(int pageNumber, int pageSize)
+    {
+        var totalRecords = await _appDbContext.Users.OfType<Doctor>().CountAsync();
+
+        var doctors = await _appDbContext.Users
+            .OfType<Doctor>()
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+
+        return new PaginatedList<Doctor>(doctors, totalRecords, pageNumber, pageSize);
+    }
+
     public async Task SaveChange()
     {
         await _appDbContext.SaveChangesAsync();

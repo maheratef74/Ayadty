@@ -13,7 +13,7 @@ public class WorkingDaysService : IWorkingDaysService
     }
 
 
-    public async Task AddWorkDay(List<WorkingDayDto> workingDayDto)
+    public async Task AddWorkingDays(List<WorkingDayDto> workingDayDto)
     {
         var days = new List<WorkDay>();
         foreach (var dayDto in workingDayDto)
@@ -22,6 +22,7 @@ public class WorkingDaysService : IWorkingDaysService
             days.Add(WorkDay);
         }
         await _workinDayesRepository.UpdateWoringDays(days);
+        await _workinDayesRepository.SaveChange();
     }
 
     public async Task<List<WorkingDayDto>> GetAllWorkingDays()

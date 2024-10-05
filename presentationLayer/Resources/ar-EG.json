@@ -275,7 +275,7 @@
   "Name": "الاسم",
   "Kenneth": "كينيث",
   "Valdez": "فالديز",
-  "Mobile": "محمول",
+  "Mobile": "رقم الهاتف",
   "(320)": "(320)",
   "380-4539": "380-4539",
   "Email": "البريد الإلكتروني",
@@ -545,5 +545,9 @@
   "-- Select a Patient --" :"--اختر مريض--",
 
   "Patient Phone": "رقم المريض",
-  "Appointment Date": "تاريخ الحجز"
+  "Appointment Date": "تاريخ الحجز",
+  "Working Days updated successfully": "تم تعديل ايام العمل بنجاح",
+  "Number Of Completed Appointment": "عدد الكشوفات المكتمله",
+  "Add Nurse": "اضافه مساعد دكتور",
+  "Nurse Added successfully": "تم اضافه مساعد للدكتور بنجاح"
 }
