@@ -536,6 +536,7 @@
 
   "Patient Phone": "Patient Phone",
   "Appointment Date": "Appointment Date",
+
   "About Us": "About Us",
   "Why You Should Trust Us? Get Know About Us!": "Why You Should Trust Us? Get Know About Us!",
   "At our clinic, your health and well-being are our top priority. With a team of highly skilled, compassionate professionals, we offer personalized care tailored to meet each patient's unique needs. Our commitment to using the latest medical technologies ensures you receive the best, most effective treatments available.": "At our clinic, your health and well-being are our top priority. With a team of highly skilled, compassionate professionals, we offer personalized care tailored to meet each patient's unique needs. Our commitment to using the latest medical technologies ensures you receive the best, most effective treatments available.",
@@ -564,5 +565,11 @@
   "Department :Bones": "Department :Bones"
 
 
+
+
+  "Working Days updated successfully": "Working Days updated successfully",
+  "Number Of Completed Appointment":  "Number Of Completed Appointment",
+  "Add Nurse": "Add Nurse",
+  "Nurse Added successfully": "Nurse Added successfully"
 
 }

@@ -275,7 +275,7 @@
   "Name": "الاسم",
   "Kenneth": "كينيث",
   "Valdez": "فالديز",
-  "Mobile": "محمول",
+  "Mobile": "رقم الهاتف",
   "(320)": "(320)",
   "380-4539": "380-4539",
   "Email": "البريد الإلكتروني",
@@ -546,6 +546,7 @@
 
   "Patient Phone": "رقم المريض",
   "Appointment Date": "تاريخ الحجز",
+
   "About Us": "نبدة عنا",
   "Why You Should Trust Us? Get Know About Us!": "لماذا يجب أن تثق بنا؟ تعرّف علينا!“",
   "At our clinic, your health and well-being are our top priority. With a team of highly skilled, compassionate professionals, we offer personalized care tailored to meet each patient's unique needs. Our commitment to using the latest medical technologies ensures you receive the best, most effective treatments available.": "نضع صحتك ورفاهيتك على رأس أولوياتنا في عيادتنا. من خلال فريق من المتخصصين ذوي المهارات العالية والعاطفيين، نقدم رعاية شخصية مصممة خصيصاً لتلبية الاحتياجات الفريدة لكل مريض. يضمن التزامنا باستخدام أحدث التقنيات الطبية حصولك على أفضل العلاجات المتاحة وأكثرها فعالية.",
@@ -572,5 +573,11 @@
   "Department :Nose and Ear": "قسم انف و اذن",
   "Department :Teaching": "قسم تدريس ",
   "Department :Bones": "قسم عظام"
+
+
+  "Working Days updated successfully": "تم تعديل ايام العمل بنجاح",
+  "Number Of Completed Appointment": "عدد الكشوفات المكتمله",
+  "Add Nurse": "اضافه مساعد دكتور",
+  "Nurse Added successfully": "تم اضافه مساعد للدكتور بنجاح"
 
 }

@@ -4,6 +4,59 @@ namespace presentationLayer.Controllers;
 
 public class RoleSeeder
 {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     private readonly RoleManager<IdentityRole> _roleManager;
 
     public RoleSeeder(RoleManager<IdentityRole> roleManager)

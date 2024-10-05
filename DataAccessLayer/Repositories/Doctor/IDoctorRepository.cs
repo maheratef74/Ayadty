@@ -1,3 +1,5 @@
+using BusinessLogicLayer.DTOs.HelperClass;
+
 namespace DataAccessLayer.Repositories.Doctor;
 using DataAccessLayer.Entities;
 public interface IDoctorRepository
@@ -8,6 +10,7 @@ public interface IDoctorRepository
 
     Task Update(Doctor doctor);
 
+    Task<PaginatedList<Doctor>> GetAllStaf(int pageNumber, int pageSize);
 
     Task SaveChange();
 

@@ -1,0 +1,107 @@
+@{
+Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model BusinessLogicLayer.DTOs.HelperClass.PaginatedList<DataAccessLayer.Entities.Patient>
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer localizer
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Show All Patients</title>
+	<link rel="stylesheet" href="~/css/ShowAllPatients.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="main-box clearfix">
+				<div class="table-responsive">
+					<table class="table user-list">
+						<thead class="text-center align-items-center">
+						<tr>
+							<th><span>@localizer["Name"]</span></th>
+							<th><span>@localizer["age"]</span></th>
+							<th class="text-center"><span>@localizer["Number Of Completed Appointment"]</span></th>
+							<th><span>@localizer["Mobile"]</span></th>
+							<th>&nbsp;</th>
+						</tr>
+						</thead>
+						<tbody>
+						@foreach (var patient in Model.Items)
+						{
+						<tr class="text-center align-items-center" dir="ltr">
+							<td class="user-cell">
+								<img class="profile-photo" src="@Url.Content("~/img/" + patient.ProfilePhoto)" alt="">
+								<a class="user-link text-center" target="__blank"
+								   href="@Url.Action("Profile", "Patient", new { patientId = patient.Id })"
+								   onclick="event.stopPropagation();">@patient.FullName</a>
+							</td>	
+							<td>
+								@if (patient.DateOfBirth != null)
+								{
+									var age = DateTime.Today.Year - patient.DateOfBirth.Year;
+									if (patient.DateOfBirth.Date > DateTime.Today.AddYears(-age)) age--;
+									<span>@age</span>
+								}
+							</td>
+							<td class="text-center">
+								<span class="label label-default">Inactive</span>
+							</td>
+							<td>
+								<a href="mailto:@patient.Phone">@patient.Phone</a>
+							</td>
+							<td style="width: 20%;">
+								
+								<a 	 href="@Url.Action("Update", "Patient", new { patientId = patient.Id })">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                            </span>
+								</a>
+								<a href="#" class="table-link danger">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                            </span>
+								</a>
+							</td>
+						</tr>
+						}
+						</tbody>
+					</table>
+				</div>
+
+				<!-- Pagination Controls -->
+				<ul class="pagination pull-right">
+					@if (Model.HasPreviousPage)
+					{
+					<li><a href="?pageNumber=@(Model.PageNumber - 1)&pageSize=@Model.PageSize"><i class="fa fa-chevron-left"></i></a></li>
+					}
+
+					@for (var i = 1; i <= Model.TotalPages; i++)
+					{
+					<li class="@(i == Model.PageNumber ? "active" : "")">
+						<a href="?pageNumber=@i&pageSize=@Model.PageSize">@i</a>
+					</li>
+					}
+
+					@if (Model.HasNextPage)
+					{
+					<li><a href="?pageNumber=@(Model.PageNumber + 1)&pageSize=@Model.PageSize"><i class="fa fa-chevron-right"></i></a></li>
+					}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
