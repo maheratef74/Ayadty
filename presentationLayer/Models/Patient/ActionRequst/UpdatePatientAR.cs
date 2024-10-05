@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using BusinessLogicLayer.DTOs.Ptient;
 using DataAccessLayer.Entities;
-using presentationLayer.Validation;
+using Microsoft.AspNetCore.Mvc;
 
 namespace presentationLayer.Models.Patient.ViewModel;
 
-public class UpdatePatientVM
+public class UpdatePatientAR
 {
     public string PatientId { get; set; }
     
@@ -19,54 +19,57 @@ public class UpdatePatientVM
     public string Address { get; set; }
     
     [DataType(DataType.Password)]
+    [MinLength(6 , ErrorMessage = "PasswardAtLeast6Digit")]
     public string? Password { get; set; }
     
     [DataType(DataType.Password)]
     [Compare("Password" , ErrorMessage = "The two passwords do not match.")]
     public string? ConfirmPassword { get; set; }
+    
+    [Url(ErrorMessage = "Invalid URL format for Facebook profile.")]
     public string? FacebookProfile { get; set; }
     
     [Required(ErrorMessage = "NameRequired")]
     public string FullName { get; set; }
     
     [Required(ErrorMessage = "PhoneNumberRequired")]
-    [UniquePhoneNumber]
-    [RegularExpression(@"^(010|011|012|015)\d{8}$", ErrorMessage = "PhoneNumberInvalid")] 
-    public string Phone { get; set; }
-    
+    [RegularExpression(@"^(010|011|012|015)\d{8}$", ErrorMessage = "PhoneNumberInvalid")]
+    [Remote(action: "CheckPhone", controller: "auth", AdditionalFields = nameof(PatientId) ,
+        ErrorMessage = "Use Another Phone Number")]
+    public string PhoneNumber { get; set; } 
     public string? ProfilePhoto { get; set; }
+    public IFormFile? FormFilePhoto { get; set; }
 }
 public static class UpdatePatientExtenionMethod
 {
-    public static UpdatePatientDto ToUpdatePatientDto(this UpdatePatientVM vm)
+    public static UpdatePatientDto ToUpdatePatientDto(this UpdatePatientAR ar)
     {
         return new UpdatePatientDto
         {
-            PatientId = vm.PatientId,
-            DateOfBirth = vm.DateOfBirth,
-            FullName = vm.FullName,
-            Phone = vm.Phone,
-            FacebookProfile = vm.FacebookProfile,
-            Gender = vm.Gender,
-            Email = vm.Email,
-            Address = vm.Address,
-            ProfilePhoto = vm.ProfilePhoto,
+            PatientId = ar.PatientId,
+            DateOfBirth = ar.DateOfBirth,
+            FullName = ar.FullName,
+            Phone = ar.PhoneNumber,
+            FacebookProfile = ar.FacebookProfile,
+            Gender = ar.Gender,
+            Email = ar.Email,
+            Address = ar.Address,
         };
 
     }
-    public static UpdatePatientVM ToUpdatePatientVM(this PatientDetailsDto dto)
+    public static UpdatePatientAR ToUpdatePatientVM(this PatientDetailsDto dto)
     {
-        return new UpdatePatientVM
+        return new UpdatePatientAR
         {
             PatientId= dto.PatientId,
             FullName = dto.Name,
-            Phone = dto.PhoneNumber,
+            PhoneNumber = dto.PhoneNumber,
             FacebookProfile = dto.FacbookProfile,
             Gender = dto.Gender,
             Email = dto.Email,
             Address = dto.Address,
             DateOfBirth = dto.DateOfBirth,
-            ProfilePhoto = dto.ProfilePhoto,
+            ProfilePhoto = dto.ProfilePhoto
         };
     }
 }

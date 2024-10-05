@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using BusinessLogicLayer.Services.Appointment;
 using BusinessLogicLayer.Services.Patient;
+using BusinessLogicLayer.Services.Prescription;
 using DataAccessLayer.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -17,18 +18,23 @@ public class AppointmentController : Controller
     private readonly IAppointmentService _appointmentService;
     private readonly IPatientService _patientService;
     private readonly IStringLocalizer<authController> _localizer;
-
+    private readonly IPrescriptionService _prescriptionService;
     public AppointmentController(IAppointmentService appointmentService, IPatientService patientService,
-        IStringLocalizer<authController> localizer)
+        IStringLocalizer<authController> localizer, IPrescriptionService prescriptionService)
     {
         _appointmentService = appointmentService;
         _patientService = patientService;
         _localizer = localizer;
+        _prescriptionService = prescriptionService;
     }
 
     [HttpGet]
     public async Task<IActionResult> Create()
     {
+        if (User.IsInRole(Roles.Doctor) || User.IsInRole(Roles.Nurse))
+        {
+            return View();
+        }
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         var user = await _patientService.GetPatientById(userId);
         var userPatient = user.ToPatientVM();
@@ -55,6 +61,7 @@ public class AppointmentController : Controller
         }
 
         var appointmentDto = request.CreatAppointmentAR.ToDto();
+        appointmentDto.Date = DateTime.Now;
         await _appointmentService.CreatAppointment(appointmentDto);
         TempData["successMessage"] = _localizer["Appointment Created successfully"].Value;
         return RedirectToAction("DailyAppointment");
@@ -73,11 +80,13 @@ public class AppointmentController : Controller
             return RedirectToAction("Error404", "Home");
         }
 
-        var appointmentVM = new GetAppointmentDetailsVM()
+        var prescriptions = await _prescriptionService.GetPrescriptionsByAppointmentId(appointedId);
+        var appointmentAndPrescriptionsVM = new GetAppointmentDetailsVM()
         {
-            appointment = appointment
+            appointment = appointment,
+            PrescriptionsDetail = prescriptions
         };
-        return View(appointmentVM);
+        return View(appointmentAndPrescriptionsVM);
     }
 
     [HttpGet]

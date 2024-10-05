@@ -50,7 +50,11 @@ public class authController : Controller
                 {
                     // Create a Cookie
                     await _signInManager.SignInAsync(user, loginAr.RememberMe);
-                    return RedirectToAction("Index", "Home");
+                    if (User.IsInRole(Roles.Patient))
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                    return RedirectToAction("DailyAppointment", "DashBoard");
                 }
             }
             ModelState.AddModelError("Password", _localizer["Username or Password invalid"]);
@@ -88,11 +92,12 @@ public class authController : Controller
         }
         return View(newPatient);
     }
-    private bool CheckPhone(string phone)
+    public async Task<IActionResult> CheckPhone(string PhoneNumber, string? PatientId = null)
     {
-        var patient =  _patientService.GetPatientByPhoneNumber(phone);
-        if (patient is null) return true;
-        
-        return false;
+        var user = await _applicationUserRepository.GetUserByPhoneAndExcludeCurrentPatient(PhoneNumber, PatientId);
+        if (user is null) return Json(true);
+    
+        return Json(false);
     }
+
 }

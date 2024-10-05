@@ -4,7 +4,7 @@
 @inject IViewLocalizer localizer
 @using System.Globalization
 @{
-var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
+ var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
 }
 <!DOCTYPE html>
 <html lang="ar" dir = "@(isRTL ? "rtl" : "ltr")" >
@@ -13,6 +13,7 @@ var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
 <head>
     <!-- SweetAlert2 CSS (Notifaction) -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <<link rel="stylesheet" href="~/lib/sweetalert2/dist/sweetalert2.min.css">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -46,7 +47,8 @@ var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
 <!-- Page Wrapper -->
 <div id="wrapper" dir = "@(isRTL ? "rtl" : "ltr")" >
 
-    <!-- Sidebar -->
+<!-- Sidebar -->
+
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar"  >
 
         <!-- Sidebar - Brand -->
@@ -415,9 +417,61 @@ var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
 <script src="~/js/main.js"></script>
 <!-- For Lyout -->
 
-
+<script src="~/lib/sweetalert2/dist/sweetalert2.all.min.js"></script>
 <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-    </body>
+<script>
+    $(document).ready(function () {
+        var successMessage = '@Html.Raw(TempData["SuccessMessage"] ?? string.Empty)';
+        if (successMessage.length > 0) {
+            Swal.fire({
+                icon: 'success',
+                title: '@localizer["Success"]',
+                text: successMessage
+            });
+        }
+
+        var errorMessage = '@Html.Raw(TempData["ErrorMessage"] ?? string.Empty)';
+        if (errorMessage.length > 0) {
+            Swal.fire({
+                icon: 'error',
+                title: '@localizer["Oops..."]',
+                text: errorMessage
+            });
+        }
+    });
+    function confirmCancel(appointmentId) {
+        Swal.fire({
+            title: '@localizer["Are you sure?"]',  // Localized title
+            text: '@localizer["Do you really want to cancel the appointment?"]',  // Localized text
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: '@localizer["Yes, cancel it!"]',
+            cancelButtonText: '@localizer["No, keep it"]'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/Appointment/Cancele?appointmentId=' + appointmentId;
+            }
+        });
+    }
+
+    function confirmDelete(appointmentId) {
+        Swal.fire({
+            title: '@localizer["Are you sure?"]',
+            text: '@localizer["Do you really want to delete the appointment?"]',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: '@localizer["Yes, delete it!"]',
+            cancelButtonText: '@localizer["No, keep it"]'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/Appointment/Delete?appointmentId=' + appointmentId;
+            }
+        });
+    }
+
+
+</script>
+</body>
 
 </html>

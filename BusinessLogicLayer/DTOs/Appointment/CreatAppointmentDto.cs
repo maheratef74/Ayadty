@@ -33,7 +33,7 @@ public static class CreatAppointmentDtoExtensions
         {
             AppointmentId = Guid.NewGuid().ToString(),
             PatientId = dto.PatientId,
-            Date = DateTime.Now,
+            Date = dto.Date,
             PatientName = dto.PatientName,
             PatientContact = dto.PatientContact,
             Status = (Enums.AppointmentStatus)AppointmentStatus.Scheduled,

@@ -1,0 +1,135 @@
+﻿@{
+  Layout = "_AdminLayout";
+}
+@inject IViewLocalizer localizer
+@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+@using presentationLayer.Models.Auth.ActionRequest
+@using presentationLayer.Models.Doctor.ActionRequest;
+@model AddDoctorAR
+@{
+    var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
+}
+
+
+@inject IOptions<RequestLocalizationOptions> options
+
+<!DOCTYPE html>
+
+<html lang="ar" dir="@(isRTL ? "RTL" : "LTR")">
+
+<head>
+    <meta charset="UTF-8">
+    <title> @localizer["Add Doctor"] </title>
+    <link rel="stylesheet" href="~/css/registration.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jQuery and jQuery Validation scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="title">@localizer["Add Doctor"] </div>
+        <div class="content">
+            <form asp-controller="Doctor" asp-action="Create" method="post" class="form">
+                <div class="user-details">
+                    
+                    <div class="input-box">
+                        <span class="details">@localizer["Full Name"]</span>
+                        <input asp-for = "Name" type="text" placeholder="@localizer["Enter your name"]" required>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">@localizer["Phone Number"]</span>
+                        <input data-val-remote-url="/auth/CheckPhone" asp-for="PhoneNumber" type="text"  placeholder="@localizer["Enter your number"]" required>
+                        <span asp-validation-for="PhoneNumber" class="text-danger" style="margin-top: 5px; display: block;"></span>
+                    </div>
+                    
+                    <div class="input-box">
+                        <label for="datepicker">@localizer["Date of Birth"]</label>
+                        <input asp-for="DateOfBirth" type="date" id="datepicker"  class="form-control" onloadstart="2002-7-20">
+                        <span asp-validation-for="DateOfBirth" class="text-danger" style="margin-top: 5px; display: block;"></span>
+                    </div>
+                    
+                    <div class="input-box" id="password">
+                        <span class="details">@localizer["Password"]</span>
+                        <input asp-for="Password"type="password" placeholder="@localizer["Enter your password"]" required id="passwordField"></input>
+                        <span class="eye-icon" onclick="togglePasswordVisibility('passwordField', this)">👁</span>
+                        <span asp-validation-for="Password" class="text-danger" style="margin-top: 5px; display: block;"></span>
+                    </div>
+
+                    <div class="input-box" id="confirmPassword">
+                        <span class="details">@localizer["Confirm Password"]</span>
+                        <input asp-for="ConfirmPassword" type="password" placeholder="@localizer["Confirm your password"]" required id="confirmPasswordField">
+                        <span class="eye-icon" onclick="togglePasswordVisibility('confirmPasswordField', this)">👁</span>
+                        <span asp-validation-for="ConfirmPassword" class="text-danger" style="margin-top: 5px; display: block;"></span>
+                    </div>
+                </div>
+
+                <div class="input-box">
+                    <label for="gender" class="details">@localizer["Gender"]</label>
+                    <br>
+                    <select asp-for="Gender" name="gender" id="gender">
+                        <option value="" disabled selected>@localizer["Select your gender"]</option>
+                        <option value="0">@localizer["Male"]</option>
+                        <option value="1">@localizer["Female"]</option>
+                    </select>
+                </div>
+                <span asp-validation-for="Gender" class="text-danger" style="margin-top: 5px; display: block;"></span>
+                <div class="input-box">
+                    <input asp-for="RememberMe" type="checkbox" id="rememberMe">
+                    <label for="rememberMe">@localizer["Remember Me"]</label>
+                </div>
+                <div id="passwordError" class="error"></div>
+               
+                <div class="button">
+                    <input id="registrationButton" type="submit" value="@localizer["Add Doctor"]">
+                </div>
+            </form>
+        </div>
+    </div>
+
+<script>
+        function togglePasswordVisibility(fieldId, icon) {
+            var input = document.getElementById(fieldId);
+            if (input.type === "password") {
+                input.type = "text";
+                icon.textContent = "👁‍🗨";
+            } else {
+                input.type = "password";
+                icon.textContent = "👁";
+            }
+        }
+
+        document.getElementById("registrationButton").addEventListener("click", function (event) {
+            var password = document.getElementById("passwordField").value;
+            var confirmPassword = document.getElementById("confirmPasswordField").value;
+            var errorElement = document.getElementById("passwordError");
+
+            if (password !== confirmPassword) {
+                event.preventDefault();
+
+                errorElement.textContent = " @localizer["The two passwords do not match."]";
+            } else {
+                errorElement.textContent = ""; // Clear error if passwords match
+            }
+        });
+
+        const dateInput = document.getElementById('datepicker');
+        dateInput.addEventListener('focus', function() {
+            if (!this.value) {
+                this.value = '2002-07-20'; // Default value when field is focused
+            }
+        });
+
+</script>
+</body>
+</html>

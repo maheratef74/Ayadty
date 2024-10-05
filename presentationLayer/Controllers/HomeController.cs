@@ -1,10 +1,11 @@
 using System.Security.Claims;
 using BusinessLogicLayer.Services.Patient;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using presentationLayer.Models.Appointment.CompositeViewModel;
 using presentationLayer.Models.Patient.ViewModel;
 namespace presentationLayer.Controllers;
-
+[Authorize]
 public class HomeController:Controller
 {
     private readonly IPatientService _patientService;
@@ -17,11 +18,12 @@ public class HomeController:Controller
     [HttpGet]
     public async Task<IActionResult> Index()
     {
-        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        if(User.IsInRole(Roles.Doctor) || User.IsInRole(Roles.Nurse))
+        if (User.IsInRole(Roles.Doctor) || User.IsInRole(Roles.Nurse))
         {
-            return RedirectToAction("DailyAppointment", "DashBoard");
+            return View();
         }
+        
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         var user = await _patientService.GetPatientById(userId);
         var userPatient = user.ToPatientVM();
         var model = new AppointmentPageVM_AR

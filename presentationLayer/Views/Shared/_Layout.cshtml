@@ -5,16 +5,15 @@
 @using System.Globalization
 @using System.Security.Claims
 @{
-  var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
-  var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
+var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 }
 <!doctype html>
 <html class="no-js" lang="ar" dir = "@(isRTL ? "RTL" : "LTR")" >
 <head>
-    <!-- SweetAlert2 CSS (Notifaction) -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <<link rel="stylesheet" href="~/lib/sweetalert2/dist/sweetalert2.min.css">
-    <script src="~/lib/sweetalert2/dist/sweetalert2.all.min.js"></script>
+   
     <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,9 +35,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="~/css/bootstrap.min.css">
@@ -63,8 +59,6 @@
     <link rel="stylesheet" href="~/css/normalize.css">
     <link rel="stylesheet" href="~/css/Home.css">
     <link rel="stylesheet" href="~/css/responsive.css">
-   
-
 </head>
 <body>
 
@@ -87,15 +81,15 @@
 <header class="header" >
     <!-- Topbar -->
     <div class="topbar">
-                   
-                    @*<li class="d-inline-block"><a asp-controller="Doctor" asp-action="profile">@localizer["Doctor"]</a></li>
+
+        @*<li class="d-inline-block"><a asp-controller="Doctor" asp-action="profile">@localizer["Doctor"]</a></li>
                     <li class="d-inline-block"><a asp-controller="Clinic" asp-action="ContactUs">@localizer["Contact"]</a></li>
                     $1$<li class="d-inline-block"><a href="">@localizer["FAQ"]</a></li>#1#*@
-                    <li class="d-inline-block">
-                        <a href="#">@await Html.PartialAsync("_SelectLanguagePartial")</a>
-                    </li>
-        
-                <!-- End Contact -->
+        <li class="d-inline-block">
+            <a href="#">@await Html.PartialAsync("_SelectLanguagePartial")</a>
+        </li>
+
+        <!-- End Contact -->
     </div>
 
 
@@ -121,38 +115,38 @@
                         <div class="main-menu">
                             <nav class="navigation">
                                 <ul class="nav menu">
-                                <li class="nav-item">
-                                    <a asp-controller="Home" asp-action="Index">@localizer["Home"]</a>
-                                </li>
-                                <li class="nav-item"><a asp-controller="Patient" asp-action="Profile" asp-route-patientId="@userId">@localizer["Patient Profile"]</a></li>
-                                <li class="nav-item"><a asp-controller="Doctor" asp-action="AboutMe">@localizer["Doctor"]</a></li>
-                                <li class="nav-item">
-                                    <a href="#">@localizer["Pages"] <i class="icofont-rounded-down"></i></a>
-                                    <ul class="dropdown">
-                                        <li><a asp-controller="Patient" asp-action="Profile" asp-route-patientId="@userId" >@localizer["Patient Profile"]</a></li>
-                                        <li><a asp-controller="Appointment" asp-action="DailyAppointment">@localizer["DailyAppointment"]</a></li>
-                                        <li><a asp-controller="auth" asp-action="Register">@localizer["Registration"]</a></li>
-                                        <li><a asp-controller="auth" asp-action="Login">@localizer["Log In"]</a></li>
-                                        <li><a asp-controller="Appointment" asp-action="Create">@localizer["CreatAppointment"]</a></li>
-                                        <li><a asp-controller="Clinic" asp-action="ContactUs">@localizer["Contact Now"]</a></li>
-                                        <li><a asp-controller="Clinic" asp-action="Profile">@localizer["Clinic Profile"]</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item"><a asp-controller="Clinic" asp-action="ContactUs">@localizer["Contact Us"]</a></li>
-                            </ul>
-                        </nav>
+                                    <li class="nav-item">
+                                        <a asp-controller="Home" asp-action="Index">@localizer["Home"]</a>
+                                    </li>
+                                    <li class="nav-item"><a asp-controller="Patient" asp-action="Profile" asp-route-patientId="@userId">@localizer["Patient Profile"]</a></li>
+                                    <li class="nav-item"><a asp-controller="Doctor" asp-action="AboutMe">@localizer["Doctor"]</a></li>
+                                    <li class="nav-item">
+                                        <a href="#">@localizer["Pages"] <i class="icofont-rounded-down"></i></a>
+                                        <ul class="dropdown">
+                                            <li><a asp-controller="Patient" asp-action="Profile" asp-route-patientId="@userId" >@localizer["Patient Profile"]</a></li>
+                                            <li><a asp-controller="Appointment" asp-action="DailyAppointment">@localizer["DailyAppointment"]</a></li>
+                                            <li><a asp-controller="auth" asp-action="Register">@localizer["Registration"]</a></li>
+                                            <li><a asp-controller="auth" asp-action="Login">@localizer["Log In"]</a></li>
+                                            <li><a asp-controller="Appointment" asp-action="Create">@localizer["CreatAppointment"]</a></li>
+                                            <li><a asp-controller="Clinic" asp-action="ContactUs">@localizer["Contact Now"]</a></li>
+                                            <li><a asp-controller="Clinic" asp-action="Profile">@localizer["Clinic Profile"]</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item"><a asp-controller="Clinic" asp-action="ContactUs">@localizer["Contact Us"]</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!--/ End Main Menu -->
                     </div>
-                    <!--/ End Main Menu -->
-                </div>
                     <div class="col-lg-2 col-12">
                         <div class="get-quote">
-                        <a asp-controller="Appointment" asp-action="Create" class="btn">@localizer["Book Appointment"]</a>
+                            <a asp-controller="Appointment" asp-action="Create" class="btn">@localizer["Book Appointment"]</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
 </header>
@@ -192,9 +186,9 @@
                                 <ul>
                                     <li><a asp-controller="Home" asp-action="Index"><i class="fa fa-caret-right" aria-hidden="true"></i>@localizer["Home"]</a></li>
                                     <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>@localizer["About Us"]</a></li>
-                                   <!-- <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>@localizer["Services"]</a></li> -->
-                                   <!-- <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>@localizer["Our Cases"]</a></li> -->
-                                   <!--  <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>@localizer["Other Links"]</a></li> -->
+                                    <!-- <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>@localizer["Services"]</a></li> -->
+                                    <!-- <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>@localizer["Our Cases"]</a></li> -->
+                                    <!--  <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>@localizer["Other Links"]</a></li> -->
                                 </ul>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
@@ -230,59 +224,65 @@
     </div>
     <!--/ End Footer Top -->
 </footer>
-
-
 <!--/ End Footer Area -->
 
 <!-- jquery Min JS -->
-<script src="~/js/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script>
 <!-- jquery Migrate JS -->
-<script src="~/js/jquery-migrate-3.0.0.js"></script>
+<script src="js/jquery-migrate-3.0.0.js"></script>
 <!-- jquery Ui JS -->
-<script src="~/js/jquery-ui.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
 <!-- Easing JS -->
-<script src="~/js/easing.js"></script>
+<script src="js/easing.js"></script>
 <!-- Color JS -->
-<script src="~/js/colors.js"></script>
+<script src="js/colors.js"></script>
 <!-- Popper JS -->
-<script src="~/js/popper.min.js"></script>
+<script src="js/popper.min.js"></script>
 <!-- Bootstrap Datepicker JS -->
-<script src="~/js/bootstrap-datepicker.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
 <!-- Jquery Nav JS -->
-<script src="~/js/jquery.nav.js"></script>
+<script src="js/jquery.nav.js"></script>
 <!-- Slicknav JS -->
-<script src="~/js/slicknav.min.js"></script>
+<script src="js/slicknav.min.js"></script>
 <!-- ScrollUp JS -->
-<script src="~/js/jquery.scrollUp.min.js"></script>
+<script src="js/jquery.scrollUp.min.js"></script>
 <!-- Niceselect JS -->
-<script src="~/js/niceselect.js"></script>
+<script src="js/niceselect.js"></script>
 <!-- Tilt Jquery JS -->
-<script src="~/js/tilt.jquery.min.js"></script>
+<script src="js/tilt.jquery.min.js"></script>
 <!-- Owl Carousel JS -->
-<script src="~/js/owl-carousel.js"></script>
+<script src="js/owl-carousel.js"></script>
 <!-- counterup JS -->
-<script src="~/js/jquery.counterup.min.js"></script>
+<script src="js/jquery.counterup.min.js"></script>
 <!-- Steller JS -->
-<script src="~/js/steller.js"></script>
+<script src="js/steller.js"></script>
 <!-- Wow JS -->
-<script src="~/js/wow.min.js"></script>
+<script src="js/wow.min.js"></script>
 <!-- Magnific Popup JS -->
-<script src="~/js/jquery.magnific-popup.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
 <!-- Counter Up CDN JS -->
-<script src="~/js/waypoints.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Main JS -->
+<script src="js/main.js"></script>
 <!-- Bootstrap JS -->
 <script src="~/js/bootstrap.min.js"></script>
 <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
-<!-- Notification Script -->
+<script src="~/js/main.js"></script>
+<!-- Jquery Nav JS -->
+<script src="~/js/jquery.nav.js"></script>
+
+<script src="~/lib/sweetalert2/dist/sweetalert2.all.min.js"></script>
 <script>
     $(document).ready(function () {
         var successMessage = '@Html.Raw(TempData["SuccessMessage"] ?? string.Empty)';
         if (successMessage.length > 0) {
             Swal.fire({
                 icon: 'success',
-                title: '@localizer["Success"]',  
+                title: '@localizer["Success"]',
                 text: successMessage
             });
         }
@@ -291,8 +291,8 @@
         if (errorMessage.length > 0) {
             Swal.fire({
                 icon: 'error',
-                title: '@localizer["Oops..."]', 
-                text: errorMessage 
+                title: '@localizer["Oops..."]',
+                text: errorMessage
             });
         }
     });
@@ -306,7 +306,6 @@
             cancelButtonText: '@localizer["No, keep it"]'
         }).then((result) => {
             if (result.isConfirmed) {
-                // Redirect to the cancel action
                 window.location.href = '/Appointment/Cancele?appointmentId=' + appointmentId;
             }
         });
@@ -314,19 +313,22 @@
 
     function confirmDelete(appointmentId) {
         Swal.fire({
-            title: "Are you sure",  // Localized title
-            text: "Do you really want to delete the appointment?",  // Localized text
+            title: '@localizer["Are you sure?"]',
+            text: '@localizer["Do you really want to delete the appointment?"]',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: '@localizer["Yes, delete it!"]',
             cancelButtonText: '@localizer["No, keep it"]'
         }).then((result) => {
             if (result.isConfirmed) {
-                // Redirect to the delete action
                 window.location.href = '/Appointment/Delete?appointmentId=' + appointmentId;
             }
         });
     }
+    
+
 </script>
+<!-- SweetAlert2 CSS (Notifaction) -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

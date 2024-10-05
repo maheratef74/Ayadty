@@ -54,15 +54,13 @@
                         <input data-val-remote-url="/auth/CheckPhone" asp-for="PhoneNumber" type="text"  placeholder="@localizer["Enter your number"]" required>
                         <span asp-validation-for="PhoneNumber" class="text-danger" style="margin-top: 5px; display: block;"></span>
                     </div>
-
-
+                    
                     <div class="input-box">
                         <span class="details">@localizer["Address"]</span>
                         <input asp-for="Address" type="text" placeholder="@localizer["Enter your address"]" required>
                         <span asp-validation-for="Address" class="text-danger" style="margin-top: 5px; display: block;"></span>
                     </div>
-
-
+                    
                     <div class="input-box">
                         <label for="datepicker">@localizer["Date of Birth"]</label>
                         <input asp-for="DateOfBirth" type="date" id="datepicker"  class="form-control" onloadstart="2002-7-20">
@@ -101,7 +99,7 @@
                 <div id="passwordError" class="error"></div>
                
                 <div class="button">
-                    <input id="registrationButton" type="submit" value="@localizer["Register"]">
+                    <input id="registrationButton" type="submit" value="@localizer["Registration"]">
                 </div>
 
                 <div class="have_account">

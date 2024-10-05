@@ -46,7 +46,7 @@ public static  class PatientVmExtensions
             //  PasswordHash = newPatient.Password,
             DateOfBirth = newPatient.DateOfBirth,
             UserName = Guid.NewGuid().ToString() , // because it take alotof time to handel it but it's not handel 
-            ProfilePhoto = newPatient.Gender == 0 ? "~/img/man.jpg" : "~/img/Female.jpg"
+            ProfilePhoto = newPatient.Gender == 0 ? "man.jpg" : "Female.jpg"
         };
         
         return patient;

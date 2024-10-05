@@ -3,20 +3,21 @@
 @using Microsoft.Extensions.Options
 @inject IViewLocalizer localizer
 @using System.Globalization
-
+@using BusinessLogicLayer.DTOs.Prescription
+@model PrescriptionDetailsDto;
 @{
-if (User.IsInRole("Doctor") || User.IsInRole("Nurse"))
-{
-Layout = "_AdminLayout.cshtml";
-}
-else if (User.IsInRole("Patient"))
-{
-Layout = "_Layout.cshtml";
-}
-else
-{
-Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
-}
+    if (User.IsInRole("Doctor") || User.IsInRole("Nurse"))
+    { 
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+    else if (User.IsInRole("Patient"))
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
+    }
 }
 
 <!DOCTYPE html>
@@ -26,101 +27,107 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/PatientPrescription.css" />
+    <link rel="stylesheet" href="~/css/prescription.css" />
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
-    <div class="container mt-5 prescription-page">
+<div class="container mt-5 prescription-page">
 
-        <!-- Doctor's Information -->
-        <div class="row doctor-info">
-            <div class="col-md-2 text-center align-self-center">
-                <h2>@localizer["AYADTY"]</h2>
-            </div>
-            <div class="col-md-8 text-center">
-                <h4>@localizer["Dr. Hamed Amr"]</h4>
-                <p>@localizer["Eye Surgeon"]</p>
-                <p>@localizer["Al-Azhar University"]</p>
-            </div>
+    <!-- Doctor's Information -->
+    <div class="row doctor-info">
+        <div class="col-md-2 text-center align-self-center">
+            <h2>@localizer["AYADTY"]</h2>
         </div>
-
-        <br />
-
-        <!-- Patient Information -->
-        <div class="row patient-info">
-            <div class="col-md-4">
-                <label>@localizer["Patient Name:"]</label>
-                <input type="text" class="form-control" id="patientName" value="@localizer["Patient Name Here"]" readonly />
-            </div>
-            <div class="col-md-2">
-                <label>@localizer["Age:"]</label>
-                <input type="number" class="form-control" id="patientAge" value="@localizer["Age Here"]" readonly />
-            </div>
-
-            <div class="col-md-3">
-                <label>@localizer["Phone:"]</label>
-                <input type="tel" class="form-control" id="patientPhone" value="@localizer["Phone Number Here"]" readonly />
-            </div>
-
-            <div class="col-md-3">
-                <label>@localizer["Date:"]</label>
-                <input type="datetime-local" class="form-control" id="prescriptionDate" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" readonly />
-            </div>
+        <div class="col-md-8 text-center">
+            <h4>@localizer["Dr. Hamed Amr"]</h4>
+            <p>@localizer["Eye Surgeon"]</p>
+            <p>@localizer["Al-Azhar University"]</p>
         </div>
+    </div>
 
-        <!-- Prescription Section -->
-        <div class="row mb-4">
-            <div class="col-md-12">
-                <h3 class="section-title" style="background-color: #007bff; color:white; font-size:larger">@localizer["Prescription"]</h3>
-                <hr />
-                <div id="prescriptionFields">
-                    <div class="prescription-row d-flex" id="prescriptionRow1">
-                        <div class="form-group">
-                            <label>@localizer["Medicine Name:"]</label>
-                            <input type="text" class="form-control" id="medicineName1" value="@localizer["Medicine Name Here"]" readonly />
-                        </div>
-                        <div class="form-group mx-3">
-                            <label>@localizer["Dosage Frequency:"]</label>
-                            <input type="text" class="form-control" id="dosage1" value="@localizer["Dosage Frequency Here"]" readonly />
-                        </div>
-                        <div class="form-group">
-                            <label>@localizer["Notes:"]</label>
-                            <input type="text" class="form-control" id="notes1" value="@localizer["Notes Here"]" readonly />
-                        </div>
+    <br />
+
+    <!-- Patient Information -->
+    <div class="row patient-info">
+        <div class="col-md-4">
+            <label>@localizer["Patient Name:"]</label>
+            <p class="form-control">@Model.PatientName</p>
+        </div>
+        <div class="col-md-2">
+            <label>@localizer["Age:"]</label>
+            <p class="form-control">@Model.patientAge</p>
+        </div>
+        <div class="col-md-3">
+            <label>@localizer["Diagnosis of the disease:"]</label>
+            <p class="form-control">@Model.Diagnosis</p>
+        </div>
+        <div class="col-md-3">
+            <label>@localizer["Date:"]</label>
+            <p class="form-control">@Model.Date.ToString("g")</p>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <h3 class="section-title" style="background-color: #007bff; color:white; font-size:larger">@localizer["Prescription"]</h3>
+            <hr />
+            <div class="row font-weight-bold mb-2 treatment-row">
+                <div class="col-md-4">@localizer["Medicine Name:"]</div>
+                <div class="col-md-4">@localizer["Dosage Frequency:"]</div>
+                <div class="col-md-4">@localizer["Notes:"]</div>
+            </div>
+            @foreach (var treatment in Model.Treatments)
+            {
+                <div class="row patient-info mb-3 treatment-row">
+                    <div class="col-md-4">
+                        <p class="form-control">@treatment.Name</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="form-control">@treatment.Dosage</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="form-control">@treatment.Note</p>
                     </div>
                 </div>
-            </div>
-        </div>
+            }
 
-        <!-- General Notes Section -->
-        <div class="row notes-box">
-            <div class="col-md-12">
-                <h5 class="section-title" style="background-color: #007bff; color:white; font-size:larger">@localizer["General Notes"]</h5>
-                <textarea class="form-control" id="generalNotes" readonly>@localizer["General Notes Here"]</textarea>
-            </div>
         </div>
-        <!-- Action Buttons -->
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <button type="button" class="btn btn-success" onclick="window.print()">@localizer["Print"]</button>
-            </div>
-        </div>
-
-        <hr />
-
-        <!-- Footer Section -->
-        <div class="row doctor-footer mt-5">
-            <div class="col-md-4 text-center">
-                <p>@localizer["Address: Clinics"]</p>
-            </div>
-            <div class="col-md-4 text-center">
-                <p>@localizer["Clinic Hours: Saturday, Monday"]</p>
-            </div>
-            <div class="col-md-4 text-center">
-                <p>@localizer["For Appointments: 01022381205"]</p>
-            </div>
-        </div>
-
     </div>
- 
+
+
+    <!-- General Notes Section -->
+    <div class="row notes-box">
+        <div class="col-md-12">
+            <h5 class="section-title" style="background-color: #007bff; color:white; font-size:larger">@localizer["General Notes"]</h5>
+            <p class="form-control">@Model.Notes</p>
+        </div>
+    </div>
+    <!-- Action Buttons -->
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <a href="@Url.Action("Update", "Prescription", new { PrescriptionId = Model.PrescriptionId })" class="btn btn-primary">
+                @localizer["Edit"]
+            </a>
+            <button type="button" class="btn btn-success" onclick="window.print()">@localizer["Print"]</button>
+        </div>
+    </div>
+
+    <hr/>
+
+    <!-- Footer Section -->
+    <div class="row doctor-footer mt-5">
+        <div class="col-md-4 text-center">
+            <p>@localizer["Address: Clinics"]</p>
+        </div>
+        <div class="col-md-4 text-center">
+            <p>@localizer["Clinic Hours: Saturday, Monday"]</p>
+        </div>
+        <div class="col-md-4 text-center">
+            <p>@localizer["For Appointments: 01022381205"]</p>
+        </div>
+    </div>
+
+</div>
+
 </body>
 </html>

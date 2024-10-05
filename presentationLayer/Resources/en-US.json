@@ -502,10 +502,42 @@
   "Appointment Created successfully": "Appointment Created successfully",
   "Appointment Updated successfully": "Appointment Updated successfully",
   "Acount Created successfully":  "Acount Created successfully",
+  "Are you sure?" :  "Are you sure?",
   "Do you really want to cancel the appointment?": "Do you really want to cancel the appointment?",
   "Yes, cancel it!": "Yes, cancel it!",
   "No, keep it" : "No, keep it",
   "Do you really want to delete the appointment?":"Do you really want to delete the appointment?",
   "Yes, delete it!": "Yes, delete it!",
-  "Invalid email address": "Invalid email address"
+  "Invalid email address": "Invalid email address",
+  "Data Updated successfully":  "Data Updated successfully",
+
+  "Add Doctor": "Add Doctor",
+  "Doctor Added successfully": "Doctor Added successfully",
+  "AgeRequired": "Age Required",
+  
+  "Diagnosis of the disease:": "Diagnosis of the disease:",
+  "Enter Diagnosis of the disease": "Enter Diagnosis of the disease",
+
+  "Invalid URL format for Facebook profile.": "Invalid URL format for Facebook profile.",
+  "MedicineNameIsRequired": "Medicine Name is required",
+  "DateIsRequired": "DateIsRequired",
+  "Prescription Created successfully": "Prescription Created successfully",
+  "Save Update":  "Save Update",
+  "DateRequired": "Date is required",
+  "Prescription Updated successfully":   "Prescription Updated successfully",
+  "Diagnosis":   "Diagnosis",
+  "Prescriptions":  "Prescriptions",
+
+  "Create Appointment for Patient": "Create Appointment for Patient",
+  "Search Patient" :  "Search Patient",
+  "Search by name..." : "Search by name...",
+  "Select Patient":  "Select Patient",
+  "-- Select a Patient --" :"-- Select a Patient --",
+
+  "Patient Phone": "Patient Phone",
+  "Appointment Date": "Appointment Date",
+  "Working Days updated successfully": "Working Days updated successfully",
+  "Number Of Completed Appointment":  "Number Of Completed Appointment",
+  "Add Nurse": "Add Nurse",
+  "Nurse Added successfully": "Nurse Added successfully"
 }

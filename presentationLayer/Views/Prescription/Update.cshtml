@@ -1,0 +1,206 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+@model presentationLayer.Models.Prescription.ActionRequest.UpdatePrescriptionAR
+@{
+Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/prescription.css" />
+
+    <!-- jQuery and jQuery Validation scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body>
+<div class="container mt-5 prescription-page">
+    <h2>@localizer["Update Prescription"]</h2>
+
+    <!-- Doctor's Information -->
+    <div class="row doctor-info">
+        <div class="col-md-2 text-center align-self-center">
+            <h2>@localizer["AYADTY"]</h2>
+        </div>
+        <div class="col-md-8 text-center">
+            <h4>@localizer["Dr. Hamed Amr"]</h4>
+            <p>@localizer["Eye Surgeon"]</p>
+            <p>@localizer["Al-Azhar University"]</p>
+        </div>
+    </div>
+
+    <br />
+    <form asp-controller="Prescription" asp-action="Update" method="post">
+        <input type="hidden" asp-for="AppointmentId" />
+        <input type="hidden" asp-for="PatientId" />
+        <input type="hidden" asp-for="PrescriptionId" />
+        
+        <!-- Patient Information -->
+        <div class="row patient-info">
+            <div class="col-md-4">
+                <label>@localizer["Patient Name:"]</label>
+                <input asp-for="PatientName" type="text" class="form-control" id="patientName" />
+            </div>
+            <div class="col-md-2">
+                <label>@localizer["Age:"]</label>
+                <input asp-for="patientAge" type="number" class="form-control" id="patientAge" />
+            </div>
+            <div class="col-md-4">
+                <label>@localizer["Diagnosis of the disease:"]</label>
+                <input asp-for="Diagnosis" type="text" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <label>@localizer["Date:"]</label>
+                <input asp-for="Date" type="datetime-local" class="form-control" id="prescriptionDate"
+                       value="@Model.Date.ToString("yyyy-MM-ddTHH:mm")"/>
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Prescription Section -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <h3 class="section-title">@localizer["Prescription"]</h3>
+                <hr/>
+                <div id="prescriptionFields">
+                    @for (int i = 0; i < Model.Treatments.Count; i++)
+                    {
+                        <div class="prescription-row d-flex align-items-center" id="prescriptionRow@i">
+                            <div class="form-group">
+                                <label>@localizer["Medicine Name:"]</label>
+                                <input name="Treatments[@i].MedicineName" type="text" class="form-control" value="@Model.Treatments[i].MedicineName" />
+                                <span asp-validation-for="Treatments[0].MedicineName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group mx-3">
+                                <label>@localizer["Dosage Frequency:"]</label>
+                                <input name="Treatments[@i].Dosage" type="text" class="form-control" value="@Model.Treatments[i].Dosage" />
+                            </div>
+                            <div class="form-group">
+                                <label>@localizer["Notes:"]</label>
+                                <input name="Treatments[@i].Note" type="text" class="form-control" value="@Model.Treatments[i].Note" />
+                            </div>
+                            <button type="button" class="btn btn-danger removePrescriptionBtn mx-3" data-id="@i">@localizer["Remove"]</button>
+                        </div>
+                    }
+                </div>
+                <button type="button" class="btn btn-secondary" id="addPrescriptionBtn">@localizer["+ Add More"]</button>
+            </div>
+        </div>
+
+        <!-- General Notes Section -->
+        <div class="row notes-box">
+            <div class="col-md-12">
+                <h5 class="section-title">@localizer["General Notes"]</h5>
+                <textarea asp-for="Notes" class="form-control"></textarea>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-primary">@localizer["Save Update"]</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Detect the number of initial rows (for update form)
+    var prescriptionCount = $("#prescriptionFields .prescription-row").length - 1;
+    var removeText = "@localizer["Remove"]";
+
+    // Function to add validation and real-time input handling for medicine names
+    function addValidationForPrescription(rowId) {
+        $("input[name='Treatments[" + rowId + "].MedicineName']").on("input", function () {
+            if ($(this).val().trim() !== "") {
+                $(this).removeClass("is-invalid"); // Remove invalid class when the field is filled
+                $(this).next("span").text(""); // Clear validation message
+            }
+        });
+    }
+
+    // Form submission validation
+    $("form").on("submit", function (event) {
+        var isValid = true;
+
+        $("input[name^='Treatments'][name$='MedicineName']").each(function () {
+            if ($(this).val().trim() === "") {
+                isValid = false;
+                $(this).addClass("is-invalid"); // Add invalid class for empty fields
+                $(this).next("span").text("@localizer["MedicineNameIsRequired"]"); // Set validation message
+            } else {
+                $(this).removeClass("is-invalid"); // Remove invalid class if field is filled
+                $(this).next("span").text(""); // Clear validation message
+            }
+        });
+
+        if (!isValid) {
+            event.preventDefault(); // Stop form submission if invalid
+        }
+    });
+
+    // Add more prescription fields dynamically
+    $("#addPrescriptionBtn").click(function () {
+        prescriptionCount++;
+        var newField = `<div class="prescription-row d-flex align-items-center" id="prescriptionRow${prescriptionCount}">
+                        <div class="form-group">
+                            <label>@localizer["Medicine Name:"]</label>
+                            <input name="Treatments[${prescriptionCount}].MedicineName" type="text" class="form-control" id="medicineName${prescriptionCount}" placeholder="@localizer["Enter medicine name"]" />
+                            <span asp-validation-for="Treatments[${prescriptionCount}].MedicineName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mx-3">
+                            <label>@localizer["Dosage Frequency:"]</label>
+                            <input name="Treatments[${prescriptionCount}].Dosage" type="text" class="form-control" id="dosage${prescriptionCount}" placeholder="@localizer["Enter dosage frequency"]" />
+                        </div>
+                        <div class="form-group">
+                            <label>@localizer["Notes:"]</label>
+                            <input name="Treatments[${prescriptionCount}].Note" type="text" class="form-control" id="notes${prescriptionCount}" placeholder="@localizer["Enter any notes"]" />
+                        </div>
+                        <button type="button" class="btn btn-danger removePrescriptionBtn mx-3" data-id="${prescriptionCount}">${removeText}</button>
+                    </div>`;
+        $("#prescriptionFields").append(newField);
+        addValidationForPrescription(prescriptionCount);
+    });
+
+    // Apply the validation logic to all pre-existing rows initially (for update form)
+    $("#prescriptionFields .prescription-row").each(function (index) {
+        addValidationForPrescription(index);
+    });
+
+    // Remove a prescription row and re-index the remaining fields
+    $(document).on("click", ".removePrescriptionBtn", function () {
+        var id = $(this).data("id");
+        $("#prescriptionRow" + id).remove();
+        reindexPrescriptionFields();
+    });
+
+    // Function to re-index prescription fields after removing a row
+    function reindexPrescriptionFields() {
+        $("#prescriptionFields .prescription-row").each(function (index) {
+            $(this).attr('id', 'prescriptionRow' + index);
+
+            // Update the names for each input field
+            $(this).find("input[name^='Treatments']").each(function () {
+                var currentName = $(this).attr('name');
+                var updatedName = currentName.replace(/\[\d+\]/, '[' + index + ']');
+                $(this).attr('name', updatedName);
+            });
+
+            // Update the remove button data-id
+            $(this).find(".removePrescriptionBtn").data('id', index);
+        });
+
+        // Update the prescription count
+        prescriptionCount = $("#prescriptionFields .prescription-row").length - 1;
+    }
+</script>
+
+<!-- Bootstrap JS -->
+<script src="./js/bootstrap.min.js"></script>
+</body>
+</html>

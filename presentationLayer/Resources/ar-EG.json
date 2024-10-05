@@ -200,18 +200,7 @@
   "Service_Item_5": "بيلينتسكي إيغيت نيب",
   "Book_Now": "احجز الآن",
 
-  "Blog_Section_Title": "ابق على اطلاع بأحدث الأخبار الطبية لدينا.",
-  "Blog_Section_Description": "لوريم إيبسوم دولور سيت أميت كونسيكتتور أديبيسينغ إليت. بريتيوم.",
-  "Blog_Date_1": "22 أغسطس، 2020",
-  "Blog_Title_1": "لقد أعلنّا عن منتجنا الجديد.",
-  "Blog_Description_1": "لوريم إيبسوم دولور أ سيت أميتي، كونسيكتتور أديبيسينغ إليت، سيد دو إيوسمد تيمبور إنسيديدون سيد دو إنسيديدون سيد.",
-  "Blog_Date_2": "15 يوليو، 2020",
-  "Blog_Title_2": "أفضل خمس طرق لحل مشاكل الأسنان.",
-  "Blog_Description_2": "لوريم إيبسوم دولور أ سيت أميتي، كونسيكتتور أديبيسينغ إليت، سيد دو إيوسمد تيمبور إنسيديدون سيد دو إنسيديدون سيد.",
-  "Blog_Date_3": "05 يناير، 2020",
-  "Blog_Title_3": "نحن نقدم حلول تجارية عالية.",
-  "Blog_Description_3": "لوريم إيبسوم دولور أ سيت أميتي، كونسيكتتور أديبيسينغ إليت، سيد دو إيوسمد تيمبور إنسيديدون سيد دو إنسيديدون سيد.",
-
+  
 
 
   "Log In": "تسجيل الدخول",
@@ -286,7 +275,7 @@
   "Name": "الاسم",
   "Kenneth": "كينيث",
   "Valdez": "فالديز",
-  "Mobile": "محمول",
+  "Mobile": "رقم الهاتف",
   "(320)": "(320)",
   "380-4539": "380-4539",
   "Email": "البريد الإلكتروني",
@@ -522,10 +511,43 @@
   "Appointment Created successfully": "تم حجز الموعد بنجاح",
   "Appointment Updated successfully": "تم تعديل الحجز بنجاح",
   "Acount Created successfully": "تم انشاء حساب بنجاح",
+  "Are you sure?" : "هل انت متاكد ؟",
   "Do you really want to cancel the appointment?": "هل بالفعل تريد الغاء الحجز",
   "Yes, cancel it!": "نعم, اريد الالغاء",
   "No, keep it" : "لا, اتركها",
   "Do you really want to delete the appointment?": "هل بالفعل تريد حذف الحجز",
   "Yes, delete it!": "نعم, اريد الحذف",
-  "Invalid email address" : "الاميل غير صحيح"
+  "Invalid email address" : "الاميل غير صحيح",
+
+  "Data Updated successfully": "تم تعديل البيانات بنجاح",
+  "Add Doctor": "اضافه دكتور",
+  "Doctor Added successfully": "تم اضافه الدكتور بنجاح",
+
+  "AgeRequired": "عمر المريض مطلوب",
+
+  "Diagnosis of the disease:": "التشخيص:",
+  "Enter Diagnosis of the disease": "ادخل تشخيص الحاله",
+
+  "Invalid URL format for Facebook profile.": "ادخل رابط صحيح للفيس بوك",
+
+  "MedicineNameIsRequired": "اسم الدواء مطلوب",
+  "DateIsRequired" : "تاريخ الروشته مطلوب",
+  "Prescription Created successfully": "تم حفظ الروشته بنجاح",
+  "Save Update" : "حفظ التعديلات",
+  "DateRequired": "التاريخ مطلوب",
+  "Prescription Updated successfully": "تم تعديل الروشته بنجاح",
+  "Diagnosis": "التشخيص",
+  "Prescriptions": "الروشتات",
+  "Create Appointment for Patient": "حجز كشف لمريض",
+  "Search Patient" : "ابحث عن مريض",
+  "Search by name..." : "ابحث عن طريق الاسم",
+  "Select Patient": "اختر مريض",
+  "-- Select a Patient --" :"--اختر مريض--",
+
+  "Patient Phone": "رقم المريض",
+  "Appointment Date": "تاريخ الحجز",
+  "Working Days updated successfully": "تم تعديل ايام العمل بنجاح",
+  "Number Of Completed Appointment": "عدد الكشوفات المكتمله",
+  "Add Nurse": "اضافه مساعد دكتور",
+  "Nurse Added successfully": "تم اضافه مساعد للدكتور بنجاح"
 }

@@ -13,19 +13,39 @@ public class PrescriptionService : IPrescriptionService
         _prescriptionRepository = prescriptionRepository;
     }
 
-    public async Task AddPrescription(PrescriptionDetailsDto prescriptionDetailsDto)
+    public async Task<DataAccessLayer.Entities.Prescription> AddPrescription(PrescriptionDetailsDto prescriptionDetailsDto)
     {
-        var prescription = new DataAccessLayer.Entities.Prescription()
-        {
-            Date = prescriptionDetailsDto.Date,
-            UserId = prescriptionDetailsDto.PatientId,
-            Notes = prescriptionDetailsDto.Notes,
-            patientAge =prescriptionDetailsDto.patientAge,
-            PatientName = prescriptionDetailsDto.PatientName,
-            
-            Treatments = prescriptionDetailsDto.Treatments.Select(t => t.ToTreatment()).ToList()
-        };
+        var prescription = prescriptionDetailsDto.ToPrescription();
         await _prescriptionRepository.Add(prescription);
         await _prescriptionRepository.SaveChanges();
+        return prescription;
+    }
+
+    public async Task<PrescriptionDetailsDto?> GetPrescriptionById(string PrescriptionId)
+    {
+        var prescription = await _prescriptionRepository.GetPrescriptionById(PrescriptionId);
+
+        var prescriptionDto = prescription.ToPrescriptionDto();
+        return prescriptionDto;
+    }
+    public async Task UpdatePrescription(PrescriptionDetailsDto UpdatedprescriptionDetailsDto)
+    {
+        var updatedPrescription = UpdatedprescriptionDetailsDto.ToUpdatedPrescription();
+        await _prescriptionRepository.UpdatePrescription(updatedPrescription);
+        await _prescriptionRepository.SaveChanges();
+    }
+
+    public async Task<List<PrescriptionDetailsDto>> GetPrescriptionsByAppointmentId(string appointmentId)
+    {
+        var prescriptions = await _prescriptionRepository.GetPrescriptionsByAppointmentId(appointmentId);
+        var prescriptionsDto = new List<PrescriptionDetailsDto>();
+
+        foreach (var prescription in prescriptions)
+        {
+            var prescriptionDto = prescription.ToPrescriptionDto();
+            prescriptionsDto.Add(prescriptionDto);
+        }
+
+        return prescriptionsDto;
     }
 }
