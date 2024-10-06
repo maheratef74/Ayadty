@@ -10,13 +10,13 @@ public class DoctorService : IDoctorService
     {
         _doctorRepository = doctorRepository;
     }
-    public async Task<DoctorDetailsDto> GetDoctorById(string Id)
+    public async Task<DoctorDetailsDto?> GetDoctorById(string Id)
     {
-        var _doctor = await _doctorRepository.GetById(Id);
-        if (_doctor == null)
+        var doctor = await _doctorRepository.GetById(Id);
+        if (doctor == null)
             return null;
 
-        return _doctor.ToDoctorDto();
+        return doctor.ToDoctorDto();
     }
     public async Task UpdateDoctor(UpdateDoctorDto updateDoctorDto)
     {
@@ -27,5 +27,10 @@ public class DoctorService : IDoctorService
             await _doctorRepository.Update(doctor);
             await _doctorRepository.SaveChange();
         }
+    }
+
+    public Task UpdateDoctor(string doctorId)
+    {
+        throw new NotImplementedException();
     }
 }

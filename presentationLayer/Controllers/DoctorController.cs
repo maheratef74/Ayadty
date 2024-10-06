@@ -10,6 +10,7 @@ using Microsoft.Extensions.Localization;
 using presentationLayer.Models.Appointment.ViewModel;
 using presentationLayer.Models.Auth.ActionRequest;
 using presentationLayer.Models.Doctor.ActionRequest;
+using System.Security.Claims;
 
 namespace presentationLayer.Controllers
 {
@@ -43,13 +44,15 @@ namespace presentationLayer.Controllers
             return View();
         }
 
-
+        
         [HttpGet]
-        public async Task<IActionResult> Profile(string DoctorId)
+        public async Task<IActionResult> Profile()
         {
+            var DoctorId= User.FindFirstValue(ClaimTypes.NameIdentifier);
             // check if ID is not current user
-            
-            return View();
+            var DoctorDto = await _doctorService.GetDoctorById(DoctorId);//return dto 
+            var DoctorVM = DoctorDto.ToDoctorVM();
+            return View(DoctorVM);
         }
         [HttpGet]
         public async Task<IActionResult> Create()
@@ -83,10 +86,34 @@ namespace presentationLayer.Controllers
             return View(doctorAr);
         }
         [HttpGet]
-        public IActionResult Update(string doctorId)
-        { 
-              return View();
+        public async Task<IActionResult> Update(string doctorId)
+        {
+            var doctor = await _doctorService.GetDoctorById(doctorId);
+            if (doctor == null)
+            {
+                return NotFound();
+            }
+            var updateDoctorVM = doctor.ToUpdateDoctorVM();
+            return View(updateDoctorVM);
         }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> Update(UpdateDoctorVM updatedDoctor)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(updatedDoctor);
+            }
+            
+            var doctorDto = updatedDoctor.ToUpdateDoctorDto();
+            await _doctorService.UpdateDoctor(doctorDto);
+            return RedirectToAction("Profile", "doctor", new {  DoctorId=updatedDoctor.DoctorId });
+        }
+
+
+
         public IActionResult AboutMe()
         { 
             return View();
