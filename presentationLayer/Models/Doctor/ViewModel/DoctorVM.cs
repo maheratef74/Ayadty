@@ -1,4 +1,5 @@
 using BusinessLogicLayer.DTOs.Doctor;
+using presentationLayer.Models.Auth.ActionRequest;
 
 namespace presentationLayer.Models.Doctor.ViewModel;
 
@@ -27,7 +28,9 @@ public static class DoctorVmExtensions
             Email = dto.Email,
             ProfilePhoto = dto.ProfilePhoto,
             YearsOfExperience=dto.YearsOfExperience,
-            Price=dto.Price,
+            Price=dto.Price
         };
     }
 }
+
+

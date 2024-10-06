@@ -1,5 +1,5 @@
 ﻿using BusinessLogicLayer.DTOs.Doctor;
-
+using System.ComponentModel.DataAnnotations;
 namespace presentationLayer.Models.Doctor.ViewModel
 {
     public class UpdateDoctorVM
