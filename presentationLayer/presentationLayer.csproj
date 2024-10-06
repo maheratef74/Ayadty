@@ -74,6 +74,7 @@
       <Folder Include="Models\DashBoard\ActionRequest\" />
       <Folder Include="Models\Prescription\ViewModel\" />
       <Folder Include="Models\Treament\ViewModel\" />
+      <Folder Include="Models\WorkingDays\ActionRequest\" />
     </ItemGroup>
 
 </Project>

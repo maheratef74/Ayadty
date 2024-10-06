@@ -1,0 +1,173 @@
+﻿@{
+Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@using Microsoft.AspNetCore.Mvc.Localization
+@using presentationLayer.Models.WorkingDays.ViewModel
+@model List<WorkingDaysVM>
+@inject IViewLocalizer localizer
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+    <!-- jQuery and jQuery Validation scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <title>@localizer["Working Days"]</title>
+    <link rel="stylesheet" href="~/css/working_days.css">
+</head>
+
+<body>
+<div class="container2 p-4 bg-light rounded">
+    <div class="title text-center mb-3">
+        <h1>@localizer["Working Days"]</h1>
+        <hr>
+    </div>
+
+    <!-- Header Row -->
+    <div class="header-row row font-weight-bold text-center mb-2">
+        <div class="col">@localizer["Day"]</div>
+        <div class="col">@localizer["Start Time"]</div>
+        <div class="col">@localizer["End Time"]</div>
+    </div>
+    @{
+    var hasData = Model != null && Model.Count > 0;
+    }
+    <form asp-controller="Doctor" asp-action="UpdateWorkingDays" method="post">
+        <div id="workingDaysFields">
+            @if (hasData)
+            {
+            @for (int i = 0; i < Model.Count; i++)
+            {
+            <div class="working-day-row row mb-3 d-flex align-items-center" id="workingDayRow@i">
+                <div class="col">
+                    <select name="WorkingDaysVMS[@i].DayOfWeek" class="form-control">
+                        @foreach (DayOfWeek day in Enum.GetValues(typeof(DayOfWeek)))
+                        {
+                        @if (day == Model[i].DayOfWeek)
+                        {
+                        <option value="@day" selected>@day</option>
+                        }
+                        else
+                        {
+                        <option value="@day">@day</option>
+                        }
+                        }
+                        }
+                    </select>
+                </div>
+                <div class="col">
+                    <input name="WorkingDaysVMS[@i].StartTime" type="time" class="form-control" value="@Model[i].StartTime.ToString("hh\\:mm")" />
+                </div>
+                <div class="col">
+                    <input name="WorkingDaysVMS[@i].EndTime" type="time" class="form-control" value="@Model[i].EndTime.ToString("hh\\:mm")" />
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn btn-danger removeWorkingDayBtn" data-id="@i">
+                        @localizer["Remove"]
+                    </button>
+                </div>
+            </div>
+            }
+            }
+            else
+            {
+            <!-- Display an empty row if the model is empty -->
+            <div class="working-day-row row mb-3 d-flex align-items-center" id="workingDayRow0">
+                <div class="col">
+                    <select name="WorkingDaysVMS[0].DayOfWeek" class="form-control">
+                        @foreach (DayOfWeek day in Enum.GetValues(typeof(DayOfWeek)))
+                        {
+                        <option value="@day">@day</option>
+                        }
+                    </select>
+                </div>
+                <div class="col">
+                    <input name="WorkingDaysVMS[0].StartTime" type="time" class="form-control" />
+                </div>
+                <div class="col">
+                    <input name="WorkingDaysVMS[0].EndTime" type="time" class="form-control" />
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn btn-danger removeWorkingDayBtn" data-id="0">
+                        @localizer["Remove"]
+                    </button>
+                </div>
+            </div>
+            }
+        </div>
+
+        <!-- Add More Button -->
+        <div class="row mb-4">
+            <div class="col text-center">
+                <button type="button" class="btn btn-secondary" id="addWorkingDayBtn">@localizer["+ Add More"]</button>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="row">
+            <div class="col text-center">
+                <button type="submit" class="btn btn-primary">@localizer["Save Update"]</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    var workingDayCount = $("#workingDaysFields .working-day-row").length - 1;
+    var removeText = "@localizer["Remove"]";
+
+    // Add a new row for Working Days
+    $("#addWorkingDayBtn").click(function () {
+        workingDayCount++;
+        var newRow = `
+            <div class="working-day-row d-flex align-items-center" id="workingDayRow${workingDayCount}">
+                <div class="col">
+                    <select name="WorkingDaysVMS[${workingDayCount}].DayOfWeek" class="form-control">
+                        @foreach (DayOfWeek day in Enum.GetValues(typeof(DayOfWeek)))
+        {
+        <option value="@day">@day</option>
+        }
+                    </select>
+                </div>
+                <div class="col">
+                    <input name="WorkingDaysVMS[${workingDayCount}].StartTime" type="time" class="form-control" />
+                </div>
+                <div class="col">
+                    <input name="WorkingDaysVMS[${workingDayCount}].EndTime" type="time" class="form-control" />
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn btn-danger removeWorkingDayBtn" data-id="${workingDayCount}">${removeText}</button>
+                </div>
+            </div>`;
+        $("#workingDaysFields").append(newRow);
+    });
+
+    // Remove a row for Working Days
+    $(document).on("click", ".removeWorkingDayBtn", function () {
+        var id = $(this).data("id");
+        $("#workingDayRow" + id).remove();
+        reindexWorkingDayFields();
+    });
+
+    // Re-index fields after removing a row
+    function reindexWorkingDayFields() {
+        var rows = $("#workingDaysFields .working-day-row"); // Get all rows
+        workingDayCount = rows.length - 1; // Update workingDayCount
+
+        rows.each(function (index) { // Loop through remaining rows
+            $(this).attr('id', 'workingDayRow' + index);
+            $(this).find("select[name^='WorkingDaysVMS']").attr('name', 'WorkingDaysVMS[' + index + '].DayOfWeek');
+            $(this).find("input[name^='WorkingDaysVMS'][name$='StartTime']").attr('name', 'WorkingDaysVMS[' + index + '].StartTime');
+            $(this).find("input[name^='WorkingDaysVMS'][name$='EndTime']").attr('name', 'WorkingDaysVMS[' + index + '].EndTime');
+        });
+    }
+</script>
+<!-- Bootstrap JS -->
+<script src="./js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,130 +1,265 @@
-
 @{
-if (User.IsInRole("Doctor") || User.IsInRole("Nurse"))
-{
-Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "_AdminLayout";
 }
-else if (User.IsInRole("Patient"))
-{
-Layout = "~/Views/Shared/_Layout.cshtml";
+@{
+    if (User.IsInRole("Doctor") || User.IsInRole("Nurse"))
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+    else if (User.IsInRole("Patient"))
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
+    }
 }
-else
-{
-Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
-}
-}
+@inject IViewLocalizer localizer
+@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.Localization
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <title>@localizer["About Us"]</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+ 
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <!-- Template Stylesheet -->
+    
     <link rel="stylesheet" href="~/css/AboutMe.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<section class="section about-section gray-bg" id="about">
-    <div class="container">
-        <div class="row align-items-center flex-row-reverse">
-            <div class="col-lg-6">
-                <div class="about-text go-to">
-                    <h3 class="dark-color">About Me</h3>
-                    <h6 class="theme-color lead">Dr.Maher Atef</h6>
-                    <p>I am <mark><b>Heart surgeon</b></mark> 
-                    
-                        I am a dedicated and resilient individual who is preparing to undergo heart surgery with a positive outlook and a strong
-                        support system. My life has been marked by a commitment to personal health and well-being, and I approach this upcoming
-                        procedure with the same determination and optimism that has guided me through various challenges. I value the importance
-                        of teamwork and communication, which has fostered strong relationships with my healthcare providers and loved ones. As I
-                        prepare for this surgery, I am grateful for the support from my family and friends, and I remain hopeful and focused on
-                        a full recovery and a return to my active and fulfilling life.</p>
-                    <div class="row about-list">
-                        <div class="col-md-6">
-                            
-                            <div class="media">
-                                <label>spec</label>
-                                <p>Heart Surgery</p>
-                            </div>
-                            <div class="media">
-                                <label>Birthday</label>
-                                <p>4th april 1998</p>
-                            </div>
-                            <div class="media">
-                                <label>Age</label>
-                                <p>22 Yr</p>
-                            </div>
-                            <div class="media">
-                                <label>Residence</label>
-                                <p>Canada</p>
-                            </div>
-                            <div class="media">
-                                <label>Clinic Address</label>
-                                <p>California, USA</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="media">
-                                <label>E-mail</label>
-                                <p>info@domain.com</p>
-                            </div>
-                            <div class="media">
-                                <label>Phone</label>
-                                <p>820-885-3321</p>
-                            </div>
-                            
-                            <div class="media">
-                                <label>Y.Of.Exper</label>
-                                <p>20 Years</p>
-                            </div>
-                        </div>
+
+<body>
+  
+
+
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">@localizer["About Us"]</h1>
+
+        </div>
+    </div>
+
+
+    <!-- About Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="d-flex flex-column">
+                        <img class="img-fluid rounded w-75 align-self-end" src="/img/about-1.jpg" alt="">
+                        <img class="img-fluid rounded w-50 bg-white pt-3 pe-3" src="/img/about-2.jpg" alt="" style="margin-top: -25%;">
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="about-avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" title="" alt="">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <p class="d-inline-block border rounded-pill py-1 px-4">@localizer["About Us"]</p>
+                    <h1 class="mb-4">@localizer["Why You Should Trust Us? Get Know About Us!"]</h1>
+                    <p>@localizer["At our clinic, your health and well-being are our top priority. With a team of highly skilled, compassionate professionals, we offer personalized care tailored to meet each patient's unique needs. Our commitment to using the latest medical technologies ensures you receive the best, most effective treatments available."]</p>
+                    
+                    <p><i class="far fa-check-circle text-primary me-3"></i>@localizer["Quality health care"]</p>
+                    <p><i class="far fa-check-circle text-primary me-3"></i>@localizer["Only Qualified Doctors"]</p>
+                    <p><i class="far fa-check-circle text-primary me-3"></i>@localizer["Medical Research Professionals"]</p>
+
                 </div>
             </div>
         </div>
-        <div class="counter">
-            <div class="row">
-                <div class="col-6 col-lg-3">
-                    <div class="count-data text-center">
-                        <h6 class="count h2" data-to="500" data-speed="500">500</h6>
-                        <p class="m-0px font-w-600">Patient Checked</p>
+    </div>
+    <!-- About End -->
+    <!-- Feature Start -->
+    <div class="container-fluid bg-primary overflow-hidden my-5 px-lg-0">
+        <div class="container feature px-lg-0">
+            <div class="row g-0 mx-lg-0">
+                <div class="col-lg-6 feature-text py-5 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="p-lg-5 ps-lg-0">
+                        <p class="d-inline-block border rounded-pill text-light py-1 px-4">@localizer["Features"]</p>
+                        <h1 class="text-white mb-4">@localizer["Why Choose Us?"]</h1>
+                        <p class="text-white mb-4 pb-2">@localizer["Because we have many advantages that you won't find in our competitors."]</p>
+                        <div class="row g-4">
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
+                                        <i class="fa fa-user-md text-primary"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <p class="text-white mb-2">@localizer["Experience"]</p>
+                                        <h5 class="text-white mb-0">@localizer["Doctors"]</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
+                                        <i class="fa fa-check text-primary"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <p class="text-white mb-2">@localizer["Quality"]</p>
+                                        <h5 class="text-white mb-0">@localizer["Services"]</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
+                                        <i class="fa fa-comment-medical text-primary"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <p class="text-white mb-2">@localizer["Positive"]</p>
+                                        <h5 class="text-white mb-0">@localizer["Consultation"]</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
+                                        <i class="fa fa-headphones text-primary"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <p class="text-white mb-2">@localizer["24 Hours"]</p>
+                                        <h5 class="text-white mb-0">@localizer["Support"]</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-6 col-lg-3">
-                    <div class="count-data text-center">
-                        <h6 class="count h2" data-to="150" data-speed="150">150</h6>
-                        <p class="m-0px font-w-600">Surgical Operation</p>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3">
-                    <div class="count-data text-center">
-                        <h6 class="count h2" data-to="850" data-speed="850">850</h6>
-                        <p class="m-0px font-w-600">Medical Consultancy</p>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3">
-                    <div class="count-data text-center">
-                        <h6 class="count h2" data-to="190" data-speed="190">9.3/10</h6>
-                        <p class="m-0px font-w-600">General Rating</p>
+                <div class="col-lg-6 pe-lg-0 wow fadeIn" data-wow-delay="0.5s" style="min-height: 400px;">
+                    <div class="position-relative h-50">
+                        <img class="img-fluid rounded w-100 align-self-end" src="/img/feature.jpg" style="object-fit: cover;" alt="">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
-<!-- For Lyout -->
-<!-- jquery Min JS -->
-<script src="~/js/jquery.min.js"></script>
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <p class="d-inline-block border rounded-pill py-1 px-4">@localizer["Doctors"]</p>
+                <h1>@localizer["Our Experience Doctors"]</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-item position-relative rounded overflow-hidden">
 
-<!-- Main JS -->
-<script src="~/js/main.js"></script>
-<!-- For Lyout -->
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="/img/team-1.jpg" alt="">
+                        </div>
+                        <div class="team-text bg-light text-center p-4">
+                            <h5>@localizer["Dr.Wafaa Ali"]</h5>
+                            <p class="text-primary">@localizer["Department :Bones"]</p>
+                            <p class="text-primary"> +201011541120</p>
+
+
+                            <div class="team-social text-center">
+                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="team-item position-relative rounded overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="/img/team-2.jpg" alt="">
+                        </div>
+                        <div class="team-text bg-light text-center p-4">
+                            <h5>@localizer["Dr.Maher Atef"]</h5>
+                            <p class="text-primary">@localizer["Department :Bones"]</p>
+                            <p class="text-primary"> +201011541120</p>
+                            <div class="team-social text-center">
+                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="team-item position-relative rounded overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="/img/team-3.jpg" alt="">
+                        </div>
+                        <div class="team-text bg-light text-center p-4">
+                            <h5>@localizer["Dr.Shahd Gamal"]</h5>
+                            <p class="text-primary">@localizer["Department :Bones"]</p>
+                            <p class="text-primary">+201011541120</p>
+                            <div class="team-social text-center">
+                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="team-item position-relative rounded overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="/img/team-4.jpg" alt="">
+                        </div>
+                        <div class="team-text bg-light text-center p-4">
+                            <h5>@localizer["Dr.Ahmed Gafer"]</h5>
+                            <p class="text-primary">@localizer["Department :Bones"]</p>
+                            <p class="text-primary"> +201011541120</p>
+                            
+                            <div class="team-social text-center">
+                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
 </html>

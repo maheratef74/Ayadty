@@ -1,3 +1,4 @@
+using BusinessLogicLayer.DTOs.HelperClass;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Repositories.Patient;
@@ -45,6 +46,35 @@ public class PatientRepository : IPatientRepository
             patient.ProfilePhoto = updatedpatient.ProfilePhoto; 
         }
     }
+
+    public async Task<List<Patient>> GetPatientsByName(string searchTerm)
+    {
+       var Patients =  await _appDbContext.Users.OfType<Patient>()
+            .Where(p => p.FullName.Contains(searchTerm))
+            .ToListAsync();
+
+       return Patients;
+    }
+
+    public async Task<List<Patient>> GetAllPatients()
+    {
+        var Patients = await _appDbContext.Users.OfType<Patient>().ToListAsync();
+        return Patients;
+    }
+
+    public async Task<PaginatedList<Patient>> GetAllPatients(int pageNumber, int pageSize)
+    {
+        var totalRecords = await _appDbContext.Users.OfType<Patient>().CountAsync();
+
+        var patients = await _appDbContext.Users
+            .OfType<Patient>()
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+
+        return new PaginatedList<Patient>(patients, totalRecords, pageNumber, pageSize);
+    }
+
     public async Task SaveChanges()
     {
         await _appDbContext.SaveChangesAsync();

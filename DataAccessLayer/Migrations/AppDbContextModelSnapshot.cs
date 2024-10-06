@@ -145,7 +145,7 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("Appointments");
                 });
 
-            modelBuilder.Entity("DataAccessLayer.Entities.Clinic", b =>
+            modelBuilder.Entity("DataAccessLayer.Entities.CliniC", b =>
                 {
                     b.Property<string>("ClinicId")
                         .HasColumnType("nvarchar(450)");
@@ -185,6 +185,9 @@ namespace DataAccessLayer.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Diagnosis")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Notes")
                         .HasMaxLength(450)
                         .HasColumnType("nvarchar(450)");
@@ -212,8 +215,11 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("DataAccessLayer.Entities.Treatment", b =>
                 {
-                    b.Property<string>("TreatmentId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("TreatmentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TreatmentId"));
 
                     b.Property<string>("Dosage")
                         .HasColumnType("nvarchar(max)");
@@ -455,7 +461,7 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("DataAccessLayer.Entities.WorkDay", b =>
                 {
-                    b.HasOne("DataAccessLayer.Entities.Clinic", null)
+                    b.HasOne("DataAccessLayer.Entities.CliniC", null)
                         .WithMany("DaysOfWork")
                         .HasForeignKey("ClinicId");
                 });
@@ -529,7 +535,7 @@ namespace DataAccessLayer.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DataAccessLayer.Entities.Clinic", b =>
+            modelBuilder.Entity("DataAccessLayer.Entities.CliniC", b =>
                 {
                     b.Navigation("DaysOfWork");
                 });

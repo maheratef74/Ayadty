@@ -131,43 +131,54 @@ button {
         height: 300px;
     }
 }
+.treatment-row {
+    display: flex;
+}
 
 @media print {
-    /* إخفاء الأزرار عند الطباعة */
-    button, .btn {
-        display: none !important;
+    /* Hide the layout and sidebar on print */
+    body * {
+        visibility: hidden; /* Hide all elements */
     }
 
-    /* الحفاظ على الأبعاد والتنسيقات دون تغيير */
+    /* Show only the specific content to print */
+    .prescription-page, .prescription-page * {
+        visibility: visible; /* Show the prescription content */
+    }
+
+    /* Optionally, you can set the display of body to block */
     body {
-        -webkit-print-color-adjust: exact; /* للحفاظ على الألوان */
-        print-color-adjust: exact; /* للحفاظ على الألوان */
-        margin: 0;
+        display: block; /* Ensures the body takes up full width */
     }
 
-    /* تثبيت كلمة AYADTY في الطباعة */
-    .doctor-info h2 {
+    /* Additional print styles */
+    .prescription-page {
         position: absolute;
         left: 0;
-        top: 55%; /* تم التعديل كذلك للطباعة */
-        transform: translateY(-50%);
-        font-size: 1.5rem;
+        top: 0;
     }
-
-    /* تنسيق بيانات الفاتورة عند الطباعة */
-    .prescription-row {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: nowrap; /* منع التفاف العناصر */
-    }
-
-        .prescription-row .form-group {
-            flex: 1;
-            margin-right: 10px;
-            min-width: 150px; /* ضبط الحد الأدنى للحجم */
+   
+        .treatment-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
         }
 
-            .prescription-row .form-group:last-child {
-                margin-right: 0;
-            }
+        .treatment-row > div {
+            flex: 1; /* Distribute space evenly among columns */
+            margin-right: 10px; /* Space between columns */
+        }
+
+        /* Remove the bottom border in print */
+        .treatment-row.border-bottom {
+            border: none;
+        }
+    
+
 }
+.treatment-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+
