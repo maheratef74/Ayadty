@@ -68,6 +68,7 @@
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <input asp-for="Name" type="text" class="form-control" value="@Model.Name">
+                                        <span asp-validation-for="Name" class="text-danger"></span>
                                         
 
                                     </div>
@@ -78,7 +79,7 @@
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <input asp-for="PhoneNumber" type="text" class="form-control" value="@Model.PhoneNumber">
-                                        
+                                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
 
                                     </div>
                                 </div>
@@ -88,6 +89,7 @@
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <input asp-for="Email" type="text" class="form-control" value="@Model.Email">
+                                        <span asp-validation-for="Email" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -96,6 +98,7 @@
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <input asp-for="YearsOfExperience" type="text" class="form-control" value="@Model.YearsOfExperience">
+                                        <span asp-validation-for="YearsOfExperience" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -104,6 +107,7 @@
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <input asp-for="Price" type="text" class="form-control" value="@Model.Price">
+                                        <span asp-validation-for="Price" class="text-danger"></span>
 
                                     </div>
                                 </div>
@@ -209,4 +213,7 @@
     <!-- Main JS -->
     <script src="~/js/main.js"></script>
     <!-- For Lyout -->
+    <!-- jQuery Validation and Unobtrusive Validation -->
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 </body>
