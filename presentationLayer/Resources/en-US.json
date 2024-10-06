@@ -562,14 +562,19 @@
   "Dr.Ahmed Gafer": "Dr.Ahmed Gafer",
   "Department :Nose and Ear": "Department :Nose and Ear",
   "Department :Teaching": "Department :Teaching",
-  "Department :Bones": "Department :Bones"
+  "Department :Bones": "Department :Bones",
 
-
-
+  "ShowAllPatients" :"Show All Patients",
+  "ShowAllStaf" :   "Show All Staf",
 
   "Working Days updated successfully": "Working Days updated successfully",
   "Number Of Completed Appointment":  "Number Of Completed Appointment",
   "Add Nurse": "Add Nurse",
-  "Nurse Added successfully": "Nurse Added successfully"
-
+  "Nurse Added successfully": "Nurse Added successfully",
+  "Remove Day":  "Remove Day",
+  "Do you really want to delete the patient?":   "Do you really want to delete the patient?",
+  "Nurse":"Nurse",
+  "Deleted successfully.": "Deleted successfully.",
+  "Job":  "Job",
+  "Do you really want to delete the admin":   "Do you really want to delete the admin"
 }

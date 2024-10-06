@@ -7,7 +7,7 @@
  var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
 }
 <!DOCTYPE html>
-<html lang="ar" dir = "@(isRTL ? "rtl" : "ltr")" >
+<html lang="ar" dir="@(isRTL ? "rtl" : "ltr")" >
 
 
 <head>
@@ -45,7 +45,7 @@
 
 
 <!-- Page Wrapper -->
-<div id="wrapper" dir = "@(isRTL ? "rtl" : "ltr")" >
+<div id="wrapper" dir="@(isRTL ? "rtl" : "ltr")" >
 
 <!-- Sidebar -->
 
@@ -53,10 +53,7 @@
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
-            </div>
-            <div class="sidebar-brand-text mx-3">@localizer["DashBoard"]</div>
+            <div class="sidebar-brand-text">@localizer["DashBoard"]</div>
         </a>
 
         <!-- Divider -->
@@ -81,8 +78,7 @@
                     <a class="collapse-item" asp-controller="auth" asp-action="Register">@localizer["Registration"]</a>
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">@localizer["Other Pages:"]</h6>
-                    <a class="collapse-item" asp-controller="Home" asp-action="Home">@localizer["Home"]</a>
-                    <a class="collapse-item" asp-controller="Appointment" asp-action="Creat">@localizer["Book An Appointment"]</a>
+                    <a class="collapse-item" asp-controller="Home" asp-action="Index">@localizer["Home"]</a>
                     <a class="collapse-item" asp-controller="Appointment" asp-action="DailyAppointment">@localizer["DailyAppointment"]</a>
                     <a class="collapse-item" asp-controller="Doctor" asp-action="AboutMe">@localizer["About"]</a>
                 </div>
@@ -107,18 +103,39 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">@localizer["DashBoardScreens:"]</h6>
-                    <a class="collapse-item" asp-controller="DashBoard" asp-action="DailyAppointment">@localizer["DailyAppointment"]</a>
+                    <a class="collapse-item" asp-controller="Doctor" asp-action="Create">@localizer["Add Doctor"]</a>
+                    <a class="collapse-item" asp-controller="Doctor" asp-action="AddNurse">@localizer["Add Nurse"]</a>
+                    <a class="collapse-item" asp-controller="Doctor" asp-action="UpdateWorkingDays">@localizer["Edit_oppning_days"]</a>
                     <a class="collapse-item" asp-controller="DashBoard" asp-action="Index">@localizer["Charts"]</a>
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">@localizer["Other Pages:"]</h6>
-                    <a class="collapse-item" asp-controller="Prescription" asp-action="Creat">@localizer["CreatPrescription"]</a>
                     <a class="collapse-item" asp-controller="auth" asp-action="Register">@localizer["AddPatient"]</a>
-                    <a class="collapse-item" asp-controller="Doctor" asp-action="Edit_oppning_days">@localizer["Edit_oppning_days"]</a>
                     <a class="collapse-item" asp-controller="Doctor" asp-action="profile">@localizer["Home page"]</a>
                 </div>
             </div>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="DashBoard" asp-action="DailyAppointment" id = "dis4">
+                <i class="fas fa-fw fa-table"></i>
+                <span>@localizer["DailyAppointment"]</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="DashBoard" asp-action="CreateAppointment" id = "dis4">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>@localizer["Create Appointment for Patient"]</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="DashBoard" asp-action="ShowAllPatients" id = "dis4">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>@localizer["ShowAllPatients"]</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="DashBoard" asp-action="ShowAllStaf" id = "dis4">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>@localizer["ShowAllStaf"]</span></a>
+        </li>
+      
         <!-- Nav Item - Charts -->
         <li class="nav-item">
             <a class="nav-link" asp-controller="DashBoard" asp-action="Index" id = "dis4">
@@ -198,7 +215,7 @@
                             </form>
                         </div>
                     </li>
-                    <li class="nav-item"><partial name="_SelectLanguagePartial" /></li>
+                    <li class="nav-item" style="padding-top: 20px"><partial name="_SelectLanguagePartial" /></li>
 
                     <!-- Nav Item - Alerts -->
                     <li class="nav-item dropdown no-arrow mx-1">
@@ -440,37 +457,7 @@
             });
         }
     });
-    function confirmCancel(appointmentId) {
-        Swal.fire({
-            title: '@localizer["Are you sure?"]',  // Localized title
-            text: '@localizer["Do you really want to cancel the appointment?"]',  // Localized text
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: '@localizer["Yes, cancel it!"]',
-            cancelButtonText: '@localizer["No, keep it"]'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = '/Appointment/Cancele?appointmentId=' + appointmentId;
-            }
-        });
-    }
-
-    function confirmDelete(appointmentId) {
-        Swal.fire({
-            title: '@localizer["Are you sure?"]',
-            text: '@localizer["Do you really want to delete the appointment?"]',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: '@localizer["Yes, delete it!"]',
-            cancelButtonText: '@localizer["No, keep it"]'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = '/Appointment/Delete?appointmentId=' + appointmentId;
-            }
-        });
-    }
-
-
+    
 </script>
 </body>
 

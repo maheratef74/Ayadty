@@ -29,7 +29,7 @@ Layout = "~/Views/Shared/_AdminLayout.cshtml";
 						<tr>
 							<th><span>@localizer["Name"]</span></th>
 							<th><span>@localizer["age"]</span></th>
-							<th class="text-center"><span>@localizer["Number Of Completed Appointment"]</span></th>
+							<th class="text-center"><span>@localizer["Job"]</span></th>
 							<th><span>@localizer["Mobile"]</span></th>
 							<th>&nbsp;</th>
 						</tr>
@@ -54,20 +54,27 @@ Layout = "~/Views/Shared/_AdminLayout.cshtml";
 								}
 							</td>
 							<td class="text-center">
-								<span class="label label-default">Inactive</span>
+								@if (Admin.IsDoctor)
+								{
+									<span class="label label-default">@localizer["Doctor"]</span>
+								}
+								else
+								{
+									<span class="label label-default">@localizer["Nurse"]</span>
+								}
+
 							</td>
-							<td>
-								<a href="mailto:@Admin.Phone">@Admin.Phone</a>
+							<td class="text-center">
+								<a href="@($"https://wa.me/20{Admin.Phone.TrimStart('0')}")" target="_blank">@Admin.Phone</a>
 							</td>
 							<td style="width: 20%;">
-								
-								<a 	 href="@Url.Action("Update", "Patient", new { patientId = Admin.Id })">
+								<a 	 href="@Url.Action("Update", "Doctor", new { doctorId = Admin.Id })">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                             </span>
 								</a>
-								<a href="#" class="table-link danger">
+								<a  class="table-link danger" onclick="confirmDelete('@Admin.Id')">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
@@ -103,6 +110,21 @@ Layout = "~/Views/Shared/_AdminLayout.cshtml";
 		</div>
 	</div>
 </div>
-
+<script>
+	function confirmDelete(doctorId) {
+		Swal.fire({
+			title: '@localizer["Are you sure?"]',
+			text: '@localizer[  "Do you really want to delete the admin"]',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonText: '@localizer["Yes, delete it!"]',
+			cancelButtonText: '@localizer["No, keep it"]'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				window.location.href = '/Doctor/Delete?doctorId=' + doctorId;
+			}
+		});
+	}
+</script>
 </body>
 </html>

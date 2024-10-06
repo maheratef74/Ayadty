@@ -26,7 +26,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/PatientPrescription.css" />
     <link rel="stylesheet" href="~/css/prescription.css" />
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
@@ -90,11 +89,8 @@
                     </div>
                 </div>
             }
-
         </div>
     </div>
-
-
     <!-- General Notes Section -->
     <div class="row notes-box">
         <div class="col-md-12">
@@ -105,9 +101,12 @@
     <!-- Action Buttons -->
     <div class="row">
         <div class="col-md-12 text-center">
-            <a href="@Url.Action("Update", "Prescription", new { PrescriptionId = Model.PrescriptionId })" class="btn btn-primary">
-                @localizer["Edit"]
-            </a>
+            @if (User.IsInRole("Doctor"))
+            {
+                <a href="@Url.Action("Update", "Prescription", new { PrescriptionId = Model.PrescriptionId })" class="btn btn-primary">
+                    @localizer["Edit"]
+                </a>
+            }
             <button type="button" class="btn btn-success" onclick="window.print()">@localizer["Print"]</button>
         </div>
     </div>

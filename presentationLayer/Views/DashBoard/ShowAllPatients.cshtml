@@ -37,14 +37,14 @@ Layout = "~/Views/Shared/_AdminLayout.cshtml";
 						<tbody>
 						@foreach (var patient in Model.Items)
 						{
-						<tr class="text-center align-items-center" dir="ltr">
-							<td class="user-cell">
+						<tr class="align-items-center" dir="ltr">
+							<td class="user-cell" style="text-align: right !important;">
 								<img class="profile-photo" src="@Url.Content("~/img/" + patient.ProfilePhoto)" alt="">
 								<a class="user-link text-center" target="__blank"
 								   href="@Url.Action("Profile", "Patient", new { patientId = patient.Id })"
 								   onclick="event.stopPropagation();">@patient.FullName</a>
 							</td>	
-							<td>
+							<td class="text-center">
 								@if (patient.DateOfBirth != null)
 								{
 									var age = DateTime.Today.Year - patient.DateOfBirth.Year;
@@ -53,12 +53,13 @@ Layout = "~/Views/Shared/_AdminLayout.cshtml";
 								}
 							</td>
 							<td class="text-center">
-								<span class="label label-default">Inactive</span>
+								<span class="label label-default">@patient.CompletedAppointments</span>
 							</td>
-							<td>
-								<a href="mailto:@patient.Phone">@patient.Phone</a>
+							<td class="text-center">
+								<a href="@($"https://wa.me/20{patient.Phone.TrimStart('0')}")" target="_blank">@patient.Phone</a>
 							</td>
-							<td style="width: 20%;">
+
+							<td style="width: 20%;"  class="text-center">
 								
 								<a 	 href="@Url.Action("Update", "Patient", new { patientId = patient.Id })">
                                             <span class="fa-stack">
@@ -66,8 +67,9 @@ Layout = "~/Views/Shared/_AdminLayout.cshtml";
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                             </span>
 								</a>
-								<a href="#" class="table-link danger">
-                                            <span class="fa-stack">
+								<a  class="table-link danger" onclick="confirmDelete('@patient.Id')">
+									
+									<span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
                                             </span>
@@ -102,6 +104,40 @@ Layout = "~/Views/Shared/_AdminLayout.cshtml";
 		</div>
 	</div>
 </div>
+<script>
+	$(document).ready(function () {
+		var successMessage = '@Html.Raw(TempData["SuccessMessage"] ?? string.Empty)';
+		if (successMessage.length > 0) {
+			Swal.fire({
+				icon: 'success',
+				title: '@localizer["Success"]',
+				text: successMessage
+			});
+		}
 
+		var errorMessage = '@Html.Raw(TempData["ErrorMessage"] ?? string.Empty)';
+		if (errorMessage.length > 0) {
+			Swal.fire({
+				icon: 'error',
+				title: '@localizer["Oops..."]',
+				text: errorMessage
+			});
+		}
+	});
+	function confirmDelete(patientId) {
+		Swal.fire({
+			title: '@localizer["Are you sure?"]',
+			text: '@localizer[  "Do you really want to delete the patient?"]',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonText: '@localizer["Yes, delete it!"]',
+			cancelButtonText: '@localizer["No, keep it"]'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				window.location.href = '/Patient/Delete?patientId=' + patientId;
+			}
+		});
+	}
+</script>
 </body>
 </html>

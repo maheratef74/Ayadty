@@ -190,7 +190,7 @@
   "Plastic_Surgery_Price": "$199",
 
   "Teeth_Whitening_Price": "$299",
-
+ 
   "Heart_Surgery_Price": "$399",
   "Per_Visit": "كل زيارة",
   "Service_Item_1": "لوريم إيبسوم دولور سيت أميت",
@@ -200,7 +200,7 @@
   "Service_Item_5": "بيلينتسكي إيغيت نيب",
   "Book_Now": "احجز الآن",
 
-
+  
 
 
   "Log In": "تسجيل الدخول",
@@ -244,19 +244,19 @@
   "saturday": "السبت",
   "Sunday": "الأحد",
 
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
   "Register": "تسجيل",
   "Enter your number": "ادخل رقم هاتفك",
 
 
-
+  
   "User": "مستخدم",
 
   "John": "جون",
@@ -299,7 +299,7 @@
   "12:18:09": "12:18:09",
   "pending": "معلق",
   "+201021587031": "+201021587031",
-
+ 
   "2": "2",
   "11:48:05": "11:48:05",
   "Active": "نشط",
@@ -321,10 +321,10 @@
   "Admin": "مشرف",
   "Experence": "تجربة",
   "Y": "س",
-
+ 
   "Changes": "تغييرات",
 
-
+  
   "Full Stack Developer": "مطور متكامل",
   "Bay Area, San Francisco, CA": "منطقة الخليج، سان فرانسيسكو، كاليفورنيا",
 
@@ -343,25 +343,25 @@
   "Full name 1": "الاسم الكامل 1",
   "Full name 2": "الاسم الكامل 2",
   "Full name 3": "الاسم الكامل 3",
-
+  
   "John Doe": "جون دو",
-
+ 
   "loction": "موقع",
   "Cairo-Egypt": "القاهرة-مصر",
 
   "Save Changes": "حفظ التغييرات",
 
-
+  
   "Date of birth": "تاريخ الميلاد",
   "1-1-2000": "1-1-2000",
+  
 
-
-
+  
   "of": "من",
   "birth": "ميلاد",
 
   "Male/Female": "ذكر/أنثى",
-
+  
   "ORDER": "الطلب",
   "DATE": "التاريخ",
   "TIME": "الوقت",
@@ -374,11 +374,11 @@
 
 
   "Add patient": "اضف مريض",
-
+ 
 
   "Edit Patient": "تعديل مريض",
-
-
+  
+ 
   "Choose Status": "اختر الحالة",
   "button": "حفظ التغييرات",
 
@@ -401,12 +401,12 @@
   "CreatAppointment": "احجز موعد",
   "We will be confirm by an Text Message": "سوف نقوم بارسال رساله نصيه علي رقم الموبيل المسجل به لتاكيد حجزك",
 
-
+  
   "Change Photo": "تغير الصوره",
   "new password": "كلمه السر الجديده",
   "Confirm new password": " تاكيد كلمه السر الجديده",
 
-
+  
   "Patient Profile": "صفحتي الشخصيه",
   "CreatAppointment": "احجز موعد",
   "DashBoard": "لوحه التحكم",
@@ -461,7 +461,7 @@
 
 
 
-  "AppointmentStatus": "حاله الحجز",
+  "AppointmentStatus" : "حاله الحجز",
   "PatientStatus": "مكان المريض",
 
   "Scheduled": "تم الحجز",
@@ -572,12 +572,22 @@
   "Dr.Ahmed Gafer": "د.أحمد غفر",
   "Department :Nose and Ear": "قسم انف و اذن",
   "Department :Teaching": "قسم تدريس ",
-  "Department :Bones": "قسم عظام"
+  "Department :Bones": "قسم عظام",
 
 
   "Working Days updated successfully": "تم تعديل ايام العمل بنجاح",
   "Number Of Completed Appointment": "عدد الكشوفات المكتمله",
   "Add Nurse": "اضافه مساعد دكتور",
-  "Nurse Added successfully": "تم اضافه مساعد للدكتور بنجاح"
+  "Nurse Added successfully": "تم اضافه مساعد للدكتور بنجاح",
 
+
+  "ShowAllPatients" : "عرض جميع المرضي",
+  "ShowAllStaf" : "الاطباء و المساعدين",
+
+  "Remove Day": "حذف اليوم",
+  "Do you really want to delete the patient?": "هل بالفعل تريد حذف هذا المريض",
+  "Nurse": "مساعد دكتور",
+  "Deleted successfully.": "تم الحذف بنجاح",
+  "Job": "الوظيفه",
+  "Do you really want to delete the admin": "هل بالفعل تريد حذف هذا الموظف"
 }

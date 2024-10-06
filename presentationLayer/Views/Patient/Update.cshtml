@@ -22,7 +22,10 @@
         Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
     }
 }
-<!DOCTYPE html>
+@{
+var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
+}
+
 <head>
     <title>@localizer["Update Patient"]</title>
     <link rel="stylesheet" href="~/css/PatientUpdate.css">
@@ -39,7 +42,7 @@
     <input type="hidden" asp-for="PatientId" />
     <input type="hidden" asp-for="ProfilePhoto"/>
     
-    <div class="container">
+    <div class="container rtl">
         <div class="main-body">
             <div class="row">
                 <div class="col-lg-4">
@@ -57,6 +60,7 @@
 
                                     <!-- Hidden file input -->
                                     <input asp-for="FormFilePhoto" type="file" id="photoInput" accept="image/*" style="display:none" onchange="previewPhoto(event)">
+
                                     <span asp-validation-for="FormFilePhoto" class="text-danger"></span>
                                 </div>
                             </div>
@@ -189,19 +193,27 @@
 
 
 <script>
-    function previewPhoto(event) {
-        const photo = document.getElementById('profilePhoto');
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                photo.src = e.target.result;
+        document.addEventListener("DOMContentLoaded", function() {
+        function previewPhoto(event) {
+            alert("Entering previewPhoto function");
+            const photo = document.getElementById('profilePhoto');
+            alert("hiiiiii");
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    photo.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
             }
-            reader.readAsDataURL(file);
         }
-    }
+        const fileInput = document.getElementById('photoInput');
+        fileInput.addEventListener('change', previewPhoto);
+    });
 
-    const dateInput = document.getElementById('datepicker');
+
+
+const dateInput = document.getElementById('datepicker');
     dateInput.addEventListener('focus', function() {
         if (!this.value) {
             this.value = '2002-07-20'; // Default value when field is focused

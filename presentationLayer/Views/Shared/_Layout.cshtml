@@ -8,8 +8,9 @@
 var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
 var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 }
+
 <!doctype html>
-<html class="no-js" lang="ar" dir = "@(isRTL ? "RTL" : "LTR")" >
+<html class="no-js" lang="ar" dir="@(isRTL ? "rtl" : "ltr")" >
 <head>
 
     <<link rel="stylesheet" href="~/lib/sweetalert2/dist/sweetalert2.min.css">
@@ -54,6 +55,7 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
     <link rel="stylesheet" href="~/css/animate.min.css">
     <!-- Magnific Popup CSS -->
     <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <<link rel="stylesheet" href="~/lib/sweetalert2/dist/sweetalert2.min.css">
 
     <!-- Medipro CSS -->
     <link rel="stylesheet" href="~/css/normalize.css">
@@ -101,11 +103,27 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             <div class="inner">
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-12">
-                        <!-- Start Logo -->
-                        @*<div class="logo">
-                            <a href="index.html"><img src="img/logo.png" alt="#"></a>
-                        </div>*@
-                        <!-- End Logo -->
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                             aria-labelledby="userDropdown">
+                            <a class="dropdown-item" asp-controller="Doctor" asp-action="profile">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                @localizer["Profile"]
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Settings
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Activity Log
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item"  asp-controller="auth" asp-action="Login" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                @localizer["Logout"]
+                            </a>
+                        </div>
                         <!-- Mobile Nav -->
                         <div class="mobile-nav"></div>
                         <!-- End Mobile Nav -->
@@ -213,9 +231,13 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                     <div class="single-footer">
                         <h2>@localizer["Open Hours"]</h2>
                         <ul class="time-sidual">
-                            <li class="day">@localizer["Monday - Friday"] <span>8.00-20.00</span></li>
-                            <li class="day">@localizer["Saturday"] <span>9.00-18.30</span></li>
-                            <li class="day">@localizer["Monday - Thusday"] <span>9.00-15.00</span></li>
+                            @*@if (ViewBag.WorkingDaysVMS != null)
+                            {
+                                foreach (var day in ViewBag.WorkingDaysVMS)
+                                {
+                                    <li> @day.</li>
+                                }
+                            }*@
                         </ul>
                     </div>
                 </div>
@@ -325,9 +347,11 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             }
         });
     }
-    
+     
 
 </script>
+<!-- Custom scripts for all pages-->
+<script src="~/js/sb-admin-2.min.js"></script>
 <!-- SweetAlert2 CSS (Notifaction) -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>

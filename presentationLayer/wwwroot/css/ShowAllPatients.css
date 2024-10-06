@@ -225,7 +225,8 @@ body{margin-top:20px;}
 }
 
 html[dir="rtl"] .profile-photo {
-    margin-left: 10px;
+    margin-left: 10px;  /* Adjust margin for RTL */
     margin-right: 0;
-    order: 1; /* Move the image to the right of the text in RTL */
+    order: 1; /* Move image to the right of the text */
 }
+

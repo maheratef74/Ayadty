@@ -8,5 +8,6 @@ public interface IPatientService
     Task<PatientDetailsDto> GetPatientByPhoneNumber(string phoneNumber);
     Task UpdatePatient(UpdatePatientDto updatePatientDto);
     Task<List<PatientDetailsDto>> GetPatientsByName(string searchTerm);
+    Task DeletePatient(string patientId);
     Task<List<PatientDetailsDto>> GetAllPatients();
 }

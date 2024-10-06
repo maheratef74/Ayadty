@@ -61,6 +61,14 @@ public class DoctorRepository : IDoctorRepository
         return new PaginatedList<Doctor>(doctors, totalRecords, pageNumber, pageSize);
     }
 
+    public async Task Delete(string doctorId)
+    {
+        var doctor = await _appDbContext.Users.FirstOrDefaultAsync(p => p.Id == doctorId); 
+        if (doctor is not null)
+        { 
+            _appDbContext.Users.Remove(doctor);
+        }
+    }
     public async Task SaveChange()
     {
         await _appDbContext.SaveChangesAsync();

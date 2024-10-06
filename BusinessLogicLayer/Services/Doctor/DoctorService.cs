@@ -29,6 +29,12 @@ public class DoctorService : IDoctorService
         }
     }
 
+    public async Task DeleteDoctor(string doctorId)
+    {
+        await _doctorRepository.Delete(doctorId);
+        await _doctorRepository.SaveChange();
+    }
+
     public Task UpdateDoctor(string doctorId)
     {
         throw new NotImplementedException();

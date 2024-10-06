@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241006112047_add_coulm_Completed_appointments_to_patient")]
+    partial class add_coulm_Completed_appointments_to_patient
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -404,9 +407,6 @@ namespace DataAccessLayer.Migrations
                     b.HasBaseType("DataAccessLayer.Entities.ApplicationUser");
 
                     b.Property<bool>("IsAvalibleToAppoinment")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDoctor")
                         .HasColumnType("bit");
 
                     b.Property<decimal?>("Price")

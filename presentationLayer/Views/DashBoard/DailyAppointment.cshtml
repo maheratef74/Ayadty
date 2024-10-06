@@ -91,8 +91,8 @@
                                     "status-default")">
                                         @localizer[appointment.PatientProgress.ToString()]
                                     </td>
-                                    <td >
-                                        <a href="#">@appointment.PatientContact</a>
+                                    <td class="text-center">
+                                        <a href="@($"https://wa.me/20{appointment.PatientContact.TrimStart('0')}")" onclick="event.stopPropagation();" target="_blank">@appointment.PatientContact</a>
                                     </td>
                                 </tr>
                             }

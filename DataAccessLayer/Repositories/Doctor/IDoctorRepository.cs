@@ -11,7 +11,7 @@ public interface IDoctorRepository
     Task Update(Doctor doctor);
 
     Task<PaginatedList<Doctor>> GetAllStaf(int pageNumber, int pageSize);
-
+    Task Delete(string doctorId);
     Task SaveChange();
 
     

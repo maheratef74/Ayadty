@@ -12,5 +12,6 @@ public interface IPatientRepository
     Task<List<Patient>> GetPatientsByName(string searchTerm);
     Task<List<Patient>> GetAllPatients();
     Task<PaginatedList<Patient>> GetAllPatients(int pageNumber, int pageSize);
+    Task Delete(string patientId);
     Task SaveChanges();
 }

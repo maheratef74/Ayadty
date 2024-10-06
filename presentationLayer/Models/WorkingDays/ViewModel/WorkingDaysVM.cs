@@ -11,6 +11,11 @@ public class WorkingDaysVM
     public TimeSpan EndTime { get; set; }
 }
 
+public class workingDaysModel
+{
+    public List<WorkingDaysVM> WorkingDaysVms { get; set; }
+}
+
 public static class WorkingDayesExtensionmethold
 {
     public static WorkingDaysVM ToWorkingDayVm(this WorkingDayDto workingDayDto)

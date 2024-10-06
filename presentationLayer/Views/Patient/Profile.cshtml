@@ -10,27 +10,24 @@
 @{
 if (User.IsInRole("Doctor") || User.IsInRole("Nurse"))
 {
-Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 else if (User.IsInRole("Patient"))
 {
-Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 else
 {
-Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
 }
-
+var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
 var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 }
-<!DOCTYPE html>
+<html dir="@(isRTL ? "rtl" : "ltr")" lang="ar">
 <head>
     <title>Profile Page</title>
     <link rel="stylesheet" href="~/css/PatientProfile.css">
-    <link rel="stylesheet" href="~/css/ClinicProfile.css"> 
-    <link rel="stylesheet" href="~/css/dashBoard.css">
     <!-- Slicknav -->
-    <link rel="stylesheet" href="~/css/slicknav.min.css">
     <style>
         .status-canceled {
             color: red;
@@ -45,23 +42,22 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 </head>
 <body>
 
-<div class="container">
+<div class="container rtl">
     <div class="main-body">
-        <!-- /Breadcrumb -->
+        <!-- Breadcrumb -->
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
-                <div class="card">
-                    <div class="card-body">
+                <div class="card rtl">
+                    <div class="card-body ">
                         <div class="d-flex flex-column align-items-center text-center">
                             <img src="@Url.Content("~/img/"+Model.PatientVm.ProfilePhoto)" alt="ProfilePhoto" class="rounded-circle" width="150">
-                                
                             <div class="mt-3">
                                 <h4>@Model.PatientVm.Name</h4>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card mt-3">
+                <div class="card mt-3 rtl">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                             <h6 class="mb-0">
@@ -80,7 +76,7 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 </div>
 
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8" >
                 <div class="card mb-3">
                     <div class="card-body">
                         <div class="row">
@@ -169,7 +165,7 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 </div>
 
 <hr>
-<div class="container bootstrap snippets bootdey">
+<div class="container bootstrap snippets bootdey ">
     <div class="row">
         <div class="col-lg-12">
             <div class="main-box no-header clearfix">
@@ -223,3 +219,4 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 <!-- For Lyout -->
 </body>
 
+</html>
