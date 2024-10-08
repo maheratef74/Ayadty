@@ -20,14 +20,12 @@ else
 {
     Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
 }
-var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
 var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 }
-<html dir="@(isRTL ? "rtl" : "ltr")" lang="ar">
 <head>
     <title>Profile Page</title>
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="~/css/PatientProfile.css">
-    <!-- Slicknav -->
     <style>
         .status-canceled {
             color: red;
@@ -42,7 +40,7 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 </head>
 <body>
 
-<div class="container rtl">
+<div class="container">
     <div class="main-body">
         <!-- Breadcrumb -->
         <div class="row gutters-sm">
@@ -57,7 +55,7 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                         </div>
                     </div>
                 </div>
-                <div class="card mt-3 rtl">
+                <div class="card mt-3">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                             <h6 class="mb-0">
@@ -76,7 +74,7 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 </div>
 
             </div>
-            <div class="col-md-8" >
+            <div class="col-md-8 rtl text-center align-items-center" >
                 <div class="card mb-3">
                     <div class="card-body">
                         <div class="row">
@@ -149,17 +147,18 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                             </div>
                         </div>
                         <hr>
-                        <div class="row">
-                                <div class="col-sm-12">
-                                    <a class="btn btn-primary" href="@Url.Action("Update", "Patient", new { PatientId = Model.PatientVm.PatientId })">
-                                        @localizer["Edit"]
-                                    </a>
-                                </div>
+                        <div class="row ltr">
+                            <div class="col-sm-12">
+                                <a class="btn btn-primary" href="@Url.Action("Update", "Patient", new { PatientId = Model.PatientVm.PatientId })">
+                                    @localizer["Edit"]
+                                </a>
+                            </div>
 
                         </div>
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
 </div>
@@ -219,4 +218,3 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 <!-- For Lyout -->
 </body>
 
-</html>

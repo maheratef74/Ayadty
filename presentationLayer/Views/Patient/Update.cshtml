@@ -22,18 +22,11 @@
         Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
     }
 }
-@{
-var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
-}
-
 <head>
     <title>@localizer["Update Patient"]</title>
-    <link rel="stylesheet" href="~/css/PatientUpdate.css">
     <!-- Keep only the latest Font Awesome version -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
-
-<body>
 
 
 <form asp-controller="Patient" asp-action="Update" method="post" enctype="multipart/form-data">
@@ -42,7 +35,7 @@ var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
     <input type="hidden" asp-for="PatientId" />
     <input type="hidden" asp-for="ProfilePhoto"/>
     
-    <div class="container rtl">
+    <div class="container">
         <div class="main-body">
             <div class="row">
                 <div class="col-lg-4">
@@ -70,7 +63,7 @@ var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-8  rtl text-center align-items-center">
                     <div class="card">
                         <div class="card-body">
                             <div class="row mb-3">
@@ -176,7 +169,6 @@ var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
                                     </div>
                                 </div>
                             </div>
-                            
                             <div class="row">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-9 text-secondary">
@@ -247,4 +239,4 @@ const dateInput = document.getElementById('datepicker');
 <!-- For Lyout -->
 <!-- jquery Min JS -->
 <script src="~/js/jquery.min.js"></script>
-</body>
+

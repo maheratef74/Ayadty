@@ -81,22 +81,10 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 <!-- End Preloader -->
 <!-- Header Area -->
 <header class="header" >
-    <!-- Topbar -->
-    <div class="topbar">
-
-        @*<li class="d-inline-block"><a asp-controller="Doctor" asp-action="profile">@localizer["Doctor"]</a></li>
-                    <li class="d-inline-block"><a asp-controller="Clinic" asp-action="ContactUs">@localizer["Contact"]</a></li>
-                    $1$<li class="d-inline-block"><a href="">@localizer["FAQ"]</a></li>#1#*@
         <li class="d-inline-block">
             <a href="#">@await Html.PartialAsync("_SelectLanguagePartial")</a>
         </li>
-
-        <!-- End Contact -->
-    </div>
-
-
-    <!-- End Topbar -->
-
+        <hr>
     <!-- Header Inner -->
     <div class="header-inner">
         <div class="container">
@@ -136,10 +124,10 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                                     <li class="nav-item">
                                         <a asp-controller="Home" asp-action="Index">@localizer["Home"]</a>
                                     </li>
-                                    <li class="nav-item"><a asp-controller="Patient" asp-action="Profile" asp-route-patientId="@userId">@localizer["Patient Profile"]</a></li>
+                                    <li class="nav-item"> <a asp-controller="Patient" asp-action="Profile" asp-route-patientId="@userId">@localizer["Patient Profile"]</a></li>
                                     <li class="nav-item"><a asp-controller="Doctor" asp-action="AboutMe">@localizer["Doctor"]</a></li>
                                     <li class="nav-item">
-                                        <a href="#">@localizer["Pages"] <i class="icofont-rounded-down"></i></a>
+                                        <a href="#"> @localizer["Pages"] <i class="icofont-rounded-down"></i></a>
                                         <ul class="dropdown">
                                             <li><a asp-controller="Patient" asp-action="Profile" asp-route-patientId="@userId" >@localizer["Patient Profile"]</a></li>
                                             <li><a asp-controller="Appointment" asp-action="DailyAppointment">@localizer["DailyAppointment"]</a></li>
@@ -176,7 +164,7 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 </div>
 
 <!-- Footer Area -->
-<footer class="footer">
+<footer class="footer  rtl text-center align-items-center">
     <!-- Footer Top -->
     <div class="footer-top centered-content">
         <div class="container">
