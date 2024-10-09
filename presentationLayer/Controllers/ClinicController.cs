@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using BusinessLogicLayer.Services.Clinic;
 using BusinessLogicLayer.Services.Patient;
@@ -10,15 +10,20 @@ using BusinessLogicLayer.Services.Appointment;
 using presentationLayer.Models.Appointment.ViewModel;
 using presentationLayer.Models.Patient.ViewModel;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.EntityFrameworkCore;
+using presentationLayer.Models.Clinic.ActionRequst;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace presentationLayer.Controllers
 {
     public class ClinicController : Controller
     {
-
+        private readonly AppDbContext _context;
         private readonly IClinicService _clinicService;
         private readonly IStringLocalizer<authController> _localizer;
 
+
+        
         public ClinicController(IClinicService clinicService, IStringLocalizer<authController> localizer)
         {
             _clinicService = clinicService;
@@ -65,7 +70,35 @@ namespace presentationLayer.Controllers
             var clinicDto = updatedClinic.ToUpdateClinicDto();
             await _clinicService.UpdateClinic(clinicDto);
             return RedirectToAction("Profile", "clinic",
-                new { clinicID = "1"});
+                new { clinicID = "1" });
         }
+
+
+
+
+
+        [HttpPost("save-photo")]
+        public async Task<IActionResult> SavePhotoPath(IFormFile photo, string clinicId) // تغيير النوع إلى string
+        {
+            try
+            {
+                var photoPath = await _clinicService.SavePhotoPathAsync(photo, "1");
+                return  NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+      
+
+
     }
+
+
+
+
+
+
+    
 }
