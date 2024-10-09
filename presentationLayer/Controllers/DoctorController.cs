@@ -13,11 +13,16 @@ using Microsoft.Extensions.Localization;
 using presentationLayer.Models.Appointment.ViewModel;
 using presentationLayer.Models.Auth.ActionRequest;
 using presentationLayer.Models.Doctor.ActionRequest;
+
+using System.Security.Claims;
+
 using presentationLayer.Models.WorkingDays.ViewModel;
+
 
 namespace presentationLayer.Controllers
 {
-   // [Authorize(Roles = "Doctor")]
+
+    //[Authorize(Roles = "Doctor")]
 
     public class DoctorController : Controller
     {
@@ -50,8 +55,11 @@ namespace presentationLayer.Controllers
                 var dayVM = dayDto.ToWorkingDayVm();
                 WorkingDaysVMS.Add(dayVM);
             }
+
+            ViewBag.WorkingDaysVMS= WorkingDaysVMS;
             return View(WorkingDaysVMS);
         }
+  
 
         [HttpPost]
         [Authorize(Roles = "Doctor, Nurse")]
@@ -68,15 +76,20 @@ namespace presentationLayer.Controllers
             TempData["successMessage"] = _localizer["Working Days updated successfully"].Value;
             return RedirectToAction("UpdateWorkingDays", "Doctor");
         }
-
-
-        [HttpGet]
+       
         [Authorize(Roles = "Doctor, Nurse , Patient" )]
-        public async Task<IActionResult> Profile(string DoctorId)
+        public async Task<IActionResult> Profile(string doctorId)
         {
+            var DoctorId= User.FindFirstValue(ClaimTypes.NameIdentifier);
+            // defult doctor to apear for user if need
+            if (User.IsInRole(Roles.Patient))
+            {
+                DoctorId = "3ab80e7d-95b1-4690-b97b-cebd8d4ed0bd";
+            }
             // check if ID is not current user
-            
-            return View();
+            var DoctorDto = await _doctorService.GetDoctorById(DoctorId);//return dto 
+            var DoctorVM = DoctorDto.ToDoctorVM();
+            return View(DoctorVM);
         }
         [HttpGet]
         public async Task<IActionResult> Create()
@@ -89,6 +102,7 @@ namespace presentationLayer.Controllers
             if (ModelState.IsValid)
             {
                 var doctor = doctorAr.ToDoctor();
+                doctor.IsDoctor = true;
                 IdentityResult result = await _userManager
                     .CreateAsync(doctor, doctorAr.Password);
                 if (result.Succeeded) 
@@ -109,12 +123,32 @@ namespace presentationLayer.Controllers
             }
             return View(doctorAr);
         }
-        [HttpGet]
-        public IActionResult Update(string doctorId)
-        { 
-              return View();
-        }
         
+        [HttpGet]
+        public async Task<IActionResult> Update(string doctorId)
+        {
+            var doctorDto = await _doctorService.GetDoctorById(doctorId);
+            if (doctorDto == null)
+            {
+                return NotFound();
+            }
+            var updateDoctorVM = doctorDto.ToUpdateDoctorVM();
+            return View(updateDoctorVM);
+        }
+
+        
+        [HttpPost]
+        public async Task<IActionResult> Update(UpdateDoctorVM updatedDoctor)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(updatedDoctor);
+            }
+            
+            var doctorDto = updatedDoctor.ToUpdateDoctorDto();
+            await _doctorService.UpdateDoctor(doctorDto);
+            return RedirectToAction("ShowAllStaf", "DashBoard");
+        }
         [Authorize(Roles = "Doctor, Nurse , Patient" )]
         public IActionResult AboutMe()
         { 
@@ -152,6 +186,13 @@ namespace presentationLayer.Controllers
                 }
             }
             return View(NurseAR);
+        }
+        [Authorize(Roles = Roles.Doctor)]
+        public async Task<IActionResult> Delete(string doctorId)
+        {
+            await _doctorService.DeleteDoctor(doctorId);
+            TempData["SuccessMessage"] = _localizer["Deleted successfully."].Value;
+            return RedirectToAction("ShowAllStaf", "DashBoard");
         }
     }
 }

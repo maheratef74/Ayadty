@@ -74,6 +74,10 @@ public class AppointmentRepository:IAppointmentRepository
        var appointment = await _appDbContext.Appointments
             .FirstOrDefaultAsync(a => a.AppointmentId == updatedAppointment.AppointmentId);
         var patient = await  _patientRepository.GetById(updatedAppointment.PatientId);
+        if (updatedAppointment.Status == Enums.AppointmentStatus.Completed)
+        {
+            patient.CompletedAppointments++;
+        }
        if (appointment is not null)
         {
             appointment.Status = updatedAppointment.Status;

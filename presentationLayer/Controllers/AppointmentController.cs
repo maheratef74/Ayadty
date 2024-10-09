@@ -33,7 +33,8 @@ public class AppointmentController : Controller
     {
         if (User.IsInRole(Roles.Doctor) || User.IsInRole(Roles.Nurse))
         {
-            return View();
+            var emptyModel = new AppointmentPageVM_AR();
+            return View(emptyModel);
         }
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         var user = await _patientService.GetPatientById(userId);
@@ -141,7 +142,7 @@ public class AppointmentController : Controller
     {
         var oldAppointment = await _appointmentService.GetAppointmentByID(appointmentId);
 
-        if (User.IsInRole(Roles.Patient) && oldAppointment.Status == Enums.AppointmentStatus.Canceled)
+        if (oldAppointment.Status == Enums.AppointmentStatus.Canceled)
         {
             TempData["ErrorMessage"] = _localizer["This appointment is already canceled."].Value;
             return RedirectToAction("Details", "Appointment", new { appointedId = appointmentId });
@@ -170,6 +171,10 @@ public class AppointmentController : Controller
 
         await _appointmentService.DeleteAppointment(appointmentId);
         TempData["SuccessMessage"] = _localizer["Appointment deleted successfully."].Value;
+        if (User.IsInRole(Roles.Doctor))
+        {
+            return RedirectToAction("DailyAppointment", "DashBoard");
+        }
         return RedirectToAction("Profile", "Patient", new { patientId = oldAppointment.PatientId });
     }
 }

@@ -22,15 +22,11 @@
         Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
     }
 }
-<!DOCTYPE html>
 <head>
     <title>@localizer["Update Patient"]</title>
-    <link rel="stylesheet" href="~/css/PatientUpdate.css">
     <!-- Keep only the latest Font Awesome version -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
-
-<body>
 
 
 <form asp-controller="Patient" asp-action="Update" method="post" enctype="multipart/form-data">
@@ -57,6 +53,7 @@
 
                                     <!-- Hidden file input -->
                                     <input asp-for="FormFilePhoto" type="file" id="photoInput" accept="image/*" style="display:none" onchange="previewPhoto(event)">
+
                                     <span asp-validation-for="FormFilePhoto" class="text-danger"></span>
                                 </div>
                             </div>
@@ -66,7 +63,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-8  rtl text-center align-items-center">
                     <div class="card">
                         <div class="card-body">
                             <div class="row mb-3">
@@ -172,7 +169,6 @@
                                     </div>
                                 </div>
                             </div>
-                            
                             <div class="row">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-9 text-secondary">
@@ -185,23 +181,31 @@
             </div>
         </div>
     </div>
-</form>
+</form> 
 
 
 <script>
-    function previewPhoto(event) {
-        const photo = document.getElementById('profilePhoto');
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                photo.src = e.target.result;
+        document.addEventListener("DOMContentLoaded", function() {
+        function previewPhoto(event) {
+            alert("Entering previewPhoto function");
+            const photo = document.getElementById('profilePhoto');
+            alert("hiiiiii");
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    photo.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
             }
-            reader.readAsDataURL(file);
         }
-    }
+        const fileInput = document.getElementById('photoInput');
+        fileInput.addEventListener('change', previewPhoto);
+    });
 
-    const dateInput = document.getElementById('datepicker');
+
+
+const dateInput = document.getElementById('datepicker');
     dateInput.addEventListener('focus', function() {
         if (!this.value) {
             this.value = '2002-07-20'; // Default value when field is focused
@@ -235,4 +239,4 @@
 <!-- For Lyout -->
 <!-- jquery Min JS -->
 <script src="~/js/jquery.min.js"></script>
-</body>
+

@@ -406,6 +406,9 @@ namespace DataAccessLayer.Migrations
                     b.Property<bool>("IsAvalibleToAppoinment")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsDoctor")
+                        .HasColumnType("bit");
+
                     b.Property<decimal?>("Price")
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
@@ -423,6 +426,9 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CompletedAppointments")
+                        .HasColumnType("int");
 
                     b.Property<string>("FacbookProfile")
                         .HasColumnType("nvarchar(max)");

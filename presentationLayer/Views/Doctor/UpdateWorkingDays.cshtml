@@ -29,10 +29,10 @@ Layout = "~/Views/Shared/_AdminLayout.cshtml";
     </div>
 
     <!-- Header Row -->
-    <div class="header-row row font-weight-bold text-center mb-2">
-        <div class="col">@localizer["Day"]</div>
-        <div class="col">@localizer["Start Time"]</div>
-        <div class="col">@localizer["End Time"]</div>
+    <div class="header-row row font-weight-bold text-center">
+         <div class="col px-1">@localizer["Day"]</div>
+        <div class="col px-2">@localizer["Start Time"]</div>
+        <div class="col px-2">@localizer["End Time"]</div>
     </div>
     @{
     var hasData = Model != null && Model.Count > 0;
@@ -50,11 +50,11 @@ Layout = "~/Views/Shared/_AdminLayout.cshtml";
                         {
                         @if (day == Model[i].DayOfWeek)
                         {
-                        <option value="@day" selected>@day</option>
+                        <option value="@day" selected>@localizer[day.ToString()]</option>
                         }
                         else
                         {
-                        <option value="@day">@day</option>
+                        <option value="@day">@localizer[day.ToString()]</option>
                         }
                         }
                         }
@@ -68,7 +68,7 @@ Layout = "~/Views/Shared/_AdminLayout.cshtml";
                 </div>
                 <div class="col text-center">
                     <button type="button" class="btn btn-danger removeWorkingDayBtn" data-id="@i">
-                        @localizer["Remove"]
+                        @localizer["Remove Day"]
                     </button>
                 </div>
             </div>
@@ -82,7 +82,7 @@ Layout = "~/Views/Shared/_AdminLayout.cshtml";
                     <select name="WorkingDaysVMS[0].DayOfWeek" class="form-control">
                         @foreach (DayOfWeek day in Enum.GetValues(typeof(DayOfWeek)))
                         {
-                        <option value="@day">@day</option>
+                        <option value="@day">@localizer[day.ToString()]</option>
                         }
                     </select>
                 </div>
@@ -94,7 +94,7 @@ Layout = "~/Views/Shared/_AdminLayout.cshtml";
                 </div>
                 <div class="col text-center">
                     <button type="button" class="btn btn-danger removeWorkingDayBtn" data-id="0">
-                        @localizer["Remove"]
+                        @localizer["Remove Day"]
                     </button>
                 </div>
             </div>
@@ -119,7 +119,7 @@ Layout = "~/Views/Shared/_AdminLayout.cshtml";
 
 <script>
     var workingDayCount = $("#workingDaysFields .working-day-row").length - 1;
-    var removeText = "@localizer["Remove"]";
+    var removeText = "@localizer["Remove Day"]";
 
     // Add a new row for Working Days
     $("#addWorkingDayBtn").click(function () {
@@ -130,7 +130,7 @@ Layout = "~/Views/Shared/_AdminLayout.cshtml";
                     <select name="WorkingDaysVMS[${workingDayCount}].DayOfWeek" class="form-control">
                         @foreach (DayOfWeek day in Enum.GetValues(typeof(DayOfWeek)))
         {
-        <option value="@day">@day</option>
+        <option value="@day">@localizer[day.ToString()]</option>
         }
                     </select>
                 </div>

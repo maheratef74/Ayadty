@@ -65,7 +65,7 @@ public class PatientRepository : IPatientRepository
     public async Task<PaginatedList<Patient>> GetAllPatients(int pageNumber, int pageSize)
     {
         var totalRecords = await _appDbContext.Users.OfType<Patient>().CountAsync();
-
+        
         var patients = await _appDbContext.Users
             .OfType<Patient>()
             .Skip((pageNumber - 1) * pageSize)
@@ -73,6 +73,15 @@ public class PatientRepository : IPatientRepository
             .ToListAsync();
 
         return new PaginatedList<Patient>(patients, totalRecords, pageNumber, pageSize);
+    }
+
+    public async Task Delete(string patientId)
+    {
+        var patient = await _appDbContext.Users.FirstOrDefaultAsync(p => p.Id == patientId);
+        if (patient is not null)
+        { 
+            _appDbContext.Users.Remove(patient);
+        }
     }
 
     public async Task SaveChanges()

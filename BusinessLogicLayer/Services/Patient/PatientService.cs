@@ -53,6 +53,12 @@ public class PatientService : IPatientService
         return patientsDto;
     }
 
+    public async Task DeletePatient(string patientId)
+    {
+        await _patientRepository.Delete(patientId);
+        await _patientRepository.SaveChanges();
+    }
+
     public async Task<List<PatientDetailsDto>> GetAllPatients()
     {
         var patients = await _patientRepository.GetAllPatients();

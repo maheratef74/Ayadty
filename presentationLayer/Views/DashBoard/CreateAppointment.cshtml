@@ -65,7 +65,7 @@
                 <!-- Appointment Date -->
                 <div class="form-group full-width">
                     <label>@localizer["Appointment Date"]</label>
-                    <input asp-for="Date" type="datetime-local" class="form-control" />
+                    <input asp-for="Date" type="datetime-local" class="form-control" value="@Model.Date.ToString("yyyy-MM-ddTHH:mm")" />
                 </div>
 
                 <!-- Notes -->

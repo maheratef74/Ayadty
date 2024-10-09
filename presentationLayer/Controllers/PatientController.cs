@@ -37,7 +37,6 @@ namespace presentationLayer.Controllers
             // check if ID is not current user or not Nurse or doctor
             var isDoctor = User.IsInRole(Roles.Doctor);
             var isNurse = User.IsInRole(Roles.Nurse);
-
             var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (!isDoctor && !isNurse && currentUserId != patientId)
             {
@@ -129,6 +128,15 @@ namespace presentationLayer.Controllers
 
              return RedirectToAction("Profile", "Patient",
                 new {patientId = updatedPatient.PatientId });
+        }
+
+        
+        [Authorize(Roles = "Nurse , Doctor")]
+        public async Task<IActionResult> Delete(string patientId)
+        {
+            await _patientService.DeletePatient(patientId);
+            TempData["SuccessMessage"] = _localizer["Appointment deleted successfully."].Value;
+            return RedirectToAction("ShowAllPatients", "DashBoard");
         }
     }
 }

@@ -1,3 +1,4 @@
+using DataAccessLayer.Repositories.Patient;
 using DataAccessLayer.Repositories.Treatment;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,10 +8,12 @@ public class PrescriptionRepository:IPrescriptionRepository
 {
     private readonly AppDbContext _appContext;
     private readonly ITreatmentRepository _treatmentRepository;
-    public PrescriptionRepository(AppDbContext appContext, ITreatmentRepository treatmentRepository)
+    private readonly IPatientRepository _patientRepository;
+    public PrescriptionRepository(AppDbContext appContext, ITreatmentRepository treatmentRepository, IPatientRepository patientRepository)
     {
         _appContext = appContext;
         _treatmentRepository = treatmentRepository;
+        _patientRepository = patientRepository;
     }
     public async Task Add(Prescription prescription)
     {
@@ -21,6 +24,10 @@ public class PrescriptionRepository:IPrescriptionRepository
         // change status of appointment and patient Progress
         appointment.Status = Enums.AppointmentStatus.Completed;
         appointment.PatientProgress = Enums.PatientProgress.InClinic;
+        
+        // add completed appointment to patient profile 
+        var patient = await _patientRepository.GetById(appointment.PatientId);
+        patient.CompletedAppointments++;
         
         foreach (var treatment in prescription.Treatments)
         {

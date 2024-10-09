@@ -63,6 +63,7 @@ public class DashBoardController:Controller
         {
             Patients = patientsVM
         };
+        NurseAppointmentVM.Date = DateTime.Now;
         return View(NurseAppointmentVM);
     }
     
