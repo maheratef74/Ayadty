@@ -37,4 +37,22 @@ public class ClinicRepository : IClinicRepository
     {
         await _appDbContext.SaveChangesAsync();
     }
+
+
+
+
+
+
+
+
+    public async Task<CliniC> GetClinicByIdAsync(string id) 
+    {
+        return await _appDbContext.Clinic.FindAsync(id); 
+    }
+
+    public async Task UpdateClinicAsync(CliniC clinic)
+    {
+        _appDbContext.Clinic.Update(clinic);
+        await _appDbContext.SaveChangesAsync();
+    }
 }

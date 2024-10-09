@@ -46,15 +46,7 @@ public class RoleSeeder
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  
     
     
     private readonly RoleManager<IdentityRole> _roleManager;
@@ -69,10 +61,10 @@ public class RoleSeeder
 
         foreach (var roleName in roleNames)
         {
-            if (!await _roleManager.RoleExistsAsync(roleName))
+           /* if (!await _roleManager.RoleExistsAsync(roleName))
             {
                 await _roleManager.CreateAsync(new IdentityRole(roleName));
-            }
+            }*/
         }
     }
     
