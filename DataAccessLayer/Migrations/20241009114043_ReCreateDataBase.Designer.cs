@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241003150238_initit")]
-    partial class initit
+    [Migration("20241009114043_ReCreateDataBase")]
+    partial class ReCreateDataBase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,6 +37,9 @@ namespace DataAccessLayer.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -47,6 +50,9 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -142,13 +148,16 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("Appointments");
                 });
 
-            modelBuilder.Entity("DataAccessLayer.Entities.CliniC", b =>
+            modelBuilder.Entity("DataAccessLayer.Entities.Clinic", b =>
                 {
                     b.Property<string>("ClinicId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsAvalibleToAppoinment")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Location")
                         .IsRequired()
@@ -175,8 +184,15 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("PrescriptionId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("AppointmentId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Diagnosis")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Notes")
                         .HasMaxLength(450)
@@ -193,9 +209,8 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("patientAge")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("patientAge")
+                        .HasColumnType("int");
 
                     b.HasKey("PrescriptionId");
 
@@ -206,8 +221,11 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("DataAccessLayer.Entities.Treatment", b =>
                 {
-                    b.Property<string>("TreatmentId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("TreatmentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TreatmentId"));
 
                     b.Property<string>("Dosage")
                         .HasColumnType("nvarchar(max)");
@@ -391,7 +409,7 @@ namespace DataAccessLayer.Migrations
                 {
                     b.HasBaseType("DataAccessLayer.Entities.ApplicationUser");
 
-                    b.Property<bool>("IsAvalibleToAppoinment")
+                    b.Property<bool>("IsDoctor")
                         .HasColumnType("bit");
 
                     b.Property<decimal?>("Price")
@@ -412,14 +430,11 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("CompletedAppointments")
+                        .HasColumnType("int");
 
                     b.Property<string>("FacbookProfile")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Gender")
-                        .HasColumnType("int");
 
                     b.ToTable("Patients", (string)null);
                 });
@@ -455,7 +470,7 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("DataAccessLayer.Entities.WorkDay", b =>
                 {
-                    b.HasOne("DataAccessLayer.Entities.CliniC", null)
+                    b.HasOne("DataAccessLayer.Entities.Clinic", null)
                         .WithMany("DaysOfWork")
                         .HasForeignKey("ClinicId");
                 });
@@ -529,7 +544,7 @@ namespace DataAccessLayer.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DataAccessLayer.Entities.CliniC", b =>
+            modelBuilder.Entity("DataAccessLayer.Entities.Clinic", b =>
                 {
                     b.Navigation("DaysOfWork");
                 });

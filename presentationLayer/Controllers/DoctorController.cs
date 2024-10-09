@@ -194,6 +194,8 @@ namespace presentationLayer.Controllers
             TempData["SuccessMessage"] = _localizer["Deleted successfully."].Value;
             return RedirectToAction("ShowAllStaf", "DashBoard");
         }
+
+       
     }
 }
 

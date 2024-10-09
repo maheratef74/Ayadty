@@ -145,13 +145,16 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("Appointments");
                 });
 
-            modelBuilder.Entity("DataAccessLayer.Entities.CliniC", b =>
+            modelBuilder.Entity("DataAccessLayer.Entities.Clinic", b =>
                 {
                     b.Property<string>("ClinicId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsAvalibleToAppoinment")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Location")
                         .IsRequired()
@@ -403,9 +406,6 @@ namespace DataAccessLayer.Migrations
                 {
                     b.HasBaseType("DataAccessLayer.Entities.ApplicationUser");
 
-                    b.Property<bool>("IsAvalibleToAppoinment")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("IsDoctor")
                         .HasColumnType("bit");
 
@@ -467,7 +467,7 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("DataAccessLayer.Entities.WorkDay", b =>
                 {
-                    b.HasOne("DataAccessLayer.Entities.CliniC", null)
+                    b.HasOne("DataAccessLayer.Entities.Clinic", null)
                         .WithMany("DaysOfWork")
                         .HasForeignKey("ClinicId");
                 });
@@ -541,7 +541,7 @@ namespace DataAccessLayer.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DataAccessLayer.Entities.CliniC", b =>
+            modelBuilder.Entity("DataAccessLayer.Entities.Clinic", b =>
                 {
                     b.Navigation("DaysOfWork");
                 });

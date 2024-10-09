@@ -576,5 +576,20 @@
   "Nurse":"Nurse",
   "Deleted successfully.": "Deleted successfully.",
   "Job":  "Job",
-  "Do you really want to delete the admin":   "Do you really want to delete the admin"
+  "Do you really want to delete the admin":   "Do you really want to delete the admin",
+
+  "Control Appointment Availability" :  "Control Appointment Availability",
+  "Do you want to stop users from making new appointments in your clinic?" : "Do you want to stop users from making new appointments in your clinic?",
+  "If you stop new appointments, users will not be able to book until you reactivate availability." : "If you stop new appointments, users will not be able to book until you reactivate availability.",
+  "Open Appointment" : "Open Appointment",
+  "Stop New Appointments" :"Stop New Appointments",
+
+  "Do you really want to stop the new appointments?" :  "Do you really want to stop the new appointments?",
+  "Yes, stop it!" : "Yes, stop it!",
+  "Do you really want to open the new appointments?" : "Do you really want to open the new appointments?",
+  "Yes, open it!" : "Yes, open it!",
+  "Control new appointments": "Control new appointments",
+  "The clinic is currently closed for new appointments.": "The clinic is currently closed for new appointments.",
+  "The clinic is currently open for appointments.": "The clinic is currently open for appointments.",
+  "ClinicNameRequired":  "Clinic Name Required"
 }

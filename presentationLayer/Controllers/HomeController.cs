@@ -30,7 +30,7 @@ public class HomeController:Controller
             var dayVM = dayDto.ToWorkingDayVm();
             WorkingDaysVMS.Add(dayVM);
         }
-
+        
         var model = new AppointmentPageVM_AR();
          model.WorkingDaysVms = WorkingDaysVMS;
         if (User.IsInRole(Roles.Doctor) || User.IsInRole(Roles.Nurse))

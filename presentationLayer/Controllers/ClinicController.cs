@@ -7,27 +7,26 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Localization;
 using presentationLayer.Models.Clinic.ViewModel;
 using BusinessLogicLayer.Services.Appointment;
+using BusinessLogicLayer.Services.File;
 using presentationLayer.Models.Appointment.ViewModel;
 using presentationLayer.Models.Patient.ViewModel;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using Microsoft.EntityFrameworkCore;
-using presentationLayer.Models.Clinic.ActionRequst;
-using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace presentationLayer.Controllers
 {
     public class ClinicController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IFileService _fileService;
         private readonly IClinicService _clinicService;
         private readonly IStringLocalizer<authController> _localizer;
 
 
         
-        public ClinicController(IClinicService clinicService, IStringLocalizer<authController> localizer)
+        public ClinicController(IClinicService clinicService, IStringLocalizer<authController> localizer, IFileService fileService)
         {
             _clinicService = clinicService;
             _localizer = localizer;
+            _fileService = fileService;
         }
 
         [HttpGet]
@@ -38,22 +37,18 @@ namespace presentationLayer.Controllers
             var clinicVM = clinicDto.ToClinicVM();
             return View(clinicVM);
         }
-
         public IActionResult ContactUs()
         {
             return View();
         }
 
         [HttpGet]
-        public async Task<IActionResult> Update(string clinicId)
+        public async Task<IActionResult> Update()
         {
-            clinicId = "1";
+            var clinicId = "1";
+            
             var clinic = await _clinicService.GetClinicById(clinicId);
-            if (clinic == null)
-            {
-                return NotFound();
-            }
-
+            
             var updateclinicVM = clinic.ToUpdateClinicVM();
 
             return View(updateclinicVM);
@@ -62,43 +57,43 @@ namespace presentationLayer.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(UpdateClinicVM updatedClinic)
         {
-            if (!ModelState.IsValid)
+            if(!ModelState.IsValid)
             {
                 return View(updatedClinic);
             }
-
+            string uniqueFileName;
+            if (updatedClinic.FormFilePhoto != null && updatedClinic.FormFilePhoto.Length > 0)
+            {
+                uniqueFileName = await _fileService.UploadFile(updatedClinic.FormFilePhoto, "img");
+            }
+            else
+            {
+                uniqueFileName = updatedClinic.ProfilePhoto;
+            }
             var clinicDto = updatedClinic.ToUpdateClinicDto();
             await _clinicService.UpdateClinic(clinicDto);
-            return RedirectToAction("Profile", "clinic",
-                new { clinicID = "1" });
+            return RedirectToAction("Profile", "clinic");
         }
-
-
-
-
-
-        [HttpPost("save-photo")]
-        public async Task<IActionResult> SavePhotoPath(IFormFile photo, string clinicId) // تغيير النوع إلى string
+        
+        [HttpGet]
+        public async Task<IActionResult> ControllAppointment()
         {
-            try
-            {
-                var photoPath = await _clinicService.SavePhotoPathAsync(photo, "1");
-                return  NoContent();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            var ClinicIsOpen = new ClinicIsAvailable();
+            ClinicIsOpen.IsOpen = await _clinicService.IsAvailbleToAppointment();
+            return View(ClinicIsOpen);
         }
-      
 
-
+        public async Task<IActionResult> StopNewAppointments()
+        {
+            await _clinicService.StopNewAppointment();
+            TempData["successMessage"] = _localizer["Appointments Stoped successfully"].Value;
+            return RedirectToAction("ControllAppointment", "Clinic");
+        }
+        public async Task<IActionResult> OpenNewAppointments()
+        {
+            await _clinicService.OpenNewAppointments();
+            TempData["successMessage"] = _localizer["Appointments Opened successfully"].Value;
+            return RedirectToAction("ControllAppointment", "Clinic");
+        }
     }
-
-
-
-
-
-
-    
 }

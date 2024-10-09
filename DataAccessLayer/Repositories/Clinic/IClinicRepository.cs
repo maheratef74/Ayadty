@@ -5,16 +5,15 @@
 using DataAccessLayer.Entities;
 public interface IClinicRepository
 {
-    Task<CliniC?> GetById(string clinicId);
-    Task Update(CliniC updatedclinic);
+    Task<Clinic?> GetById(string clinicId);
+    Task Update(Clinic updatedclinic);
+    Task OpenNewAppointments();
+    Task StopNewAppointments();
+    Task<bool> IsAvailabelToAppointments();
     Task SaveChanges();
-
-
-
-
-
-    Task<CliniC> GetClinicByIdAsync(string id); // تغيير النوع إلى string
-    Task UpdateClinicAsync(CliniC clinic);
+    
+    Task<Clinic> GetClinicByIdAsync(string id); 
+    Task UpdateClinicAsync(Clinic clinic);
 
 
 

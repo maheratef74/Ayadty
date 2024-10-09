@@ -589,5 +589,23 @@
   "Nurse": "مساعد دكتور",
   "Deleted successfully.": "تم الحذف بنجاح",
   "Job": "الوظيفه",
-  "Do you really want to delete the admin": "هل بالفعل تريد حذف هذا الموظف"
+  "Do you really want to delete the admin": "هل بالفعل تريد حذف هذا الموظف",
+  "Control Appointment Availability" : "التحكم في امكانيه الحجز",
+  "Do you want to stop users from making new appointments in your clinic?" : "هل تريد ايقاف الحجز في العياده؟",
+  "If you stop new appointments, users will not be able to book until you reactivate availability." : "في حاله ايقاف الحجز لا يمكن للمرضي الحجز اونلاين",
+  "Open Appointment" : "فتح الحجز",
+  "Stop New Appointments" : "قفل الحجز",
+
+  "Do you really want to stop the new appointments?" : "هل متاكد من قفل الحجز في العياده",
+  "Yes, stop it!": "نعم , اوقف الحجز",
+  "Do you really want to open the new appointments?" : "هل متاكد من فتح الحجز في العياده",
+  "Yes, open it!" : "نعم , افتح الحجز",
+  "Appointments Opened successfully": "تم فتح الحجز بنجاح",
+  "Appointments Stoped successfully" : "تم قفل الحجز بنجاح",
+  "It isn't availbale to book appointment in this time , please try later" : "ليس من الممكن حجز موعد في هذا الوقت، يرجى المحاولة لاحقًا",
+  "Control new appointments": "التحكم في الحجز",
+  "The clinic is currently open for appointments.": "العياده الان مفتوحه للحجز",
+  "The clinic is currently closed for new appointments.": "العياده الان مغلقه لا يمكن للمرضي الحجز",
+  "ClinicNameRequired": "اسم العياده مطلوب"
+  
 }

@@ -42,7 +42,7 @@ public class AppDbContext :  IdentityDbContext<ApplicationUser>
     }
     // DbSets
     public DbSet<Appointment> Appointments { get; set; }
-    public DbSet<CliniC> Clinic { get; set; }
+    public DbSet<Clinic> Clinic { get; set; }
     public DbSet<Prescription> Prescriptions { get; set; }
     public DbSet<WorkDay> WorkDays { get; set; }
     public DbSet<Treatment> Treatments { get; set; }

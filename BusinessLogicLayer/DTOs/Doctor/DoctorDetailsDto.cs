@@ -21,7 +21,6 @@ public static class DoctorExtensionMethold
             DoctorId = doctor.Id,
             Name = doctor.FullName,
             PhoneNumber = doctor.Phone,
-            IsAvalibleToAppoinment = doctor.IsAvalibleToAppoinment,
             ProfilePhoto = doctor.ProfilePhoto,
             Price = doctor.Price,
             Email = doctor.Email,

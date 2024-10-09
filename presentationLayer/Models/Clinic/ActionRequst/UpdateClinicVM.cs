@@ -6,11 +6,18 @@ using BusinessLogicLayer.DTOs.Appointment;
 namespace presentationLayer.Models.Clinic.ViewModel;
     public class UpdateClinicVM
     {
+        [EmailAddress(ErrorMessage = "Invalid email address")]
         public string? Email { get; set; }
+        [Required(ErrorMessage = "ClinicNameRequired")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "PhoneNumberRequired")]
+        [RegularExpression(@"^(010|011|012|015)\d{8}$", ErrorMessage = "PhoneNumberInvalid")]
         public string Phone { get; set; }
         public string? ProfilePhoto { get; set; }
+        [Required(ErrorMessage = "AddressRequired")]
         public string location { get; set; }
+        public IFormFile? FormFilePhoto { get; set; }
+
     }
 public static class UpdateClinicExtenionMethod
 {

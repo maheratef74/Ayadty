@@ -1,0 +1,13 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+@model IEnumerable<presentationLayer.Models.WorkingDays.ViewModel.WorkingDaysVM>
+@inject IViewLocalizer localizer
+<ul class="time-sidual">
+    @foreach (var day in Model)
+    {
+        <li>
+            @localizer[@day.DayOfWeek.ToString()]: 
+            @(new DateTime(day.StartTime.Ticks).ToString("hh:mm tt")) - 
+            @(new DateTime(day.EndTime.Ticks).ToString("hh:mm tt"))
+        </li>
+    }
+</ul>

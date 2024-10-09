@@ -1,5 +1,6 @@
 using System.Security.Claims;
 using BusinessLogicLayer.Services.Appointment;
+using BusinessLogicLayer.Services.Clinic;
 using BusinessLogicLayer.Services.Patient;
 using BusinessLogicLayer.Services.Prescription;
 using DataAccessLayer.Entities;
@@ -19,13 +20,15 @@ public class AppointmentController : Controller
     private readonly IPatientService _patientService;
     private readonly IStringLocalizer<authController> _localizer;
     private readonly IPrescriptionService _prescriptionService;
+    private readonly IClinicService _clinicService;
     public AppointmentController(IAppointmentService appointmentService, IPatientService patientService,
-        IStringLocalizer<authController> localizer, IPrescriptionService prescriptionService)
+        IStringLocalizer<authController> localizer, IPrescriptionService prescriptionService, IClinicService clinicService)
     {
         _appointmentService = appointmentService;
         _patientService = patientService;
         _localizer = localizer;
         _prescriptionService = prescriptionService;
+        _clinicService = clinicService;
     }
 
     [HttpGet]
@@ -61,6 +64,12 @@ public class AppointmentController : Controller
             return View(request.CreatAppointmentAR);
         }
 
+        var ClinicIsOpen = await _clinicService.IsAvailbleToAppointment();
+        if (!ClinicIsOpen)
+        {
+            TempData["ErrorMessage"] = _localizer["It isn't availbale to book appointment in this time , please try later"].Value;
+            return RedirectToAction("Index", "Home");
+        }
         var appointmentDto = request.CreatAppointmentAR.ToDto();
         appointmentDto.Date = DateTime.Now;
         await _appointmentService.CreatAppointment(appointmentDto);

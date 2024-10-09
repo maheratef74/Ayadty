@@ -69,6 +69,7 @@ public class DoctorRepository : IDoctorRepository
             _appDbContext.Users.Remove(doctor);
         }
     }
+    
     public async Task SaveChange()
     {
         await _appDbContext.SaveChangesAsync();

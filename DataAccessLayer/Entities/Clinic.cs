@@ -3,12 +3,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataAccessLayer.Entities;
 
-public class CliniC
+public class Clinic
 {
     [Key]
     public string ClinicId { get; set; } // Primary Key
+    
     public string Name { get; set; }
     public string Location { get; set; }
+    public bool IsAvalibleToAppoinment { get; set; }
     public string PhoneNumber { get; set; }
     public string? Email { get; set; }
     public string? ProfilePhoto { get; set; } 

@@ -78,6 +78,11 @@ public class authController : Controller
             {
                 await _userManager.AddToRoleAsync(patientUser, Roles.Patient);
                 // Create a Cookie
+                if(User.IsInRole(Roles.Doctor) || User.IsInRole(Roles.Nurse))
+                {
+                    TempData["successMessage"] = _localizer["Acount Created successfully"].Value;
+                    return RedirectToAction("ShowAllPatients", "DashBoard");
+                }
                 await _signInManager.SignInAsync(patientUser , newPatient.RememberMe);
                 TempData["successMessage"] = _localizer["Acount Created successfully"].Value;
                 return RedirectToAction("Index", "Home");

@@ -17,22 +17,21 @@ public class UpdateClinicDto
 
 public static class UpdateClinicExtensionMethold
 {
-    public static CliniC? ToUpdatedClinic(this UpdateClinicDto? updateClinicDto)
+    public static Clinic? ToUpdatedClinic(this UpdateClinicDto? updateClinicDto)
     {
         if (updateClinicDto == null )
         {
             return null;
         }
        
-        var Clinic = new CliniC()
+        var Clinic = new Clinic()
         {
             ClinicId = "1",
-            Name=updateClinicDto.Name,
-            Location=updateClinicDto.Location,
-            PhoneNumber=updateClinicDto.PhoneNumber,
-            Email=updateClinicDto.Email,
-            DaysOfWork = updateClinicDto.DaysOfWork,
-            ProfilePhoto=updateClinicDto.ProfilePhoto
+            Name = updateClinicDto.Name,
+            Location = updateClinicDto.Location,
+            PhoneNumber = updateClinicDto.PhoneNumber,
+            Email = updateClinicDto.Email,
+            ProfilePhoto = updateClinicDto.ProfilePhoto
         };
         return Clinic;
     }

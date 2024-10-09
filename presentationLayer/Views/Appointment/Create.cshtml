@@ -26,11 +26,12 @@
         <link rel="stylesheet" href="~/css/Home.css">
         <link rel="stylesheet" href="~/css/responsive.css">
     </head>
-
+<html>
 <body>
-
 <!-- start Appointment -->
-<partial name="_AppointmentFormPartial"/>
+@await Html.PartialAsync("_AppointmentFormPartial", Model, new ViewDataDictionary(ViewData) { { "IsEditMode", true } })
+
+
 <!-- End Appointment -->
 
 <!--/End Start Schedule Area -->
@@ -44,3 +45,6 @@
 <!-- For Lyout -->
 
 </body>
+</html>
+
+

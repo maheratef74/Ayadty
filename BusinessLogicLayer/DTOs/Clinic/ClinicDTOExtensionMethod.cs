@@ -5,7 +5,7 @@ namespace BusinessLogicLayer.DTOs.Clinic;
 
 public static class ClinicDTOExtensionMethod
 {
-    public static ClinicDetailsDto ToClinicDetailsDto(this CliniC   clinic)
+    public static ClinicDetailsDto ToClinicDetailsDto(this DataAccessLayer.Entities.Clinic  clinic)
     {
         var clinicDto = new ClinicDetailsDto()
         {
