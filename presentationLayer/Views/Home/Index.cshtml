@@ -3,7 +3,7 @@
 @using Microsoft.Extensions.Options
 @inject IViewLocalizer localizer
 @using System.Globalization
-@model presentationLayer.Models.Appointment.CompositeViewModel.AppointmentPageVM_AR
+
 @{
 	Layout = "_Layout";
 }
@@ -45,10 +45,10 @@
 
 	<!-- End Header Area -->
 	<!-- Slider Area -->
-	<section class="slider"  dir = "LTR">
+	<section class="slider" dir="LTR">
 		<div class="hero-slider">
 			<!-- Start Single Slider -->
-			<div class="single-slider" style="background-image: url('@Url.Content("~/img/doctor_in_clinic_g7mr0bsfv9c4dyclmksz_0.png")')">
+			<div class="single-slider" style="background-image: url('@Url.Content("~/img/7.jpg")')">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-7">
@@ -64,9 +64,9 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<!-- Start Single Slider -->
-			<div class="single-slider"  dir="ltr" style="background-image: url('@Url.Content("~/img/doctor_in_clinic_g7mr0bsfv9c4dyclmksz_0.png")')">
+			<div class="single-slider" dir="ltr" style="background-image: url('@Url.Content("~/img/777.jpg")')">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-7">
@@ -83,16 +83,15 @@
 				</div>
 			</div>
 			<!-- End Single Slider -->
-			
 			<!-- Start Single Slider -->
-			<div class="single-slider" dir="ltr" style="background-image: url('@Url.Content("~/img/doctor_in_clinic_g7mr0bsfv9c4dyclmksz_0.png")')">
-				<div class="container"dir="ltr">
-					<div class="row"dir="ltr">
-						<div class="col-lg-7"dir="ltr">
-							<div class="text"dir="ltr">
+			<div class="single-slider" dir="ltr" style="background-image: url('@Url.Content("~/img/444.jpg")')">
+				<div class="container" dir="ltr">
+					<div class="row" dir="ltr">
+						<div class="col-lg-7" dir="ltr">
+							<div class="text" dir="ltr">
 								<h1>@localizer["We Provide Medical Services That You Can Trust!"]</h1>
-							<!--	<p>@localizer["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nisl pellentesque, faucibus libero eu, gravida quam."]</p> -->
-								<div class="button"dir="ltr">
+								<!--	<p>@localizer["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nisl pellentesque, faucibus libero eu, gravida quam."]</p> -->
+								<div class="button" dir="ltr">
 									<a asp-controller="Appointment" asp-action="Create" class="btn">@localizer["Get Appointment"]</a>
 									<a href="#" class="btn primary">@localizer["Contact Now"]</a>
 								</div>
@@ -105,11 +104,11 @@
 		</div>
 	</section>
 	<!--/ End Slider Area -->
-
-	@await Html.PartialAsync("_AppointmentFormPartial", Model)
-	
+	<!-- Start Appointment -->
+	<partial name="_AppointmentFormPartial" />
+	<!-- End Appointment -->
 	<!-- Start Feautes -->
-	<section class="Feautes section" dir = "ltr">
+	<section class="Feautes section" dir="ltr">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
@@ -118,7 +117,7 @@
 						<img src="~/img/section-img.png" alt="#">
 						@*
 						<p>@localizer["SectionDescription"]</p>
-					*@
+						*@
 					</div>
 				</div>
 			</div>
@@ -132,7 +131,7 @@
 						<h3>@localizer["EmergencyHelp"]</h3>
 						@*
 						<p>@localizer["EmergencyHelpDescription"]</p>
-					*@
+						*@
 					</div>
 					<!-- End Single features -->
 				</div>
@@ -145,7 +144,7 @@
 						<h3>@localizer["EnrichedPharmacy"]</h3>
 						@*
 						<p>@localizer["EnrichedPharmacyDescription"]</p>
-					*@
+						*@
 					</div>
 					<!-- End Single features -->
 				</div>
@@ -158,7 +157,7 @@
 						<h3>@localizer["MedicalTreatment"]</h3>
 						@*
 						<p>@localizer["MedicalTreatmentDescription"]</p>
-					*@
+						*@
 					</div>
 					<!-- End Single features -->
 				</div>
@@ -167,7 +166,7 @@
 	</section>
 	<!--/ End Feautes -->
 	<!-- Start Fun-facts -->
-	<div id="fun-facts" class="fun-facts section overlay" >
+	<div id="fun-facts" class="fun-facts section overlay">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3 col-md-6 col-12">
@@ -218,7 +217,6 @@
 		</div>
 	</div>
 	<!--/ End Fun-facts -->
-	
 	<!-- Start Call to action -->
 	<section class="call-action overlay" data-stellar-background-ratio="0.5">
 		<div class="container">
@@ -254,21 +252,21 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-lg-12 col-12">
-					<div class="owl-carousel portfolio-slider" dir = "ltr">
+					<div class="owl-carousel portfolio-slider" dir="ltr">
 						<div class="single-pf">
-							<img src="~/img/pf1.jpg" alt="#">
+							<img src="~/img/70.jpg" alt="#">
 							<a href="#" class="btn">@localizer["View_Details"]</a>
 						</div>
 						<div class="single-pf">
-							<img src="~/img/pf2.jpg" alt="#">
+							<img src="~/img/13.jpg" alt="#">
 							<a href="#" class="btn">@localizer["View_Details"]</a>
 						</div>
 						<div class="single-pf">
-							<img src="~/img/pf2.jpg" alt="#">
+							<img src="~/img/50.jpg" alt="#">
 							<a href="#" class="btn">@localizer["View_Details"]</a>
 						</div>
 						<div class="single-pf">
-							<img src="~/img/pf1.jpg" alt="#">
+							<img src="~/img/111.jpg" alt="#">
 							<a href="#" class="btn">@localizer["View_Details"]</a>
 						</div>
 						<!-- Repeat for other portfolio items -->
@@ -298,7 +296,7 @@
 						<h4><a href="#">@localizer["General_Treatment"]</a></h4>
 						@*
 						<p>@localizer["General_Treatment_Description"]</p>
-					*@
+						*@
 					</div>
 					<!-- End Single Service -->
 					<!-- Start Single Service -->
@@ -307,7 +305,7 @@
 						<h4><a href="#">@localizer["Teeth_Whitening"]</a></h4>
 						@*
 						<p>@localizer["Teeth_Whitening_Description"]</p>
-					*@
+						*@
 					</div>
 					<!-- End Single Service -->
 				</div>
@@ -318,7 +316,7 @@
 						<h4><a href="#">@localizer["Heart_Surgery"]</a></h4>
 						@*
 						<p>@localizer["Heart_Surgery_Description"]</p>
-					*@
+						*@
 					</div>
 					<!-- End Single Service -->
 				</div>
@@ -329,7 +327,7 @@
 						<h4><a href="#">@localizer["Ear_Treatment"]</a></h4>
 						@*
 						<p>@localizer["Ear_Treatment_Description"]</p>
-					*@
+						*@
 					</div>
 					<!-- End Single Service -->
 				</div>
@@ -340,7 +338,7 @@
 						<h4><a href="#">@localizer["Vision_Problems"]</a></h4>
 						@*
 						<p>@localizer["Vision_Problems_Description"]</p>
-					*@
+						*@
 					</div>
 					<!-- End Single Service -->
 				</div>
@@ -351,7 +349,7 @@
 						<h4><a href="#">@localizer["Blood_Transfusion"]</a></h4>
 						@*
 						<p>@localizer["Blood_Transfusion_Description"]</p>
-					*@
+						*@
 					</div>
 					<!-- End Single Service -->
 				</div>
@@ -477,7 +475,7 @@
 					<!-- Single Blog -->
 					<div class="single-news">
 						<div class="news-head">
-							<img src="~/img/blog1.jpg" alt="#">
+							<img src="~/img/999.jpg" alt="#">
 						</div>
 						<div class="news-body">
 							<div class="news-content">
@@ -485,7 +483,7 @@
 								<h2><a href="#">@localizer["Blog_Title_1"]</a></h2>
 								@*
 								<p class="text">@localizer["Blog_Description_1"]</p>
-							*@
+								*@
 							</div>
 						</div>
 					</div>
@@ -495,7 +493,7 @@
 					<!-- Single Blog -->
 					<div class="single-news">
 						<div class="news-head">
-							<img src="~/img/blog2.jpg" alt="#">
+							<img src="~/img/333.jpg" alt="#">
 						</div>
 						<div class="news-body">
 							<div class="news-content">
@@ -503,7 +501,7 @@
 								<h2><a href="#">@localizer["Blog_Title_2"]</a></h2>
 								@*
 								<p class="text">@localizer["Blog_Description_2"]</p>
-							*@
+								*@
 							</div>
 						</div>
 					</div>
@@ -513,7 +511,7 @@
 					<!-- Single Blog -->
 					<div class="single-news">
 						<div class="news-head">
-							<img src="~/img/blog3.jpg" alt="#">
+							<img src="~/img/10.jpg" alt="#">
 						</div>
 						<div class="news-body">
 							<div class="news-content">
@@ -521,7 +519,7 @@
 								<h2><a href="#">@localizer["Blog_Title_3"]</a></h2>
 								@*
 								<p class="text">@localizer["Blog_Description_3"]</p>
-							*@
+								*@
 							</div>
 						</div>
 					</div>
@@ -531,74 +529,44 @@
 		</div>
 	</section>
 	<!-- End Blog Area -->
-
-	<script>
-		$(document).ready(function () {
-			var successMessage = '@Html.Raw(TempData["SuccessMessage"] ?? string.Empty)';
-			if (successMessage.length > 0) {
-				Swal.fire({
-					icon: 'success',
-					title: '@localizer["Success"]',
-					text: successMessage
-				});
-			}
-
-			var errorMessage = '@Html.Raw(TempData["ErrorMessage"] ?? string.Empty)';
-			if (errorMessage.length > 0) {
-				Swal.fire({
-					icon: 'error',
-					title: '@localizer["Oops..."]',
-					text: errorMessage
-				});
-			}
-		});
-		
-			document.getElementById('appointmentForm').addEventListener('submit', function() {
-			// Disable the submit button to prevent multiple submissions
-			document.getElementById('submitButton').disabled = true;
-		});
-
-	</script>
-	
-
-    <!-- jquery Min JS -->
-    <script src="~/js/jquery.min.js"></script>
-    <!-- jquery Migrate JS -->
-    <script src="~/js/jquery-migrate-3.0.0.js"></script>
-    <!-- jquery Ui JS -->
-    <script src="~/js/jquery-ui.min.js"></script>
-    <!-- Easing JS -->
-    <script src="~/js/easing.js"></script>
-    <!-- Color JS -->
-    <script src="~/js/colors.js"></script>
-    <!-- Popper JS -->
-    <script src="~/js/popper.min.js"></script>
-    <!-- Bootstrap Datepicker JS -->
-    <script src="~/js/bootstrap-datepicker.js"></script>
-    <!-- Jquery Nav JS -->
-    <script src="~/js/jquery.nav.js"></script>
-    <!-- Slicknav JS -->
-    <script src="~/js/slicknav.min.js"></script>
-    <!-- ScrollUp JS -->
-    <script src="~/js/jquery.scrollUp.min.js"></script>
-    <!-- Niceselect JS -->
-    <script src="~/js/niceselect.js"></script>
-    <!-- Tilt Jquery JS -->
-    <script src="~/js/tilt.jquery.min.js"></script>
-    <!-- Owl Carousel JS -->
-    <script src="~/js/owl-carousel.js"></script>
-    <!-- counterup JS -->
-    <script src="~/js/jquery.counterup.min.js"></script>
-    <!-- Steller JS -->
-    <script src="~/js/steller.js"></script>
-    <!-- Wow JS -->
-    <script src="~/js/wow.min.js"></script>
-    <!-- Magnific Popup JS -->
-    <script src="~/js/jquery.magnific-popup.min.js"></script>
-    <!-- Counter Up CDN JS -->
+	<!-- jquery Min JS -->
+	<script src="~/js/jquery.min.js"></script>
+	<!-- jquery Migrate JS -->
+	<script src="~/js/jquery-migrate-3.0.0.js"></script>
+	<!-- jquery Ui JS -->
+	<script src="~/js/jquery-ui.min.js"></script>
+	<!-- Easing JS -->
+	<script src="~/js/easing.js"></script>
+	<!-- Color JS -->
+	<script src="~/js/colors.js"></script>
+	<!-- Popper JS -->
+	<script src="~/js/popper.min.js"></script>
+	<!-- Bootstrap Datepicker JS -->
+	<script src="~/js/bootstrap-datepicker.js"></script>
+	<!-- Jquery Nav JS -->
+	<script src="~/js/jquery.nav.js"></script>
+	<!-- Slicknav JS -->
+	<script src="~/js/slicknav.min.js"></script>
+	<!-- ScrollUp JS -->
+	<script src="~/js/jquery.scrollUp.min.js"></script>
+	<!-- Niceselect JS -->
+	<script src="~/js/niceselect.js"></script>
+	<!-- Tilt Jquery JS -->
+	<script src="~/js/tilt.jquery.min.js"></script>
+	<!-- Owl Carousel JS -->
+	<script src="~/js/owl-carousel.js"></script>
+	<!-- counterup JS -->
+	<script src="~/js/jquery.counterup.min.js"></script>
+	<!-- Steller JS -->
+	<script src="~/js/steller.js"></script>
+	<!-- Wow JS -->
+	<script src="~/js/wow.min.js"></script>
+	<!-- Magnific Popup JS -->
+	<script src="~/js/jquery.magnific-popup.min.js"></script>
+	<!-- Counter Up CDN JS -->
 	<script src="~/js/waypoints.min.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="~/js/bootstrap.min.js"></script>
-    <!-- Main JS -->
-    <script src="~/js/main.js"></script>
-    </body>
+	<!-- Bootstrap JS -->
+	<script src="~/js/bootstrap.min.js"></script>
+	<!-- Main JS -->
+	<script src="~/js/main.js"></script>
+</body>

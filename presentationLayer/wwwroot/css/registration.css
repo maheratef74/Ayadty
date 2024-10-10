@@ -19,6 +19,13 @@ header {
 }
 
 .container {
+    background-image: url(~/img/60.jpg) !important;  
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    justify-content: center;
+    position: relative;  /*للتأكد أن المحتوى فوق الخلفية */
+    z-index: 1;  /*لضمان أن النص يظهر فوق الخلفية */
     max-width: 700px;
     width: 100%;
     background-color: #fff;
@@ -27,29 +34,38 @@ header {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
     min-height: auto; /* تأكد من عدم تحديد ارتفاع ثابت */
     overflow: visible; /* التأكد من عدم وجود التمرير */
-  
 }
 
-    .container .title {
-        font-size: 25px;
-        font-weight: 500;
-        position: relative;
-        text-decoration: underline;
-        text-decoration-color: #258cfb;
-        text-decoration-thickness: 2px;
-        text-underline-offset: 5px;
-    }
+/* اللغة العربية (RTL) */
+[dir="rtl"] .container {
+    padding: 25px 10px !important; /* Padding مخصص للعربية */
+}
 
-        .container .title::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            height: 3px;
-            width: 30px;
-            border-radius: 5px;
-            background: linear-gradient(#258cfb);
-        }
+/* اللغات الأخرى (LTR) */
+[dir="ltr"] .container {
+    padding: 25px 30px; /* Padding مخصص للغات الأخرى */
+}
+
+.container .title {
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+    text-decoration: underline;
+    text-decoration-color: #258cfb;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+}
+
+    .container .title::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 30px;
+        border-radius: 5px;
+        background: linear-gradient(#258cfb);
+    }
 
 .content form .user-details {
     display: flex;
@@ -64,12 +80,12 @@ header {
     flex-wrap: wrap;
 }
 
-#password{
-    position:relative;
+#password {
+    position: relative;
 }
 
-#confirmPassword{
-    position:relative;
+#confirmPassword {
+    position: relative;
 }
 
 .eye-icon {
@@ -115,6 +131,7 @@ header {
     border: 1px solid #ccc;
     border-bottom-width: 2px;
     transition: all 0.3s ease;
+    padding-right: 15px;
 }
 
 .input-box select {
