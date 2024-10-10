@@ -9,7 +9,7 @@ public class DoctorDetailsDto
     public string? Email { get; set; }
     public string? ProfilePhoto { get; set; }
     public int? YearsOfExperience { get; set; }
-    public decimal? Price { get; set; }
+    public int? Price { get; set; }
 }
 
 public static class DoctorExtensionMethold

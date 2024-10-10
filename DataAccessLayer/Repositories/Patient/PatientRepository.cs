@@ -1,4 +1,5 @@
 using BusinessLogicLayer.DTOs.HelperClass;
+using DataAccessLayer.DbContext;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Repositories.Patient;

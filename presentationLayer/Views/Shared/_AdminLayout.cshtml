@@ -103,6 +103,8 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">@localizer["DashBoardScreens:"]</h6>
+                    <a class="collapse-item" asp-controller="Doctor" asp-action="Profile">@localizer["MyProfile"]</a>
+                    <a class="collapse-item" asp-controller="Clinic" asp-action="Profile">@localizer["ClinicProfile"]</a>
                     <a class="collapse-item" asp-controller="Doctor" asp-action="Create">@localizer["Add Doctor"]</a>
                     <a class="collapse-item" asp-controller="Doctor" asp-action="AddNurse">@localizer["Add Nurse"]</a>
                     <a class="collapse-item" asp-controller="Doctor" asp-action="UpdateWorkingDays">@localizer["Edit_oppning_days"]</a>

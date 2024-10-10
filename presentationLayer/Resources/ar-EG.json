@@ -606,6 +606,8 @@
   "Control new appointments": "التحكم في الحجز",
   "The clinic is currently open for appointments.": "العياده الان مفتوحه للحجز",
   "The clinic is currently closed for new appointments.": "العياده الان مغلقه لا يمكن للمرضي الحجز",
-  "ClinicNameRequired": "اسم العياده مطلوب"
+  "ClinicNameRequired": "اسم العياده مطلوب",
+  "MyProfile" : "صفحتي الشخصيه",
+  "ClinicProfile" : "صفحه العياده"
   
 }

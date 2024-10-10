@@ -8,6 +8,7 @@ using BusinessLogicLayer.Services.File;
 using BusinessLogicLayer.Services.Patient;
 using BusinessLogicLayer.Services.Prescription;
 using BusinessLogicLayer.Services.WorkingDays;
+using DataAccessLayer.DbContext;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories.ApplicationUser;
 using DataAccessLayer.Repositories.Clinic;

@@ -42,7 +42,7 @@ namespace presentationLayer.Controllers
             {
                 return RedirectToAction("Error404", "Home");
             }
-
+           
             var Patient = await _patientService.GetPatientById(patientId);
             var Appointments = await _appointmentService
                 .GetAllAppointmentByPatientId(patientId);

@@ -2,7 +2,8 @@ using DataAccessLayer.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
+
+namespace DataAccessLayer.DbContext;
 
 public class AppDbContext :  IdentityDbContext<ApplicationUser>
 {
@@ -11,11 +12,8 @@ public class AppDbContext :  IdentityDbContext<ApplicationUser>
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.OnModelCreating(modelBuilder); 
-        modelBuilder.Entity<Doctor>()
-            .Property(d => d.Price)
-            .HasPrecision(18, 2);
-       
+        base.OnModelCreating(modelBuilder);
+        
         // change names of tables that identity make it 
         modelBuilder.Entity<ApplicationUser>(e => e.ToTable("Users"));
         modelBuilder.Entity<IdentityRole>(e => e.ToTable("Roles"));
@@ -33,9 +31,8 @@ public class AppDbContext :  IdentityDbContext<ApplicationUser>
             
         // TPT Configuration: Doctor and Patient will have their own tables
         modelBuilder.Entity<Doctor>()
-            .ToTable("Doctors")  // Derived type has its own table
-            .Property(d => d.Price)
-            .HasPrecision(18, 2); 
+            .ToTable("Doctors");  // Derived type has its own table
+           
 
         modelBuilder.Entity<Patient>()
             .ToTable("Patients");  // Derived type has its own table
@@ -48,4 +45,3 @@ public class AppDbContext :  IdentityDbContext<ApplicationUser>
     public DbSet<Treatment> Treatments { get; set; }
     
 }
-

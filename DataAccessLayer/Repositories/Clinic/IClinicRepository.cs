@@ -11,10 +11,4 @@ public interface IClinicRepository
     Task StopNewAppointments();
     Task<bool> IsAvailabelToAppointments();
     Task SaveChanges();
-    
-    Task<Clinic> GetClinicByIdAsync(string id); 
-    Task UpdateClinicAsync(Clinic clinic);
-
-
-
 }
