@@ -15,6 +15,7 @@ body {
     padding: 10px;
     background-color: white;
 }
+
 header {
     position: absolute;
     top: 15%;
@@ -23,8 +24,16 @@ header {
 }
 
 .container {
-    max-width: 700px;
-    width: 100%;
+    background-image: url(~/img/60.jpg) !important;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    justify-content: center;
+    position: relative; /*ááÊÃßÏ Ãä ÇáãÍÊæì ÝæÞ ÇáÎáÝíÉ */
+    z-index: 1; /*áÖãÇä Ãä ÇáäÕ íÙåÑ ÝæÞ ÇáÎáÝíÉ */
+
+
+    width: 50% !important;
     background-color: white;
     padding: 25px 30px;
     border-radius: 5px;
@@ -73,14 +82,12 @@ form .user-details .input-box {
 }
 
 [dir="ltr"] .eye-icon {
-    right:1px;
-    left:auto;
-    /*ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+    right: 10px;
+    left: auto;
 }
 
-/* ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ RTL (ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½) */
 [dir="rtl"] .eye-icon {
-    left: 1px;
+    left: 10px;
     right: auto;
 }
 
@@ -100,6 +107,7 @@ form .input-box span.details {
     border: 1px solid #ccc;
     border-bottom-width: 2px;
     transition: all 0.3s ease;
+    padding-right: 15px !important; /* Space for the eye icon */
 }
 
     .user-details .input-box input:focus,
@@ -132,7 +140,7 @@ form .button {
             background-color: rgb(37, 140, 251, 0.6);
         }
 
-@media(max-width: 584px) {
+@media (max-width: 584px) {
     .container {
         max-width: 100%;
     }
@@ -147,7 +155,7 @@ form .button {
     }
 }
 
-@media(max-width: 459px) {
+@media (max-width: 459px) {
     .container .content .category {
         flex-direction: column;
     }

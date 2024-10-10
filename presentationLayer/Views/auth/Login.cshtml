@@ -1,5 +1,5 @@
 ﻿@{
-  Layout = null;
+    Layout = null;
 }
 
 @inject IViewLocalizer localizer
@@ -17,16 +17,14 @@
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.Extensions.Options
 
-
 @inject IOptions<RequestLocalizationOptions> options
 
 <!DOCTYPE html>
-<html lang="ar" dir="@(isRTL ? "RTL" : "LTR")">
+<html lang="@(isRTL ? "ar" : "en")" dir="@(isRTL ? "rtl" : "ltr")">
 <head>
     <meta charset="UTF-8">
     <title>@localizer["Log In"]</title>
-    <link rel="stylesheet" href="~/css/Login.css">
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/Login.css?v=@DateTime.Now.Ticks">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -42,17 +40,17 @@
                 <div class="user-details">
                     <div class="input-box">
                         <span class="details">@localizer["Phone Number"]</span>
-                        <input asp-for="Phone" type="text" placeholder="@localizer["Enter your Phone Number"]" required>
-                        <span  asp-validation-for="Phone" class="text-danger"></span>
+                        <input asp-for="Phone" type="text" class="input" placeholder="@localizer["Enter your Phone Number"]" required>
+                        <span asp-validation-for="Phone" class="text-danger"></span>
                     </div>
 
                     <div class="input-box">
                         <span class="details">@localizer["Password"]</span>
-                        <input asp-for="Password" type="password" id="password" placeholder="@localizer["Enter your password"]" required>
+                        <input asp-for="Password" type="password" id="password" class="input" placeholder="@localizer["Enter your password"]" required>
                         <span class="eye-icon" onclick="togglePasswordVisibility()">👁</span>
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
-                    <div >
+                    <div>
                         <input asp-for="RememberMe" type="checkbox" id="rememberMe">
                         <label for="rememberMe">@localizer["Remember Me"]</label>
                     </div>
@@ -67,18 +65,22 @@
         </div>
     </div>
     <script>
-    function togglePasswordVisibility() {
-      var input = document.getElementById('password');
-      var icon = document.querySelector('.eye-icon');
-      if (input.type === "password") {
-        input.type = "text";
-        icon.textContent = "👁‍🗨";
-      } else {
-        input.type = "password";
-        icon.textContent = "👁";
-      }
-    }
+        function togglePasswordVisibility() {
+            var input = document.getElementById('password');
+            var icon = document.querySelector('.eye-icon');
+            if (input.type === "password") {
+                input.type = "text";
+                icon.textContent = "👁‍🗨";
+            } else {
+                input.type = "password";
+                icon.textContent = "👁";
+            }
+        }
+
+        function changeLanguage(lang) {
+            document.documentElement.lang = lang; // تغيير لغة الصفحة
+            document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr'); // تغيير الاتجاه
+        }
     </script>
 </body>
-
 </html>
