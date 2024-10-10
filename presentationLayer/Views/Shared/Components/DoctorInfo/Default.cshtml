@@ -1,0 +1,39 @@
+
+
+@{
+    Layout = null;
+}
+@using Microsoft.AspNetCore.Mvc.Localization
+@model presentationLayer.Models.Doctor.ViewModel.DoctorVM
+@inject IViewLocalizer localizer
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+</head>
+<body>
+<li class="nav-item dropdown no-arrow">
+    <a class="nav-link dropdown-toggle" asp-controller="Doctor" asp-action="profile" id="userDropdown" role="button"
+       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="mr-2 d-none d-lg-inline text-gray-600 small">@Model.Name</span>
+        <img class="img-profile rounded-circle"
+             src="@Url.Content("~/img/"+Model.ProfilePhoto)">
+    </a>
+    <!-- Dropdown - User Information -->
+    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+         aria-labelledby="userDropdown">
+        <a class="dropdown-item" asp-controller="Doctor" asp-action="profile">
+            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+            @localizer["Profile"]
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item"  asp-controller="auth" asp-action="Login" data-toggle="modal" data-target="#logoutModal">
+            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+            @localizer["Logout"]
+        </a>
+    </div>
+</li>
+
+</body>
+</html>

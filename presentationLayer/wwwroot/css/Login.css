@@ -24,7 +24,7 @@ header {
 }
 
 .container {
-    background-image: url(~/img/60.jpg) !important;
+    background-image: url('@Url.Content("~/img/60.jpg")') !important;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

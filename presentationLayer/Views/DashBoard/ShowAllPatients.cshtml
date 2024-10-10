@@ -19,7 +19,7 @@ Layout = "~/Views/Shared/_AdminLayout.cshtml";
 
 <body>
 
-<div class="container">
+<div class="container  align-items-center text-center">
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="main-box clearfix">
@@ -38,7 +38,7 @@ Layout = "~/Views/Shared/_AdminLayout.cshtml";
 						@foreach (var patient in Model.Items)
 						{
 						<tr class="align-items-center" dir="ltr">
-							<td class="user-cell" style="text-align: right !important;">
+							<td class="user-cell  align-items-center text-center" style="text-align: right !important;" >
 								<img class="profile-photo" src="@Url.Content("~/img/" + patient.ProfilePhoto)" alt="">
 								<a class="user-link text-center" target="__blank"
 								   href="@Url.Action("Profile", "Patient", new { patientId = patient.Id })"
