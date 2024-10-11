@@ -12,7 +12,12 @@
 @{
     var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
 }
-
+@{
+    if (User.IsInRole("Doctor") || User.IsInRole("Nurse"))
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+}
 
 @inject IOptions<RequestLocalizationOptions> options
 
@@ -33,87 +38,92 @@
 </head>
 
 <body>
+@if (!User.IsInRole("Doctor") && !User.IsInRole("Nurse"))
+{
     <header>
         @Html.Partial("_SelectLanguagePartial")
     </header>
+}
 
-    <div class="container">
-        <div class="title">@localizer["Registration"] </div>
-        <div class="content">
-            <form asp-controller="auth" asp-action="Register" method="post" class="form">
-                <div class="user-details">
-                    
-                    <div class="input-box">
-                        <span class="details">@localizer["Full Name"]</span>
-                        <input asp-for = "Name" type="text" placeholder="@localizer["Enter your name"]" required>
-                        <span asp-validation-for="Name" class="text-danger"></span>
-                    </div>
 
-                    <div class="input-box">
-                        <span class="details">@localizer["Phone Number"]</span>
-                        <input data-val-remote-url="/auth/CheckPhone" asp-for="PhoneNumber" type="text"  placeholder="@localizer["Enter your number"]" required>
-                        <span asp-validation-for="PhoneNumber" class="text-danger" style="margin-top: 5px; display: block;"></span>
-                    </div>
-                    
-                    <div class="input-box">
-                        <span class="details">@localizer["Address"]</span>
-                        <input asp-for="Address" type="text" placeholder="@localizer["Enter your address"]" required>
-                        <span asp-validation-for="Address" class="text-danger" style="margin-top: 5px; display: block;"></span>
-                    </div>
-                    
-                    <div class="input-box">
-                        <label for="datepicker">@localizer["Date of Birth"]</label>
-                        <input asp-for="DateOfBirth" type="date" id="datepicker"  class="form-control" onloadstart="2002-7-20">
-                        <span asp-validation-for="DateOfBirth" class="text-danger" style="margin-top: 5px; display: block;"></span>
-                    </div>
-                    
-                    <div class="input-box" id="password">
-                        <span class="details">@localizer["Password"]</span>
-                        <input asp-for="Password"type="password" placeholder="@localizer["Enter your password"]" required id="passwordField"></input>
-                        <span class="eye-icon" onclick="togglePasswordVisibility('passwordField', this)">👁</span>
-                        <span asp-validation-for="Password" class="text-danger" style="margin-top: 5px; display: block;"></span>
-                    </div>
+<div class="container">
+    <div class="title">@localizer["Registration"] </div>
+    <div class="content">
+        <form asp-controller="auth" asp-action="Register" method="post" class="form">
+            <div class="user-details">
 
-                    <div class="input-box" id="confirmPassword">
-                        <span class="details">@localizer["Confirm Password"]</span>
-                        <input asp-for="ConfirmPassword" type="password" placeholder="@localizer["Confirm your password"]" required id="confirmPasswordField">
-                        <span class="eye-icon" onclick="togglePasswordVisibility('confirmPasswordField', this)">👁</span>
-                        <span asp-validation-for="ConfirmPassword" class="text-danger" style="margin-top: 5px; display: block;"></span>
-                    </div>
+                <div class="input-box">
+                    <span class="details">@localizer["Full Name"]</span>
+                    <input asp-for="Name" type="text" placeholder="@localizer["Enter your name"]" required>
+                    <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
 
                 <div class="input-box">
-                    <label for="gender" class="details">@localizer["Gender"]</label>
-                    <br>
-                    <select asp-for="Gender" name="gender" id="gender">
-                        <option value="" disabled selected>@localizer["Select your gender"]</option>
-                        <option value="0">@localizer["Male"]</option>
-                        <option value="1">@localizer["Female"]</option>
-                    </select>
-                </div>
-                <span asp-validation-for="Gender" class="text-danger" style="margin-top: 5px; display: block;"></span>
-                <div class="input-box">
-                    <input asp-for="RememberMe" type="checkbox" id="rememberMe">
-                    <label for="rememberMe">@localizer["Remember Me"]</label>
-                </div>
-                <div id="passwordError" class="error"></div>
-               
-                <div class="button">
-                    <input id="registrationButton" type="submit" value="@localizer["Registration"]">
+                    <span class="details">@localizer["Phone Number"]</span>
+                    <input data-val-remote-url="/auth/CheckPhone" asp-for="PhoneNumber" type="text" placeholder="@localizer["Enter your number"]" required>
+                    <span asp-validation-for="PhoneNumber" class="text-danger" style="margin-top: 5px; display: block;"></span>
                 </div>
 
-                <div class="have_account">
-                    <label for="">
-                        <span>
-                            @localizer["You have an account already"] <a class="a" asp-controller="auth" asp-action="Login">
-                                @localizer["Log In"]
-                            </a>
-                        </span>
-                    </label>
+                <div class="input-box">
+                    <span class="details">@localizer["Address"]</span>
+                    <input asp-for="Address" type="text" placeholder="@localizer["Enter your address"]" required>
+                    <span asp-validation-for="Address" class="text-danger" style="margin-top: 5px; display: block;"></span>
                 </div>
-            </form>
-        </div>
+
+                <div class="input-box">
+                    <label for="datepicker">@localizer["Date of Birth"]</label>
+                    <input asp-for="DateOfBirth" type="date" id="datepicker" class="form-control" onloadstart="2002-7-20">
+                    <span asp-validation-for="DateOfBirth" class="text-danger" style="margin-top: 5px; display: block;"></span>
+                </div>
+
+                <div class="input-box" id="password">
+                    <span class="details">@localizer["Password"]</span>
+                    <input asp-for="Password"type="password" placeholder="@localizer["Enter your password"]" required id="passwordField"></input>
+                    <span class="eye-icon" onclick="togglePasswordVisibility('passwordField', this)">👁</span>
+                    <span asp-validation-for="Password" class="text-danger" style="margin-top: 5px; display: block;"></span>
+                </div>
+
+                <div class="input-box" id="confirmPassword">
+                    <span class="details">@localizer["Confirm Password"]</span>
+                    <input asp-for="ConfirmPassword" type="password" placeholder="@localizer["Confirm your password"]" required id="confirmPasswordField">
+                    <span class="eye-icon" onclick="togglePasswordVisibility('confirmPasswordField', this)">👁</span>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger" style="margin-top: 5px; display: block;"></span>
+                </div>
+            </div>
+
+            <div class="input-box">
+                <label for="gender" class="details">@localizer["Gender"]</label>
+                <br>
+                <select asp-for="Gender" name="gender" id="gender">
+                    <option value="" disabled selected>@localizer["Select your gender"]</option>
+                    <option value="0">@localizer["Male"]</option>
+                    <option value="1">@localizer["Female"]</option>
+                </select>
+            </div>
+            <span asp-validation-for="Gender" class="text-danger" style="margin-top: 5px; display: block;"></span>
+            <div class="input-box">
+                <input asp-for="RememberMe" type="checkbox" id="rememberMe">
+                <label for="rememberMe">@localizer["Remember Me"]</label>
+            </div>
+            <div id="passwordError" class="error"></div>
+
+            <div class="button">
+                <input id="registrationButton" type="submit" value="@localizer["Registration"]">
+            </div>
+
+            <div class="have_account">
+                <label for="">
+                    <span>
+                        @localizer["You have an account already"]
+                        <a class="a" asp-controller="auth" asp-action="Login">
+                            @localizer["Log In"]
+                        </a>
+                    </span>
+                </label>
+            </div>
+        </form>
     </div>
+</div>
 
 <script>
         function togglePasswordVisibility(fieldId, icon) {

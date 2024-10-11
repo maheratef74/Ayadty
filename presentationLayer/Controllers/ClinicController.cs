@@ -71,6 +71,7 @@ namespace presentationLayer.Controllers
                 uniqueFileName = updatedClinic.ProfilePhoto;
             }
             var clinicDto = updatedClinic.ToUpdateClinicDto();
+            clinicDto.ProfilePhoto = uniqueFileName;
             await _clinicService.UpdateClinic(clinicDto);
             return RedirectToAction("Profile", "clinic");
         }

@@ -1,3 +1,5 @@
+using DataAccessLayer.DbContext;
+
 namespace DataAccessLayer.Repositories.Treatment;
 using DataAccessLayer.Entities;
 public class TreatmentRepository:ITreatmentRepository

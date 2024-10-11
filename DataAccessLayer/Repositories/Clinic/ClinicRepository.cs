@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DataAccessLayer.DbContext;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Repositories.Clinic;
 using DataAccessLayer.Entities;
@@ -31,6 +32,7 @@ public class ClinicRepository : IClinicRepository
             clinic.PhoneNumber = updatedClinic.PhoneNumber;
             clinic.Email = updatedClinic.Email;
             clinic.Location = updatedClinic.Location;
+            clinic.ProfilePhoto = updatedClinic.ProfilePhoto;
         }
     }
 
@@ -57,15 +59,5 @@ public class ClinicRepository : IClinicRepository
     {
         await _appDbContext.SaveChangesAsync();
     }
-
     
-    public async Task<Clinic> GetClinicByIdAsync(string id) 
-    {
-        return await _appDbContext.Clinic.FindAsync(id); 
-    }
-
-    public async Task UpdateClinicAsync(Clinic clinic)
-    {
-        _appDbContext.Clinic.Update(clinic);
-    }
 }

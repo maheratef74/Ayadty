@@ -62,7 +62,6 @@
                             <tr>
                                 <th ><span>@localizer["Order"]</span></th>
                                 <th ><span>@localizer["Name"]</span></th>
-                                <th ><span>@localizer["Date"]</span></th>
                                 <th  ><span>@localizer["Time"]</span></th>
                                 <th ><span>@localizer["AppointmentStatus"]</span></th>
                                 <th ><span>@localizer["PatientStatus"]</span></th>
@@ -79,7 +78,6 @@
                                             @appointment.PatientName
                                         </a>
                                     </td>
-                                    <td >@appointment.Date.ToString("yyyy-MM-dd")</td>
                                     <td >@appointment.Date.ToString("hh:mm tt")</td> <!-- Time in 12-hour format with AM/PM -->
                                     <td class="@((appointment.Status == Enums.AppointmentStatus.Canceled) ? "status-canceled" :
                                     (appointment.Status == Enums.AppointmentStatus.Completed) ? "status-completed" :

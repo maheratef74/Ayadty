@@ -591,5 +591,7 @@
   "Control new appointments": "Control new appointments",
   "The clinic is currently closed for new appointments.": "The clinic is currently closed for new appointments.",
   "The clinic is currently open for appointments.": "The clinic is currently open for appointments.",
-  "ClinicNameRequired":  "Clinic Name Required"
+  "ClinicNameRequired":  "Clinic Name Required",
+  "MyProfile" :  "My Profile",
+  "ClinicProfile" :  "Clinic Profile"
 }

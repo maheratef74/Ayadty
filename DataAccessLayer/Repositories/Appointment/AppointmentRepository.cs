@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DataAccessLayer.DbContext;
 using DataAccessLayer.Repositories.Generic;
 using DataAccessLayer.Repositories.Patient;
 using Microsoft.AspNetCore.Http;

@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using DataAccessLayer.DbContext;
 using Microsoft.Extensions.Localization;
 
 public class UniquePhoneNumberAttribute : ValidationAttribute

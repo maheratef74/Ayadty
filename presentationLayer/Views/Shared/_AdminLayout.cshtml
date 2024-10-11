@@ -103,13 +103,15 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">@localizer["DashBoardScreens:"]</h6>
+                    <a class="collapse-item" asp-controller="Doctor" asp-action="Profile">@localizer["MyProfile"]</a>
+                    <a class="collapse-item" asp-controller="Clinic" asp-action="Profile">@localizer["ClinicProfile"]</a>
+                    <a class="collapse-item" asp-controller="auth" asp-action="Register">@localizer["AddPatient"]</a>
                     <a class="collapse-item" asp-controller="Doctor" asp-action="Create">@localizer["Add Doctor"]</a>
                     <a class="collapse-item" asp-controller="Doctor" asp-action="AddNurse">@localizer["Add Nurse"]</a>
                     <a class="collapse-item" asp-controller="Doctor" asp-action="UpdateWorkingDays">@localizer["Edit_oppning_days"]</a>
                     <a class="collapse-item" asp-controller="DashBoard" asp-action="Index">@localizer["Charts"]</a>
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">@localizer["Other Pages:"]</h6>
-                    <a class="collapse-item" asp-controller="auth" asp-action="Register">@localizer["AddPatient"]</a>
                     <a class="collapse-item" asp-controller="Doctor" asp-action="profile">@localizer["Home page"]</a>
                 </div>
             </div>
@@ -179,47 +181,23 @@
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
                 </button>
-
-                <!-- Topbar Search -->
-                <form
-                    class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                               aria-label="Search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
+                
+                    <!-- Select Patient Dropdown -->
+                <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <div class="dropdown">
+                        <input type="text" id="patientSearch" class="form-control bg-light border-0 small"
+                               placeholder="@localizer["Search by name..."]" autocomplete="off"  aria-label="Search" aria-describedby="basic-addon2" />
+                        <div id="patientDropdown" class="dropdown-menu" style="display: none;">
+                            <!-- Results will be dynamically added here -->
                         </div>
                     </div>
-                </form>
-
+                    <!-- Hidden input to store the selected patient's ID -->
+                    <input type="hidden" id="SelectedPatientId" name="SelectedPatientId" />
+                </div>
+                
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
-
-                    <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                    <li class="nav-item dropdown no-arrow d-sm-none">
-                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-search fa-fw"></i>
-                        </a>
-                        <!-- Dropdown - Messages -->
-                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                             aria-labelledby="searchDropdown">
-                            <form class="form-inline mr-auto w-100 navbar-search">
-                                <div class="input-group">
-                                    <input type="text" class="form-control bg-light border-0 small"
-                                           placeholder="Search for..." aria-label="Search"
-                                           aria-describedby="basic-addon2">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button">
-                                            <i class="fas fa-search fa-sm"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </li>
+                    
                     <li class="nav-item" style="padding-top: 20px"><partial name="_SelectLanguagePartial" /></li>
 
                     <!-- Nav Item - Alerts -->
@@ -342,35 +320,7 @@
                     <div class="topbar-divider d-none d-sm-block"></div>
 
                     <!-- Nav Item - User Information -->
-                    <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" asp-controller="Doctor" asp-action="profile" id="userDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                            <img class="img-profile rounded-circle"
-                                 src="~/img/undraw_profile.jpg">
-                        </a>
-                        <!-- Dropdown - User Information -->
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                             aria-labelledby="userDropdown">
-                            <a class="dropdown-item" asp-controller="Doctor" asp-action="profile">
-                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                @localizer["Profile"]
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Settings
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Activity Log
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item"  asp-controller="auth" asp-action="Login" data-toggle="modal" data-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                               @localizer["Logout"] 
-                            </a>
-                        </div>
-                    </li>
+                    @await Component.InvokeAsync("DoctorInfo")
 
                 </ul>
 
@@ -462,7 +412,71 @@
             });
         }
     });
-    
+    $(document).ready(function () {
+        $('#patientSearch').on('input', function () {
+            var searchTerm = $(this).val().toLowerCase();
+            var $dropdownMenu = $('#patientDropdown');
+
+            if (searchTerm.length > 0) {  // Trigger search after 1 character
+                // Send an API request to search for patients
+                $.ajax({
+                    url: `/DashBoard/SearchPatients/?searchTerm=${searchTerm}`,  // Adjust this API URL if needed
+                    type: 'GET',
+                    success: function (data) {
+                        $dropdownMenu.empty();  // Clear previous results
+                        if (data.length > 0) {
+                            data.forEach(function (patient) {
+                                $dropdownMenu.append(`
+                                <div class="dropdown-item" data-value="${patient.PatientId}">
+                                    ${patient.Name}
+                                </div>
+                            `);
+                            });
+
+                            // Show the dropdown
+                            $dropdownMenu.show();
+                        } else {
+                            // Hide if no results
+                            $dropdownMenu.hide();
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error fetching patients:', error);
+                    }
+                });
+            } else {
+                $dropdownMenu.hide();  // Hide dropdown if search term is too short
+            }
+        });
+
+        // Handle selecting a patient from the dropdown
+        $('#patientDropdown').on('click', '.dropdown-item', function () {
+            var selectedPatientId = $(this).data('value');
+            var selectedPatientName = $(this).text();
+
+            // Debugging alert to check if ID and name are correctly captured
+            alert(`Selected Patient ID: ${selectedPatientId}, Name: ${selectedPatientName}`);
+
+            // Update the hidden fields with the selected patient's information
+            $('#SelectedPatientId').val(selectedPatientId);
+            $('#patientName').val(selectedPatientName);  // Assuming you have an input with ID 'patientName'
+
+            // Redirect to the patient's profile page
+            window.location.href = `/Patient/Profile/${selectedPatientId}`;
+
+            // Hide the dropdown
+            $('#patientDropdown').hide();
+        });
+
+        // Close dropdown when clicking outside
+        $(document).click(function (event) {
+            if (!$(event.target).closest('.dropdown').length) {
+                $('#patientDropdown').hide();
+            }
+        });
+    });
+
+
 </script>
 </body>
 

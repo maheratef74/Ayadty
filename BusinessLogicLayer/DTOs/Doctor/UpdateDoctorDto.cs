@@ -8,11 +8,11 @@ namespace BusinessLogicLayer.DTOs.Doctor
         public string DoctorId { get; set; } // Primary Key
         public string Name { get; set; }
         public string PhoneNumber { get; set; }
-        public bool IsAvalibleToAppoinment { get; set; }
+       
         public string? Email { get; set; }
         public string? ProfilePhoto { get; set; }
         public int? YearsOfExperience { get; set; }
-        public decimal? Price { get; set; }
+        public int? Price { get; set; }
     }
 
     public static class UpdateDoctorExtensionsDto

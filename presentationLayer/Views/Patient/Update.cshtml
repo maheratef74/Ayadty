@@ -187,9 +187,7 @@
 <script>
         document.addEventListener("DOMContentLoaded", function() {
         function previewPhoto(event) {
-            alert("Entering previewPhoto function");
             const photo = document.getElementById('profilePhoto');
-            alert("hiiiiii");
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
@@ -225,7 +223,7 @@ const dateInput = document.getElementById('datepicker');
             icon.classList.add("fa-eye");
         }
     }
-    
+   </script> 
 <!-- jQuery Validation and Unobtrusive Validation -->
 <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>

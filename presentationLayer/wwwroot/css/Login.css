@@ -24,6 +24,16 @@ header {
 }
 
 .container {
+
+    background-image: url('@Url.Content("~/img/60.jpg")') !important;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    justify-content: center;
+    position: relative; /*ááÊÃßÏ Ãä ÇáãÍÊæì ÝæÞ ÇáÎáÝíÉ */
+    z-index: 1; /*áÖãÇä Ãä ÇáäÕ íÙåÑ ÝæÞ ÇáÎáÝíÉ */
+
+
     width: 50% !important;
     background-color: white;
     padding: 25px 30px;

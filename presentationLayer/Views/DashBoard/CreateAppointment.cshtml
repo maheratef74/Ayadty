@@ -43,9 +43,9 @@
                 <div class="form-group half-width">
                     <label>@localizer["Select Patient"]</label>
                     <div class="dropdown">
-                        <input  type="text" id="patientSearch" class="form-control" placeholder="@localizer["Search by name..."]" />
+                        <input  type="text" id="patientSearch" class="form-control" placeholder="@localizer["Search by name..."]" autocomplete="off"/>
                         <div id="patientDropdown" class="dropdown-menu" style="display: none;">
-                            <div class="dropdown-item" data-value="">@localizer["-- Select a Patient --"]</div>
+                            @*<div class="dropdown-item" data-value="">@localizer["-- Select a Patient --"]</div>*@
                             @foreach (var patient in Model.Patients)
                             {
                             <div class="dropdown-item" data-value="@patient.PatientId" data-phone="@patient.PhoneNumber">
