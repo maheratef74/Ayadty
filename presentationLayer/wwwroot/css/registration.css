@@ -19,13 +19,15 @@ header {
 }
 
 .container {
-    background-image: url(~/img/60.jpg) !important;  
+/*    background-image: url(~/img/60.jpg) !important;  
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     justify-content: center;
-    position: relative;  /*للتأكد أن المحتوى فوق الخلفية */
-    z-index: 1;  /*لضمان أن النص يظهر فوق الخلفية */
+    position: relative; 
+    z-index: 1;  */
+
+
     max-width: 700px;
     width: 100%;
     background-color: #fff;
@@ -131,7 +133,7 @@ header {
     border: 1px solid #ccc;
     border-bottom-width: 2px;
     transition: all 0.3s ease;
-    padding-right: 15px;
+    padding-right: 15px !important;
 }
 
 .input-box select {

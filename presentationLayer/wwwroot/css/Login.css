@@ -24,13 +24,14 @@ header {
 }
 
 .container {
+
     background-image: url('@Url.Content("~/img/60.jpg")') !important;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     justify-content: center;
-    position: relative; /*·· √ﬂœ √‰ «·„Õ ÊÏ ›Êﬁ «·Œ·›Ì… */
-    z-index: 1; /*·÷„«‰ √‰ «·‰’ ÌŸÂ— ›Êﬁ «·Œ·›Ì… */
+    position: relative; /*√°√°√ä√É√ü√è √É√§ √á√°√£√ç√ä√¶√¨ √ù√¶√û √á√°√é√°√ù√≠√â */
+    z-index: 1; /*√°√ñ√£√á√§ √É√§ √á√°√§√ï √≠√ô√•√ë √ù√¶√û √á√°√é√°√ù√≠√â */
 
 
     width: 50% !important;
@@ -139,6 +140,62 @@ form .button {
             transform: scale(0.99);
             background-color: rgb(37, 140, 251, 0.6);
         }
+
+@media (max-width: 768px) {
+    body {
+        padding: 5px;
+    }
+
+    .container {
+        width: 90% !important;
+        padding: 15px 20px;
+    }
+
+        .container .title {
+            font-size: 22px;
+        }
+
+    .user-details .input-box input {
+        height: 40px;
+        font-size: 14px;
+    }
+
+    form .button {
+        height: 40px;
+    }
+
+        form .button input {
+            font-size: 16px;
+        }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 100% !important;
+        padding: 10px 15px;
+    }
+
+        .container .title {
+            font-size: 20px;
+        }
+
+    .user-details .input-box input {
+        height: 35px;
+        font-size: 13px;
+    }
+
+    form .button {
+        height: 35px;
+    }
+
+        form .button input {
+            font-size: 14px;
+        }
+
+    header {
+        right: 10%;
+    }
+}
 
 @media (max-width: 584px) {
     .container {
