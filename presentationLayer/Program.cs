@@ -100,6 +100,8 @@ public class Program
         {
             options.LoginPath = "/auth/Login"; // Redirect here if not authenticated
             options.AccessDeniedPath = "/Home/Error404"; // Optional path for denied access
+            options.SlidingExpiration = true; // Extend cookie expiration on each request
+            options.ExpireTimeSpan = TimeSpan.FromDays(14);
         });
         #endregion 
              

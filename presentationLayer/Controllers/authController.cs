@@ -97,6 +97,12 @@ public class authController : Controller
         }
         return View(newPatient);
     }
+    public async Task<IActionResult> Logout()
+    {
+        await _signInManager.SignOutAsync();
+        return RedirectToAction("Login", "auth");
+    }
+    
     public async Task<IActionResult> CheckPhone(string PhoneNumber, string? PatientId = null)
     {
         var user = await _applicationUserRepository.GetUserByPhoneAndExcludeCurrentPatient(PhoneNumber, PatientId);

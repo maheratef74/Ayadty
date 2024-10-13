@@ -85,9 +85,8 @@ var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
 <!-- Header Area -->
 <header class="header" >
         <li class="d-inline-block">
-            <a href="#">@await Html.PartialAsync("_SelectLanguagePartial")</a>
+            @await Html.PartialAsync("_SelectLanguagePartial")
         </li>
-        <hr>
     <!-- Header Inner -->
     <div class="header-inner">
         <div class="container">
@@ -155,6 +154,11 @@ var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
                                         </ul>
                                     </li>
                                     <li class="nav-item"><a asp-controller="Clinic" asp-action="ContactUs">@localizer["Contact Us"]</a></li>
+                                    <li class="nav-item">
+                                        <a asp-controller="auth" asp-action="Logout">
+                                                @localizer["Logout"]
+                                        </a>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>

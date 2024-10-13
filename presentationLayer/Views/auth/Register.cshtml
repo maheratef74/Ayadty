@@ -40,7 +40,7 @@
 <body>
 @if (!User.IsInRole("Doctor") && !User.IsInRole("Nurse"))
 {
-    <header>
+    <header style="padding-top: -20px;">
         @Html.Partial("_SelectLanguagePartial")
     </header>
 }
