@@ -32,7 +32,7 @@ public class authController : Controller
         _applicationUserRepository = applicationUserRepository;
     }
     [HttpGet]
-    public async Task<IActionResult> Login()
+    public IActionResult Login()
     {
         return View();
     }
@@ -62,7 +62,7 @@ public class authController : Controller
         return View(loginAr);
     }
     [HttpGet]
-    public  async Task<IActionResult> Register()
+    public  IActionResult Register()
     {
         return View();
     }

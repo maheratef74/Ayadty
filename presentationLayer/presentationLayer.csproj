@@ -1,9 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
     </PropertyGroup>
 
     <ItemGroup>
@@ -69,6 +70,17 @@
 
     <ItemGroup>
       <_ContentIncludedByDefault Remove="Pages\GetAppoinment\GetAppoinment.cshtml" />
+      <_ContentIncludedByDefault Remove="wwwroot\images\9.PNG" />
+      <_ContentIncludedByDefault Remove="wwwroot\images\c.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\images\Capture.PNG" />
+      <_ContentIncludedByDefault Remove="wwwroot\images\content.PNG" />
+      <_ContentIncludedByDefault Remove="wwwroot\images\DATA.PNG" />
+      <_ContentIncludedByDefault Remove="wwwroot\images\Doctor2.PNG" />
+      <_ContentIncludedByDefault Remove="wwwroot\images\js.PNG" />
+      <_ContentIncludedByDefault Remove="wwwroot\images\me.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\images\quiz.PNG" />
+      <_ContentIncludedByDefault Remove="wwwroot\images\strTOint.PNG" />
+      <_ContentIncludedByDefault Remove="wwwroot\images\WhatsApp Image 2024-09-22 at 23.04.01_019cbca2.jpg" />
     </ItemGroup>
 
     <ItemGroup>

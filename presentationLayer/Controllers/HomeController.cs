@@ -8,7 +8,7 @@ using presentationLayer.Models.Patient.ViewModel;
 using presentationLayer.Models.WorkingDays.ViewModel;
 
 namespace presentationLayer.Controllers;
-[Authorize]
+//[Authorize]
 public class HomeController:Controller
 {
     private readonly IPatientService _patientService;

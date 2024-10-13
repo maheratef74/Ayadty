@@ -51,20 +51,7 @@ public class DashBoardController:Controller
     [HttpGet]
     public async Task<IActionResult> CreateAppointment()
     {
-        var patientsDto = await _patientService.GetAllPatients();
-        var patientsVM = new List<PatientVM>();
-        foreach (var patientDto in patientsDto)
-        {
-            var patientVM = patientDto.ToPatientVM();
-            patientsVM.Add(patientVM);
-        }
-        
-        var NurseAppointmentVM = new NurseAppointmentVM()
-        {
-            Patients = patientsVM
-        };
-        NurseAppointmentVM.Date = DateTime.Now;
-        return View(NurseAppointmentVM);
+        return View();
     }
     
     [HttpPost]
@@ -77,16 +64,16 @@ public class DashBoardController:Controller
     }
    
     [HttpGet]
-    public async Task<IActionResult> SearchPatients(string searchTerm)
+    public async Task<IActionResult> SearchPatients(string query)
     {
-        var patientsDto = await _patientService.GetPatientsByName(searchTerm);
-        var patientsVM = new List<PatientVM>();
-        foreach (var patientDto in patientsDto)
+        var patientsDtos = await _patientService.GetPatientsByName(query);
+        var patientsVMS = new List<PatientVM>();
+        foreach (var patientDto in patientsDtos)
         {
             var patientVM = patientDto.ToPatientVM();
-            patientsVM.Add(patientVM);
+            patientsVMS.Add(patientVM);
         }
-        return Json(patientsVM);
+        return PartialView("_SearchResults", patientsVMS);
     }
 
     [HttpGet]

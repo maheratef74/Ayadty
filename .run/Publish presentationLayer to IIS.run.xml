@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Publish presentationLayer to IIS" type="DotNetMsBuildPublish" factoryName="Publish to IIS" singleton="false">
+    <riderPublish configuration="Release" platform="Any CPU" publish_profile="ayadtytest.runasp.net-WebDeploy(1).pubxml" save_password="true" user_name="site9691" uuid_high="-8148806290543916484" uuid_low="-7635698436542463790" />
+    <method v="2" />
+  </configuration>
+</component>

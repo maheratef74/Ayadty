@@ -36,36 +36,31 @@
     <div class="title">@localizer["Create Appointment for Patient"]</div>
     <div class="form-container">
         <form asp-controller="DashBoard" asp-action="CreateAppointment" method="post" class="form">
-            <input asp-for="SelectedPatientId" type="hidden" id="SelectedPatientId" />
-            <input asp-for="PatientName" type="hidden" id="patientName" />
+            <input asp-for="PatientId" type="hidden" id="patientId" />
             <div class="form-row">
                 <!-- Select Patient Dropdown -->
                 <div class="form-group half-width">
                     <label>@localizer["Select Patient"]</label>
                     <div class="dropdown">
-                        <input  type="text" id="patientSearch" class="form-control" placeholder="@localizer["Search by name..."]" autocomplete="off"/>
-                        <div id="patientDropdown" class="dropdown-menu" style="display: none;">
-                            @*<div class="dropdown-item" data-value="">@localizer["-- Select a Patient --"]</div>*@
-                            @foreach (var patient in Model.Patients)
-                            {
-                            <div class="dropdown-item" data-value="@patient.PatientId" data-phone="@patient.PhoneNumber">
-                                @patient.Name
-                            </div>
-                            }
+                        <input asp-for="PatientName" type="text" id="searchInput" class="form-control" placeholder="@localizer["Search by name..."]" autocomplete="off" />
+                        <div id="searchResults" class="dropdown-menu" style="display: none;">
+                            
                         </div>
                     </div>
                 </div>
 
+                <!-- Hidden input for PatientId -->
+                
                 <!-- Patient Phone -->
                 <div class="form-group half-width">
                     <label>@localizer["Patient Phone"]</label>
                     <input asp-for="patientPhone" type="text" id="patientPhone" class="form-control" placeholder="@localizer["Phone Number"]" readonly />
                 </div>
-
+                
                 <!-- Appointment Date -->
                 <div class="form-group full-width">
                     <label>@localizer["Appointment Date"]</label>
-                    <input asp-for="Date" type="datetime-local" class="form-control" value="@Model.Date.ToString("yyyy-MM-ddTHH:mm")" />
+                    <input asp-for="Date" type="datetime-local" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")"  />
                 </div>
 
                 <!-- Notes -->
@@ -89,90 +84,43 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+    
     $(document).ready(function () {
-        $('#patientSearch').on('input', function () {
-            var searchTerm = $(this).val().toLowerCase();
-            var $dropdownMenu = $('#patientDropdown');
-            var $items = $dropdownMenu.find('.dropdown-item');
+        $("#searchInput").on("keyup", function () {
+            var query = $(this).val();
 
-            if (searchTerm) {
-                $dropdownMenu.show();
-            } else {
-                $dropdownMenu.hide();
-            }
-
-            $items.each(function () {
-                var itemText = $(this).text().toLowerCase();
-                $(this).toggle(itemText.includes(searchTerm));
+            // Perform AJAX request to the search action
+            $.ajax({
+                url: '/DashBoard/SearchPatients/', // URL of the search action
+                type: 'GET',
+                data: { query: query }, // Data sent to the server
+                success: function (data) {
+                    // Update the searchResults div with the returned HTML (partial view)
+                    $("#searchResults").html(data).show();
+                },
+                error: function () {
+                    // Optional: handle errors here
+                    $("#searchResults").html('<p>Error retrieving results.</p>');
+                }
             });
         });
 
-        $('#patientDropdown').on('click', '.dropdown-item', function () {
-            var selectedPatientId = $(this).data('value'); // Extract the ID
-            var selectedPatientName = $(this).text(); // Extract the patient's name
+        // Listen for clicks on the search results
+        $(document).on("click", ".patient-result", function () {
+            var patientName = $(this).find(".patient-name").text();
+            var patientPhone = $(this).data("patient-phone");
+            var patientId = $(this).data("patient-id"); // Get the PatientId
 
-            // Update the hidden field
-            $('#SelectedPatientId').val(selectedPatientId);
-            
-            // Update the hidden field for patient name
-            $('#patientName').val(selectedPatientName);
-            
-            // Update the search input with the selected patient's name
-            $('#patientSearch').val(selectedPatientName);
+            // Set the input field values
+            $("#searchInput").val(patientName);
+            $("#patientPhone").val(patientPhone);
+            $("#patientId").val(patientId); // Set the hidden PatientId
 
-            // Update the phone input with the selected patient's phone number
-            $('#patientPhone').val(selectedPatientPhone);
-            // Hide the dropdown
-            $('#patientDropdown').hide();
-        });
-
-
-        $(document).click(function (event) {
-            if (!$(event.target).closest('.dropdown').length) {
-                $('#patientDropdown').hide();
-            }
+            // Hide the dropdown after selecting a patient
+            $("#searchResults").hide();
         });
     });
 
-    document.addEventListener('DOMContentLoaded', function () {
-        const patientSearch = document.getElementById('patientSearch');
-        const patientDropdown = document.getElementById('patientDropdown');
-        const patientPhoneInput = document.getElementById('patientPhone');
-        const selectedPatientIdInput = document.getElementById('SelectedPatientId');
-
-        // Simulate dropdown show/hide logic (this can be replaced with your logic)
-        patientSearch.addEventListener('focus', function () {
-            patientDropdown.style.display = 'block';
-        });
-
-        document.addEventListener('click', function (event) {
-            if (!patientDropdown.contains(event.target) && event.target !== patientSearch) {
-                patientDropdown.style.display = 'none';
-            }
-        });
-
-        // Listen to clicks on patient dropdown items
-        patientDropdown.addEventListener('click', function (event) {
-            const selectedItem = event.target;
-            if (selectedItem.classList.contains('dropdown-item')) {
-                const patientName = selectedItem.textContent;
-                const patientId = selectedItem.getAttribute('data-value');
-                const patientPhone = selectedItem.getAttribute('data-phone');
-
-                // Set the selected patient's name in the search input
-                patientSearch.value = patientName;
-
-                // Set the selected patient's phone number in the phone input
-                patientPhoneInput.value = patientPhone;
-
-                // Set the hidden input with the selected patient's ID
-                selectedPatientIdInput.value = patientId;
-
-                // Hide the dropdown
-                patientDropdown.style.display = 'none';
-            }
-        });
-    });
 
 </script>
 

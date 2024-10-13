@@ -5,14 +5,11 @@ namespace presentationLayer.Models.DashBoard.ViewModel;
 
 public class NurseAppointmentVM
 {
-    
-    public string SelectedPatientId { get; set; }
+    public string PatientId { get; set; }
     public string PatientName { get; set; }
     public string patientPhone { get; set; }
-    public List<PatientVM> Patients { get; set; }
     public DateTime Date { get; set; }
     public string? Note { get; set; }
-    public string SearchTerm { get; set; } 
 }
 
 public static class ToDtoExtensionMethold
@@ -25,7 +22,7 @@ public static class ToDtoExtensionMethold
             PatientContact = appointmentVm.patientPhone,
             Note = appointmentVm.Note,
             PatientName = appointmentVm.PatientName,
-            PatientId = appointmentVm.SelectedPatientId
+            PatientId = appointmentVm.PatientId
         };
     }
 }

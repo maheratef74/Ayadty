@@ -1,0 +1,25 @@
+@model List<presentationLayer.Models.Patient.ViewModel.PatientVM>
+<style>
+    .patient-result {
+        padding: 10px;
+        border-bottom: 1px solid #e0e0e0; /* Light border between items */
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .patient-result:hover {
+        background-color: #f8f9fa; /* Light background color on hover */
+    }
+
+    .patient-name {
+        font-weight: bold;
+        color: #333;
+    }
+    
+</style>
+@foreach (var patient in Model)
+{
+    <div class="dropdown-item patient-result" data-patient-id="@patient.PatientId" data-patient-phone="@patient.PhoneNumber">
+        <h5 class="patient-name">@patient.Name</h5>
+    </div>
+}

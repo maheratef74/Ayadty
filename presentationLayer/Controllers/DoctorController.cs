@@ -61,8 +61,7 @@ namespace presentationLayer.Controllers
             ViewBag.WorkingDaysVMS= WorkingDaysVMS;
             return View(WorkingDaysVMS);
         }
-  
-
+        
         [HttpPost]
         [Authorize(Roles = "Doctor, Nurse")]
         public async Task<IActionResult> UpdateWorkingDays(List<WorkingDaysVM> workingDaysVms)

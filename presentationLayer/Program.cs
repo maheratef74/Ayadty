@@ -151,14 +151,15 @@ public class Program
         }
 
         #endregion
-        // Configure the HTTP request pipeline.
-        if (!app.Environment.IsDevelopment())
-        {
-            app.UseExceptionHandler("/Home/Error");
-            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-            app.UseHsts();
-        }
-       
+        /* // Configure the HTTP request pipeline.
+         if (!app.Environment.IsDevelopment())
+         {
+             app.UseExceptionHandler("/Home/Error404");
+             // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+             app.UseHsts();
+         }*/
+        app.UseDeveloperExceptionPage(); // show the excption to know the error
+
         app.UseHttpsRedirection();
         app.UseStaticFiles();
 

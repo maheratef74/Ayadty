@@ -25,11 +25,12 @@
     <meta charset="UTF-8">
     <title>@localizer["Log In"]</title>
     <link rel="stylesheet" href="~/css/Login.css?v=@DateTime.Now.Ticks">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <header>
-        @Html.Partial("_SelectLanguagePartial")
+        <div style="padding-top: 50px" >@Html.Partial("_SelectLanguagePartial")</div> 
         @Html.Partial("_ValidationScriptsPartial")
     </header>
 

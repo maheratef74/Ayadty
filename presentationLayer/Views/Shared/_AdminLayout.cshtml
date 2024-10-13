@@ -177,28 +177,23 @@
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                <!-- Sidebar Toggle (Topbar) -->
-                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                    <i class="fa fa-bars"></i>
-                </button>
                 
-                    <!-- Select Patient Dropdown -->
                 <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="dropdown">
                         <input type="text" id="patientSearch" class="form-control bg-light border-0 small"
-                               placeholder="@localizer["Search by name..."]" autocomplete="off"  aria-label="Search" aria-describedby="basic-addon2" />
+                               placeholder="@localizer["Search by name..."]" autocomplete="off" aria-label="Search" aria-describedby="basic-addon2" />
                         <div id="patientDropdown" class="dropdown-menu" style="display: none;">
                             <!-- Results will be dynamically added here -->
                         </div>
                     </div>
-                    <!-- Hidden input to store the selected patient's ID -->
                     <input type="hidden" id="SelectedPatientId" name="SelectedPatientId" />
                 </div>
-                
+
+
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
                     
-                    <li class="nav-item" style="padding-top: 20px"><partial name="_SelectLanguagePartial" /></li>
+                    <li class="nav-item" style="padding-top: 20px; padding-left: 50px"><partial name="_SelectLanguagePartial" /></li>
 
                     <!-- Nav Item - Alerts -->
                     <li class="nav-item dropdown no-arrow mx-1">
@@ -412,67 +407,32 @@
             });
         }
     });
+
     $(document).ready(function () {
-        $('#patientSearch').on('input', function () {
-            var searchTerm = $(this).val().toLowerCase();
-            var $dropdownMenu = $('#patientDropdown');
+        $("#patientSearch").on("keyup", function () {
+            var query = $(this).val();
 
-            if (searchTerm.length > 0) {  // Trigger search after 1 character
-                // Send an API request to search for patients
-                $.ajax({
-                    url: `/DashBoard/SearchPatients/?searchTerm=${searchTerm}`,  // Adjust this API URL if needed
-                    type: 'GET',
-                    success: function (data) {
-                        $dropdownMenu.empty();  // Clear previous results
-                        if (data.length > 0) {
-                            data.forEach(function (patient) {
-                                $dropdownMenu.append(`
-                                <div class="dropdown-item" data-value="${patient.PatientId}">
-                                    ${patient.Name}
-                                </div>
-                            `);
-                            });
-
-                            // Show the dropdown
-                            $dropdownMenu.show();
-                        } else {
-                            // Hide if no results
-                            $dropdownMenu.hide();
-                        }
-                    },
-                    error: function (xhr, status, error) {
-                        console.error('Error fetching patients:', error);
-                    }
-                });
-            } else {
-                $dropdownMenu.hide();  // Hide dropdown if search term is too short
-            }
+            // Perform AJAX request to the search action
+            $.ajax({
+                url: '/DashBoard/SearchPatients/', // Adjust this URL based on your routing
+                type: 'GET',
+                data: { query: query },
+                success: function (data) {
+                    // Update the dropdown with the returned HTML
+                    $("#patientDropdown").html(data).show();
+                },
+                error: function () {
+                    $("#patientDropdown").html('<p>Error retrieving results.</p>');
+                }
+            });
         });
 
-        // Handle selecting a patient from the dropdown
-        $('#patientDropdown').on('click', '.dropdown-item', function () {
-            var selectedPatientId = $(this).data('value');
-            var selectedPatientName = $(this).text();
-
-            // Debugging alert to check if ID and name are correctly captured
-            alert(`Selected Patient ID: ${selectedPatientId}, Name: ${selectedPatientName}`);
-
-            // Update the hidden fields with the selected patient's information
-            $('#SelectedPatientId').val(selectedPatientId);
-            $('#patientName').val(selectedPatientName);  // Assuming you have an input with ID 'patientName'
+        // Handle the selection of a patient from the dropdown
+        $(document).on("click", ".patient-result", function () {
+            var patientId = $(this).data("patient-id");
 
             // Redirect to the patient's profile page
-            window.location.href = `/Patient/Profile/${selectedPatientId}`;
-
-            // Hide the dropdown
-            $('#patientDropdown').hide();
-        });
-
-        // Close dropdown when clicking outside
-        $(document).click(function (event) {
-            if (!$(event.target).closest('.dropdown').length) {
-                $('#patientDropdown').hide();
-            }
+            window.location.href = '/Patient/Profile?patientId=' + patientId;
         });
     });
 
