@@ -21,9 +21,6 @@ using presentationLayer.Models.WorkingDays.ViewModel;
 
 namespace presentationLayer.Controllers
 {
-
-    //[Authorize(Roles = "Doctor")]
-
     public class DoctorController : Controller
     {
         private readonly IDoctorService _doctorService;
@@ -46,7 +43,7 @@ namespace presentationLayer.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Doctor, Nurse")]
+        [Authorize(Roles = "Doctor,Nurse")]
         public async Task<IActionResult> UpdateWorkingDays()
         {
             var WorkingDaysDtos = await _workingDaysService.GetAllWorkingDays();
@@ -77,18 +74,17 @@ namespace presentationLayer.Controllers
             TempData["successMessage"] = _localizer["Working Days updated successfully"].Value;
             return RedirectToAction("UpdateWorkingDays", "Doctor");
         }
-       
-        [Authorize(Roles = "Doctor, Nurse , Patient" )]
+        
         public async Task<IActionResult> Profile(string doctorId)
         {
             if (doctorId is null)
             { 
-                doctorId= User.FindFirstValue(ClaimTypes.NameIdentifier);
+                doctorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             }
             // defult doctor to apear for user if need
             if (User.IsInRole(Roles.Patient))
             {
-                doctorId = "3ab80e7d-95b1-4690-b97b-cebd8d4ed0bd";
+                doctorId = "1b849748-b9c7-4870-a1ad-2efed949e114";
             }
             // check if ID is not current user
             var DoctorDto = await _doctorService.GetDoctorById(doctorId);//return dto 
@@ -96,11 +92,13 @@ namespace presentationLayer.Controllers
             return View(DoctorVM);
         }
         [HttpGet]
+        [Authorize(Roles = Roles.Doctor)]
         public async Task<IActionResult> Create()
         {
             return View();
         }
         [HttpPost]
+        [Authorize(Roles = Roles.Doctor)]
         public async Task<IActionResult> Create(AddDoctorAR doctorAr)
         {
             if (ModelState.IsValid)
@@ -129,6 +127,7 @@ namespace presentationLayer.Controllers
         }
         
         [HttpGet]
+        [Authorize(Roles = Roles.Doctor)]
         public async Task<IActionResult> Update(string doctorId)
         {
             var doctorDto = await _doctorService.GetDoctorById(doctorId);
@@ -142,6 +141,7 @@ namespace presentationLayer.Controllers
 
         
          [HttpPost]
+         [Authorize(Roles = Roles.Doctor)]
         public async Task<IActionResult> Update(UpdateDoctorVM updatedDoctor)
         {
            if (!ModelState.IsValid)
@@ -204,6 +204,7 @@ namespace presentationLayer.Controllers
             return View();
         }
         [HttpPost]
+        [Authorize(Roles = Roles.Doctor)]
         public async Task<IActionResult> AddNurse(AddDoctorAR NurseAR)
         {
             if (ModelState.IsValid)

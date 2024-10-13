@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace presentationLayer.Controllers
 {
+    [Authorize]
     public class ClinicController : Controller
     {
         private readonly IFileService _fileService;
@@ -43,6 +44,7 @@ namespace presentationLayer.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Doctor,Nurse")]
         public async Task<IActionResult> Update()
         {
             var clinicId = "1";
@@ -55,6 +57,7 @@ namespace presentationLayer.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Doctor,Nurse")]
         public async Task<IActionResult> Update(UpdateClinicVM updatedClinic)
         {
             if(!ModelState.IsValid)
@@ -77,6 +80,7 @@ namespace presentationLayer.Controllers
         }
         
         [HttpGet]
+        [Authorize(Roles = "Doctor,Nurse")]
         public async Task<IActionResult> ControllAppointment()
         {
             var ClinicIsOpen = new ClinicIsAvailable();

@@ -135,7 +135,7 @@ namespace presentationLayer.Controllers
         public async Task<IActionResult> Delete(string patientId)
         {
             await _patientService.DeletePatient(patientId);
-            TempData["SuccessMessage"] = _localizer["Appointment deleted successfully."].Value;
+            TempData["SuccessMessage"] = _localizer["Patient deleted successfully."].Value;
             return RedirectToAction("ShowAllPatients", "DashBoard");
         }
     }

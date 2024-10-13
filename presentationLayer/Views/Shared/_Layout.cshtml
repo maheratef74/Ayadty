@@ -7,6 +7,9 @@
 @{
 var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
 var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
 }
 
 <!doctype html>
@@ -114,22 +117,35 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                         </div>
                         <!-- Mobile Nav -->
                         <div class="mobile-nav"></div>
+                        
+                        @if (currentController != "Home" || currentAction != "Index")
+                        {
+                            <div style="padding-top: 20px;">
+                                <a style="color: white;" asp-controller="Home" asp-action="Index" class="btn btn-primary btn-sm">
+                                    @localizer["Back to home page"]
+                                </a>
+                            </div>
+                        }
                         <!-- End Mobile Nav -->
                     </div>
                     <div class="col-lg-7 col-md-9 col-12">
                         <!-- Main Menu -->
                         <div class="main-menu">
-                            <nav class="navigation">
-                                <ul class="nav menu">
-                                    <li class="nav-item">
+                            <nav class="navigation align-items-center text-center">
+                                <ul class="nav menu rtl align-items-center text-center">
+                                    @*<li class="nav-item">
                                         <a asp-controller="Home" asp-action="Index">@localizer["Home"]</a>
-                                    </li>
+                                    </li>*@
                                     <li class="nav-item"> <a asp-controller="Patient" asp-action="Profile" asp-route-patientId="@userId">@localizer["Patient Profile"]</a></li>
                                     <li class="nav-item"><a asp-controller="Doctor" asp-action="AboutMe">@localizer["Doctor"]</a></li>
                                     <li class="nav-item">
                                         <a href="#"> @localizer["Pages"] <i class="icofont-rounded-down"></i></a>
                                         <ul class="dropdown">
+                                            @if (User.IsInRole("Patient"))
+                                            {
                                             <li><a asp-controller="Patient" asp-action="Profile" asp-route-patientId="@userId" >@localizer["Patient Profile"]</a></li>
+                                                
+                                            }
                                             <li><a asp-controller="Appointment" asp-action="DailyAppointment">@localizer["DailyAppointment"]</a></li>
                                             <li><a asp-controller="auth" asp-action="Register">@localizer["Registration"]</a></li>
                                             <li><a asp-controller="auth" asp-action="Login">@localizer["Log In"]</a></li>
@@ -171,11 +187,17 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             <div class="row g-4 justify-content-around" style="align-items: center"> <!-- Added g-4 for horizontal space -->
                 <div class="col-lg-3 col-md-6 col-12">
                     <div class="single-footer">
-                        <h2>@localizer["About Us"]</h2>
+                        <a asp-controller="Doctor" asp-action="AboutMe">
+                            <h2>@localizer["About Us"]</h2>
+                        </a>
                         <p>@localizer["We Provide Medical Services That You Can Trust!"]</p>
                         <!-- Social -->
                         <ul class="social">
-                            <li><a href="#"><i class="icofont-facebook"></i></a></li>
+                            <li>
+                                <a href="https://www.facebook.com/profile.php?id=100009707350577" target="_blank" rel="noopener noreferrer">
+                                    <i class="icofont-facebook"></i>
+                                </a>
+                            </li>
                             <li><a href="#"><i class="icofont-google-plus"></i></a></li>
                             <li><a href="#"><i class="icofont-twitter"></i></a></li>
                             <li><a href="#"><i class="icofont-vimeo"></i></a></li>
@@ -191,7 +213,7 @@ var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                             <div class="col-lg-6 col-md-6 col-12">
                                 <ul>
                                     <li><a asp-controller="Home" asp-action="Index"><i class="fa fa-caret-right" aria-hidden="true"></i>@localizer["Home"]</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>@localizer["About Us"]</a></li>
+                                    <li><a asp-controller="Doctor" asp-action="AboutMe"><i class="fa fa-caret-right" aria-hidden="true"></i>@localizer["About Us"]</a></li>
                                     <!-- <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>@localizer["Services"]</a></li> -->
                                     <!-- <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>@localizer["Our Cases"]</a></li> -->
                                     <!--  <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>@localizer["Other Links"]</a></li> -->

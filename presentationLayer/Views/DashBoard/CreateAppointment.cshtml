@@ -42,12 +42,13 @@
                 <div class="form-group half-width">
                     <label>@localizer["Select Patient"]</label>
                     <div class="dropdown">
-                        <input asp-for="PatientName" type="text" id="searchInput" class="form-control" placeholder="@localizer["Search by name..."]" autocomplete="off" />
-                        <div id="searchResults" class="dropdown-menu" style="display: none;">
-                            
+                        <input asp-for="PatientName" type="text" id="formPatientSearch" class="form-control" placeholder="@localizer["Search by name..."]" autocomplete="off" />
+                        <div id="formPatientDropdown" class="dropdown-menu" style="display: none;">
+                            <!-- Results will be dynamically added here -->
                         </div>
                     </div>
                 </div>
+
 
                 <!-- Hidden input for PatientId -->
                 
@@ -84,9 +85,9 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    
+
     $(document).ready(function () {
-        $("#searchInput").on("keyup", function () {
+        $("#formPatientSearch").on("keyup", function () {
             var query = $(this).val();
 
             // Perform AJAX request to the search action
@@ -96,30 +97,31 @@
                 data: { query: query }, // Data sent to the server
                 success: function (data) {
                     // Update the searchResults div with the returned HTML (partial view)
-                    $("#searchResults").html(data).show();
+                    $("#formPatientDropdown").html(data).show();
                 },
                 error: function () {
                     // Optional: handle errors here
-                    $("#searchResults").html('<p>Error retrieving results.</p>');
+                    $("#formPatientDropdown").html('<p>Error retrieving results.</p>');
                 }
             });
         });
 
         // Listen for clicks on the search results
-        $(document).on("click", ".patient-result", function () {
+        $(document).on("click", "#formPatientDropdown .patient-result", function () {
             var patientName = $(this).find(".patient-name").text();
             var patientPhone = $(this).data("patient-phone");
             var patientId = $(this).data("patient-id"); // Get the PatientId
 
             // Set the input field values
-            $("#searchInput").val(patientName);
+            $("#formPatientSearch").val(patientName);
             $("#patientPhone").val(patientPhone);
             $("#patientId").val(patientId); // Set the hidden PatientId
 
             // Hide the dropdown after selecting a patient
-            $("#searchResults").hide();
+            $("#formPatientDropdown").hide();
         });
     });
+
 
 
 </script>

@@ -50,7 +50,16 @@ var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         .status-default {
             color: grey; /* default color for other statuses */
         }
+        .privacy-notice {
+            font-size: 14px;
+            color: #555;
+            margin-top: 20px;
+            text-align: center;
+        }
 
+        .privacy-notice strong {
+            color: #000;
+        }
     </style>
     <title>@localizer["Daily Appointement"]</title>
     <link rel="stylesheet" href="~/css/DailyAppointment.css">
@@ -63,6 +72,11 @@ var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         <div class="col-lg-12">
             <div class="main-box no-header clearfix">
                 <div class="main-box-body clearfix">
+                    <div class="privacy-notice">
+                        <p>
+                            <strong>@localizer["Privacy Notice:"]</strong> @localizer["We take the privacy of our patients seriously. Your data is securely stored and protected. Only authorized medical staff can access your personal information, and it will never be shared with unauthorized parties."]
+                        </p>
+                    </div>
                     <div class="table-responsive">
                         <table class="table user-list">
                             <thead>

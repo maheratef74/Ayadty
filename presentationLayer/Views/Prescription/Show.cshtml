@@ -34,16 +34,17 @@
 <div class="container mt-5 prescription-page">
 
     <!-- Doctor's Information -->
-    <div class="row doctor-info">
+    <div class="row doctor-info" style="color: white;">
         <div class="col-md-2 text-center align-self-center">
-            <h2>@localizer["AYADTY"]</h2>
+            <h2 style="color: white;">@localizer["AYADTY"]</h2>
         </div>
         <div class="col-md-8 text-center">
-            <h4>@localizer["Dr. Hamed Amr"]</h4>
-            <p>@localizer["Eye Surgeon"]</p>
-            <p>@localizer["Al-Azhar University"]</p>
+            <h4 style="color: white;">@localizer["Dr. Hamed Amr"]</h4>
+            <p style="color: white;">@localizer["Eye Surgeon"]</p>
+            <p style="color: white;">@localizer["Al-Azhar University"]</p>
         </div>
     </div>
+
 
     <br />
 
@@ -117,24 +118,25 @@
     <hr />
 
     <!-- Footer Section -->
-    <div class="row doctor-footer mt-5">
+    <div class="row doctor-footer mt-5" style="color: white;">
         <div class="col-md-4 text-center">
-            <p>@localizer["Adress : "]
+            <p style="color: white;">
+                @localizer["Adress : "]
                 @Model.clinicAdress
             </p>
         </div>
         <div class="col-md-4 text-center">
-            @localizer["Working days : "]
-            <p>
+            <p style="color: white;">
+                @localizer["Working days : "]
                 @foreach (var day in Model.DaysOfWork)
                 {
-                    @localizer[@day.ToString()]
-                    <span> , </span>
+                @localizer[@day.ToString()]
+                <span>, </span>
                 }
             </p>
         </div>
         <div class="col-md-4 text-center">
-            <p>
+            <p style="color: white;">
                 @localizer["For Appointment : "]
                 @Model.clinicPhone
             </p>

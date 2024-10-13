@@ -593,5 +593,11 @@
   "The clinic is currently open for appointments.": "The clinic is currently open for appointments.",
   "ClinicNameRequired":  "Clinic Name Required",
   "MyProfile" :  "My Profile",
-  "ClinicProfile" :  "Clinic Profile"
+  "ClinicProfile" :  "Clinic Profile",
+  "Privacy Notice:" :  "Privacy Notice: ",
+  "We take the privacy of our patients seriously. Your data is securely stored and protected. Only authorized medical staff can access your personal information, and it will never be shared with unauthorized parties." :
+  "We take the privacy of our patients seriously. Your data is securely stored and protected. Only authorized medical staff can access your personal information, and it will never be shared with unauthorized parties." ,
+  "Back to home page" :   "Back to home page",
+  "Appointments": "Appointments",
+  "Patient deleted successfully.":   "Patient deleted successfully."
 }

@@ -31,6 +31,7 @@ namespace presentationLayer.Controllers
             _clinicService = clinicService;
         }
         [HttpGet] 
+        [Authorize(Roles = Roles.Doctor)]
         public async Task<IActionResult> Create(string AppointmentId)
         {
             var appointment = await _appointmentService.GetAppointmentByID(AppointmentId);
@@ -53,6 +54,7 @@ namespace presentationLayer.Controllers
             return View(createPrescrptionAr);
         }
          [HttpPost] 
+         [Authorize(Roles = Roles.Doctor)]
          public async Task<IActionResult> Create(CreatePrescrptionAR request)
         {
             if (!ModelState.IsValid)
@@ -89,6 +91,7 @@ namespace presentationLayer.Controllers
             return View(prescriptionVM);
         }
         [HttpGet]
+        [Authorize(Roles = Roles.Doctor)]
         public async Task<IActionResult>  Update(string PrescriptionId)
         {
             var prescriptionDto = await _prescriptionService.GetPrescriptionById(PrescriptionId);
@@ -97,6 +100,7 @@ namespace presentationLayer.Controllers
             return View(prescriptionAR);
         }
         [HttpPost]
+        [Authorize(Roles = Roles.Doctor)]
         public async Task<IActionResult>  Update(UpdatePrescriptionAR updatedPrescriptionAr)
         {
             var prescriptionDto = updatedPrescriptionAr.ToPrescriptionDetailsDto();

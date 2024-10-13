@@ -38,12 +38,12 @@
 </head>
 
 <body>
-@*@if (!User.IsInRole("Doctor") && !User.IsInRole("Nurse"))
+@if (!User.IsInRole("Doctor") && !User.IsInRole("Nurse"))
 {
     <header>
         @Html.Partial("_SelectLanguagePartial")
     </header>
-}*@
+}
 
 
 <div class="container">

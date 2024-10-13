@@ -177,23 +177,24 @@
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                
+
                 <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="dropdown">
-                        <input type="text" id="patientSearch" class="form-control bg-light border-0 small"
+                        <input type="text" id="adminPatientSearch" class="form-control bg-light border-0 small"
                                placeholder="@localizer["Search by name..."]" autocomplete="off" aria-label="Search" aria-describedby="basic-addon2" />
-                        <div id="patientDropdown" class="dropdown-menu" style="display: none;">
+                        <div id="adminPatientDropdown" class="dropdown-menu" style="display: none;">
                             <!-- Results will be dynamically added here -->
                         </div>
                     </div>
-                    <input type="hidden" id="SelectedPatientId" name="SelectedPatientId" />
+                    <input type="hidden" id="adminSelectedPatientId" name="adminSelectedPatientId" />
                 </div>
+
 
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
                     
-                    <li class="nav-item" style="padding-top: 20px; padding-left: 50px"><partial name="_SelectLanguagePartial" /></li>
+                    <li class="nav-item" style="padding-top: 20px; padding-left: 100px"><partial name="_SelectLanguagePartial" /></li>
 
                     <!-- Nav Item - Alerts -->
                     <li class="nav-item dropdown no-arrow mx-1">
@@ -315,7 +316,7 @@
                     <div class="topbar-divider d-none d-sm-block"></div>
 
                     <!-- Nav Item - User Information -->
-                    @await Component.InvokeAsync("DoctorInfo")
+                   @await Component.InvokeAsync("DoctorInfo") 
 
                 </ul>
 
@@ -409,32 +410,33 @@
     });
 
     $(document).ready(function () {
-        $("#patientSearch").on("keyup", function () {
+        $("#adminPatientSearch").on("keyup", function () {
             var query = $(this).val();
 
             // Perform AJAX request to the search action
             $.ajax({
-                url: '/DashBoard/SearchPatients/', // Adjust this URL based on your routing
+                url: '/DashBoard/SearchPatients/',
                 type: 'GET',
                 data: { query: query },
                 success: function (data) {
                     // Update the dropdown with the returned HTML
-                    $("#patientDropdown").html(data).show();
+                    $("#adminPatientDropdown").html(data).show();
                 },
                 error: function () {
-                    $("#patientDropdown").html('<p>Error retrieving results.</p>');
+                    $("#adminPatientDropdown").html('<p>Error retrieving results.</p>');
                 }
             });
         });
 
         // Handle the selection of a patient from the dropdown
-        $(document).on("click", ".patient-result", function () {
+        $(document).on("click", "#adminPatientDropdown .patient-result", function () {
             var patientId = $(this).data("patient-id");
 
             // Redirect to the patient's profile page
             window.location.href = '/Patient/Profile?patientId=' + patientId;
         });
     });
+
 
 
 </script>

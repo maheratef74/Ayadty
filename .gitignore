@@ -4,6 +4,7 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 # Ignore appsettings.json
 appsettings.json
+appsettings.*.json
 
 # Ignore all obj folders
 **/obj/

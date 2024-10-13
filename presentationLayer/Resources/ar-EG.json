@@ -18,7 +18,7 @@
   "About Us": "معلومات عنا",
   "Lorem Amet": "لوريم أميت",
   "Emergency Cases": "الحالات الطارئة",
-  "It is Timetable for Today Appointment": "هذا جدول الكشوفات لدي الدكتور اليوم",
+  "It is Timetable for Today Appointment": "هذا جدول الحجز لدي الدكتور اليوم لا تقلق نحن نحافظ علي سريه بيناتك الشخصيه",
   "Doctor Timetable": "جدول الطبيب",
   "Opening Hours": "ايام العمل",
   "Monday - Friday": "الاثنين - الجمعة",
@@ -537,7 +537,7 @@
   "DateRequired": "التاريخ مطلوب",
   "Prescription Updated successfully": "تم تعديل الروشته بنجاح",
   "Diagnosis": "التشخيص",
-  "Prescriptions": "الروشتات",
+  "Prescriptions": "الروشتات السابقه",
   "Create Appointment for Patient": "حجز كشف لمريض",
   "Search Patient": "ابحث عن مريض",
   "Search by name...": "ابحث عن طريق الاسم",
@@ -611,5 +611,11 @@
   "ClinicProfile" : "صفحه العياده",
   "Working days : " : "ايام العمل : ",
   "For Appointment : " :"للحجز : ",
-  "Adress : " :"العنوان : "
+  "Adress : " :"العنوان : ",
+  "Privacy Notice:" : "معلومات الامان: ",
+  "We take the privacy of our patients seriously. Your data is securely stored and protected. Only authorized medical staff can access your personal information, and it will never be shared with unauthorized parties." :
+  "نحن نأخذ خصوصية مرضانا على محمل الجد. يتم تخزين بياناتك وحمايتها بشكل آمن. لا يمكن إلا للموظفين و الطبيب المصرح لهم الوصول إلى معلوماتك الشخصية، ولن تتم مشاركتها أبدًا مع أطراف غير مصرح لها.",
+  "Back to home page" : "العوده للصفجه الرئيسيه",
+  "Appointments": "الحجز السابق",
+  "Patient deleted successfully.": "تم حذف المريض بنجاح"
 }

@@ -111,9 +111,12 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <button onclick="window.location.href='@Url.Action("Update", "Clinic")'" type="button" class="btn btn-primary">
-                                        @localizer["Edit"]
-                                    </button>
+                                    @if (!User.IsInRole("Patient"))
+                                    {
+                                        <button onclick="window.location.href='@Url.Action("Update", "Clinic")'" type="button" class="btn btn-primary">
+                                            @localizer["Edit"]
+                                        </button>
+                                    }
                                 </div>
                             </div>
                         </div>
