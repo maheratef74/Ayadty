@@ -576,7 +576,7 @@
 
 
   "Working Days updated successfully": "تم تعديل ايام العمل بنجاح",
-  "Number Of Completed Appointment": "عدد الكشوفات المكتمله",
+  "Number Of Completed Appointment": "عدد المواعيد المكتمله",
   "Add Nurse": "اضافه مساعد دكتور",
   "Nurse Added successfully": "تم اضافه مساعد للدكتور بنجاح",
 
@@ -614,8 +614,10 @@
   "Adress : ": "العنوان : ",
   "Privacy Notice:": "معلومات الامان: ",
   "We take the privacy of our patients seriously. Your data is securely stored and protected. Only authorized medical staff can access your personal information, and it will never be shared with unauthorized parties.": "نحن نأخذ خصوصية مرضانا على محمل الجد. يتم تخزين بياناتك وحمايتها بشكل آمن. لا يمكن إلا للموظفين و الطبيب المصرح لهم الوصول إلى معلوماتك الشخصية، ولن تتم مشاركتها أبدًا مع أطراف غير مصرح لها.",
-  "Back to home page": "العوده للصفجه الرئيسيه",
+  "Back to home page": "العوده للصفحه الرئيسيه",
   "Appointments": "الحجز السابق",
   "Patient deleted successfully.": "تم حذف المريض بنجاح",
-  "You have been logged out successfully." : "تم تسجيل الخروج بنجاح"
+  "You have been logged out successfully." : "تم تسجيل الخروج بنجاح",
+  "Time of the appointment": "وقت الحجز",
+  "Back to Dashboard": "العوده الي لوحه التحكم"
 }

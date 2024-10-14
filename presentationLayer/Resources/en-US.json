@@ -599,5 +599,8 @@
   "Back to home page": "Back to home page",
   "Appointments": "Appointments",
   "Patient deleted successfully.": "Patient deleted successfully.",
-  "You have been logged out successfully.": "You have been logged out successfully."
+  "You have been logged out successfully.": "You have been logged out successfully.",
+  "Time of the appointment": "Time of the appointment",
+  "Back to Dashboard": "Back to Dashboard",
+  "Confirm new password": "Confirm new password"
 }

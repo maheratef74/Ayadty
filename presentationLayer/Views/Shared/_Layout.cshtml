@@ -16,7 +16,7 @@ var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
 <html class="no-js" lang="ar" dir="@(isRTL ? "rtl" : "ltr")" >
 <head>
 
-    <<link rel="stylesheet" href="~/lib/sweetalert2/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="~/lib/sweetalert2/dist/sweetalert2.min.css">
    
     <!-- Meta Tags -->
     <meta charset="utf-8">
@@ -58,7 +58,7 @@ var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
     <link rel="stylesheet" href="~/css/animate.min.css">
     <!-- Magnific Popup CSS -->
     <link rel="stylesheet" href="~/css/magnific-popup.css">
-    <<link rel="stylesheet" href="~/lib/sweetalert2/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="~/lib/sweetalert2/dist/sweetalert2.min.css">
 
     <!-- Medipro CSS -->
     <link rel="stylesheet" href="~/css/normalize.css">
@@ -125,6 +125,14 @@ var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
                                 </a>
                             </div>
                         }
+                        @if (User.IsInRole("Doctor") || User.IsInRole("Nurse"))
+                        {
+                            <div style="padding-top: 20px;">
+                                <a style="color: white;" asp-controller="DashBoard" asp-action="DailyAppointment" class="btn btn-primary btn-sm">
+                                    @localizer["Back to Dashboard"]
+                                </a>
+                            </div>
+                        }
                         <!-- End Mobile Nav -->
                     </div>
                     <div class="col-lg-7 col-md-9 col-12">
@@ -135,7 +143,11 @@ var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
                                     @*<li class="nav-item">
                                         <a asp-controller="Home" asp-action="Index">@localizer["Home"]</a>
                                     </li>*@
-                                    <li class="nav-item"> <a asp-controller="Patient" asp-action="Profile" asp-route-patientId="@userId">@localizer["Patient Profile"]</a></li>
+                                    @if (User.IsInRole("Patient"))
+                                    {
+                                        <li class="nav-item"> <a asp-controller="Patient" asp-action="Profile" asp-route-patientId="@userId">@localizer["Patient Profile"]</a></li>
+
+                                    }
                                     <li class="nav-item"><a asp-controller="Doctor" asp-action="AboutMe">@localizer["Doctor"]</a></li>
                                     <li class="nav-item">
                                         <a href="#"> @localizer["Pages"] <i class="icofont-rounded-down"></i></a>

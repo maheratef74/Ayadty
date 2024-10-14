@@ -74,7 +74,7 @@ namespace presentationLayer.Controllers
             TempData["successMessage"] = _localizer["Working Days updated successfully"].Value;
             return RedirectToAction("UpdateWorkingDays", "Doctor");
         }
-        
+        [HttpGet]
         public async Task<IActionResult> Profile(string doctorId)
         {
             if (doctorId is null)
@@ -87,7 +87,7 @@ namespace presentationLayer.Controllers
                 doctorId = "1b849748-b9c7-4870-a1ad-2efed949e114";
             }
             // check if ID is not current user
-            var DoctorDto = await _doctorService.GetDoctorById(doctorId);//return dto 
+            var DoctorDto = await _doctorService.GetDoctorById(doctorId); 
             var DoctorVM = DoctorDto.ToDoctorVM();
             return View(DoctorVM);
         }

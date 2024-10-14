@@ -109,11 +109,15 @@ Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout
                             </div>
 
                             <hr>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <a class="btn btn-info" target="__blank" href="" onclick="window.location.href='@Url.Action("Update" ,"Doctor",new{doctorId=Model.DoctorId})'">@localizer["Edit"]</a>
+                            @if (User.IsInRole("Doctor"))
+                            {
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <a class="btn btn-info" target="__blank" href="" onclick="window.location.href='@Url.Action("Update" ,"Doctor",new{doctorId=Model.DoctorId})'">@localizer["Edit"]</a>
+                                    </div>
                                 </div>
-                            </div>
+                            }
+                          
                         </div>
                     </div>
                 </div>

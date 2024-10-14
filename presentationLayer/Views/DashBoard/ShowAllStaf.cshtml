@@ -41,7 +41,7 @@ Layout = "~/Views/Shared/_AdminLayout.cshtml";
 							<td class="user-cell  align-items-center text-center">
 								<img class="profile-photo" src="@Url.Content("~/img/" + Admin.ProfilePhoto)" alt="">
 								<a class="user-link text-center" target="__blank"
-								   href="@Url.Action("Profile", "Patient", new { patientId = Admin.Id })"
+								   href="@Url.Action("Profile", "Doctor", new { doctorId = Admin.Id })"
 								   onclick="event.stopPropagation();">@Admin.FullName</a>
 								<span class="user-subhead"></span>
 							</td>	
