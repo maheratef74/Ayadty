@@ -43,5 +43,5 @@ public class AppDbContext :  IdentityDbContext<ApplicationUser>
     public DbSet<Prescription> Prescriptions { get; set; }
     public DbSet<WorkDay> WorkDays { get; set; }
     public DbSet<Treatment> Treatments { get; set; }
-    
+    public DbSet<Notification> Notifications { get; set; }
 }

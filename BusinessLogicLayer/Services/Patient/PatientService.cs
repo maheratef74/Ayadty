@@ -1,5 +1,6 @@
 using BusinessLogicLayer.DTOs.Appointment;
 using BusinessLogicLayer.DTOs.Ptient;
+using BusinessLogicLayer.Services.Notification;
 using DataAccessLayer.Repositories.Patient;
 using Microsoft.VisualBasic;
 namespace BusinessLogicLayer.Services.Patient;
@@ -7,10 +8,11 @@ namespace BusinessLogicLayer.Services.Patient;
 public class PatientService : IPatientService
 {
     private readonly IPatientRepository _patientRepository;
-
-    public PatientService(IPatientRepository patientRepository)
+    private readonly INotificationService _notificationService;
+    public PatientService(IPatientRepository patientRepository, INotificationService notificationService)
     {
         _patientRepository = patientRepository;
+        _notificationService = notificationService;
     }
 
     public async Task<PatientDetailsDto?> GetPatientById(string id)
@@ -37,6 +39,9 @@ public class PatientService : IPatientService
             await _patientRepository.Update(patient);
             await _patientRepository.SaveChanges();
         }
+        string message = $"تم تعديل ملف  {updatePatientDto.FullName}.";
+          
+        await _notificationService.CreateNotification(message);
     }
 
     public async Task<List<PatientDetailsDto>> GetPatientsByName(string searchTerm)

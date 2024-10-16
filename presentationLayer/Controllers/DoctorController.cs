@@ -189,6 +189,7 @@ namespace presentationLayer.Controllers
             var doctortDto = updatedDoctor.ToUpdateDoctorDto();
             doctortDto.ProfilePhoto = uniqueFileName;
             await _doctorService.UpdateDoctor(doctortDto);
+             TempData["successMessage"] = _localizer["Doctor Updated successfully"].Value;
             return RedirectToAction("profile", "Doctor" , new {doctorId = updatedDoctor.DoctorId});
         }
         [Authorize(Roles = "Doctor, Nurse , Patient" )]

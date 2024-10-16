@@ -12,3 +12,54 @@
 #wrapper[dir="ltr"]{
     text-align: left;
 }
+
+.notification-icon {
+    position: relative;
+    cursor: pointer;
+}
+
+/* Style for notification container */
+.notification-list {
+    position: absolute;
+    top: 40px; /* Adjust to align just under the icon */
+    right: 0;
+    width: 250px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Make sure it appears on top */
+    display: none; /* Initially hidden */
+}
+
+/* Style for individual notification items */
+.notification-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.notification-item p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.notification-item button {
+    margin-top: 5px;
+    padding: 5px 10px;
+    background-color: #dc3545; /* Danger color for mark as read */
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.notification-item button:hover {
+    background-color: #c82333; /* Slightly darker on hover */
+}
+
+/* Last item should not have a bottom border */
+.notification-item:last-child {
+    border-bottom: none;
+}

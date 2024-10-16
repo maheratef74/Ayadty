@@ -619,5 +619,9 @@
   "Patient deleted successfully.": "تم حذف المريض بنجاح",
   "You have been logged out successfully." : "تم تسجيل الخروج بنجاح",
   "Time of the appointment": "وقت الحجز",
-  "Back to Dashboard": "العوده الي لوحه التحكم"
+  "Back to Dashboard": "العوده الي لوحه التحكم",
+  "Notifications": "الاشعارات",
+  "No new notifications": "لا يوجد اشعارات",
+  "Cancel Appointment": "الغاء الحجز",
+  "Doctor Updated successfully": "تم تعديل بينات الدكتور بنجاح"
 }

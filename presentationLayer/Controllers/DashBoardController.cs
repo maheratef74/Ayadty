@@ -31,7 +31,13 @@ public class DashBoardController:Controller
 
     public IActionResult Index()
     {
-        return View();
+        var appointments = new {
+            Canceled = 10,
+            Completed = 40,
+            Pending = 15
+        };
+
+        return View(appointments);
     }
     [HttpGet]
     public async Task<IActionResult> DailyAppointment(DateTime? date = null)

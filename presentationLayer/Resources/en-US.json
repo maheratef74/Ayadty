@@ -602,5 +602,9 @@
   "You have been logged out successfully.": "You have been logged out successfully.",
   "Time of the appointment": "Time of the appointment",
   "Back to Dashboard": "Back to Dashboard",
-  "Confirm new password": "Confirm new password"
+  "Confirm new password": "Confirm new password",
+  "Notifications": "Notifications",
+  "No new notifications": "No new notifications",
+  "Cancel Appointment":  "Cancel Appointment",
+  "Doctor Updated successfully": "Doctor Updated successfully"
 }

@@ -30,7 +30,7 @@ var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
     <title>@localizer["Ayadty"]</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="~/img/favicon.png">
+   @*  <link rel="icon" href="~/img/favicon.png"> *@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
@@ -84,11 +84,13 @@ var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
 <!-- End Preloader -->
 <!-- Header Area -->
 <header class="header" >
-        <li class="d-inline-block">
-            @await Html.PartialAsync("_SelectLanguagePartial")
-        </li>
+
+
+
+       
     <!-- Header Inner -->
     <div class="header-inner">
+            <partial name="_SelectLanguagePartial" />
         <div class="container">
             <div class="inner">
                 <div class="row">
@@ -158,10 +160,14 @@ var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
                                                 
                                             }
                                             <li><a asp-controller="Appointment" asp-action="DailyAppointment">@localizer["DailyAppointment"]</a></li>
-                                            <li><a asp-controller="auth" asp-action="Register">@localizer["Registration"]</a></li>
-                                            <li><a asp-controller="auth" asp-action="Login">@localizer["Log In"]</a></li>
+                                          @*   <li><a asp-controller="auth" asp-action="Register">@localizer["Registration"]</a></li>
+                                            <li><a asp-controller="auth" asp-action="Login">@localizer["Log In"]</a></li> *@
                                             <li><a asp-controller="Appointment" asp-action="Create">@localizer["CreatAppointment"]</a></li>
-                                            <li><a asp-controller="Clinic" asp-action="ContactUs">@localizer["Contact Now"]</a></li>
+                                            @if (User.IsInRole("Patient"))
+                                            {
+                                                    <li><a asp-controller="Clinic" asp-action="ContactUs">@localizer["Contact Now"]</a></li>
+
+                                            }
                                             <li><a asp-controller="Clinic" asp-action="Profile">@localizer["Clinic Profile"]</a></li>
                                         </ul>
                                     </li>

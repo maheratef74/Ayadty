@@ -19,6 +19,14 @@ Layout = "~/Views/Shared/_AdminLayout.cshtml";
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <title>@localizer["Working Days"]</title>
     <link rel="stylesheet" href="~/css/working_days.css">
+     <style>
+        .header-col {
+            padding-left: 40px;
+            padding-right: 40px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+     </style>
 </head>
 
 <body>
@@ -29,11 +37,11 @@ Layout = "~/Views/Shared/_AdminLayout.cshtml";
     </div>
 
     <!-- Header Row -->
-    <div class="header-row row font-weight-bold text-center">
-         <div class="col px-1">@localizer["Day"]</div>
-        <div class="col px-2">@localizer["Start Time"]</div>
-        <div class="col px-2">@localizer["End Time"]</div>
-    </div>
+        <div class="header-row row font-weight-bold">
+            <div class="header-col">@localizer["Day"]</div>
+            <div class="header-col">@localizer["Start Time"]</div>
+            <div class="header-col">@localizer["End Time"]</div>
+        </div>
     @{
     var hasData = Model != null && Model.Count > 0;
     }

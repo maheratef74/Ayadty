@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Diagnostics;
+using BusinessLogicLayer.Services.Notification;
 using BusinessLogicLayer.Services.Patient;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories.ApplicationUser;
@@ -22,14 +23,16 @@ public class authController : Controller
     private readonly IPatientService _patientService;
     private readonly IStringLocalizer<authController> _localizer;
     private readonly IApplicationUserRepository _applicationUserRepository;
+    private readonly INotificationService _notificationService;
     public authController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IPatientService patientService, 
-       IStringLocalizer<authController> localizer , IApplicationUserRepository applicationUserRepository)
+       IStringLocalizer<authController> localizer , IApplicationUserRepository applicationUserRepository, INotificationService notificationService)
     {
         _userManager = userManager;
         _signInManager = signInManager;
         _patientService = patientService;
         _localizer = localizer;
         _applicationUserRepository = applicationUserRepository;
+        _notificationService = notificationService;
     }
     [HttpGet]
     public IActionResult Login()
@@ -85,6 +88,10 @@ public class authController : Controller
                 }
                 await _signInManager.SignInAsync(patientUser , newPatient.RememberMe);
                 TempData["successMessage"] = _localizer["Acount Created successfully"].Value;
+                
+                string message = $"تم انشاء حساب باسم {newPatient.Name}.";
+          
+                await _notificationService.CreateNotification(message);
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -94,7 +101,9 @@ public class authController : Controller
                     ModelState.AddModelError(error.Code, error.Description);
                 }
             }
+       
         }
+        
         return View(newPatient);
     }
     public async Task<IActionResult> Logout()

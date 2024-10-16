@@ -1,10 +1,12 @@
 using System.Globalization;
 using System.Resources;
+using System.Text.Json;
 using Ayadty.Data;
 using BusinessLogicLayer.Services.Appointment;
 using BusinessLogicLayer.Services.Clinic;
 using BusinessLogicLayer.Services.Doctor;
 using BusinessLogicLayer.Services.File;
+using BusinessLogicLayer.Services.Notification;
 using BusinessLogicLayer.Services.Patient;
 using BusinessLogicLayer.Services.Prescription;
 using BusinessLogicLayer.Services.WorkingDays;
@@ -14,6 +16,7 @@ using DataAccessLayer.Repositories.ApplicationUser;
 using DataAccessLayer.Repositories.Clinic;
 using DataAccessLayer.Repositories.Doctor;
 using DataAccessLayer.Repositories.Generic;
+using DataAccessLayer.Repositories.Notification;
 using DataAccessLayer.Repositories.Patient;
 using DataAccessLayer.Repositories.Prescription;
 using DataAccessLayer.Repositories.Treatment;
@@ -67,9 +70,7 @@ public class Program
 
         builder.Services.AddScoped<IClinicRepository, ClinicRepository>();
         builder.Services.AddScoped<IClinicService, ClinicService>();
-
-
-
+        
         builder.Services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
 
         builder.Services.AddScoped<IFileService, FileService>();
@@ -77,8 +78,10 @@ public class Program
         builder.Services.AddScoped<IWorkingDaysService, WorkingDaysService>();
         builder.Services.AddScoped<IWorkinDayesRepository, WorkingDayesRepository>();
         builder.Services.AddScoped<RoleSeeder>();
-        
 
+        builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
+        builder.Services.AddScoped<INotificationService, NotificationService>();
+        
        // builder.Services.AddScoped<IGenericRepository<T>, GenericRepository<T>>();
        // builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         #endregion
@@ -113,6 +116,13 @@ public class Program
         {
             options.HtmlHelperOptions.ClientValidationEnabled = true;
         });
+        
+        builder.Services.AddControllers()
+            .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                options.JsonSerializerOptions.IgnoreNullValues = true; // Example option
+            });
         #region localization
 
         builder.Services.AddLocalization();

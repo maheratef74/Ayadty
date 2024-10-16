@@ -36,29 +36,15 @@
     <!-- Slicknav -->
     <link rel="stylesheet" href="~/css/slicknav.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .btn {
+            margin-bottom: 1rem; 
+        }
+    </style>
 </head>
-<body>
-@*<div class="container">
-    @if (TempData["SuccessMessage"] != null)
-    {
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            @localizer[TempData["SuccessMessage"].ToString()]
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    }
-    @if (TempData["ErrorMessage"] != null)
-    {
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            @localizer[TempData["ErrorMessage"].ToString()]
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    }
 
-</div>*@
+<body>
+
 <div class="container rtl text-center align-items-center" >
     <div class="main-body">
         <div class="row">
@@ -143,34 +129,39 @@
                                     <input type="text" class="form-control" value="@Model.appointment.Note" disabled>
                                 </div>
                             </div>
-                            <div class="row text-center" >
-                                <div class="col-sm-3 text-center">
-                                    <a class="btn btn-primary" onclick="window.location.href='@Url.Action("Update", "Appointment", new { appointedId = @Model.appointment.AppointmentId })'">@localizer["Edit Appointment"]</a>
+                            <div class="row text-center">
+                                <div class="col-12 col-sm-3 text-center mb-2"> <!-- Full width on mobile, 1/4 width on larger screens -->
+                                    <a class="btn btn-primary" style="color: white;"
+                                       onclick="window.location.href='@Url.Action("Update", "Appointment", new { appointedId = Model.appointment.AppointmentId })'">
+                                        @localizer["Edit Appointment"]
+                                    </a>
                                 </div>
+
                                 @if (User.IsInRole("Doctor"))
                                 {
-                                <div class="col-sm-3 text-center mb-2 mb-sm-0"> <!-- Added mb-2 for mobile -->
+                                <div class="col-12 col-sm-3 text-center mb-2"> <!-- Full width on mobile, 1/4 width on larger screens -->
                                     <a class="btn btn-success"
-                                       onclick="window.location.href='@Url.Action("Create", "Prescription", new{AppointmentId = Model.appointment.AppointmentId})'">
+                                       onclick="window.location.href='@Url.Action("Create", "Prescription", new { AppointmentId = Model.appointment.AppointmentId })'">
                                         @localizer["Create Prescription"]
                                     </a>
                                 </div>
                                 }
-                                <div class="col-sm-3 text-center mb-2 mb-sm-0"> <!-- Added mb-2 for mobile -->
+
+                                <div class="col-12 col-sm-3 text-center mb-2"> <!-- Full width on mobile, 1/4 width on larger screens -->
                                     <button type="button" class="btn btn-danger"
                                             onclick="confirmCancel('@Model.appointment.AppointmentId')">
-                                        @localizer["Cancele Appointment"]
+                                        @localizer["Cancel Appointment"]
                                     </button>
                                 </div>
 
-                                <div class="col-sm-3 text-center mb-2 mb-sm-0"> <!-- Added mb-2 for mobile -->
+                                <div class="col-12 col-sm-3 text-center mb-2"> <!-- Full width on mobile, 1/4 width on larger screens -->
                                     <button type="button" class="btn btn-danger"
                                             onclick="confirmDelete('@Model.appointment.AppointmentId')">
                                         @localizer["Delete Appointment"]
                                     </button>
                                 </div>
-
                             </div>
+
                         </div> 
                     </div>
                 </div>
