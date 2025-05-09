@@ -34,6 +34,20 @@ A comprehensive Clinic Management System built using ASP.NET MVC, Entity Framewo
 Check out the live demo of the project: [Live Demo](https://ayadtytest.runasp.net/)
 
 ---
+### 🔹 Patient Account
+- **Username:** `01205397285`
+- **Password:** `123456`
+
+### 🔹 Admin Account
+- **Username:** `01200000000`
+- **Password:** `123456`
+
+## 🛠️ Technologies Used
+- Frontend: HTML, CSS, JavaScript 
+- Backend:  .NET MVC 
+- Database:  SQl
+- Authentication: Session-Based Auth
+- Deployment: Monster.ASP (CI/CD).
 
 ## Installation
 
