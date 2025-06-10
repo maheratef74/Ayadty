@@ -1,4 +1,4 @@
-# Clinic Management System 
+# Clinic Management System  
 
 A comprehensive Clinic Management System built using ASP.NET MVC, Entity Framework, and SQL Server. This system is designed to streamline clinic operations, including patient management, appointment scheduling, prescriptions, and medical records.
 
